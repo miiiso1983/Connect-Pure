@@ -14,6 +14,7 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             RoleSeeder::class,
+            SuperAdminSeeder::class, // Create super admin accounts first
             UserSeeder::class,
             SimpleAccountingSeeder::class,
             HRSeeder::class,
