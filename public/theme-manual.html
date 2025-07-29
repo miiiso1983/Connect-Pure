@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manual Theme Test</title>
+    <style>
+        /* Theme Variables */
+        :root {
+            --theme-bg: #ffffff;
+            --theme-text: #1f2937;
+            --theme-border: #e5e7eb;
+        }
+
+        [data-theme="dark"] {
+            --theme-bg: #0f172a;
+            --theme-text: #f8fafc;
+            --theme-border: #334155;
+        }
+
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            transition: all 0.3s ease;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--theme-bg);
+            color: var(--theme-text);
+            min-height: 100vh;
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .card {
+            background: var(--theme-bg);
+            border: 2px solid var(--theme-border);
+            border-radius: 1rem;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        [data-theme="dark"] .card {
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            color: #000000 !important;
+        }
+
+        [data-theme="dark"] .card * {
+            color: #000000 !important;
+        }
+
+        /* Force ALL text to be black in dark mode */
+        [data-theme="dark"] *,
+        [data-theme="dark"] h1,
+        [data-theme="dark"] h2,
+        [data-theme="dark"] h3,
+        [data-theme="dark"] h4,
+        [data-theme="dark"] h5,
+        [data-theme="dark"] h6,
+        [data-theme="dark"] p,
+        [data-theme="dark"] span,
+        [data-theme="dark"] div,
+        [data-theme="dark"] a,
+        [data-theme="dark"] label,
+        [data-theme="dark"] td,
+        [data-theme="dark"] th,
+        [data-theme="dark"] li,
+        [data-theme="dark"] ul,
+        [data-theme="dark"] ol {
+            color: #000000 !important;
+        }
+
+        .button {
+            background: #3b82f6;
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            margin: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .button:hover {
+            background: #2563eb;
+            transform: translateY(-2px);
+        }
+
+        .button.dark {
+            background: #1f2937;
+        }
+
+        .button.dark:hover {
+            background: #111827;
+        }
+
+        .status {
+            padding: 1rem;
+            border-radius: 0.5rem;
+            margin: 1rem 0;
+            font-family: monospace;
+        }
+
+        [data-theme="light"] .status {
+            background: #f3f4f6;
+            color: #1f2937;
+        }
+
+        [data-theme="dark"] .status {
+            background: #374151;
+            color: #f9fafb;
+        }
+
+        h1, h2, h3 {
+            margin-bottom: 1rem;
+        }
+
+        .theme-indicator {
+            position: fixed;
+            top: 1rem;
+            right: 1rem;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            font-weight: bold;
+            font-size: 0.875rem;
+        }
+
+        [data-theme="light"] .theme-indicator {
+            background: #fef3c7;
+            color: #92400e;
+        }
+
+        [data-theme="dark"] .theme-indicator {
+            background: #1e293b;
+            color: #cbd5e1;
+            border: 1px solid #475569;
+        }
+
+        /* Dark theme specific styles */
+        [data-theme="dark"] body {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+        }
+
+        [data-theme="light"] body {
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+        }
+    </style>
+</head>
+<body>
+    <div class="theme-indicator" id="themeIndicator">Light Mode</div>
+    
+    <div class="container">
+        <div class="card">
+            <h1>🌓 Manual Theme Test</h1>
+            <p>This is a simple test page to verify the theme system is working correctly.</p>
+            
+            <div style="margin: 2rem 0;">
+                <button class="button" onclick="setTheme('light')">☀️ Light Mode</button>
+                <button class="button dark" onclick="setTheme('dark')">🌙 Dark Mode</button>
+                <button class="button" onclick="toggleTheme()">🔄 Toggle Theme</button>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>Theme Status</h2>
+            <div class="status" id="status">
+                Current Theme: <span id="currentTheme">light</span><br>
+                Stored Theme: <span id="storedTheme">none</span><br>
+                System Preference: <span id="systemTheme">light</span>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>Instructions</h2>
+            <ol style="line-height: 1.8;">
+                <li><strong>Click "Light Mode"</strong> - Should switch to light theme immediately</li>
+                <li><strong>Click "Dark Mode"</strong> - Should switch to dark theme immediately</li>
+                <li><strong>Click "Toggle Theme"</strong> - Should switch between themes</li>
+                <li><strong>Refresh the page</strong> - Theme should persist</li>
+                <li><strong>Check the indicator</strong> - Top-right corner shows current theme</li>
+            </ol>
+        </div>
+
+        <div class="card">
+            <h2>What Should Change</h2>
+            <ul style="line-height: 1.8;">
+                <li>Background color (light gray ↔ dark blue)</li>
+                <li>Text color (dark ↔ light)</li>
+                <li>Card backgrounds and borders</li>
+                <li>Theme indicator in top-right corner</li>
+                <li>All changes should be smooth with transitions</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h2>Troubleshooting</h2>
+            <p>If themes are not switching:</p>
+            <ol style="line-height: 1.8;">
+                <li>Open browser developer tools (F12)</li>
+                <li>Check the Console tab for errors</li>
+                <li>Check if the HTML element has <code>data-theme="dark"</code> or <code>data-theme="light"</code></li>
+                <li>Verify localStorage has the theme value</li>
+            </ol>
+            
+            <button class="button" onclick="debugTheme()">🔍 Debug Theme</button>
+        </div>
+    </div>
+
+    <script>
+        // Theme management functions
+        function setTheme(theme) {
+            console.log('Setting theme to:', theme);
+            
+            // Apply to HTML element
+            document.documentElement.setAttribute('data-theme', theme);
+            
+            // Save to localStorage
+            localStorage.setItem('theme', theme);
+            
+            // Update status display
+            updateStatus();
+            
+            // Update indicator
+            updateIndicator();
+            
+            console.log('Theme set successfully');
+        }
+
+        function toggleTheme() {
+            const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            setTheme(newTheme);
+        }
+
+        function updateStatus() {
+            const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
+            const storedTheme = localStorage.getItem('theme') || 'none';
+            const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+            
+            document.getElementById('currentTheme').textContent = currentTheme;
+            document.getElementById('storedTheme').textContent = storedTheme;
+            document.getElementById('systemTheme').textContent = systemTheme;
+        }
+
+        function updateIndicator() {
+            const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
+            const indicator = document.getElementById('themeIndicator');
+            indicator.textContent = currentTheme === 'dark' ? 'Dark Mode' : 'Light Mode';
+        }
+
+        function debugTheme() {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const storedTheme = localStorage.getItem('theme');
+            const htmlElement = document.documentElement;
+            
+            console.log('=== THEME DEBUG ===');
+            console.log('HTML data-theme:', currentTheme);
+            console.log('localStorage theme:', storedTheme);
+            console.log('HTML element:', htmlElement);
+            console.log('Computed styles:', window.getComputedStyle(document.body));
+            
+            alert(`Theme Debug:
+Current: ${currentTheme}
+Stored: ${storedTheme}
+Check console for more details.`);
+        }
+
+        // Initialize theme on page load
+        function initTheme() {
+            const storedTheme = localStorage.getItem('theme');
+            const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+            const initialTheme = storedTheme || systemTheme;
+            
+            setTheme(initialTheme);
+        }
+
+        // Initialize when page loads
+        document.addEventListener('DOMContentLoaded', initTheme);
+        
+        // Update status every second to show real-time changes
+        setInterval(updateStatus, 1000);
+    </script>
+</body>
+</html>
