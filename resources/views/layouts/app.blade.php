@@ -220,33 +220,37 @@
 
         <div class="flex min-h-screen pt-20">
             <!-- Modern Sidebar -->
-            <aside id="sidebar" class="fixed inset-y-0 {{ app()->getLocale() === 'ar' ? 'right-0' : 'left-0' }} z-40 w-72 modern-sidebar transform -translate-x-full md:translate-x-0 transition-all duration-300 ease-in-out md:static md:inset-0">
+            <aside id="sidebar" class="fixed inset-y-0 {{ app()->getLocale() === 'ar' ? 'right-0' : 'left-0' }} z-40 w-72 bg-gradient-to-b from-gray-900 via-gray-900 to-gray-800 shadow-2xl transform -translate-x-full md:translate-x-0 transition-all duration-300 ease-in-out md:static md:inset-0">
                 <div class="flex flex-col h-full pt-20 md:pt-6">
-                    <!-- Sidebar Header -->
-                    <div class="flex items-center justify-between p-6 border-b border-gray-200/50 md:hidden">
-                        <h2 class="text-xl font-bold text-gradient">{{ __('erp.modules') }}</h2>
-                        <button onclick="toggleSidebar()" class="p-3 rounded-xl text-gray-400 hover:text-gray-600 hover:bg-white/50 transition-all duration-200">
+                    <!-- Dark Sidebar Header -->
+                    <div class="flex items-center justify-between p-6 border-b border-gray-700/50 md:hidden">
+                        <h2 class="text-xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">Modules</h2>
+                        <button onclick="toggleSidebar()" class="p-3 rounded-xl text-gray-400 hover:text-white hover:bg-gray-800/50 transition-all duration-200">
                             <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                             </svg>
                         </button>
                     </div>
 
-                    <!-- Modern Sidebar Navigation -->
-                    <nav class="flex-1 px-6 py-6 space-y-3 overflow-y-auto">
+                    <!-- Modern Dark Sidebar Navigation -->
+                    <nav class="flex-1 px-6 py-6 space-y-3 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-700 scrollbar-track-gray-800">
                         @include('layouts.sidebar')
                     </nav>
 
-                    <!-- Sidebar Footer -->
-                    <div class="p-6 border-t border-gray-200/50">
-                        <div class="glass-card p-4 text-center">
-                            <div class="text-sm font-semibold text-gray-700">Connect Pure ERP</div>
-                            <div class="text-xs text-gray-500 mt-1">v2.0 Enterprise</div>
+                    <!-- Dark Sidebar Footer -->
+                    <div class="p-6 border-t border-gray-700/50">
+                        <div class="bg-gray-800/50 backdrop-blur-sm rounded-2xl p-4 text-center border border-gray-700/30">
+                            <div class="text-sm font-semibold text-white">Connect Pure ERP</div>
+                            <div class="text-xs text-gray-400 mt-1">v2.0 Enterprise</div>
                             <div class="mt-3">
-                                <div class="w-full bg-gray-200 rounded-full h-2">
-                                    <div class="bg-gradient-to-r from-blue-600 to-purple-600 h-2 rounded-full" style="width: 85%"></div>
+                                <div class="w-full bg-gray-700 rounded-full h-2">
+                                    <div class="bg-gradient-to-r from-blue-500 to-purple-600 h-2 rounded-full shadow-lg" style="width: 85%"></div>
                                 </div>
-                                <div class="text-xs text-gray-500 mt-1">System Health: 85%</div>
+                                <div class="text-xs text-gray-400 mt-1">System Health: 85%</div>
+                            </div>
+                            <div class="mt-3 flex items-center justify-center space-x-2">
+                                <div class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                                <span class="text-xs text-gray-400">Online</span>
                             </div>
                         </div>
                     </div>
