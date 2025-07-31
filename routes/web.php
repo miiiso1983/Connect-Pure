@@ -30,7 +30,7 @@ require __DIR__.'/performance.php';
 // Module Routes
 Route::middleware('auth')->prefix('modules')->name('modules.')->group(function () {
     // CRM Module
-    Route::prefix('crm')->name('crm.')->middleware('permission:crm.view')->group(function () {
+    Route::prefix('crm')->name('crm.')->group(function () {
         Route::get('/', [CRMController::class, 'index'])->name('index');
         Route::get('/dashboard', [CRMController::class, 'dashboard'])->name('dashboard');
 
