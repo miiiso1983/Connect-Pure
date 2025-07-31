@@ -146,21 +146,19 @@
         @endif
 
         <!-- System Settings (if master admin) -->
-        @if(auth()->user()->hasRole('master-admin'))
-            <a href="#" onclick="alert('System Settings - Coming Soon!')"
-               class="group flex items-center px-4 py-3.5 text-sm font-medium rounded-xl transition-all duration-300 text-gray-300 hover:text-white hover:bg-gray-800/50">
-                <div class="flex items-center justify-center w-10 h-10 rounded-lg bg-gray-700/50 group-hover:bg-gray-600/50 transition-all duration-300 {{ app()->getLocale() === 'ar' ? 'ml-3' : 'mr-3' }}">
+        @if(auth()->user()->hasRole('master-admin') || auth()->user()->hasRole('top_management'))
+            <a href="{{ route('admin.system-settings.index') }}"
+               class="group flex items-center px-4 py-3.5 text-sm font-medium rounded-xl transition-all duration-300 {{ request()->routeIs('admin.system-settings.*') ? 'bg-gradient-to-r from-slate-600 to-gray-600 text-white shadow-lg shadow-slate-500/25' : 'text-gray-300 hover:text-white hover:bg-gray-800/50' }}">
+                <div class="flex items-center justify-center w-10 h-10 rounded-lg {{ request()->routeIs('admin.system-settings.*') ? 'bg-white/20' : 'bg-gray-700/50 group-hover:bg-gray-600/50' }} transition-all duration-300 {{ app()->getLocale() === 'ar' ? 'ml-3' : 'mr-3' }}">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
                     </svg>
                 </div>
                 <span class="font-semibold">System Settings</span>
-                <div class="ml-auto">
-                    <span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-gray-700 text-gray-300">
-                        Soon
-                    </span>
-                </div>
+                @if(request()->routeIs('admin.system-settings.*'))
+                    <div class="ml-auto w-2 h-2 bg-white rounded-full animate-pulse"></div>
+                @endif
             </a>
         @endif
     </div>

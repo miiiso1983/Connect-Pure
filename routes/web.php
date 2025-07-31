@@ -407,6 +407,34 @@ Route::middleware('auth')->prefix('admin')->name('admin.')->group(function () {
         // User Management
         Route::resource('users', \App\Http\Controllers\Admin\UserController::class);
 
+        // System Settings Routes
+        Route::prefix('system-settings')->name('system-settings.')->group(function () {
+            Route::get('/', [\App\Http\Controllers\Admin\SystemSettingsController::class, 'index'])->name('index');
+
+            // General Settings
+            Route::get('/general', [\App\Http\Controllers\Admin\SystemSettingsController::class, 'general'])->name('general');
+            Route::put('/general', [\App\Http\Controllers\Admin\SystemSettingsController::class, 'updateGeneral'])->name('general.update');
+
+            // Email Settings
+            Route::get('/email', [\App\Http\Controllers\Admin\SystemSettingsController::class, 'email'])->name('email');
+            Route::put('/email', [\App\Http\Controllers\Admin\SystemSettingsController::class, 'updateEmail'])->name('email.update');
+
+            // Security Settings
+            Route::get('/security', [\App\Http\Controllers\Admin\SystemSettingsController::class, 'security'])->name('security');
+            Route::put('/security', [\App\Http\Controllers\Admin\SystemSettingsController::class, 'updateSecurity'])->name('security.update');
+
+            // Database Settings
+            Route::get('/database', [\App\Http\Controllers\Admin\SystemSettingsController::class, 'database'])->name('database');
+
+            // Maintenance Settings
+            Route::get('/maintenance', [\App\Http\Controllers\Admin\SystemSettingsController::class, 'maintenance'])->name('maintenance');
+            Route::post('/maintenance/toggle', [\App\Http\Controllers\Admin\SystemSettingsController::class, 'toggleMaintenance'])->name('maintenance.toggle');
+
+            // System Actions
+            Route::post('/clear-cache', [\App\Http\Controllers\Admin\SystemSettingsController::class, 'clearCache'])->name('clear-cache');
+            Route::post('/optimize', [\App\Http\Controllers\Admin\SystemSettingsController::class, 'optimize'])->name('optimize');
+        });
+
         // WhatsApp Configuration
         Route::prefix('whatsapp')->name('whatsapp.')->group(function () {
             Route::get('/', [\App\Http\Controllers\Admin\WhatsAppController::class, 'index'])->name('index');
