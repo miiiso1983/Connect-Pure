@@ -170,7 +170,7 @@
                                         <form action="{{ route('modules.hr.departments.destroy', $department) }}" method="POST" class="inline">
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" class="text-red-600 hover:text-red-900" 
+                                            <button type="submit" class="text-red-600 hover:text-red-900"
                                                     onclick="return confirm('{{ __('hr.confirm_delete_department') }}')">
                                                 {{ __('hr.delete') }}
                                             </button>
