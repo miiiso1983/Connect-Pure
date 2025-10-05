@@ -12,6 +12,10 @@ use App\Modules\HR\Controllers\HRController;
 Route::middleware('auth')->group(function () {
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 });
+
+// Support default /dashboard URL (e.g., auth redirects)
+Route::middleware('auth')->get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
+
 Route::post('/switch-language', [DashboardController::class, 'switchLanguage'])->name('switch-language');
 
 // Theme test route (for testing dual theme system)

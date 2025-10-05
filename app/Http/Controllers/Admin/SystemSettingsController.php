@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Facades\Schema;
 
 class SystemSettingsController extends Controller
 {
@@ -279,6 +280,9 @@ class SystemSettingsController extends Controller
      */
     private function getSystemSettings()
     {
+        if (!Schema::hasTable('system_settings')) {
+            return [];
+        }
         return Cache::remember('system_settings', 3600, function () {
             return DB::table('system_settings')->pluck('value', 'key')->toArray();
         });
