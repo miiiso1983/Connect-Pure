@@ -8,7 +8,8 @@
     'loading' => false,
     'error' => null,
     'responsive' => true,
-    'theme' => 'light'
+    // auto | light | dark
+    'theme' => 'auto'
 ])
 
 @php
@@ -46,9 +47,9 @@
     $mergedOptions = array_merge_recursive($defaultOptions, $options);
 @endphp
 
-<div {{ $attributes->merge(['class' => 'bg-white rounded-lg shadow-md border border-gray-200 overflow-hidden']) }}>
+<div {{ $attributes->merge(['class' => 'modern-card overflow-hidden']) }}>
     @if($title || $subtitle)
-        <div class="px-6 py-4 border-b border-gray-200 bg-gray-50">
+        <div class="px-6 py-4 border-b border-gray-100">
             @if($title)
                 <h3 class="text-lg font-semibold text-gray-900">{{ $title }}</h3>
             @endif
@@ -98,19 +99,19 @@
                 <!-- Chart Actions -->
                 <div class="absolute top-2 {{ app()->getLocale() === 'ar' ? 'left-2' : 'right-2' }}">
                     <div class="flex items-center space-x-2 {{ app()->getLocale() === 'ar' ? 'space-x-reverse' : '' }}">
-                        <button 
+                        <button
                             onclick="downloadChart('{{ $chartId }}', 'png')"
-                            class="p-2 text-gray-400 hover:text-gray-600 bg-white rounded-md shadow-sm border border-gray-200"
+                            class="chart-action p-2 rounded-md shadow-sm border"
                             title="{{ __('common.download_chart') }}"
                         >
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
                             </svg>
                         </button>
-                        
-                        <button 
+
+                        <button
                             onclick="refreshChart('{{ $chartId }}')"
-                            class="p-2 text-gray-400 hover:text-gray-600 bg-white rounded-md shadow-sm border border-gray-200"
+                            class="chart-action p-2 rounded-md shadow-sm border"
                             title="{{ __('common.refresh_chart') }}"
                         >
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -133,7 +134,8 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Apply theme colors
         const theme = '{{ $theme }}';
-        const isDark = theme === 'dark';
+        const docTheme = document.documentElement.getAttribute('data-theme') || 'light';
+        const isDark = (theme === 'dark') || (theme !== 'light' && docTheme === 'dark');
         
         const chartData = {!! json_encode($data) !!};
         const chartOptions = {!! json_encode($mergedOptions) !!};
