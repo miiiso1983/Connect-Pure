@@ -96,6 +96,17 @@
                             <span class="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full"></span>
                         </button>
 
+
+                        <!-- Global Search -->
+                        <div class="hidden md:block w-72">
+                            <div class="relative">
+                                <input type="text" placeholder="Search…" class="form-input pl-10 pr-3 py-2 w-full" />
+                                <svg class="w-5 h-5 text-gray-400 absolute left-3 top-1/2 -translate-y-1/2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-4.35-4.35M10 18a8 8 0 100-16 8 8 0 000 16z" />
+                                </svg>
+                            </div>
+                        </div>
+
                         <!-- Language Switcher -->
                         <div class="relative">
                             <select onchange="switchLanguage(this.value)"
@@ -277,7 +288,7 @@
         function toggleSidebar() {
             const sidebar = document.getElementById('sidebar');
             const overlay = document.getElementById('sidebarOverlay');
-            
+
             sidebar.classList.toggle('-translate-x-full');
             overlay.classList.toggle('hidden');
         }
@@ -291,17 +302,17 @@
             const form = document.createElement('form');
             form.method = 'POST';
             form.action = '{{ route("switch-language") }}';
-            
+
             const csrfToken = document.createElement('input');
             csrfToken.type = 'hidden';
             csrfToken.name = '_token';
             csrfToken.value = '{{ csrf_token() }}';
-            
+
             const localeInput = document.createElement('input');
             localeInput.type = 'hidden';
             localeInput.name = 'locale';
             localeInput.value = locale;
-            
+
             form.appendChild(csrfToken);
             form.appendChild(localeInput);
             document.body.appendChild(form);
@@ -312,7 +323,7 @@
         document.addEventListener('click', function(event) {
             const userMenu = document.getElementById('userMenu');
             const userButton = event.target.closest('button');
-            
+
             if (!userButton || !userButton.onclick || userButton.onclick.toString().indexOf('toggleUserMenu') === -1) {
                 userMenu.classList.add('hidden');
             }

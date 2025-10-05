@@ -5,9 +5,11 @@
 @section('content')
 <div class="space-y-6">
     <!-- Welcome Section -->
-    <div class="bg-gradient-to-r from-blue-600 to-cyan-600 rounded-lg shadow-lg p-8 text-white">
-        <h1 class="text-3xl font-bold mb-2">{{ __('erp.welcome') }}</h1>
-        <p class="text-blue-100 text-lg">{{ __('erp.welcome_message') }}</p>
+    <div class="modern-card overflow-hidden">
+        <div class="p-8 bg-gradient-to-r from-blue-600 to-indigo-600 text-white">
+            <h1 class="text-3xl font-bold mb-2">{{ __('erp.welcome') }}</h1>
+            <p class="text-blue-100 text-lg">{{ __('erp.welcome_message') }}</p>
+        </div>
     </div>
 
     <!-- Statistics Cards -->
