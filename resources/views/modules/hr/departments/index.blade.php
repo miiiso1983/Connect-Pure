@@ -11,7 +11,7 @@
             <p class="text-gray-600 mt-1">{{ __('hr.manage_departments') }}</p>
         </div>
         <div class="flex space-x-3 {{ app()->getLocale() === 'ar' ? 'space-x-reverse' : '' }}">
-            <a href="{{ route('modules.hr.index') }}" class="btn-secondary">
+            <a href="{{ route('modules.hr.dashboard') }}" class="btn-secondary">
                 {{ __('hr.back_to_hr') }}
             </a>
             <a href="{{ route('modules.hr.departments.create') }}" class="btn-primary">
