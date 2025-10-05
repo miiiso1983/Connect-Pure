@@ -6,11 +6,11 @@
     'help' => null,
 ])
 
-<div {{ $attributes->class(['w-full']) }}>
+<div class="w-full">
     @if($label)
         <label for="{{ $id ?? $name }}" class="form-label">{{ $label }}</label>
     @endif
-    <select id="{{ $id ?? $name }}" name="{{ $name }}" class="form-input">
+    <select id="{{ $id ?? $name }}" name="{{ $name }}" {{ $attributes->merge(['class' => 'form-input']) }}>
         {{ $slot }}
     </select>
     @if($help)

@@ -9,11 +9,11 @@
     'help' => null,
 ])
 
-<div {{ $attributes->class(['w-full']) }}>
+<div class="w-full">
     @if($label)
         <label for="{{ $id ?? $name }}" class="form-label">{{ $label }}</label>
     @endif
-    <textarea id="{{ $id ?? $name }}" name="{{ $name }}" rows="{{ $rows }}" placeholder="{{ $placeholder }}" class="form-input">{{ old($name, $value) }}</textarea>
+    <textarea id="{{ $id ?? $name }}" name="{{ $name }}" rows="{{ $rows }}" placeholder="{{ $placeholder }}" {{ $attributes->merge(['class' => 'form-input']) }}>{{ old($name, $value) }}</textarea>
     @if($help)
         <p class="form-help">{{ $help }}</p>
     @endif

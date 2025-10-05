@@ -9,7 +9,7 @@
     'help' => null,
 ])
 
-<div {{ $attributes->class(['w-full']) }}>
+<div class="w-full">
     @if($label)
         <label for="{{ $id ?? $name }}" class="form-label">{{ $label }}</label>
     @endif
@@ -19,7 +19,7 @@
         type="{{ $type }}"
         value="{{ old($name, $value) }}"
         placeholder="{{ $placeholder }}"
-        class="form-input"
+        {{ $attributes->merge(['class' => 'form-input']) }}
     />
     @if($help)
         <p class="form-help">{{ $help }}</p>
