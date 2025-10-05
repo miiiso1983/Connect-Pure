@@ -363,6 +363,14 @@ Route::middleware('auth')->prefix('admin')->name('admin.')->group(function () {
             Route::post('/optimize', [\App\Http\Controllers\Admin\SystemSettingsController::class, 'optimize'])->name('optimize');
         });
 
+        // System Error Viewer (admin only)
+        Route::prefix('system-errors')->name('system-errors.')->group(function () {
+            Route::get('/', [\App\Http\Controllers\Admin\ErrorViewerController::class, 'index'])->name('index');
+            Route::get('/download', [\App\Http\Controllers\Admin\ErrorViewerController::class, 'download'])->name('download');
+            Route::post('/clear', [\App\Http\Controllers\Admin\ErrorViewerController::class, 'clear'])->name('clear');
+        });
+
+
         // WhatsApp Configuration
         Route::prefix('whatsapp')->name('whatsapp.')->group(function () {
             Route::get('/', [\App\Http\Controllers\Admin\WhatsAppController::class, 'index'])->name('index');
