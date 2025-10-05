@@ -407,6 +407,12 @@ Route::middleware('auth')->prefix('admin')->name('admin.')->group(function () {
         // User Management
         Route::resource('users', \App\Http\Controllers\Admin\UserController::class);
 
+        // UI Styleguide (admin only)
+        Route::middleware('role:master-admin|top_management')->get('/styleguide', function () {
+            return view('admin.styleguide.index');
+        })->name('styleguide');
+
+
         // System Settings Routes
         Route::prefix('system-settings')->name('system-settings.')->group(function () {
             Route::get('/', [\App\Http\Controllers\Admin\SystemSettingsController::class, 'index'])->name('index');

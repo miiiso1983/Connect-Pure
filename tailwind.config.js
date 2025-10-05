@@ -78,6 +78,14 @@ export default {
         'sans': ['Inter', 'ui-sans-serif', 'system-ui'],
         'arabic': ['Noto Sans Arabic', 'ui-sans-serif', 'system-ui'],
       },
+      borderRadius: {
+        'lg': '12px',
+        'xl': '16px',
+        '2xl': '24px',
+      },
+      boxShadow: {
+        'soft': '0 10px 30px rgba(2,6,23,.06)',
+      },
     },
   },
   plugins: [

@@ -296,25 +296,6 @@ body {
 [data-theme="dark"] .glass-card {
     background: rgba(15, 23, 42, 0.8);
     border: 1px solid rgba(255, 255, 255, 0.1);
-    color: #000000 !important;
-}
-
-[data-theme="dark"] .glass-card * {
-    color: #000000 !important;
-}
-
-[data-theme="dark"] .glass-card h1,
-[data-theme="dark"] .glass-card h2,
-[data-theme="dark"] .glass-card h3,
-[data-theme="dark"] .glass-card h4,
-[data-theme="dark"] .glass-card h5,
-[data-theme="dark"] .glass-card h6,
-[data-theme="dark"] .glass-card p,
-[data-theme="dark"] .glass-card span,
-[data-theme="dark"] .glass-card div,
-[data-theme="dark"] .glass-card label,
-[data-theme="dark"] .glass-card a {
-    color: #000000 !important;
 }
 
 /* Dark theme specific overrides */
@@ -326,35 +307,16 @@ body {
 [data-theme="dark"] .modern-card {
     background: #1e293b;
     border-color: #334155;
-    color: #000000 !important;
-}
-
-[data-theme="dark"] .modern-card * {
-    color: #000000 !important;
-}
-
-[data-theme="dark"] .modern-card h1,
-[data-theme="dark"] .modern-card h2,
-[data-theme="dark"] .modern-card h3,
-[data-theme="dark"] .modern-card h4,
-[data-theme="dark"] .modern-card h5,
-[data-theme="dark"] .modern-card h6,
-[data-theme="dark"] .modern-card p,
-[data-theme="dark"] .modern-card span,
-[data-theme="dark"] .modern-card div,
-[data-theme="dark"] .modern-card label,
-[data-theme="dark"] .modern-card a {
-    color: #000000 !important;
 }
 
 [data-theme="dark"] .form-input {
     background: #1e293b;
     border-color: #334155;
-    color: #000000 !important;
+    color: #e2e8f0;
 }
 
 [data-theme="dark"] .form-label {
-    color: #000000 !important;
+    color: #cbd5e1;
 }
 
 [data-theme="dark"] .modern-table {
@@ -367,20 +329,12 @@ body {
 }
 
 [data-theme="dark"] .modern-table td {
-    color: #000000 !important;
+    color: #e2e8f0;
     border-bottom-color: #475569;
-}
-
-[data-theme="dark"] .modern-table th {
-    color: #000000 !important;
 }
 
 [data-theme="dark"] .modern-table tr:hover {
     background: #334155;
-}
-
-[data-theme="dark"] .modern-table tr:hover td {
-    color: #000000 !important;
 }
 
 /* Light theme specific overrides */
@@ -458,38 +412,6 @@ body {
     color: #1f2937 !important;
 }
 
-/* Force ALL text colors to BLACK in dark mode */
-[data-theme="dark"] *,
-[data-theme="dark"] h1,
-[data-theme="dark"] h2,
-[data-theme="dark"] h3,
-[data-theme="dark"] h4,
-[data-theme="dark"] h5,
-[data-theme="dark"] h6,
-[data-theme="dark"] p,
-[data-theme="dark"] span,
-[data-theme="dark"] div,
-[data-theme="dark"] a,
-[data-theme="dark"] label,
-[data-theme="dark"] td,
-[data-theme="dark"] th,
-[data-theme="dark"] li,
-[data-theme="dark"] ul,
-[data-theme="dark"] ol,
-[data-theme="dark"] strong,
-[data-theme="dark"] em,
-[data-theme="dark"] small,
-[data-theme="dark"] code,
-[data-theme="dark"] pre,
-[data-theme="dark"] blockquote,
-[data-theme="dark"] .text-gray-900,
-[data-theme="dark"] .text-gray-800,
-[data-theme="dark"] .text-gray-700,
-[data-theme="dark"] .text-gray-600,
-[data-theme="dark"] .text-gray-500,
-[data-theme="dark"] .text-white {
-    color: #000000 !important;
-}
 
 [data-theme="light"] h1,
 [data-theme="light"] h2,
@@ -582,59 +504,8 @@ body {
 [data-theme="dark"] .stat-card {
     background: #1e293b;
     border-color: #334155;
-    color: #000000 !important;
 }
 
-[data-theme="dark"] .stat-card * {
-    color: #000000 !important;
-}
-
-/* Additional dark mode text overrides for ALL components */
-[data-theme="dark"] .nav-link,
-[data-theme="dark"] .sidebar *,
-[data-theme="dark"] .header *,
-[data-theme="dark"] .dropdown *,
-[data-theme="dark"] .menu *,
-[data-theme="dark"] .badge,
-[data-theme="dark"] .alert,
-[data-theme="dark"] .notification,
-[data-theme="dark"] .tooltip,
-[data-theme="dark"] .modal *,
-[data-theme="dark"] .popup *,
-[data-theme="dark"] .breadcrumb *,
-[data-theme="dark"] .pagination *,
-[data-theme="dark"] .tab *,
-[data-theme="dark"] .accordion *,
-[data-theme="dark"] .collapse *,
-[data-theme="dark"] .grid *,
-[data-theme="dark"] .list *,
-[data-theme="dark"] .item *,
-[data-theme="dark"] .content *,
-[data-theme="dark"] .section *,
-[data-theme="dark"] .container *,
-[data-theme="dark"] .wrapper *,
-[data-theme="dark"] .panel *,
-[data-theme="dark"] .widget *,
-[data-theme="dark"] .component * {
-    color: #000000 !important;
-}
-
-/* Specific overrides for common Tailwind classes */
-[data-theme="dark"] .text-gray-100,
-[data-theme="dark"] .text-gray-200,
-[data-theme="dark"] .text-gray-300,
-[data-theme="dark"] .text-gray-400,
-[data-theme="dark"] .text-blue-600,
-[data-theme="dark"] .text-blue-700,
-[data-theme="dark"] .text-blue-800,
-[data-theme="dark"] .text-green-600,
-[data-theme="dark"] .text-green-700,
-[data-theme="dark"] .text-red-600,
-[data-theme="dark"] .text-red-700,
-[data-theme="dark"] .text-yellow-600,
-[data-theme="dark"] .text-purple-600 {
-    color: #000000 !important;
-}
 
 .stat-card-icon {
     @apply w-12 h-12 mx-auto mb-4 p-3 rounded-2xl;
