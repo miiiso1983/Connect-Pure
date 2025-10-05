@@ -45,43 +45,41 @@
             trend="5"
             :icon="'<svg class=\'w-6 h-6 text-pink-600\' fill=\'none\' stroke=\'currentColor\' viewBox=\'0 0 24 24\'><path stroke-linecap=\'round\' stroke-linejoin=\'round\' stroke-width=\'2\' d=\'M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z\'></path></svg>'"
         />
-
+    </div>
 
     <!-- Performance Chart -->
-    <div class="modern-card p-6">
-        <x-interactive-chart
-            type="line"
-            :height="320"
-            title="{{ __('erp.performance_overview') }}"
-            subtitle="{{ __('erp.last_12_months') }}"
-            :data="[
-                'labels' => ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'],
-                'datasets' => [
-                    [
-                        'label' => __('erp.revenue'),
-                        'data' => [1200, 1800, 1600, 2200, 2600, 2800, 3000, 3200, 3100, 3500, 3700, 4000],
-                        'borderColor' => '#3b82f6',
-                        'backgroundColor' => 'rgba(59,130,246,0.2)',
-                        'tension' => 0.35,
-                        'fill' => true,
-                    ],
-                    [
-                        'label' => __('erp.expenses'),
-                        'data' => [800, 900, 1100, 1200, 1400, 1500, 1600, 1700, 1650, 1800, 1900, 2000],
-                        'borderColor' => '#ef4444',
-                        'backgroundColor' => 'rgba(239,68,68,0.15)',
-                        'tension' => 0.35,
-                        'fill' => true,
-                    ],
+    <x-interactive-chart
+        type="line"
+        :height="320"
+        title="{{ __('erp.performance_overview') }}"
+        subtitle="{{ __('erp.last_12_months') }}"
+        :data="[
+            'labels' => ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'],
+            'datasets' => [
+                [
+                    'label' => __('erp.revenue'),
+                    'data' => [1200, 1800, 1600, 2200, 2600, 2800, 3000, 3200, 3100, 3500, 3700, 4000],
+                    'borderColor' => '#3b82f6',
+                    'backgroundColor' => 'rgba(59,130,246,0.2)',
+                    'tension' => 0.35,
+                    'fill' => true,
                 ],
-            ]"
-            :options="[
-                'scales' => [
-                    'y' => [ 'beginAtZero' => true ],
+                [
+                    'label' => __('erp.expenses'),
+                    'data' => [800, 900, 1100, 1200, 1400, 1500, 1600, 1700, 1650, 1800, 1900, 2000],
+                    'borderColor' => '#ef4444',
+                    'backgroundColor' => 'rgba(239,68,68,0.15)',
+                    'tension' => 0.35,
+                    'fill' => true,
                 ],
-            ]"
-        />
-    </div>
+            ],
+        ]"
+        :options="[
+            'scales' => [
+                'y' => [ 'beginAtZero' => true ],
+            ],
+        ]"
+    />
 
 
     <!-- Modules Grid -->
