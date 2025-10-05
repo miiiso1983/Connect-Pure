@@ -45,7 +45,7 @@
                                 }; @endphp
                                 <x-badge :variant="$variant" size="sm">{{ strtoupper($e['level']) }}</x-badge>
                             </td>
-                            <td class="text-sm">{{ Str::limit($e['summary'], 160) }}</td>
+                            <td class="text-sm">{{ \Illuminate\Support\Str::limit($e['summary'], 160) }}</td>
                             <td class="text-right">
                                 <details>
                                     <summary class="cursor-pointer text-primary-600 hover:underline">Details</summary>
