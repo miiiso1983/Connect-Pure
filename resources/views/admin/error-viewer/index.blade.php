@@ -38,12 +38,16 @@
                     @forelse($logs as $e)
                         <tr class="align-top">
                             <td class="whitespace-nowrap text-sm text-gray-500">{{ $e['timestamp'] }}</td>
-                            <td class="whitespace-nowrap"><x-badge variant="info" size="sm">{{ $e['env'] }}</x-badge></td>
                             <td class="whitespace-nowrap">
-                                @php $variant = match(strtolower($e['level'])) {
-                                    'error' => 'danger', 'critical' => 'danger', 'warning' => 'warning', default => 'secondary'
+                                <span class="px-2 py-0.5 text-xs rounded-full border bg-blue-100 text-blue-700 border-blue-200">{{ $e['env'] }}</span>
+                            </td>
+                            <td class="whitespace-nowrap">
+                                @php $cls = match(strtolower($e['level'])) {
+                                    'error', 'critical' => 'bg-red-100 text-red-700 border-red-200',
+                                    'warning' => 'bg-yellow-100 text-yellow-800 border-yellow-200',
+                                    default => 'bg-gray-100 text-gray-700 border-gray-200'
                                 }; @endphp
-                                <x-badge :variant="$variant" size="sm">{{ strtoupper($e['level']) }}</x-badge>
+                                <span class="px-2 py-0.5 text-xs rounded-full border {{ $cls }}">{{ strtoupper($e['level']) }}</span>
                             </td>
                             <td class="text-sm">{{ \Illuminate\Support\Str::limit($e['summary'], 160) }}</td>
                             <td class="text-right">
