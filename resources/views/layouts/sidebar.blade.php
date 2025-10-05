@@ -72,7 +72,7 @@
     </a>
 
     <!-- HR Module -->
-    <a href="{{ route('modules.hr.index') }}"
+    <a href="{{ route('modules.hr.dashboard') }}"
        class="group flex items-center px-4 py-3.5 text-sm font-medium rounded-xl transition-all duration-300 {{ request()->routeIs('modules.hr.*') ? 'bg-gradient-to-r from-pink-600 to-rose-600 text-white shadow-lg shadow-pink-500/25' : 'text-gray-300 hover:text-white hover:bg-gray-800/50' }}">
         <div class="flex items-center justify-center w-10 h-10 rounded-lg {{ request()->routeIs('modules.hr.*') ? 'bg-white/20' : 'bg-gray-700/50 group-hover:bg-gray-600/50' }} transition-all duration-300 {{ app()->getLocale() === 'ar' ? 'ml-3' : 'mr-3' }}">
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
