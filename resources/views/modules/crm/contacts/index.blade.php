@@ -5,61 +5,54 @@
 @section('content')
 <div class="space-y-6">
     <!-- Header -->
-    <div class="flex items-center justify-between">
-        <div>
-            <h1 class="text-3xl font-bold text-gray-900">{{ __('erp.contacts') }}</h1>
-            <p class="text-gray-600 mt-1">{{ __('erp.crm_description') }}</p>
-        </div>
-        <div class="flex space-x-3 {{ app()->getLocale() === 'ar' ? 'space-x-reverse' : '' }}">
-            <a href="{{ route('modules.crm.contacts.bulk-upload') }}" class="btn-secondary">
-                <svg class="w-4 h-4 {{ app()->getLocale() === 'ar' ? 'ml-2' : 'mr-2' }}" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path>
-                </svg>
-                {{ __('erp.bulk_upload') }}
-            </a>
-            <a href="{{ route('modules.crm.contacts.create') }}" class="btn-primary">
-                {{ __('erp.add_contact') }}
-            </a>
+    <div class="modern-card p-6">
+        <div class="flex items-center justify-between">
+            <div>
+                <h1 class="text-3xl font-bold text-gray-900">{{ __('erp.contacts') }}</h1>
+                <p class="text-gray-600 mt-1">{{ __('erp.crm_description') }}</p>
+            </div>
+            <div class="flex space-x-3 {{ app()->getLocale() === 'ar' ? 'space-x-reverse' : '' }}">
+                <a href="{{ route('modules.crm.contacts.bulk-upload') }}" class="btn-secondary">
+                    <svg class="w-4 h-4 {{ app()->getLocale() === 'ar' ? 'ml-2' : 'mr-2' }}" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path>
+                    </svg>
+                    {{ __('erp.bulk_upload') }}
+                </a>
+                <a href="{{ route('modules.crm.contacts.create') }}" class="btn-primary">
+                    {{ __('erp.add_contact') }}
+                </a>
+            </div>
         </div>
     </div>
 
     <!-- Filters -->
     <x-card>
         <form method="GET" action="{{ route('modules.crm.contacts.index') }}" class="grid grid-cols-1 md:grid-cols-4 gap-4">
-            <div>
-                <label class="block text-sm font-medium text-gray-700 mb-1">{{ __('erp.search') }}</label>
-                <input type="text" name="search" value="{{ request('search') }}" 
-                       placeholder="{{ __('erp.search') }}..." 
-                       class="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
-            </div>
-            
-            <div>
-                <label class="block text-sm font-medium text-gray-700 mb-1">{{ __('erp.type') }}</label>
-                <select name="type" class="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
-                    <option value="">{{ __('erp.all') }}</option>
-                    <option value="lead" {{ request('type') === 'lead' ? 'selected' : '' }}>{{ __('erp.leads') }}</option>
-                    <option value="client" {{ request('type') === 'client' ? 'selected' : '' }}>{{ __('erp.clients') }}</option>
-                </select>
-            </div>
-            
-            <div>
-                <label class="block text-sm font-medium text-gray-700 mb-1">{{ __('erp.status') }}</label>
-                <select name="status" class="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
-                    <option value="">{{ __('erp.all') }}</option>
-                    <option value="new" {{ request('status') === 'new' ? 'selected' : '' }}>{{ __('erp.new') }}</option>
-                    <option value="contacted" {{ request('status') === 'contacted' ? 'selected' : '' }}>{{ __('erp.contacted') }}</option>
-                    <option value="qualified" {{ request('status') === 'qualified' ? 'selected' : '' }}>{{ __('erp.qualified') }}</option>
-                    <option value="proposal" {{ request('status') === 'proposal' ? 'selected' : '' }}>{{ __('erp.proposal') }}</option>
-                    <option value="negotiation" {{ request('status') === 'negotiation' ? 'selected' : '' }}>{{ __('erp.negotiation') }}</option>
-                    <option value="closed_won" {{ request('status') === 'closed_won' ? 'selected' : '' }}>{{ __('erp.closed_won') }}</option>
-                    <option value="closed_lost" {{ request('status') === 'closed_lost' ? 'selected' : '' }}>{{ __('erp.closed_lost') }}</option>
-                </select>
-            </div>
-            
+            <x-ui.input
+                name="search"
+                label="{{ __('erp.search') }}"
+                placeholder="{{ __('erp.search') }}..."
+                value="{{ request('search') }}"/>
+
+            <x-ui.select name="type" label="{{ __('erp.type') }}">
+                <option value="">{{ __('erp.all') }}</option>
+                <option value="lead" @selected(request('type') === 'lead')>{{ __('erp.leads') }}</option>
+                <option value="client" @selected(request('type') === 'client')>{{ __('erp.clients') }}</option>
+            </x-ui.select>
+
+            <x-ui.select name="status" label="{{ __('erp.status') }}">
+                <option value="">{{ __('erp.all') }}</option>
+                <option value="new" @selected(request('status') === 'new')>{{ __('erp.new') }}</option>
+                <option value="contacted" @selected(request('status') === 'contacted')>{{ __('erp.contacted') }}</option>
+                <option value="qualified" @selected(request('status') === 'qualified')>{{ __('erp.qualified') }}</option>
+                <option value="proposal" @selected(request('status') === 'proposal')>{{ __('erp.proposal') }}</option>
+                <option value="negotiation" @selected(request('status') === 'negotiation')>{{ __('erp.negotiation') }}</option>
+                <option value="closed_won" @selected(request('status') === 'closed_won')>{{ __('erp.closed_won') }}</option>
+                <option value="closed_lost" @selected(request('status') === 'closed_lost')>{{ __('erp.closed_lost') }}</option>
+            </x-ui.select>
+
             <div class="flex items-end">
-                <button type="submit" class="btn-primary w-full">
-                    {{ __('erp.filter') }}
-                </button>
+                <x-ui.button type="submit" class="w-full">{{ __('erp.filter') }}</x-ui.button>
             </div>
         </form>
     </x-card>

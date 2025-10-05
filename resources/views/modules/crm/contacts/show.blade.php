@@ -50,16 +50,29 @@
             
             <div>
                 <h3 class="text-lg font-semibold text-gray-900 mb-4">{{ __('erp.status') }}</h3>
+                @php
+                    $typeMap = [
+                        'lead' => 'info',
+                        'client' => 'primary',
+                    ];
+                    $statusMap = [
+                        'new' => 'secondary',
+                        'contacted' => 'info',
+                        'qualified' => 'warning',
+                        'proposal' => 'info',
+                        'negotiation' => 'warning',
+                        'closed_won' => 'success',
+                        'closed_lost' => 'danger',
+                    ];
+                    $typeVariant = $typeMap[$contact->type] ?? 'default';
+                    $statusVariant = $statusMap[$contact->status] ?? 'default';
+                @endphp
                 <div class="space-y-3">
                     <div>
-                        <span class="px-3 py-1 text-sm font-medium bg-{{ $contact->type_color }}-100 text-{{ $contact->type_color }}-800 rounded-full">
-                            {{ __('erp.' . $contact->type) }}
-                        </span>
+                        <x-badge :variant="$typeVariant" size="sm">{{ __('erp.' . $contact->type) }}</x-badge>
                     </div>
                     <div>
-                        <span class="px-3 py-1 text-sm font-medium bg-{{ $contact->status_color }}-100 text-{{ $contact->status_color }}-800 rounded-full">
-                            {{ __('erp.' . $contact->status) }}
-                        </span>
+                        <x-badge :variant="$statusVariant" size="sm">{{ __('erp.' . $contact->status) }}</x-badge>
                     </div>
                 </div>
             </div>
