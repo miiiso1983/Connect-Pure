@@ -2,7 +2,7 @@
 
 namespace App\Imports;
 
-use App\Models\Modules\CRM\Models\Contact;
+use App\Modules\CRM\Models\Contact;
 use Maatwebsite\Excel\Concerns\Importable;
 use Maatwebsite\Excel\Concerns\SkipsErrors;
 use Maatwebsite\Excel\Concerns\SkipsFailures;

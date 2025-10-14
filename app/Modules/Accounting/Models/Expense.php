@@ -4,8 +4,13 @@ namespace App\Modules\Accounting\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
+/**
+ * @property-read \App\Modules\Accounting\Models\Vendor|null $vendor
+ * @property-read \App\Modules\Accounting\Models\Employee|null $employee
+ */
 class Expense extends Model
 {
     use HasFactory;
@@ -154,7 +159,14 @@ class Expense extends Model
 
     public function getEmployeeNameAttribute()
     {
-        return $this->employee ? $this->employee->full_name : null;
+        if (! $this->employee) {
+            return null;
+        }
+        $first = $this->employee->first_name ?? '';
+        $last = $this->employee->last_name ?? '';
+        $full = trim($first.' '.$last);
+
+        return $full !== '' ? $full : null;
     }
 
     // Methods
