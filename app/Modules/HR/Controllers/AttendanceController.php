@@ -5,10 +5,10 @@ namespace App\Modules\HR\Controllers;
 use App\Http\Controllers\Controller;
 use App\Modules\HR\Models\Attendance;
 use App\Modules\HR\Models\Employee;
-use Illuminate\Http\Request;
-use Illuminate\Http\RedirectResponse;
-use Illuminate\View\View;
 use Carbon\Carbon;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 class AttendanceController extends Controller
 {
@@ -101,7 +101,7 @@ class AttendanceController extends Controller
 
         if ($existing) {
             return back()->withErrors(['date' => 'Attendance record already exists for this date.'])
-                        ->withInput();
+                ->withInput();
         }
 
         $attendance = Attendance::create($validated);
@@ -112,7 +112,7 @@ class AttendanceController extends Controller
         }
 
         return redirect()->route('modules.hr.attendance.show', $attendance)
-                        ->with('success', __('hr.attendance_recorded_successfully'));
+            ->with('success', __('hr.attendance_recorded_successfully'));
     }
 
     /**
@@ -160,7 +160,7 @@ class AttendanceController extends Controller
         }
 
         return redirect()->route('modules.hr.attendance.show', $attendance)
-                        ->with('success', 'Attendance record updated successfully.');
+            ->with('success', 'Attendance record updated successfully.');
     }
 
     /**
@@ -171,7 +171,7 @@ class AttendanceController extends Controller
         $attendance->delete();
 
         return redirect()->route('modules.hr.attendance.index')
-                        ->with('success', 'Attendance record deleted successfully.');
+            ->with('success', 'Attendance record deleted successfully.');
     }
 
     /**
@@ -187,7 +187,7 @@ class AttendanceController extends Controller
         ]);
 
         $today = Carbon::today();
-        $checkInTime = $validated['check_in_time'] 
+        $checkInTime = $validated['check_in_time']
             ? Carbon::createFromFormat('H:i', $validated['check_in_time'])
             : now();
 
@@ -207,8 +207,8 @@ class AttendanceController extends Controller
         // Check in
         $attendance->checkIn(
             $checkInTime,
-            $request->has('latitude') && $request->has('longitude') 
-                ? ['lat' => $request->latitude, 'lng' => $request->longitude] 
+            $request->has('latitude') && $request->has('longitude')
+                ? ['lat' => $request->latitude, 'lng' => $request->longitude]
                 : null,
             $request->ip()
         );
@@ -236,7 +236,7 @@ class AttendanceController extends Controller
         ]);
 
         $today = Carbon::today();
-        $checkOutTime = $validated['check_out_time'] 
+        $checkOutTime = $validated['check_out_time']
             ? Carbon::createFromFormat('H:i', $validated['check_out_time'])
             : now();
 
@@ -244,19 +244,19 @@ class AttendanceController extends Controller
             ->where('date', $today)
             ->first();
 
-        if (!$attendance) {
+        if (! $attendance) {
             return back()->with('error', 'No check-in record found for today.');
         }
 
-        if (!$attendance->actual_in) {
+        if (! $attendance->actual_in) {
             return back()->with('error', 'Employee must check in first.');
         }
 
         // Check out
         $attendance->checkOut(
             $checkOutTime,
-            $request->has('latitude') && $request->has('longitude') 
-                ? ['lat' => $request->latitude, 'lng' => $request->longitude] 
+            $request->has('latitude') && $request->has('longitude')
+                ? ['lat' => $request->latitude, 'lng' => $request->longitude]
                 : null
         );
 
@@ -371,9 +371,9 @@ class AttendanceController extends Controller
         }
 
         $attendanceRecords = $query->get();
-        
-        $filename = 'attendance_' . now()->format('Y-m-d') . '.csv';
-        
+
+        $filename = 'attendance_'.now()->format('Y-m-d').'.csv';
+
         $headers = [
             'Content-Type' => 'text/csv',
             'Content-Disposition' => "attachment; filename=\"$filename\"",
@@ -381,7 +381,7 @@ class AttendanceController extends Controller
 
         $callback = function () use ($attendanceRecords) {
             $file = fopen('php://output', 'w');
-            
+
             // CSV headers
             fputcsv($file, [
                 'Date',
@@ -395,7 +395,7 @@ class AttendanceController extends Controller
                 'Overtime Hours',
                 'Late Minutes',
                 'Status',
-                'Location'
+                'Location',
             ]);
 
             // CSV data
@@ -412,7 +412,7 @@ class AttendanceController extends Controller
                     $record->formatted_overtime_hours,
                     $record->late_minutes,
                     $record->status_text,
-                    $record->location ?? 'N/A'
+                    $record->location ?? 'N/A',
                 ]);
             }
 

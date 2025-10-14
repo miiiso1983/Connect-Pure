@@ -3,13 +3,12 @@
 namespace App\Modules\CRM\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Modules\CRM\Models\Contact;
-use App\Modules\CRM\Models\Communication;
-use App\Modules\CRM\Models\FollowUp;
-use App\Modules\CRM\Imports\ContactsImport;
 use App\Modules\CRM\Exports\ContactTemplateExport;
+use App\Modules\CRM\Imports\ContactsImport;
+use App\Modules\CRM\Models\Communication;
+use App\Modules\CRM\Models\Contact;
+use App\Modules\CRM\Models\FollowUp;
 use Illuminate\Http\Request;
-
 use Maatwebsite\Excel\Facades\Excel;
 
 class CRMController extends Controller
@@ -49,11 +48,11 @@ class CRMController extends Controller
         // Search
         if ($request->filled('search')) {
             $search = $request->search;
-            $query->where(function($q) use ($search) {
+            $query->where(function ($q) use ($search) {
                 $q->where('name', 'like', "%{$search}%")
-                  ->orWhere('company', 'like', "%{$search}%")
-                  ->orWhere('email', 'like', "%{$search}%")
-                  ->orWhere('phone', 'like', "%{$search}%");
+                    ->orWhere('company', 'like', "%{$search}%")
+                    ->orWhere('email', 'like', "%{$search}%")
+                    ->orWhere('phone', 'like', "%{$search}%");
             });
         }
 
@@ -143,7 +142,7 @@ class CRMController extends Controller
         ]);
 
         try {
-            $import = new ContactsImport();
+            $import = new ContactsImport;
             Excel::import($import, $request->file('file'));
 
             $importedCount = $import->getImportedCount();
@@ -153,7 +152,7 @@ class CRMController extends Controller
             $message = __('erp.bulk_upload_success', [
                 'imported' => $importedCount,
                 'skipped' => $skippedCount,
-                'errors' => $errorCount
+                'errors' => $errorCount,
             ]);
 
             if ($errorCount > 0) {
@@ -167,11 +166,9 @@ class CRMController extends Controller
 
         } catch (\Exception $e) {
             return redirect()->route('modules.crm.contacts.bulk-upload')
-                ->with('error', __('erp.bulk_upload_error') . ': ' . $e->getMessage());
+                ->with('error', __('erp.bulk_upload_error').': '.$e->getMessage());
         }
     }
-
-
 
     public function storeCommunication(Request $request, Contact $contact)
     {
@@ -286,7 +283,9 @@ class CRMController extends Controller
     private function getConversionRates()
     {
         $total = Contact::count();
-        if ($total === 0) return [];
+        if ($total === 0) {
+            return [];
+        }
 
         $funnel = $this->getFunnelData();
 

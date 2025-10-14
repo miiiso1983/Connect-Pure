@@ -3,12 +3,12 @@
 namespace App\Modules\HR\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Modules\HR\Models\Department;
 use App\Modules\HR\Models\Employee;
 use App\Modules\HR\Models\PerformanceReview;
-use App\Modules\HR\Models\Department;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Carbon\Carbon;
 
 class PerformanceReviewController extends Controller
 {
@@ -62,7 +62,7 @@ class PerformanceReviewController extends Controller
     {
         $employees = Employee::active()->with('department')->orderBy('first_name')->get();
         $reviewers = Employee::active()->orderBy('first_name')->get();
-        
+
         return view('modules.hr.performance-reviews.create', compact('employees', 'reviewers'));
     }
 
@@ -92,19 +92,20 @@ class PerformanceReviewController extends Controller
             DB::commit();
 
             return redirect()->route('modules.hr.performance-reviews.show', $review)
-                           ->with('success', __('hr.performance_review_created_successfully'));
+                ->with('success', __('hr.performance_review_created_successfully'));
 
         } catch (\Exception $e) {
             DB::rollback();
+
             return back()->withInput()
-                        ->withErrors(['error' => __('hr.error_creating_performance_review')]);
+                ->withErrors(['error' => __('hr.error_creating_performance_review')]);
         }
     }
 
     public function show(PerformanceReview $performanceReview)
     {
         $performanceReview->load(['employee.department', 'reviewer', 'createdBy']);
-        
+
         return view('modules.hr.performance-reviews.show', compact('performanceReview'));
     }
 
@@ -112,7 +113,7 @@ class PerformanceReviewController extends Controller
     {
         $employees = Employee::active()->with('department')->orderBy('first_name')->get();
         $reviewers = Employee::active()->orderBy('first_name')->get();
-        
+
         return view('modules.hr.performance-reviews.edit', compact('performanceReview', 'employees', 'reviewers'));
     }
 
@@ -148,12 +149,12 @@ class PerformanceReviewController extends Controller
             'quality_of_work' => $request->quality_of_work,
         ];
 
-        $validRatings = array_filter($ratings, function($rating) {
-            return !is_null($rating);
+        $validRatings = array_filter($ratings, function ($rating) {
+            return ! is_null($rating);
         });
 
         $overallRating = $request->overall_rating;
-        if (empty($overallRating) && !empty($validRatings)) {
+        if (empty($overallRating) && ! empty($validRatings)) {
             $overallRating = array_sum($validRatings) / count($validRatings);
         }
 
@@ -177,15 +178,15 @@ class PerformanceReviewController extends Controller
         ]);
 
         return redirect()->route('modules.hr.performance-reviews.show', $performanceReview)
-                       ->with('success', __('hr.performance_review_updated_successfully'));
+            ->with('success', __('hr.performance_review_updated_successfully'));
     }
 
     public function destroy(PerformanceReview $performanceReview)
     {
         $performanceReview->delete();
-        
+
         return redirect()->route('modules.hr.performance-reviews.index')
-                       ->with('success', __('hr.performance_review_deleted_successfully'));
+            ->with('success', __('hr.performance_review_deleted_successfully'));
     }
 
     public function complete(PerformanceReview $performanceReview)
@@ -193,7 +194,7 @@ class PerformanceReviewController extends Controller
         if ($performanceReview->status === 'completed') {
             return response()->json([
                 'success' => false,
-                'message' => __('hr.performance_review_already_completed')
+                'message' => __('hr.performance_review_already_completed'),
             ]);
         }
 
@@ -204,7 +205,7 @@ class PerformanceReviewController extends Controller
 
         return response()->json([
             'success' => true,
-            'message' => __('hr.performance_review_completed_successfully')
+            'message' => __('hr.performance_review_completed_successfully'),
         ]);
     }
 
@@ -212,7 +213,7 @@ class PerformanceReviewController extends Controller
     {
         $year = $request->get('year', now()->year);
         $departmentId = $request->get('department_id');
-        
+
         // Performance summary by department
         $departmentPerformance = DB::table('hr_performance_reviews')
             ->join('hr_employees', 'hr_performance_reviews.employee_id', '=', 'hr_employees.id')
@@ -293,7 +294,7 @@ class PerformanceReviewController extends Controller
                     ->whereYear('review_date', Carbon::parse($request->review_date)->year)
                     ->exists();
 
-                if (!$exists) {
+                if (! $exists) {
                     PerformanceReview::create([
                         'employee_id' => $employeeId,
                         'reviewer_id' => $request->reviewer_id,
@@ -310,14 +311,15 @@ class PerformanceReviewController extends Controller
 
             return response()->json([
                 'success' => true,
-                'message' => __('hr.bulk_reviews_created', ['count' => $created])
+                'message' => __('hr.bulk_reviews_created', ['count' => $created]),
             ]);
 
         } catch (\Exception $e) {
             DB::rollback();
+
             return response()->json([
                 'success' => false,
-                'message' => __('hr.error_creating_bulk_reviews')
+                'message' => __('hr.error_creating_bulk_reviews'),
             ]);
         }
     }
@@ -326,7 +328,7 @@ class PerformanceReviewController extends Controller
     {
         $year = $request->get('year', now()->year);
         $departmentId = $request->get('department_id');
-        
+
         $reviews = PerformanceReview::with(['employee.department', 'reviewer'])
             ->where('status', 'completed')
             ->whereYear('review_date', $year)
@@ -344,15 +346,15 @@ class PerformanceReviewController extends Controller
             'Content-Disposition' => "attachment; filename=\"{$filename}\"",
         ];
 
-        $callback = function() use ($reviews) {
+        $callback = function () use ($reviews) {
             $file = fopen('php://output', 'w');
-            
+
             // CSV headers
             fputcsv($file, [
                 'Employee Name', 'Department', 'Review Period', 'Review Date',
                 'Technical Skills', 'Communication', 'Teamwork', 'Leadership',
                 'Problem Solving', 'Initiative', 'Punctuality', 'Quality of Work',
-                'Overall Rating', 'Status', 'Reviewer'
+                'Overall Rating', 'Status', 'Reviewer',
             ]);
 
             // CSV data

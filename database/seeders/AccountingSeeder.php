@@ -2,16 +2,16 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Seeder;
 use App\Modules\Accounting\Models\Account;
 use App\Modules\Accounting\Models\Customer;
-use App\Modules\Accounting\Models\Vendor;
 use App\Modules\Accounting\Models\Employee;
+use App\Modules\Accounting\Models\Expense;
 use App\Modules\Accounting\Models\Invoice;
 use App\Modules\Accounting\Models\InvoiceItem;
-use App\Modules\Accounting\Models\Expense;
 use App\Modules\Accounting\Models\Payment;
 use App\Modules\Accounting\Models\TaxRate;
+use App\Modules\Accounting\Models\Vendor;
+use Illuminate\Database\Seeder;
 
 class AccountingSeeder extends Seeder
 {
@@ -19,25 +19,25 @@ class AccountingSeeder extends Seeder
     {
         // Create Chart of Accounts
         $this->createAccounts();
-        
+
         // Create Tax Rates
         $this->createTaxRates();
-        
+
         // Create Customers
         $this->createCustomers();
-        
+
         // Create Vendors
         $this->createVendors();
-        
+
         // Create Employees
         $this->createEmployees();
-        
+
         // Create Sample Invoices
         $this->createInvoices();
-        
+
         // Create Sample Expenses
         $this->createExpenses();
-        
+
         // Create Sample Payments
         $this->createPayments();
     }
@@ -50,21 +50,21 @@ class AccountingSeeder extends Seeder
             ['account_number' => '1100', 'name' => 'Accounts Receivable', 'name_ar' => 'حسابات القبض', 'type' => 'asset', 'subtype' => 'current_asset'],
             ['account_number' => '1200', 'name' => 'Inventory', 'name_ar' => 'المخزون', 'type' => 'asset', 'subtype' => 'current_asset'],
             ['account_number' => '1500', 'name' => 'Equipment', 'name_ar' => 'المعدات', 'type' => 'asset', 'subtype' => 'fixed_asset'],
-            
+
             // Liabilities
             ['account_number' => '2000', 'name' => 'Accounts Payable', 'name_ar' => 'حسابات الدفع', 'type' => 'liability', 'subtype' => 'current_liability'],
             ['account_number' => '2100', 'name' => 'Credit Card Payable', 'name_ar' => 'مستحقات بطاقة ائتمان', 'type' => 'liability', 'subtype' => 'current_liability'],
             ['account_number' => '2500', 'name' => 'Long-term Debt', 'name_ar' => 'ديون طويلة الأجل', 'type' => 'liability', 'subtype' => 'long_term_liability'],
-            
+
             // Equity
             ['account_number' => '3000', 'name' => 'Owner\'s Equity', 'name_ar' => 'حقوق الملكية', 'type' => 'equity', 'subtype' => 'equity'],
             ['account_number' => '3100', 'name' => 'Retained Earnings', 'name_ar' => 'الأرباح المحتجزة', 'type' => 'equity', 'subtype' => 'equity'],
-            
+
             // Revenue
             ['account_number' => '4000', 'name' => 'Sales Revenue', 'name_ar' => 'إيرادات المبيعات', 'type' => 'revenue', 'subtype' => 'income'],
             ['account_number' => '4100', 'name' => 'Service Revenue', 'name_ar' => 'إيرادات الخدمات', 'type' => 'revenue', 'subtype' => 'income'],
             ['account_number' => '4200', 'name' => 'Interest Income', 'name_ar' => 'دخل الفوائد', 'type' => 'revenue', 'subtype' => 'other_income'],
-            
+
             // Expenses
             ['account_number' => '5000', 'name' => 'Cost of Goods Sold', 'name_ar' => 'تكلفة البضائع المباعة', 'type' => 'expense', 'subtype' => 'cost_of_goods_sold'],
             ['account_number' => '6000', 'name' => 'Office Supplies', 'name_ar' => 'لوازم المكتب', 'type' => 'expense', 'subtype' => 'expense'],
@@ -274,7 +274,7 @@ class AccountingSeeder extends Seeder
                 }
 
                 $invoice->calculateTotals();
-                
+
                 // Mark some invoices as paid
                 if ($invoice->status === 'paid') {
                     $invoice->paid_amount = $invoice->total_amount;
@@ -301,7 +301,7 @@ class AccountingSeeder extends Seeder
                 'account_id' => $expenseAccount->id,
                 'expense_date' => now()->subDays(rand(1, 30)),
                 'category' => $categories[rand(0, 4)],
-                'description' => 'Business expense for ' . $categories[rand(0, 4)],
+                'description' => 'Business expense for '.$categories[rand(0, 4)],
                 'amount' => rand(50, 500),
                 'currency' => 'USD',
                 'status' => ['draft', 'pending', 'approved', 'paid'][rand(0, 3)],
@@ -328,7 +328,7 @@ class AccountingSeeder extends Seeder
                 'method' => ['cash', 'check', 'credit_card', 'bank_transfer'][rand(0, 3)],
                 'status' => 'completed',
                 'deposit_account_id' => $cashAccount->id,
-                'reference_number' => 'PAY-' . str_pad(rand(1, 9999), 4, '0', STR_PAD_LEFT),
+                'reference_number' => 'PAY-'.str_pad(rand(1, 9999), 4, '0', STR_PAD_LEFT),
             ]);
         }
     }

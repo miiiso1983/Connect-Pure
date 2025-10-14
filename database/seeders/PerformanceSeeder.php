@@ -2,10 +2,10 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Seeder;
+use App\Models\Modules\Performance\Models\PerformanceMetric;
 use App\Models\Modules\Performance\Models\Task;
 use App\Models\Modules\Performance\Models\TaskAssignment;
-use App\Models\Modules\Performance\Models\PerformanceMetric;
+use Illuminate\Database\Seeder;
 
 class PerformanceSeeder extends Seeder
 {
@@ -166,7 +166,7 @@ class PerformanceSeeder extends Seeder
         }
 
         foreach ($assignments as $employee) {
-            $status = match($task->status) {
+            $status = match ($task->status) {
                 'completed' => 'completed',
                 'in_progress' => 'in_progress',
                 'pending' => 'assigned',
@@ -269,7 +269,7 @@ class PerformanceSeeder extends Seeder
                     $metric->productivity_score,
                     $metric->quality_score,
                     $metric->efficiency_rate
-                )
+                ),
             ]);
         }
     }

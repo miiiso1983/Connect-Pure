@@ -2,8 +2,8 @@
 
 namespace Database\Seeders;
 
-use App\Models\User;
 use App\Models\Role;
+use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 
@@ -73,20 +73,20 @@ class SuperAdminSeeder extends Seeder
         );
 
         // Assign Master Admin role to Master Admin user
-        if (!$masterAdmin->hasRole('master-admin')) {
+        if (! $masterAdmin->hasRole('master-admin')) {
             $masterAdmin->assignRole('master-admin');
         }
 
         // Assign Super Admin role to Super Admin user
-        if (!$superAdmin->hasRole('super-admin')) {
+        if (! $superAdmin->hasRole('super-admin')) {
             $superAdmin->assignRole('super-admin');
         }
 
         // Assign both roles to System Admin for maximum access
-        if (!$systemAdmin->hasRole('master-admin')) {
+        if (! $systemAdmin->hasRole('master-admin')) {
             $systemAdmin->assignRole('master-admin');
         }
-        if (!$systemAdmin->hasRole('top_management')) {
+        if (! $systemAdmin->hasRole('top_management')) {
             $systemAdmin->assignRole('top_management');
         }
 

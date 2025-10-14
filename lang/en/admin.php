@@ -7,7 +7,7 @@ return [
     'dashboard' => 'Dashboard',
     'settings' => 'Settings',
     'system' => 'System',
-    
+
     // User Role Management
     'user_role_management' => 'User Role Management',
     'manage_user_roles_for' => 'Manage roles for :user',
@@ -33,7 +33,7 @@ return [
     'permissions_from_assigned_roles' => 'All permissions available to this user from their assigned roles:',
     'total_unique_permissions' => 'Total unique permissions',
     'no_permissions_assigned' => 'No permissions assigned through roles.',
-    
+
     // User Management
     'users' => 'Users',
     'user' => 'User',
@@ -57,7 +57,7 @@ return [
     'all' => 'All',
     'yes' => 'Yes',
     'no' => 'No',
-    
+
     // Role Management
     'role_management' => 'Role Management',
     'role' => 'Role',
@@ -69,7 +69,7 @@ return [
     'delete_role' => 'Delete Role',
     'assign_role' => 'Assign Role',
     'remove_role' => 'Remove Role',
-    
+
     // Permission Management
     'permission_management' => 'Permission Management',
     'permission' => 'Permission',
@@ -78,7 +78,7 @@ return [
     'create_permission' => 'Create Permission',
     'edit_permission' => 'Edit Permission',
     'delete_permission' => 'Delete Permission',
-    
+
     // System Settings
     'system_settings' => 'System Settings',
     'general_settings' => 'General Settings',
@@ -87,7 +87,7 @@ return [
     'security_settings' => 'Security Settings',
     'backup_settings' => 'Backup Settings',
     'maintenance_mode' => 'Maintenance Mode',
-    
+
     // Messages
     'success' => 'Success',
     'error' => 'Error',
@@ -100,12 +100,12 @@ return [
     'access_denied' => 'Access denied',
     'not_found' => 'Not found',
     'validation_error' => 'Validation error',
-    
+
     // Confirmation
     'confirm_delete' => 'Are you sure you want to delete this item?',
     'confirm_action' => 'Are you sure you want to perform this action?',
     'this_action_cannot_be_undone' => 'This action cannot be undone.',
-    
+
     // Status
     'enabled' => 'Enabled',
     'disabled' => 'Disabled',
@@ -114,7 +114,7 @@ return [
     'pending' => 'Pending',
     'approved' => 'Approved',
     'rejected' => 'Rejected',
-    
+
     // Navigation
     'home' => 'Home',
     'logout' => 'Logout',
@@ -122,7 +122,7 @@ return [
     'help' => 'Help',
     'documentation' => 'Documentation',
     'support' => 'Support',
-    
+
     // Pagination
     'previous' => 'Previous',
     'next' => 'Next',
@@ -130,7 +130,7 @@ return [
     'to' => 'to',
     'of' => 'of',
     'results' => 'results',
-    
+
     // Time
     'today' => 'Today',
     'yesterday' => 'Yesterday',

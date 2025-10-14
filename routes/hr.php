@@ -1,13 +1,13 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-use App\Modules\HR\Controllers\DashboardController;
-use App\Modules\HR\Controllers\EmployeeController;
-use App\Modules\HR\Controllers\DepartmentController;
-use App\Modules\HR\Controllers\RoleController;
-use App\Modules\HR\Controllers\LeaveRequestController;
 use App\Modules\HR\Controllers\AttendanceController;
+use App\Modules\HR\Controllers\DashboardController;
+use App\Modules\HR\Controllers\DepartmentController;
+use App\Modules\HR\Controllers\EmployeeController;
+use App\Modules\HR\Controllers\LeaveRequestController;
+use App\Modules\HR\Controllers\RoleController;
 use App\Modules\HR\Controllers\SalaryRecordController;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,7 +20,7 @@ use App\Modules\HR\Controllers\SalaryRecordController;
 */
 
 Route::prefix('modules/hr')->name('modules.hr.')->middleware(['web'])->group(function () {
-    
+
     // HR Dashboard
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
     Route::get('/quick-stats', [DashboardController::class, 'quickStats'])->name('quick-stats');
@@ -35,10 +35,10 @@ Route::prefix('modules/hr')->name('modules.hr.')->middleware(['web'])->group(fun
         Route::get('/{employee}/edit', [EmployeeController::class, 'edit'])->name('edit');
         Route::put('/{employee}', [EmployeeController::class, 'update'])->name('update');
         Route::delete('/{employee}', [EmployeeController::class, 'destroy'])->name('destroy');
-        
+
         // AJAX routes
         Route::get('/roles/by-department', [EmployeeController::class, 'getRolesByDepartment'])->name('roles.by-department');
-        
+
         // Export
         Route::get('/export/csv', [EmployeeController::class, 'export'])->name('export');
     });
@@ -52,15 +52,15 @@ Route::prefix('modules/hr')->name('modules.hr.')->middleware(['web'])->group(fun
         Route::get('/{department}/edit', [DepartmentController::class, 'edit'])->name('edit');
         Route::put('/{department}', [DepartmentController::class, 'update'])->name('update');
         Route::delete('/{department}', [DepartmentController::class, 'destroy'])->name('destroy');
-        
+
         // Additional actions
         Route::patch('/{department}/toggle-status', [DepartmentController::class, 'toggleStatus'])->name('toggle-status');
         Route::get('/{department}/performance', [DepartmentController::class, 'performance'])->name('performance');
         Route::get('/{department}/budget-analysis', [DepartmentController::class, 'budgetAnalysis'])->name('budget-analysis');
-        
+
         // AJAX routes
         Route::get('/select/options', [DepartmentController::class, 'getForSelect'])->name('select.options');
-        
+
         // Export
         Route::get('/export/csv', [DepartmentController::class, 'export'])->name('export');
     });
@@ -74,14 +74,14 @@ Route::prefix('modules/hr')->name('modules.hr.')->middleware(['web'])->group(fun
         Route::get('/{role}/edit', [RoleController::class, 'edit'])->name('edit');
         Route::put('/{role}', [RoleController::class, 'update'])->name('update');
         Route::delete('/{role}', [RoleController::class, 'destroy'])->name('destroy');
-        
+
         // Additional actions
         Route::patch('/{role}/toggle-status', [RoleController::class, 'toggleStatus'])->name('toggle-status');
-        
+
         // AJAX routes
         Route::get('/by-department/{department}', [RoleController::class, 'getByDepartment'])->name('by-department');
         Route::get('/vacant/list', [RoleController::class, 'getVacantRoles'])->name('vacant.list');
-        
+
         // Export
         Route::get('/export/csv', [RoleController::class, 'export'])->name('export');
     });
@@ -95,18 +95,18 @@ Route::prefix('modules/hr')->name('modules.hr.')->middleware(['web'])->group(fun
         Route::get('/{leaveRequest}/edit', [LeaveRequestController::class, 'edit'])->name('edit');
         Route::put('/{leaveRequest}', [LeaveRequestController::class, 'update'])->name('update');
         Route::delete('/{leaveRequest}', [LeaveRequestController::class, 'destroy'])->name('destroy');
-        
+
         // Approval actions
         Route::patch('/{leaveRequest}/approve', [LeaveRequestController::class, 'approve'])->name('approve');
         Route::patch('/{leaveRequest}/reject', [LeaveRequestController::class, 'reject'])->name('reject');
         Route::patch('/{leaveRequest}/cancel', [LeaveRequestController::class, 'cancel'])->name('cancel');
-        
+
         // File downloads
         Route::get('/{leaveRequest}/attachments/{index}/download', [LeaveRequestController::class, 'downloadAttachment'])->name('attachments.download');
-        
+
         // AJAX routes
         Route::get('/employee/leave-balance', [LeaveRequestController::class, 'getEmployeeLeaveBalance'])->name('employee.leave-balance');
-        
+
         // Export
         Route::get('/export/csv', [LeaveRequestController::class, 'export'])->name('export');
     });
@@ -120,21 +120,21 @@ Route::prefix('modules/hr')->name('modules.hr.')->middleware(['web'])->group(fun
         Route::get('/{attendance}/edit', [AttendanceController::class, 'edit'])->name('edit');
         Route::put('/{attendance}', [AttendanceController::class, 'update'])->name('update');
         Route::delete('/{attendance}', [AttendanceController::class, 'destroy'])->name('destroy');
-        
+
         // Check-in/Check-out actions
         Route::post('/check-in', [AttendanceController::class, 'checkIn'])->name('check-in');
         Route::post('/check-out', [AttendanceController::class, 'checkOut'])->name('check-out');
-        
+
         // Approval
         Route::patch('/{attendance}/approve', [AttendanceController::class, 'approve'])->name('approve');
-        
+
         // Bulk operations
         Route::post('/generate-daily', [AttendanceController::class, 'generateDaily'])->name('generate-daily');
-        
+
         // Reports and data
         Route::get('/employee/{employee}/summary', [AttendanceController::class, 'employeeSummary'])->name('employee.summary');
         Route::get('/calendar/data', [AttendanceController::class, 'calendar'])->name('calendar.data');
-        
+
         // Export
         Route::get('/export/csv', [AttendanceController::class, 'export'])->name('export');
     });
@@ -148,29 +148,29 @@ Route::prefix('modules/hr')->name('modules.hr.')->middleware(['web'])->group(fun
         Route::get('/{salaryRecord}/edit', [SalaryRecordController::class, 'edit'])->name('edit');
         Route::put('/{salaryRecord}', [SalaryRecordController::class, 'update'])->name('update');
         Route::delete('/{salaryRecord}', [SalaryRecordController::class, 'destroy'])->name('destroy');
-        
+
         // Payroll actions
         Route::patch('/{salaryRecord}/approve', [SalaryRecordController::class, 'approve'])->name('approve');
         Route::patch('/{salaryRecord}/mark-paid', [SalaryRecordController::class, 'markAsPaid'])->name('mark-paid');
         Route::patch('/{salaryRecord}/cancel', [SalaryRecordController::class, 'cancel'])->name('cancel');
-        
+
         // Payslip and reports
         Route::get('/{salaryRecord}/payslip', [SalaryRecordController::class, 'generatePayslip'])->name('payslip');
         Route::get('/{salaryRecord}/payslip/pdf', [SalaryRecordController::class, 'downloadPayslip'])->name('payslip.pdf');
-        
+
         // Bulk operations
         Route::post('/generate-monthly', [SalaryRecordController::class, 'generateMonthly'])->name('generate-monthly');
         Route::post('/bulk-approve', [SalaryRecordController::class, 'bulkApprove'])->name('bulk-approve');
         Route::post('/bulk-pay', [SalaryRecordController::class, 'bulkPay'])->name('bulk-pay');
-        
+
         // Accounting integration
         Route::post('/{salaryRecord}/post-to-accounting', [SalaryRecordController::class, 'postToAccounting'])->name('post-to-accounting');
         Route::post('/bulk-post-to-accounting', [SalaryRecordController::class, 'bulkPostToAccounting'])->name('bulk-post-to-accounting');
-        
+
         // Reports
         Route::get('/reports/summary', [SalaryRecordController::class, 'payrollSummary'])->name('reports.summary');
         Route::get('/reports/comparison', [SalaryRecordController::class, 'payrollComparison'])->name('reports.comparison');
-        
+
         // Export
         Route::get('/export/csv', [SalaryRecordController::class, 'export'])->name('export');
         Route::get('/export/payroll-summary', [SalaryRecordController::class, 'exportPayrollSummary'])->name('export.payroll-summary');
@@ -189,15 +189,15 @@ Route::prefix('modules/hr')->name('modules.hr.')->middleware(['web'])->group(fun
     Route::prefix('settings')->name('settings.')->group(function () {
         Route::get('/', [DashboardController::class, 'settings'])->name('index');
         Route::post('/update', [DashboardController::class, 'updateSettings'])->name('update');
-        
+
         // Leave policies
         Route::get('/leave-policies', [DashboardController::class, 'leavePolicies'])->name('leave-policies');
         Route::post('/leave-policies', [DashboardController::class, 'updateLeavePolicies'])->name('leave-policies.update');
-        
+
         // Attendance policies
         Route::get('/attendance-policies', [DashboardController::class, 'attendancePolicies'])->name('attendance-policies');
         Route::post('/attendance-policies', [DashboardController::class, 'updateAttendancePolicies'])->name('attendance-policies.update');
-        
+
         // Payroll settings
         Route::get('/payroll-settings', [DashboardController::class, 'payrollSettings'])->name('payroll-settings');
         Route::post('/payroll-settings', [DashboardController::class, 'updatePayrollSettings'])->name('payroll-settings.update');
@@ -209,15 +209,15 @@ Route::prefix('modules/hr')->name('modules.hr.')->middleware(['web'])->group(fun
         Route::get('/employee/{employee}/profile', [EmployeeController::class, 'apiProfile'])->name('employee.profile');
         Route::get('/employee/{employee}/leave-balance', [EmployeeController::class, 'apiLeaveBalance'])->name('employee.leave-balance');
         Route::get('/employee/{employee}/attendance-summary', [EmployeeController::class, 'apiAttendanceSummary'])->name('employee.attendance-summary');
-        
+
         // Quick attendance
         Route::post('/attendance/quick-check-in', [AttendanceController::class, 'apiQuickCheckIn'])->name('attendance.quick-check-in');
         Route::post('/attendance/quick-check-out', [AttendanceController::class, 'apiQuickCheckOut'])->name('attendance.quick-check-out');
-        
+
         // Leave requests
         Route::post('/leave-requests/quick-submit', [LeaveRequestController::class, 'apiQuickSubmit'])->name('leave-requests.quick-submit');
         Route::get('/leave-requests/employee/{employee}', [LeaveRequestController::class, 'apiEmployeeRequests'])->name('leave-requests.employee');
-        
+
         // Dashboard data
         Route::get('/dashboard/stats', [DashboardController::class, 'apiDashboardStats'])->name('dashboard.stats');
         Route::get('/dashboard/charts', [DashboardController::class, 'apiDashboardCharts'])->name('dashboard.charts');

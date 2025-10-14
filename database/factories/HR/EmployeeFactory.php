@@ -2,8 +2,8 @@
 
 namespace Database\Factories\HR;
 
-use App\Modules\HR\Models\Employee;
 use App\Modules\HR\Models\Department;
+use App\Modules\HR\Models\Employee;
 use App\Modules\HR\Models\Role;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -15,7 +15,7 @@ class EmployeeFactory extends Factory
     {
         $firstNames = ['Ahmed', 'Mohammed', 'Abdullah', 'Omar', 'Khalid', 'Sarah', 'Fatima', 'Aisha', 'Maryam', 'Nora'];
         $lastNames = ['Al-Rashid', 'Al-Mahmoud', 'Al-Zahrani', 'Al-Otaibi', 'Al-Ghamdi', 'Al-Harbi', 'Al-Qahtani', 'Al-Dosari'];
-        
+
         $firstNamesAr = ['أحمد', 'محمد', 'عبدالله', 'عمر', 'خالد', 'سارة', 'فاطمة', 'عائشة', 'مريم', 'نورا'];
         $lastNamesAr = ['الراشد', 'المحمود', 'الزهراني', 'العتيبي', 'الغامدي', 'الحربي', 'القحطاني', 'الدوسري'];
 
@@ -29,8 +29,8 @@ class EmployeeFactory extends Factory
             'first_name_ar' => $firstNamesAr[$firstNameIndex],
             'last_name_ar' => $lastNamesAr[$lastNameIndex],
             'email' => $this->faker->unique()->safeEmail,
-            'phone' => '+966' . $this->faker->numerify('5########'),
-            'mobile' => '+966' . $this->faker->numerify('5########'),
+            'phone' => '+966'.$this->faker->numerify('5########'),
+            'mobile' => '+966'.$this->faker->numerify('5########'),
             'date_of_birth' => $this->faker->dateTimeBetween('-50 years', '-22 years'),
             'gender' => $this->faker->randomElement(['male', 'female']),
             'marital_status' => $this->faker->randomElement(['single', 'married', 'divorced', 'widowed']),
@@ -62,9 +62,9 @@ class EmployeeFactory extends Factory
             ],
             'bank_name' => $this->faker->randomElement(['Saudi National Bank', 'Al Rajhi Bank', 'Riyad Bank', 'SABB']),
             'bank_account_number' => $this->faker->numerify('#########'),
-            'iban' => 'SA' . $this->faker->numerify('######################'),
+            'iban' => 'SA'.$this->faker->numerify('######################'),
             'emergency_contact_name' => $this->faker->name,
-            'emergency_contact_phone' => '+966' . $this->faker->numerify('5########'),
+            'emergency_contact_phone' => '+966'.$this->faker->numerify('5########'),
             'emergency_contact_relationship' => $this->faker->randomElement(['spouse', 'parent', 'sibling', 'friend']),
             'annual_leave_balance' => $this->faker->numberBetween(15, 21),
             'sick_leave_balance' => $this->faker->numberBetween(20, 30),

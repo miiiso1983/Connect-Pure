@@ -79,6 +79,7 @@ class User extends Authenticatable
     public function hasAllRoles(array $roles): bool
     {
         $userRoles = $this->roles()->pluck('slug')->toArray();
+
         return empty(array_diff($roles, $userRoles));
     }
 
@@ -108,6 +109,7 @@ class User extends Authenticatable
     public function hasAllPermissions(array $permissions): bool
     {
         $userPermissions = $this->getAllPermissions();
+
         return empty(array_diff($permissions, $userPermissions));
     }
 
@@ -134,7 +136,7 @@ class User extends Authenticatable
     {
         $roleModel = Role::where('slug', $role)->first();
 
-        if ($roleModel && !$this->hasRole($role)) {
+        if ($roleModel && ! $this->hasRole($role)) {
             $this->roles()->attach($roleModel->id, [
                 'assigned_at' => now(),
                 'assigned_by' => $assignedBy,
@@ -219,6 +221,6 @@ class User extends Authenticatable
      */
     public function canAccessModule(string $module): bool
     {
-        return $this->hasPermission($module . '.view');
+        return $this->hasPermission($module.'.view');
     }
 }

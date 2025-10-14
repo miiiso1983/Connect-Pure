@@ -17,8 +17,8 @@ class CurrencyController extends Controller
             $search = $request->search;
             $query->where(function ($q) use ($search) {
                 $q->where('name', 'like', "%{$search}%")
-                  ->orWhere('code', 'like', "%{$search}%")
-                  ->orWhere('symbol', 'like', "%{$search}%");
+                    ->orWhere('code', 'like', "%{$search}%")
+                    ->orWhere('symbol', 'like', "%{$search}%");
             });
         }
 
@@ -61,13 +61,13 @@ class CurrencyController extends Controller
         $currency = Currency::create($request->all());
 
         return redirect()->route('modules.accounting.currencies.index')
-                       ->with('success', __('accounting.currency_created_successfully'));
+            ->with('success', __('accounting.currency_created_successfully'));
     }
 
     public function show(Currency $currency)
     {
         $currency->load(['invoices', 'expenses']);
-        
+
         // Get usage statistics
         $stats = [
             'invoices_count' => $currency->invoices()->count(),
@@ -87,7 +87,7 @@ class CurrencyController extends Controller
     public function update(Request $request, Currency $currency)
     {
         $request->validate([
-            'code' => 'required|string|size:3|unique:accounting_currencies,code,' . $currency->id,
+            'code' => 'required|string|size:3|unique:accounting_currencies,code,'.$currency->id,
             'name' => 'required|string|max:255',
             'symbol' => 'required|string|max:10',
             'exchange_rate' => 'required|numeric|min:0.000001|max:999999.999999',
@@ -102,7 +102,7 @@ class CurrencyController extends Controller
         $currency->update($request->all());
 
         return redirect()->route('modules.accounting.currencies.index')
-                       ->with('success', __('accounting.currency_updated_successfully'));
+            ->with('success', __('accounting.currency_updated_successfully'));
     }
 
     public function destroy(Currency $currency)
@@ -120,7 +120,7 @@ class CurrencyController extends Controller
         $currency->delete();
 
         return redirect()->route('modules.accounting.currencies.index')
-                       ->with('success', __('accounting.currency_deleted_successfully'));
+            ->with('success', __('accounting.currency_deleted_successfully'));
     }
 
     public function updateExchangeRates(Request $request)
@@ -128,20 +128,20 @@ class CurrencyController extends Controller
         try {
             // Get exchange rates from external API (example using exchangerate-api.com)
             $baseCurrency = Currency::baseCurrency()->first();
-            
-            if (!$baseCurrency) {
+
+            if (! $baseCurrency) {
                 return response()->json([
                     'success' => false,
-                    'message' => __('accounting.no_base_currency_set')
+                    'message' => __('accounting.no_base_currency_set'),
                 ]);
             }
 
             // This is a mock implementation - replace with actual API
             $response = Http::get("https://api.exchangerate-api.com/v4/latest/{$baseCurrency->code}");
-            
+
             if ($response->successful()) {
                 $rates = $response->json()['rates'];
-                
+
                 $updated = 0;
                 foreach (Currency::where('is_base_currency', false)->get() as $currency) {
                     if (isset($rates[$currency->code])) {
@@ -152,18 +152,18 @@ class CurrencyController extends Controller
 
                 return response()->json([
                     'success' => true,
-                    'message' => __('accounting.exchange_rates_updated', ['count' => $updated])
+                    'message' => __('accounting.exchange_rates_updated', ['count' => $updated]),
                 ]);
             } else {
                 return response()->json([
                     'success' => false,
-                    'message' => __('accounting.failed_to_fetch_exchange_rates')
+                    'message' => __('accounting.failed_to_fetch_exchange_rates'),
                 ]);
             }
         } catch (\Exception $e) {
             return response()->json([
                 'success' => false,
-                'message' => __('accounting.error_updating_exchange_rates')
+                'message' => __('accounting.error_updating_exchange_rates'),
             ]);
         }
     }
@@ -172,16 +172,16 @@ class CurrencyController extends Controller
     {
         // Update all currencies to not be base currency
         Currency::where('is_base_currency', true)->update(['is_base_currency' => false]);
-        
+
         // Set this currency as base currency with exchange rate 1
         $currency->update([
             'is_base_currency' => true,
-            'exchange_rate' => 1.000000
+            'exchange_rate' => 1.000000,
         ]);
 
         return response()->json([
             'success' => true,
-            'message' => __('accounting.base_currency_updated')
+            'message' => __('accounting.base_currency_updated'),
         ]);
     }
 
@@ -191,17 +191,17 @@ class CurrencyController extends Controller
         if ($currency->is_base_currency && $currency->is_active) {
             return response()->json([
                 'success' => false,
-                'message' => __('accounting.cannot_deactivate_base_currency')
+                'message' => __('accounting.cannot_deactivate_base_currency'),
             ]);
         }
 
-        $currency->update(['is_active' => !$currency->is_active]);
+        $currency->update(['is_active' => ! $currency->is_active]);
 
         return response()->json([
             'success' => true,
-            'message' => $currency->is_active 
-                ? __('accounting.currency_activated') 
-                : __('accounting.currency_deactivated')
+            'message' => $currency->is_active
+                ? __('accounting.currency_activated')
+                : __('accounting.currency_deactivated'),
         ]);
     }
 
@@ -215,7 +215,7 @@ class CurrencyController extends Controller
 
         $fromCurrency = Currency::where('code', $request->from_currency)->first();
         $toCurrency = Currency::where('code', $request->to_currency)->first();
-        
+
         $convertedAmount = $fromCurrency->convertTo($toCurrency, $request->amount);
 
         return response()->json([
@@ -229,21 +229,21 @@ class CurrencyController extends Controller
     public function exportRates()
     {
         $currencies = Currency::active()->get();
-        
-        $filename = 'exchange_rates_' . now()->format('Y_m_d') . '.csv';
-        
+
+        $filename = 'exchange_rates_'.now()->format('Y_m_d').'.csv';
+
         $headers = [
             'Content-Type' => 'text/csv',
             'Content-Disposition' => "attachment; filename=\"{$filename}\"",
         ];
 
-        $callback = function() use ($currencies) {
+        $callback = function () use ($currencies) {
             $file = fopen('php://output', 'w');
-            
+
             // CSV headers
             fputcsv($file, [
-                'Currency Code', 'Currency Name', 'Symbol', 'Exchange Rate', 
-                'Is Base Currency', 'Is Active', 'Last Updated'
+                'Currency Code', 'Currency Name', 'Symbol', 'Exchange Rate',
+                'Is Base Currency', 'Is Active', 'Last Updated',
             ]);
 
             // CSV data

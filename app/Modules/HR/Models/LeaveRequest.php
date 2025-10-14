@@ -2,11 +2,11 @@
 
 namespace App\Modules\HR\Models;
 
+use Carbon\Carbon;
+use Database\Factories\HR\LeaveRequestFactory;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Database\Factories\HR\LeaveRequestFactory;
-use Carbon\Carbon;
 
 class LeaveRequest extends Model
 {
@@ -104,11 +104,11 @@ class LeaveRequest extends Model
     {
         return $query->where(function ($q) use ($startDate, $endDate) {
             $q->whereBetween('start_date', [$startDate, $endDate])
-              ->orWhereBetween('end_date', [$startDate, $endDate])
-              ->orWhere(function ($subQ) use ($startDate, $endDate) {
-                  $subQ->where('start_date', '<=', $startDate)
-                       ->where('end_date', '>=', $endDate);
-              });
+                ->orWhereBetween('end_date', [$startDate, $endDate])
+                ->orWhere(function ($subQ) use ($startDate, $endDate) {
+                    $subQ->where('start_date', '<=', $startDate)
+                        ->where('end_date', '>=', $endDate);
+                });
         });
     }
 
@@ -120,7 +120,7 @@ class LeaveRequest extends Model
     // Accessors
     public function getStatusColorAttribute(): string
     {
-        return match($this->status) {
+        return match ($this->status) {
             'pending' => 'yellow',
             'approved' => 'green',
             'rejected' => 'red',
@@ -131,7 +131,7 @@ class LeaveRequest extends Model
 
     public function getStatusTextAttribute(): string
     {
-        return match($this->status) {
+        return match ($this->status) {
             'pending' => __('hr.pending'),
             'approved' => __('hr.approved'),
             'rejected' => __('hr.rejected'),
@@ -142,7 +142,7 @@ class LeaveRequest extends Model
 
     public function getLeaveTypeTextAttribute(): string
     {
-        return match($this->leave_type) {
+        return match ($this->leave_type) {
             'annual' => __('hr.annual_leave'),
             'sick' => __('hr.sick_leave'),
             'emergency' => __('hr.emergency_leave'),
@@ -159,8 +159,8 @@ class LeaveRequest extends Model
 
     public function getDisplayReasonAttribute(): string
     {
-        return app()->getLocale() === 'ar' && $this->reason_ar 
-            ? $this->reason_ar 
+        return app()->getLocale() === 'ar' && $this->reason_ar
+            ? $this->reason_ar
             : $this->reason;
     }
 
@@ -168,6 +168,7 @@ class LeaveRequest extends Model
     {
         if ($this->is_half_day) {
             $period = $this->half_day_period === 'morning' ? __('hr.morning') : __('hr.afternoon');
+
             return __('hr.half_day_period', ['period' => $period]);
         }
 
@@ -184,7 +185,7 @@ class LeaveRequest extends Model
             return $this->start_date->format('Y-m-d');
         }
 
-        return $this->start_date->format('Y-m-d') . ' - ' . $this->end_date->format('Y-m-d');
+        return $this->start_date->format('Y-m-d').' - '.$this->end_date->format('Y-m-d');
     }
 
     public function getIsOverlapAttribute(): bool
@@ -194,18 +195,18 @@ class LeaveRequest extends Model
             ->whereIn('status', ['pending', 'approved'])
             ->where(function ($query) {
                 $query->whereBetween('start_date', [$this->start_date, $this->end_date])
-                      ->orWhereBetween('end_date', [$this->start_date, $this->end_date])
-                      ->orWhere(function ($subQuery) {
-                          $subQuery->where('start_date', '<=', $this->start_date)
-                                   ->where('end_date', '>=', $this->end_date);
-                      });
+                    ->orWhereBetween('end_date', [$this->start_date, $this->end_date])
+                    ->orWhere(function ($subQuery) {
+                        $subQuery->where('start_date', '<=', $this->start_date)
+                            ->where('end_date', '>=', $this->end_date);
+                    });
             })
             ->exists();
     }
 
     public function getCanBeApprovedAttribute(): bool
     {
-        return $this->status === 'pending' && !$this->is_overlap;
+        return $this->status === 'pending' && ! $this->is_overlap;
     }
 
     public function getCanBeCancelledAttribute(): bool
@@ -222,14 +223,14 @@ class LeaveRequest extends Model
 
         $startDate = Carbon::parse($this->start_date);
         $endDate = Carbon::parse($this->end_date);
-        
+
         // Calculate business days (excluding weekends)
         $totalDays = 0;
         $currentDate = $startDate->copy();
-        
+
         while ($currentDate->lte($endDate)) {
             // Skip weekends (Friday and Saturday in Saudi Arabia)
-            if (!in_array($currentDate->dayOfWeek, [5, 6])) { // 5 = Friday, 6 = Saturday
+            if (! in_array($currentDate->dayOfWeek, [5, 6])) { // 5 = Friday, 6 = Saturday
                 $totalDays++;
             }
             $currentDate->addDay();
@@ -238,7 +239,7 @@ class LeaveRequest extends Model
         return $totalDays;
     }
 
-    public function approve(int $approverId, string $notes = null): void
+    public function approve(int $approverId, ?string $notes = null): void
     {
         $this->status = 'approved';
         $this->approver_id = $approverId;
@@ -281,7 +282,7 @@ class LeaveRequest extends Model
 
     public function hasAttachments(): bool
     {
-        return !empty($this->attachments);
+        return ! empty($this->attachments);
     }
 
     public function getAttachmentsList(): array
@@ -293,14 +294,14 @@ class LeaveRequest extends Model
     public static function generateRequestNumber(): string
     {
         $lastRequest = static::orderBy('request_number', 'desc')->first();
-        
+
         if ($lastRequest && preg_match('/LR(\d+)/', $lastRequest->request_number, $matches)) {
             $nextNumber = (int) $matches[1] + 1;
         } else {
             $nextNumber = 1001;
         }
 
-        return 'LR' . str_pad($nextNumber, 4, '0', STR_PAD_LEFT);
+        return 'LR'.str_pad($nextNumber, 4, '0', STR_PAD_LEFT);
     }
 
     public static function getLeaveTypeOptions(): array
@@ -344,7 +345,7 @@ class LeaveRequest extends Model
         ];
     }
 
-    public static function getEmployeeLeaveHistory(int $employeeId, int $year = null): \Illuminate\Database\Eloquent\Collection
+    public static function getEmployeeLeaveHistory(int $employeeId, ?int $year = null): \Illuminate\Database\Eloquent\Collection
     {
         $query = static::where('employee_id', $employeeId)
             ->whereIn('status', ['approved', 'rejected'])

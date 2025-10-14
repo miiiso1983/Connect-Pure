@@ -25,7 +25,7 @@ class RoleController extends Controller
     {
         $roles = Role::active()->ordered()->withCount('users')->get();
         $permissions = Role::getGroupedPermissions();
-        
+
         return view('admin.roles.index', compact('roles', 'permissions'));
     }
 
@@ -35,7 +35,7 @@ class RoleController extends Controller
     public function create()
     {
         $permissions = Role::getGroupedPermissions();
-        
+
         return view('admin.roles.create', compact('permissions'));
     }
 
@@ -48,18 +48,18 @@ class RoleController extends Controller
             'name' => 'required|string|max:255|unique:roles,name',
             'description' => 'nullable|string|max:1000',
             'permissions' => 'nullable|array',
-            'permissions.*' => 'string|in:' . implode(',', Role::getAllPermissions()),
+            'permissions.*' => 'string|in:'.implode(',', Role::getAllPermissions()),
             'is_active' => 'boolean',
             'sort_order' => 'integer|min:0',
         ]);
 
         $validated['slug'] = Str::slug($validated['name']);
-        
+
         // Ensure slug is unique
         $originalSlug = $validated['slug'];
         $counter = 1;
         while (Role::where('slug', $validated['slug'])->exists()) {
-            $validated['slug'] = $originalSlug . '-' . $counter;
+            $validated['slug'] = $originalSlug.'-'.$counter;
             $counter++;
         }
 
@@ -76,7 +76,7 @@ class RoleController extends Controller
     {
         $role->load('users');
         $permissions = Role::getGroupedPermissions();
-        
+
         return view('admin.roles.show', compact('role', 'permissions'));
     }
 
@@ -86,7 +86,7 @@ class RoleController extends Controller
     public function edit(Role $role)
     {
         $permissions = Role::getGroupedPermissions();
-        
+
         return view('admin.roles.edit', compact('role', 'permissions'));
     }
 
@@ -99,7 +99,7 @@ class RoleController extends Controller
             'name' => ['required', 'string', 'max:255', Rule::unique('roles')->ignore($role->id)],
             'description' => 'nullable|string|max:1000',
             'permissions' => 'nullable|array',
-            'permissions.*' => 'string|in:' . implode(',', Role::getAllPermissions()),
+            'permissions.*' => 'string|in:'.implode(',', Role::getAllPermissions()),
             'is_active' => 'boolean',
             'sort_order' => 'integer|min:0',
         ]);
@@ -107,12 +107,12 @@ class RoleController extends Controller
         // Update slug if name changed
         if ($validated['name'] !== $role->name) {
             $validated['slug'] = Str::slug($validated['name']);
-            
+
             // Ensure slug is unique
             $originalSlug = $validated['slug'];
             $counter = 1;
             while (Role::where('slug', $validated['slug'])->where('id', '!=', $role->id)->exists()) {
-                $validated['slug'] = $originalSlug . '-' . $counter;
+                $validated['slug'] = $originalSlug.'-'.$counter;
                 $counter++;
             }
         }
@@ -150,10 +150,10 @@ class RoleController extends Controller
         ]);
 
         $user = User::findOrFail($validated['user_id']);
-        
-        if (!$user->hasRole($role->slug)) {
+
+        if (! $user->hasRole($role->slug)) {
             $user->assignRole($role->slug, auth()->id());
-            
+
             return response()->json([
                 'success' => true,
                 'message' => __('roles.role_assigned_successfully'),
@@ -176,10 +176,10 @@ class RoleController extends Controller
         ]);
 
         $user = User::findOrFail($validated['user_id']);
-        
+
         if ($user->hasRole($role->slug)) {
             $user->removeRole($role->slug);
-            
+
             return response()->json([
                 'success' => true,
                 'message' => __('roles.role_removed_successfully'),
@@ -198,11 +198,11 @@ class RoleController extends Controller
     public function getUsers(Role $role)
     {
         $assignedUserIds = $role->users()->pluck('users.id');
-        
+
         $availableUsers = User::whereNotIn('id', $assignedUserIds)
             ->select('id', 'name', 'email')
             ->get();
-            
+
         $assignedUsers = $role->users()
             ->select('users.id', 'users.name', 'users.email', 'user_roles.assigned_at')
             ->get();
@@ -220,7 +220,7 @@ class RoleController extends Controller
     {
         $validated = $request->validate([
             'permissions' => 'nullable|array',
-            'permissions.*' => 'string|in:' . implode(',', Role::getAllPermissions()),
+            'permissions.*' => 'string|in:'.implode(',', Role::getAllPermissions()),
         ]);
 
         $role->syncPermissions($validated['permissions'] ?? []);
@@ -238,7 +238,7 @@ class RoleController extends Controller
     {
         $roles = Role::active()->ordered()->get();
         $permissions = Role::getGroupedPermissions();
-        
+
         return view('admin.roles.permission-matrix', compact('roles', 'permissions'));
     }
 
@@ -250,7 +250,7 @@ class RoleController extends Controller
         $validated = $request->validate([
             'role_permissions' => 'required|array',
             'role_permissions.*' => 'array',
-            'role_permissions.*.*' => 'string|in:' . implode(',', Role::getAllPermissions()),
+            'role_permissions.*.*' => 'string|in:'.implode(',', Role::getAllPermissions()),
         ]);
 
         DB::transaction(function () use ($validated) {
@@ -272,17 +272,17 @@ class RoleController extends Controller
     public function clone(Role $role)
     {
         $newRole = $role->replicate();
-        $newRole->name = $role->name . ' (Copy)';
-        $newRole->slug = $role->slug . '-copy';
-        
+        $newRole->name = $role->name.' (Copy)';
+        $newRole->slug = $role->slug.'-copy';
+
         // Ensure slug is unique
         $originalSlug = $newRole->slug;
         $counter = 1;
         while (Role::where('slug', $newRole->slug)->exists()) {
-            $newRole->slug = $originalSlug . '-' . $counter;
+            $newRole->slug = $originalSlug.'-'.$counter;
             $counter++;
         }
-        
+
         $newRole->save();
 
         return redirect()->route('admin.roles.edit', $newRole)

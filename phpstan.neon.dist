@@ -1,0 +1,19 @@
+includes:
+    - vendor/larastan/larastan/extension.neon
+    - phpstan-baseline.neon
+
+parameters:
+    level: 5
+    paths:
+        - app
+        - app/Modules
+        - routes
+        - tests
+    tmpDir: build/phpstan
+    reportUnmatchedIgnoredErrors: false
+    ignoreErrors:
+        # Allow dynamic properties on Eloquent models for now
+        - '#Access to an undefined property App\\.*::\$#'
+        - '#Call to an undefined static method Illuminate\\Support\\Facades\\.*#'
+        - '#Method Illuminate\\Database\\Eloquent\\Builder<.*>::where\(\) invoked with [\d]+ parameters, [\d]+ required#'
+

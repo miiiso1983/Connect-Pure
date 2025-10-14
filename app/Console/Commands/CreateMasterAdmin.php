@@ -2,14 +2,15 @@
 
 namespace App\Console\Commands;
 
-use Illuminate\Console\Command;
-use App\Models\User;
 use App\Models\Role;
+use App\Models\User;
+use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Hash;
 
 class CreateMasterAdmin extends Command
 {
     protected $signature = 'admin:create-master {email} {name?} {password?}';
+
     protected $description = 'Create a master admin user with full system access';
 
     public function handle()
@@ -20,8 +21,8 @@ class CreateMasterAdmin extends Command
 
         // Check if user already exists
         $user = User::where('email', $email)->first();
-        
-        if (!$user) {
+
+        if (! $user) {
             $user = User::create([
                 'name' => $name,
                 'email' => $email,
@@ -35,8 +36,8 @@ class CreateMasterAdmin extends Command
 
         // Create Master Admin role if it doesn't exist
         $masterRole = Role::where('slug', 'master-admin')->first();
-        
-        if (!$masterRole) {
+
+        if (! $masterRole) {
             // Get all possible permissions
             $allPermissions = [
                 // Admin permissions
@@ -52,7 +53,7 @@ class CreateMasterAdmin extends Command
                 'admin.settings.view',
                 'admin.settings.edit',
                 'admin.system.manage',
-                
+
                 // HR permissions
                 'hr.view',
                 'hr.employees.view',
@@ -71,7 +72,7 @@ class CreateMasterAdmin extends Command
                 'hr.payroll.manage',
                 'hr.performance.view',
                 'hr.performance.manage',
-                
+
                 // CRM permissions
                 'crm.view',
                 'crm.leads.view',
@@ -90,7 +91,7 @@ class CreateMasterAdmin extends Command
                 'crm.deals.create',
                 'crm.deals.edit',
                 'crm.deals.delete',
-                
+
                 // Performance permissions
                 'performance.view',
                 'performance.tasks.view',
@@ -100,7 +101,7 @@ class CreateMasterAdmin extends Command
                 'performance.reports.view',
                 'performance.analytics.view',
                 'performance.export',
-                
+
                 // Support permissions
                 'support.view',
                 'support.tickets.view',
@@ -109,7 +110,7 @@ class CreateMasterAdmin extends Command
                 'support.tickets.delete',
                 'support.tickets.assign',
                 'support.tickets.close',
-                
+
                 // Accounting permissions
                 'accounting.view',
                 'accounting.invoices.view',
@@ -122,14 +123,14 @@ class CreateMasterAdmin extends Command
                 'accounting.expenses.delete',
                 'accounting.reports.view',
                 'accounting.reports.export',
-                
+
                 // Project Management permissions
                 'projects.view',
                 'projects.create',
                 'projects.edit',
                 'projects.delete',
                 'projects.manage',
-                
+
                 // Inventory permissions
                 'inventory.view',
                 'inventory.products.view',
@@ -138,13 +139,13 @@ class CreateMasterAdmin extends Command
                 'inventory.products.delete',
                 'inventory.stock.view',
                 'inventory.stock.manage',
-                
+
                 // Reports permissions
                 'reports.view',
                 'reports.create',
                 'reports.export',
                 'reports.analytics',
-                
+
                 // System permissions
                 'system.backup',
                 'system.maintenance',
@@ -163,28 +164,28 @@ class CreateMasterAdmin extends Command
                 'inherit_permissions' => false,
             ]);
 
-            $this->info("Created Master Admin role with " . count($allPermissions) . " permissions");
+            $this->info('Created Master Admin role with '.count($allPermissions).' permissions');
         } else {
-            $this->info("Master Admin role already exists");
+            $this->info('Master Admin role already exists');
         }
 
         // Assign master role to user
-        if (!$user->roles->contains($masterRole->id)) {
+        if (! $user->roles->contains($masterRole->id)) {
             $user->roles()->attach($masterRole->id, [
                 'assigned_at' => now(),
                 'assigned_by' => $user->id,
             ]);
             $this->info("Assigned Master Admin role to {$user->name}");
         } else {
-            $this->info("User already has Master Admin role");
+            $this->info('User already has Master Admin role');
         }
 
         $this->info("\n=== MASTER ADMIN SETUP COMPLETE ===");
         $this->info("Email: {$user->email}");
         $this->info("Password: {$password}");
-        $this->info("Role: Master Administrator");
-        $this->info("Permissions: " . count($masterRole->permissions ?? []) . " total permissions");
-        $this->info("Access Level: FULL SYSTEM ACCESS");
+        $this->info('Role: Master Administrator');
+        $this->info('Permissions: '.count($masterRole->permissions ?? []).' total permissions');
+        $this->info('Access Level: FULL SYSTEM ACCESS');
         $this->info("=====================================\n");
 
         return 0;

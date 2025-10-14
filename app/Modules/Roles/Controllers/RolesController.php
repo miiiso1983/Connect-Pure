@@ -53,6 +53,7 @@ class RolesController extends Controller
     public function roles()
     {
         $roles = Role::withCount('users')->orderBy('sort_order')->paginate(15);
+
         return view('modules.roles.roles.index', compact('roles'));
     }
 
@@ -60,6 +61,7 @@ class RolesController extends Controller
     {
         $permissionGroups = $this->getPermissionGroups();
         $parentRoles = Role::where('is_active', true)->orderBy('level')->orderBy('name')->get();
+
         return view('modules.roles.roles.create', compact('permissionGroups', 'parentRoles'));
     }
 
@@ -85,6 +87,7 @@ class RolesController extends Controller
     public function showRole(Role $role)
     {
         $role->load('users');
+
         return view('modules.roles.roles.show', compact('role'));
     }
 
@@ -97,8 +100,9 @@ class RolesController extends Controller
             ->orderBy('name')
             ->get()
             ->filter(function ($parentRole) use ($role) {
-                return !$parentRole->isDescendantOf($role);
+                return ! $parentRole->isDescendantOf($role);
             });
+
         return view('modules.roles.roles.edit', compact('role', 'permissionGroups', 'parentRoles'));
     }
 
@@ -106,7 +110,7 @@ class RolesController extends Controller
     {
         $validated = $request->validate([
             'name' => 'required|string|max:255',
-            'slug' => 'required|string|max:255|unique:roles,slug,' . $role->id,
+            'slug' => 'required|string|max:255|unique:roles,slug,'.$role->id,
             'description' => 'nullable|string',
             'permissions' => 'array',
             'is_active' => 'boolean',
@@ -144,6 +148,7 @@ class RolesController extends Controller
     public function users()
     {
         $users = User::with('roles')->paginate(15);
+
         return view('modules.roles.users.index', compact('users'));
     }
 
@@ -171,6 +176,7 @@ class RolesController extends Controller
     public function permissions()
     {
         $permissionGroups = $this->getPermissionGroups();
+
         return view('modules.roles.permissions.index', compact('permissionGroups'));
     }
 
@@ -220,7 +226,7 @@ class RolesController extends Controller
                     'hr.departments.manage' => 'Manage Departments',
                     'hr.attendance.view' => 'View Attendance',
                     'hr.attendance.manage' => 'Manage Attendance',
-                ]
+                ],
             ],
             'crm' => [
                 'label' => 'Customer Relationship Management',
@@ -234,7 +240,7 @@ class RolesController extends Controller
                     'crm.customers.create' => 'Create Customers',
                     'crm.customers.edit' => 'Edit Customers',
                     'crm.customers.delete' => 'Delete Customers',
-                ]
+                ],
             ],
             'performance' => [
                 'label' => 'Performance Management',
@@ -246,7 +252,7 @@ class RolesController extends Controller
                     'performance.tasks.delete' => 'Delete Tasks',
                     'performance.reports.view' => 'View Performance Reports',
                     'performance.analytics.view' => 'View Performance Analytics',
-                ]
+                ],
             ],
             'support' => [
                 'label' => 'Support Management',
@@ -256,7 +262,7 @@ class RolesController extends Controller
                     'support.tickets.create' => 'Create Support Tickets',
                     'support.tickets.edit' => 'Edit Support Tickets',
                     'support.tickets.delete' => 'Delete Support Tickets',
-                ]
+                ],
             ],
             'admin' => [
                 'label' => 'Administration',
@@ -272,7 +278,7 @@ class RolesController extends Controller
                     'admin.roles.delete' => 'Delete Roles',
                     'admin.settings.view' => 'View Settings',
                     'admin.settings.edit' => 'Edit Settings',
-                ]
+                ],
             ],
         ];
     }

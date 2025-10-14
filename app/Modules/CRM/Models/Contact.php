@@ -88,8 +88,8 @@ class Contact extends Model
     public function overdueFollowUps()
     {
         return $this->hasMany(FollowUp::class)
-                    ->where('status', 'pending')
-                    ->where('due_date', '<', now());
+            ->where('status', 'pending')
+            ->where('due_date', '<', now());
     }
 
     /**
@@ -98,8 +98,8 @@ class Contact extends Model
     public function todayFollowUps()
     {
         return $this->hasMany(FollowUp::class)
-                    ->where('status', 'pending')
-                    ->whereDate('due_date', today());
+            ->where('status', 'pending')
+            ->whereDate('due_date', today());
     }
 
     /**
@@ -108,8 +108,8 @@ class Contact extends Model
     public function recentCommunications()
     {
         return $this->hasMany(Communication::class)
-                    ->orderBy('created_at', 'desc')
-                    ->limit(5);
+            ->orderBy('created_at', 'desc')
+            ->limit(5);
     }
 
     /**
@@ -119,8 +119,8 @@ class Contact extends Model
     {
         return $query->where(function ($q) use ($search) {
             $q->where('name', 'like', "%{$search}%")
-              ->orWhere('email', 'like', "%{$search}%")
-              ->orWhere('company', 'like', "%{$search}%");
+                ->orWhere('email', 'like', "%{$search}%")
+                ->orWhere('company', 'like', "%{$search}%");
         });
     }
 
@@ -170,7 +170,7 @@ class Contact extends Model
     public function scopeHotLeads($query)
     {
         return $query->where('priority', 'high')
-                    ->where('type', 'lead');
+            ->where('type', 'lead');
     }
 
     /**
@@ -319,8 +319,8 @@ class Contact extends Model
     public function getNextFollowUpAttribute()
     {
         return $this->pendingFollowUps()
-                    ->orderBy('due_date', 'asc')
-                    ->first();
+            ->orderBy('due_date', 'asc')
+            ->first();
     }
 
     /**
@@ -329,8 +329,8 @@ class Contact extends Model
     public function getLastCommunicationAttribute()
     {
         return $this->communications()
-                    ->orderBy('created_at', 'desc')
-                    ->first();
+            ->orderBy('created_at', 'desc')
+            ->first();
     }
 
     /**
@@ -377,7 +377,7 @@ class Contact extends Model
      */
     public function getDaysSinceLastContact()
     {
-        if (!$this->last_contact_date) {
+        if (! $this->last_contact_date) {
             return null;
         }
 
@@ -401,6 +401,7 @@ class Contact extends Model
         if ($this->company) {
             $name .= " ({$this->company})";
         }
+
         return $name;
     }
 
@@ -413,7 +414,7 @@ class Contact extends Model
         $initials = '';
 
         foreach ($words as $word) {
-            if (!empty($word)) {
+            if (! empty($word)) {
                 $initials .= strtoupper($word[0]);
             }
         }

@@ -17,7 +17,7 @@ class RoleMiddleware
      */
     public function handle(Request $request, Closure $next, string $roles): Response
     {
-        if (!Auth::check()) {
+        if (! Auth::check()) {
             return redirect()->route('login');
         }
 
@@ -29,7 +29,7 @@ class RoleMiddleware
             return $next($request);
         }
 
-        if (!$user->hasAnyRole($allowedRoles)) {
+        if (! $user->hasAnyRole($allowedRoles)) {
             if ($request->expectsJson()) {
                 return response()->json([
                     'error' => 'Access denied',

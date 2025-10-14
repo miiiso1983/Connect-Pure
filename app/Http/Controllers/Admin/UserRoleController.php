@@ -23,7 +23,7 @@ class UserRoleController extends Controller
     {
         $users = User::with('roles')->paginate(20);
         $roles = Role::active()->ordered()->get();
-        
+
         return view('admin.user-roles.index', compact('users', 'roles'));
     }
 
@@ -34,7 +34,7 @@ class UserRoleController extends Controller
     {
         $user->load('roles');
         $availableRoles = Role::active()->ordered()->get();
-        
+
         return view('admin.user-roles.show', compact('user', 'availableRoles'));
     }
 
@@ -50,7 +50,7 @@ class UserRoleController extends Controller
 
         $roleIds = $validated['roles'] ?? [];
         $roles = Role::whereIn('id', $roleIds)->pluck('slug')->toArray();
-        
+
         $user->syncRoles($roles, auth()->id());
 
         if ($request->expectsJson()) {
@@ -75,10 +75,10 @@ class UserRoleController extends Controller
         ]);
 
         $role = Role::findOrFail($validated['role_id']);
-        
-        if (!$user->hasRole($role->slug)) {
+
+        if (! $user->hasRole($role->slug)) {
             $user->assignRole($role->slug, auth()->id());
-            
+
             return response()->json([
                 'success' => true,
                 'message' => __('roles.role_assigned_successfully'),
@@ -106,10 +106,10 @@ class UserRoleController extends Controller
         ]);
 
         $role = Role::findOrFail($validated['role_id']);
-        
+
         if ($user->hasRole($role->slug)) {
             $user->removeRole($role->slug);
-            
+
             return response()->json([
                 'success' => true,
                 'message' => __('roles.role_removed_successfully'),
@@ -140,7 +140,7 @@ class UserRoleController extends Controller
         DB::transaction(function () use ($users, $roles) {
             foreach ($users as $user) {
                 foreach ($roles as $role) {
-                    if (!$user->hasRole($role)) {
+                    if (! $user->hasRole($role)) {
                         $user->assignRole($role, auth()->id());
                     }
                 }
@@ -200,11 +200,11 @@ class UserRoleController extends Controller
         foreach ($permissions as $permission) {
             $parts = explode('.', $permission);
             $module = $parts[0];
-            
-            if (!isset($groupedPermissions[$module])) {
+
+            if (! isset($groupedPermissions[$module])) {
                 $groupedPermissions[$module] = [];
             }
-            
+
             $groupedPermissions[$module][] = $permission;
         }
 
@@ -235,10 +235,10 @@ class UserRoleController extends Controller
     {
         $query = $request->get('q', '');
         $roleId = $request->get('role_id');
-        
+
         $usersQuery = User::where(function ($q) use ($query) {
             $q->where('name', 'like', "%{$query}%")
-              ->orWhere('email', 'like', "%{$query}%");
+                ->orWhere('email', 'like', "%{$query}%");
         });
 
         if ($roleId) {
@@ -257,7 +257,7 @@ class UserRoleController extends Controller
                     'id' => $user->id,
                     'name' => $user->name,
                     'email' => $user->email,
-                    'display_name' => $user->name . ' (' . $user->email . ')',
+                    'display_name' => $user->name.' ('.$user->email.')',
                 ];
             }),
         ]);
@@ -269,7 +269,7 @@ class UserRoleController extends Controller
     public function hierarchy()
     {
         $roles = Role::active()->ordered()->withCount('users')->get();
-        
+
         $hierarchy = $roles->map(function ($role) {
             return [
                 'id' => $role->id,
@@ -294,9 +294,9 @@ class UserRoleController extends Controller
     public function export(Request $request)
     {
         $format = $request->get('format', 'csv');
-        
+
         $users = User::with('roles')->get();
-        
+
         $data = $users->map(function ($user) {
             return [
                 'ID' => $user->id,
@@ -313,26 +313,26 @@ class UserRoleController extends Controller
         }
 
         // CSV Export
-        $filename = 'user_roles_' . date('Y-m-d_H-i-s') . '.csv';
-        
+        $filename = 'user_roles_'.date('Y-m-d_H-i-s').'.csv';
+
         $headers = [
             'Content-Type' => 'text/csv',
             'Content-Disposition' => "attachment; filename=\"{$filename}\"",
         ];
-        
+
         $callback = function () use ($data) {
             $file = fopen('php://output', 'w');
-            
+
             if ($data->isNotEmpty()) {
                 fputcsv($file, array_keys($data->first()));
                 foreach ($data as $row) {
                     fputcsv($file, array_values($row));
                 }
             }
-            
+
             fclose($file);
         };
-        
+
         return response()->stream($callback, 200, $headers);
     }
 }

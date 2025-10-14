@@ -17,7 +17,7 @@ class PermissionMiddleware
      */
     public function handle(Request $request, Closure $next, string $permissions): Response
     {
-        if (!Auth::check()) {
+        if (! Auth::check()) {
             return redirect()->route('login');
         }
 
@@ -30,7 +30,7 @@ class PermissionMiddleware
         }
 
         // Check if user has any of the required permissions
-        if (!$user->hasAnyPermission($requiredPermissions)) {
+        if (! $user->hasAnyPermission($requiredPermissions)) {
             if ($request->expectsJson()) {
                 return response()->json([
                     'error' => 'Access denied',

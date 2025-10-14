@@ -3,8 +3,8 @@
 namespace App\Modules\Accounting\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Modules\Accounting\Models\JournalEntry;
 use App\Modules\Accounting\Models\ChartOfAccount;
+use App\Modules\Accounting\Models\JournalEntry;
 use Illuminate\Http\Request;
 
 class JournalEntryController extends Controller
@@ -12,12 +12,14 @@ class JournalEntryController extends Controller
     public function index()
     {
         $journalEntries = JournalEntry::with('account')->paginate(15);
+
         return view('modules.accounting.journal-entries.index', compact('journalEntries'));
     }
 
     public function create()
     {
         $accounts = ChartOfAccount::where('is_active', true)->get();
+
         return view('modules.accounting.journal-entries.create', compact('accounts'));
     }
 
@@ -48,6 +50,7 @@ class JournalEntryController extends Controller
     public function edit(JournalEntry $journalEntry)
     {
         $accounts = ChartOfAccount::where('is_active', true)->get();
+
         return view('modules.accounting.journal-entries.edit', compact('journalEntry', 'accounts'));
     }
 

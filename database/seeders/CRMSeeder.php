@@ -2,8 +2,8 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Seeder;
 use App\Models\Modules\CRM\Models\FollowUp;
+use Illuminate\Database\Seeder;
 
 class CRMSeeder extends Seeder
 {

@@ -3,11 +3,11 @@
 namespace App\Modules\Accounting\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Modules\Accounting\Models\Account;
+use App\Modules\Accounting\Models\Customer;
+use App\Modules\Accounting\Models\Employee;
 use App\Modules\Accounting\Models\Expense;
 use App\Modules\Accounting\Models\Vendor;
-use App\Modules\Accounting\Models\Employee;
-use App\Modules\Accounting\Models\Customer;
-use App\Modules\Accounting\Models\Account;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -46,17 +46,17 @@ class ExpenseController extends Controller
             $search = $request->search;
             $query->where(function ($q) use ($search) {
                 $q->where('expense_number', 'like', "%{$search}%")
-                  ->orWhere('description', 'like', "%{$search}%")
-                  ->orWhere('reference_number', 'like', "%{$search}%")
-                  ->orWhereHas('vendor', function ($vendorQuery) use ($search) {
-                      $vendorQuery->where('name', 'like', "%{$search}%")
-                                 ->orWhere('company_name', 'like', "%{$search}%");
-                  });
+                    ->orWhere('description', 'like', "%{$search}%")
+                    ->orWhere('reference_number', 'like', "%{$search}%")
+                    ->orWhereHas('vendor', function ($vendorQuery) use ($search) {
+                        $vendorQuery->where('name', 'like', "%{$search}%")
+                            ->orWhere('company_name', 'like', "%{$search}%");
+                    });
             });
         }
 
         $expenses = $query->orderBy('expense_date', 'desc')
-                         ->paginate(20);
+            ->paginate(20);
 
         $vendors = Vendor::active()->orderBy('name')->get();
         $employees = Employee::active()->orderBy('first_name')->get();
@@ -133,7 +133,7 @@ class ExpenseController extends Controller
             if ($request->hasFile('attachments')) {
                 $attachments = [];
                 foreach ($request->file('attachments') as $file) {
-                    $path = $file->store('expenses/' . $expense->id, 'public');
+                    $path = $file->store('expenses/'.$expense->id, 'public');
                     $attachments[] = [
                         'name' => $file->getClientOriginalName(),
                         'path' => $path,
@@ -147,19 +147,20 @@ class ExpenseController extends Controller
             DB::commit();
 
             return redirect()->route('modules.accounting.expenses.show', $expense)
-                           ->with('success', __('accounting.expense_created_successfully'));
+                ->with('success', __('accounting.expense_created_successfully'));
 
         } catch (\Exception $e) {
             DB::rollback();
+
             return back()->withInput()
-                        ->withErrors(['error' => __('accounting.error_creating_expense')]);
+                ->withErrors(['error' => __('accounting.error_creating_expense')]);
         }
     }
 
     public function show(Expense $expense)
     {
         $expense->load(['vendor', 'employee', 'customer', 'account', 'payments']);
-        
+
         return view('modules.accounting.expenses.show', compact('expense'));
     }
 
@@ -167,7 +168,7 @@ class ExpenseController extends Controller
     {
         if ($expense->status === 'paid') {
             return redirect()->route('modules.accounting.expenses.show', $expense)
-                           ->withErrors(['error' => __('accounting.cannot_edit_paid_expense')]);
+                ->withErrors(['error' => __('accounting.cannot_edit_paid_expense')]);
         }
 
         $vendors = Vendor::active()->orderBy('name')->get();
@@ -186,7 +187,7 @@ class ExpenseController extends Controller
     {
         if ($expense->status === 'paid') {
             return redirect()->route('modules.accounting.expenses.show', $expense)
-                           ->withErrors(['error' => __('accounting.cannot_edit_paid_expense')]);
+                ->withErrors(['error' => __('accounting.cannot_edit_paid_expense')]);
         }
 
         $request->validate([
@@ -224,7 +225,7 @@ class ExpenseController extends Controller
             if ($request->hasFile('attachments')) {
                 $attachments = $expense->attachments ?? [];
                 foreach ($request->file('attachments') as $file) {
-                    $path = $file->store('expenses/' . $expense->id, 'public');
+                    $path = $file->store('expenses/'.$expense->id, 'public');
                     $attachments[] = [
                         'name' => $file->getClientOriginalName(),
                         'path' => $path,
@@ -238,12 +239,13 @@ class ExpenseController extends Controller
             DB::commit();
 
             return redirect()->route('modules.accounting.expenses.show', $expense)
-                           ->with('success', __('accounting.expense_updated_successfully'));
+                ->with('success', __('accounting.expense_updated_successfully'));
 
         } catch (\Exception $e) {
             DB::rollback();
+
             return back()->withInput()
-                        ->withErrors(['error' => __('accounting.error_updating_expense')]);
+                ->withErrors(['error' => __('accounting.error_updating_expense')]);
         }
     }
 
@@ -251,22 +253,23 @@ class ExpenseController extends Controller
     {
         if ($expense->status === 'paid') {
             return redirect()->route('modules.accounting.expenses.index')
-                           ->withErrors(['error' => __('accounting.cannot_delete_paid_expense')]);
+                ->withErrors(['error' => __('accounting.cannot_delete_paid_expense')]);
         }
 
         DB::beginTransaction();
         try {
             $expense->delete();
-            
+
             DB::commit();
 
             return redirect()->route('modules.accounting.expenses.index')
-                           ->with('success', __('accounting.expense_deleted_successfully'));
+                ->with('success', __('accounting.expense_deleted_successfully'));
 
         } catch (\Exception $e) {
             DB::rollback();
+
             return redirect()->route('modules.accounting.expenses.index')
-                           ->withErrors(['error' => __('accounting.error_deleting_expense')]);
+                ->withErrors(['error' => __('accounting.error_deleting_expense')]);
         }
     }
 
@@ -274,33 +277,33 @@ class ExpenseController extends Controller
     {
         if ($expense->status !== 'pending') {
             return redirect()->route('modules.accounting.expenses.show', $expense)
-                           ->withErrors(['error' => __('accounting.expense_not_pending')]);
+                ->withErrors(['error' => __('accounting.expense_not_pending')]);
         }
 
         $expense->approve(auth()->id());
 
         return redirect()->route('modules.accounting.expenses.show', $expense)
-                       ->with('success', __('accounting.expense_approved_successfully'));
+            ->with('success', __('accounting.expense_approved_successfully'));
     }
 
     public function reject(Expense $expense)
     {
         if ($expense->status !== 'pending') {
             return redirect()->route('modules.accounting.expenses.show', $expense)
-                           ->withErrors(['error' => __('accounting.expense_not_pending')]);
+                ->withErrors(['error' => __('accounting.expense_not_pending')]);
         }
 
         $expense->reject();
 
         return redirect()->route('modules.accounting.expenses.show', $expense)
-                       ->with('success', __('accounting.expense_rejected_successfully'));
+            ->with('success', __('accounting.expense_rejected_successfully'));
     }
 
     public function markAsPaid(Request $request, Expense $expense)
     {
         if ($expense->status !== 'approved') {
             return redirect()->route('modules.accounting.expenses.show', $expense)
-                           ->withErrors(['error' => __('accounting.expense_not_approved')]);
+                ->withErrors(['error' => __('accounting.expense_not_approved')]);
         }
 
         $request->validate([
@@ -321,12 +324,13 @@ class ExpenseController extends Controller
             DB::commit();
 
             return redirect()->route('modules.accounting.expenses.show', $expense)
-                           ->with('success', __('accounting.expense_marked_paid_successfully'));
+                ->with('success', __('accounting.expense_marked_paid_successfully'));
 
         } catch (\Exception $e) {
             DB::rollback();
+
             return back()->withInput()
-                        ->withErrors(['error' => __('accounting.error_marking_expense_paid')]);
+                ->withErrors(['error' => __('accounting.error_marking_expense_paid')]);
         }
     }
 
@@ -338,15 +342,15 @@ class ExpenseController extends Controller
         ]);
 
         $expenses = Expense::whereIn('id', $request->expense_ids)
-                          ->where('status', 'pending')
-                          ->get();
+            ->where('status', 'pending')
+            ->get();
 
         foreach ($expenses as $expense) {
             $expense->approve(auth()->id());
         }
 
         return redirect()->route('modules.accounting.expenses.index')
-                       ->with('success', __('accounting.expenses_approved_successfully', ['count' => $expenses->count()]));
+            ->with('success', __('accounting.expenses_approved_successfully', ['count' => $expenses->count()]));
     }
 
     public function bulkReject(Request $request)
@@ -357,14 +361,14 @@ class ExpenseController extends Controller
         ]);
 
         $expenses = Expense::whereIn('id', $request->expense_ids)
-                          ->where('status', 'pending')
-                          ->get();
+            ->where('status', 'pending')
+            ->get();
 
         foreach ($expenses as $expense) {
             $expense->reject();
         }
 
         return redirect()->route('modules.accounting.expenses.index')
-                       ->with('success', __('accounting.expenses_rejected_successfully', ['count' => $expenses->count()]));
+            ->with('success', __('accounting.expenses_rejected_successfully', ['count' => $expenses->count()]));
     }
 }

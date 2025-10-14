@@ -21,8 +21,8 @@ class VendorController extends Controller
             $search = $request->search;
             $query->where(function ($q) use ($search) {
                 $q->where('name', 'like', "%{$search}%")
-                  ->orWhere('company_name', 'like', "%{$search}%")
-                  ->orWhere('email', 'like', "%{$search}%");
+                    ->orWhere('company_name', 'like', "%{$search}%")
+                    ->orWhere('email', 'like', "%{$search}%");
             });
         }
 
@@ -88,23 +88,24 @@ class VendorController extends Controller
             DB::commit();
 
             return redirect()->route('modules.accounting.vendors.show', $vendor)
-                           ->with('success', __('accounting.vendor_created_successfully'));
+                ->with('success', __('accounting.vendor_created_successfully'));
 
         } catch (\Exception $e) {
             DB::rollback();
+
             return back()->withInput()
-                        ->withErrors(['error' => __('accounting.error_creating_vendor')]);
+                ->withErrors(['error' => __('accounting.error_creating_vendor')]);
         }
     }
 
     public function show(Vendor $vendor)
     {
         $vendor->load(['expenses', 'payments']);
-        
+
         // Calculate vendor statistics
         $totalExpenses = $vendor->getTotalExpenses();
         $totalPaid = $vendor->getTotalPaid();
-        
+
         $stats = [
             'total_expenses' => $totalExpenses,
             'total_paid' => $totalPaid,
@@ -123,7 +124,7 @@ class VendorController extends Controller
     {
         $request->validate([
             'name' => 'required|string|max:255',
-            'email' => 'nullable|email|unique:accounting_vendors,email,' . $vendor->id,
+            'email' => 'nullable|email|unique:accounting_vendors,email,'.$vendor->id,
             'phone' => 'nullable|string|max:20',
             'currency' => 'required|string|size:3',
             'payment_terms' => 'required|in:net_15,net_30,net_45,net_60,due_on_receipt',
@@ -152,12 +153,13 @@ class VendorController extends Controller
             DB::commit();
 
             return redirect()->route('modules.accounting.vendors.show', $vendor)
-                           ->with('success', __('accounting.vendor_updated_successfully'));
+                ->with('success', __('accounting.vendor_updated_successfully'));
 
         } catch (\Exception $e) {
             DB::rollback();
+
             return back()->withInput()
-                        ->withErrors(['error' => __('accounting.error_updating_vendor')]);
+                ->withErrors(['error' => __('accounting.error_updating_vendor')]);
         }
     }
 
@@ -166,22 +168,23 @@ class VendorController extends Controller
         // Check if vendor has expenses
         if ($vendor->expenses()->count() > 0) {
             return redirect()->route('modules.accounting.vendors.index')
-                           ->withErrors(['error' => __('accounting.cannot_delete_vendor_with_expenses')]);
+                ->withErrors(['error' => __('accounting.cannot_delete_vendor_with_expenses')]);
         }
 
         DB::beginTransaction();
         try {
             $vendor->delete();
-            
+
             DB::commit();
 
             return redirect()->route('modules.accounting.vendors.index')
-                           ->with('success', __('accounting.vendor_deleted_successfully'));
+                ->with('success', __('accounting.vendor_deleted_successfully'));
 
         } catch (\Exception $e) {
             DB::rollback();
+
             return redirect()->route('modules.accounting.vendors.index')
-                           ->withErrors(['error' => __('accounting.error_deleting_vendor')]);
+                ->withErrors(['error' => __('accounting.error_deleting_vendor')]);
         }
     }
 
@@ -190,7 +193,7 @@ class VendorController extends Controller
         $vendor->update(['is_active' => true]);
 
         return redirect()->route('modules.accounting.vendors.show', $vendor)
-                       ->with('success', __('accounting.vendor_activated_successfully'));
+            ->with('success', __('accounting.vendor_activated_successfully'));
     }
 
     public function deactivate(Vendor $vendor)
@@ -198,7 +201,7 @@ class VendorController extends Controller
         $vendor->update(['is_active' => false]);
 
         return redirect()->route('modules.accounting.vendors.show', $vendor)
-                       ->with('success', __('accounting.vendor_deactivated_successfully'));
+            ->with('success', __('accounting.vendor_deactivated_successfully'));
     }
 
     public function bulkUpload()
@@ -250,7 +253,7 @@ class VendorController extends Controller
                         'tax_number' => $row[10] ?? null,
                         'currency' => $row[11] ?? 'USD',
                         'payment_terms' => $row[12] ?? 'net_30',
-                        'is_active' => !empty($row[13]) ? (strtolower($row[13]) === 'yes' || $row[13] === '1') : true,
+                        'is_active' => ! empty($row[13]) ? (strtolower($row[13]) === 'yes' || $row[13] === '1') : true,
                         'notes' => $row[14] ?? null,
                     ];
 
@@ -264,8 +267,9 @@ class VendorController extends Controller
                     ]);
 
                     if ($validator->fails()) {
-                        $errors[] = "Row {$rowNumber}: " . implode(', ', $validator->errors()->all());
+                        $errors[] = "Row {$rowNumber}: ".implode(', ', $validator->errors()->all());
                         $errorCount++;
+
                         continue;
                     }
 
@@ -273,7 +277,7 @@ class VendorController extends Controller
                     $successCount++;
 
                 } catch (\Exception $e) {
-                    $errors[] = "Row {$rowNumber}: " . $e->getMessage();
+                    $errors[] = "Row {$rowNumber}: ".$e->getMessage();
                     $errorCount++;
                 }
             }
@@ -286,26 +290,27 @@ class VendorController extends Controller
             }
 
             return redirect()->route('modules.accounting.vendors.index')
-                           ->with('success', $message)
-                           ->with('upload_errors', $errors);
+                ->with('success', $message)
+                ->with('upload_errors', $errors);
 
         } catch (\Exception $e) {
             DB::rollBack();
+
             return redirect()->back()
-                           ->with('error', 'Error processing file: ' . $e->getMessage());
+                ->with('error', 'Error processing file: '.$e->getMessage());
         }
     }
 
     public function downloadTemplate()
     {
-        $spreadsheet = new Spreadsheet();
+        $spreadsheet = new Spreadsheet;
         $sheet = $spreadsheet->getActiveSheet();
 
         // Set headers
         $headers = [
             'Name*', 'Company Name', 'Email', 'Phone', 'Website',
             'Address', 'City', 'State', 'Postal Code', 'Country',
-            'Tax Number', 'Currency*', 'Payment Terms*', 'Active (Yes/No)', 'Notes'
+            'Tax Number', 'Currency*', 'Payment Terms*', 'Active (Yes/No)', 'Notes',
         ];
 
         $sheet->fromArray($headers, null, 'A1');
@@ -315,8 +320,8 @@ class VendorController extends Controller
             [
                 'ABC Supplies', 'ABC Supplies Inc.', 'contact@abcsupplies.com', '+1234567890', 'https://abcsupplies.com',
                 '456 Business Ave', 'Los Angeles', 'CA', '90210', 'USA',
-                'TAX789012', 'USD', 'net_30', 'Yes', 'Sample vendor'
-            ]
+                'TAX789012', 'USD', 'net_30', 'Yes', 'Sample vendor',
+            ],
         ];
 
         $sheet->fromArray($sampleData, null, 'A2');

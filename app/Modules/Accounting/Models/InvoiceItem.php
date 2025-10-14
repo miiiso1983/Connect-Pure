@@ -55,17 +55,17 @@ class InvoiceItem extends Model
     // Accessors
     public function getFormattedRateAttribute()
     {
-        return number_format((float)$this->rate, 2);
+        return number_format((float) $this->rate, 2);
     }
 
     public function getFormattedAmountAttribute()
     {
-        return number_format((float)$this->amount, 2);
+        return number_format((float) $this->amount, 2);
     }
 
     public function getFormattedTotalAttribute()
     {
-        return number_format((float)$this->total_amount, 2);
+        return number_format((float) $this->total_amount, 2);
     }
 
     // Methods
@@ -73,22 +73,22 @@ class InvoiceItem extends Model
     {
         // Calculate base amount
         $this->amount = $this->quantity * $this->rate;
-        
+
         // Calculate discount
         if ($this->discount_rate > 0) {
             $this->discount_amount = $this->amount * ($this->discount_rate / 100);
         }
-        
+
         $amountAfterDiscount = $this->amount - $this->discount_amount;
-        
+
         // Calculate tax
         if ($this->tax_rate > 0) {
             $this->tax_amount = $amountAfterDiscount * ($this->tax_rate / 100);
         }
-        
+
         // Calculate total
         $this->total_amount = $amountAfterDiscount + $this->tax_amount;
-        
+
         $this->save();
     }
 

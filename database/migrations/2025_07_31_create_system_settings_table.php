@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('group')->default('general'); // general, email, security, etc.
             $table->boolean('is_public')->default(false); // can be accessed by non-admin users
             $table->timestamps();
-            
+
             $table->index(['group', 'key']);
         });
 
@@ -99,7 +99,7 @@ return new class extends Migration
                 'group' => 'general',
                 'is_public' => true,
             ],
-            
+
             // Security Settings
             [
                 'key' => 'session_lifetime',
@@ -149,7 +149,7 @@ return new class extends Migration
                 'group' => 'security',
                 'is_public' => false,
             ],
-            
+
             // Email Settings
             [
                 'key' => 'email_notifications',
@@ -167,7 +167,7 @@ return new class extends Migration
                 'group' => 'email',
                 'is_public' => false,
             ],
-            
+
             // Maintenance Settings
             [
                 'key' => 'maintenance_message',
@@ -185,7 +185,7 @@ return new class extends Migration
                 'group' => 'maintenance',
                 'is_public' => false,
             ],
-            
+
             // System Settings
             [
                 'key' => 'backup_enabled',

@@ -2,21 +2,33 @@
 // Emergency error probe for production when Laravel returns 500 everywhere.
 // SECURITY: Protected by a token stored at storage/app/probe.key. Delete this file after use.
 
-$APP_ROOT = realpath(__DIR__ . '/..');
-$storage = $APP_ROOT . '/storage';
-$keyFile = $storage . '/app/probe.key';
+$APP_ROOT = realpath(__DIR__.'/..');
+$storage = $APP_ROOT.'/storage';
+$keyFile = $storage.'/app/probe.key';
 
 header('Content-Type: text/html; charset=utf-8');
 
-function h($s){ return htmlspecialchars((string)$s, ENT_QUOTES, 'UTF-8'); }
-function exists($p){ return file_exists($p) ? 'YES' : 'NO'; }
-function readable($p){ return is_readable($p) ? 'YES' : 'NO'; }
-function writable($p){ return is_writable($p) ? 'YES' : 'NO'; }
+function h($s)
+{
+    return htmlspecialchars((string) $s, ENT_QUOTES, 'UTF-8');
+}
+function exists($p)
+{
+    return file_exists($p) ? 'YES' : 'NO';
+}
+function readable($p)
+{
+    return is_readable($p) ? 'YES' : 'NO';
+}
+function writable($p)
+{
+    return is_writable($p) ? 'YES' : 'NO';
+}
 
 // Auth check
-$provided = isset($_GET['k']) ? (string)$_GET['k'] : '';
-$expected = is_readable($keyFile) ? trim((string)@file_get_contents($keyFile)) : '';
-if ($expected === '' || !hash_equals($expected, $provided)) {
+$provided = isset($_GET['k']) ? (string) $_GET['k'] : '';
+$expected = is_readable($keyFile) ? trim((string) @file_get_contents($keyFile)) : '';
+if ($expected === '' || ! hash_equals($expected, $provided)) {
     http_response_code(403);
     echo '<!doctype html><meta charset="utf-8"><title>403</title><div style="font-family:ui-sans-serif;max-width:680px;margin:40px auto;padding:20px;border:1px solid #ddd;border-radius:12px">';
     echo '<h2>Forbidden</h2><p>Missing or invalid token. Create token file at <code>storage/app/probe.key</code> and access <code>/error-probe.php?k=YOUR_TOKEN</code>.</p>';
@@ -24,20 +36,20 @@ if ($expected === '' || !hash_equals($expected, $provided)) {
     exit;
 }
 
-$logPath = $storage . '/logs/laravel.log';
-$bootstrapCache = $APP_ROOT . '/bootstrap/cache';
+$logPath = $storage.'/logs/laravel.log';
+$bootstrapCache = $APP_ROOT.'/bootstrap/cache';
 
 $action = isset($_GET['action']) ? $_GET['action'] : '';
 $messages = [];
 
 if ($action === 'clear_caches') {
-    $targets = glob($bootstrapCache . '/{config.php,packages.php,services.php,routes-*.php}', GLOB_BRACE) ?: [];
+    $targets = glob($bootstrapCache.'/{config.php,packages.php,services.php,routes-*.php}', GLOB_BRACE) ?: [];
     foreach ($targets as $t) {
         if (is_file($t)) {
             if (@unlink($t)) {
-                $messages[] = 'Deleted: ' . basename($t);
+                $messages[] = 'Deleted: '.basename($t);
             } else {
-                $messages[] = 'Failed to delete: ' . basename($t);
+                $messages[] = 'Failed to delete: '.basename($t);
             }
         }
     }
@@ -50,11 +62,13 @@ if (is_readable($logPath)) {
     $bytes = 200 * 1024;
     $fh = @fopen($logPath, 'r');
     if ($fh) {
-        if ($size > $bytes) { fseek($fh, -$bytes, SEEK_END); }
+        if ($size > $bytes) {
+            fseek($fh, -$bytes, SEEK_END);
+        }
         $logTail = stream_get_contents($fh) ?: '';
         fclose($fh);
     } else {
-        $logTail = (string)@file_get_contents($logPath);
+        $logTail = (string) @file_get_contents($logPath);
     }
 } else {
     $logTail = "Log not readable: $logPath";
@@ -62,7 +76,7 @@ if (is_readable($logPath)) {
 
 // Simple parse to find last ERROR block
 $lastError = '';
-$lines = preg_split("/\r?\n/", (string)$logTail);
+$lines = preg_split("/\r?\n/", (string) $logTail);
 for ($i = count($lines) - 1; $i >= 0; $i--) {
     if (preg_match('/\[(\d{4}-\d{2}-\d{2} [^\]]+)\] (\w+)\.(ERROR|CRITICAL)/i', $lines[$i])) {
         // collect up to 60 lines backward
@@ -91,7 +105,9 @@ for ($i = count($lines) - 1; $i >= 0; $i--) {
 <div class="card">
   <h2>Laravel Error Probe</h2>
   <p class="muted">App root: <span class="mono"><?php echo h($APP_ROOT); ?></span></p>
-  <?php if ($messages): ?><div><?php foreach($messages as $m){ echo '<div class="badge">'.h($m).'</div> '; } ?></div><?php endif; ?>
+  <?php if ($messages) { ?><div><?php foreach ($messages as $m) {
+      echo '<div class="badge">'.h($m).'</div> ';
+  } ?></div><?php } ?>
   <div class="row">
     <div>
       <h3>Bootstrap Cache</h3>
@@ -99,7 +115,7 @@ for ($i = count($lines) - 1; $i >= 0; $i--) {
         <li>config.php: <?php echo h(exists($bootstrapCache.'/config.php')); ?> / readable: <?php echo h(readable($bootstrapCache.'/config.php')); ?></li>
         <li>packages.php: <?php echo h(exists($bootstrapCache.'/packages.php')); ?> / readable: <?php echo h(readable($bootstrapCache.'/packages.php')); ?></li>
         <li>services.php: <?php echo h(exists($bootstrapCache.'/services.php')); ?> / readable: <?php echo h(readable($bootstrapCache.'/services.php')); ?></li>
-        <li>routes-*.php exists: <?php echo h((bool)glob($bootstrapCache.'/routes-*.php') ? 'YES' : 'NO'); ?></li>
+        <li>routes-*.php exists: <?php echo h((bool) glob($bootstrapCache.'/routes-*.php') ? 'YES' : 'NO'); ?></li>
       </ul>
       <p><a class="btn" href="?k=<?php echo urlencode($provided); ?>&action=clear_caches">Delete cache files (config/packages/services/routes)</a></p>
     </div>

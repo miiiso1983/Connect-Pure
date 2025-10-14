@@ -14,7 +14,7 @@ class DashboardController extends Controller
     public function switchLanguage(Request $request)
     {
         $locale = $request->input('locale');
-        
+
         if (in_array($locale, ['en', 'ar'])) {
             session(['locale' => $locale]);
             app()->setLocale($locale);

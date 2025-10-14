@@ -12,8 +12,8 @@ class DepartmentFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => $this->faker->company . ' Department',
-            'name_ar' => 'قسم ' . $this->faker->company,
+            'name' => $this->faker->company.' Department',
+            'name_ar' => 'قسم '.$this->faker->company,
             'description' => $this->faker->paragraph,
             'description_ar' => $this->faker->paragraph,
             'code' => strtoupper($this->faker->unique()->lexify('???')),

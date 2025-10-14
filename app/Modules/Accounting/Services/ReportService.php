@@ -3,9 +3,8 @@
 namespace App\Modules\Accounting\Services;
 
 use App\Modules\Accounting\Models\ChartOfAccount;
-use App\Modules\Accounting\Models\Invoice;
 use App\Modules\Accounting\Models\Expense;
-use App\Modules\Accounting\Models\JournalEntry;
+use App\Modules\Accounting\Models\Invoice;
 use Carbon\Carbon;
 use Illuminate\Support\Collection;
 
@@ -38,7 +37,7 @@ class ReportService
             'period' => [
                 'start_date' => $start->format('Y-m-d'),
                 'end_date' => $end->format('Y-m-d'),
-                'period_text' => $start->format('M d, Y') . ' - ' . $end->format('M d, Y'),
+                'period_text' => $start->format('M d, Y').' - '.$end->format('M d, Y'),
             ],
             'revenue' => [
                 'accounts' => $revenues,
@@ -116,10 +115,10 @@ class ReportService
 
         // Operating Activities
         $operatingCashFlow = $this->getOperatingCashFlow($start, $end);
-        
+
         // Investing Activities (simplified)
         $investingCashFlow = $this->getInvestingCashFlow($start, $end);
-        
+
         // Financing Activities (simplified)
         $financingCashFlow = $this->getFinancingCashFlow($start, $end);
 
@@ -129,7 +128,7 @@ class ReportService
             'period' => [
                 'start_date' => $start->format('Y-m-d'),
                 'end_date' => $end->format('Y-m-d'),
-                'period_text' => $start->format('M d, Y') . ' - ' . $end->format('M d, Y'),
+                'period_text' => $start->format('M d, Y').' - '.$end->format('M d, Y'),
             ],
             'operating_activities' => $operatingCashFlow,
             'investing_activities' => $investingCashFlow,
@@ -145,10 +144,10 @@ class ReportService
     {
         $date = Carbon::parse($asOfDate);
         $accounts = ChartOfAccount::active()->orderBy('account_code')->get();
-        
+
         $trialBalance = $accounts->map(function ($account) use ($date) {
             $balance = $account->getBalance(null, $date->format('Y-m-d'));
-            
+
             return [
                 'account_code' => $account->account_code,
                 'account_name' => $account->account_name,
@@ -275,9 +274,9 @@ class ReportService
     /**
      * Export report to PDF
      */
-    public function exportToPDF(string $reportType, string $startDate = null, string $endDate = null): string
+    public function exportToPDF(string $reportType, ?string $startDate = null, ?string $endDate = null): string
     {
-        $reportData = match($reportType) {
+        $reportData = match ($reportType) {
             'profit_loss' => $this->getProfitLossReport($startDate, $endDate),
             'balance_sheet' => $this->getBalanceSheetReport($endDate ?? now()->format('Y-m-d')),
             'cash_flow' => $this->getCashFlowReport($startDate, $endDate),
@@ -302,7 +301,7 @@ class ReportService
 
         $agingData = $customers->map(function ($customer) {
             $invoices = $customer->invoices;
-            
+
             $current = $invoices->where('due_date', '>=', now())->sum('balance_due');
             $days30 = $invoices->where('due_date', '<', now())
                 ->where('due_date', '>=', now()->subDays(30))->sum('balance_due');

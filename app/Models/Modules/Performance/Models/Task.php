@@ -22,7 +22,7 @@ class Task extends Model
         'actual_hours',
         'completion_percentage',
         'tags',
-        'notes'
+        'notes',
     ];
 
     protected $casts = [
@@ -30,7 +30,7 @@ class Task extends Model
         'due_date' => 'datetime',
         'completed_at' => 'datetime',
         'tags' => 'array',
-        'completion_percentage' => 'decimal:2'
+        'completion_percentage' => 'decimal:2',
     ];
 
     public function assignments(): HasMany
@@ -40,7 +40,7 @@ class Task extends Model
 
     public function getStatusColorAttribute(): string
     {
-        return match($this->status) {
+        return match ($this->status) {
             'pending' => 'gray',
             'in_progress' => 'blue',
             'completed' => 'green',
@@ -52,7 +52,7 @@ class Task extends Model
 
     public function getPriorityColorAttribute(): string
     {
-        return match($this->priority) {
+        return match ($this->priority) {
             'low' => 'green',
             'medium' => 'yellow',
             'high' => 'orange',
@@ -63,7 +63,7 @@ class Task extends Model
 
     public function getCategoryColorAttribute(): string
     {
-        return match($this->category) {
+        return match ($this->category) {
             'development' => 'blue',
             'design' => 'purple',
             'testing' => 'indigo',
@@ -79,7 +79,7 @@ class Task extends Model
     {
         return $this->due_date &&
                $this->due_date < now() &&
-               !in_array($this->status, ['completed', 'cancelled']);
+               ! in_array($this->status, ['completed', 'cancelled']);
     }
 
     public function getIsCompletedAttribute(): bool
@@ -89,7 +89,7 @@ class Task extends Model
 
     public function getDaysRemainingAttribute(): ?int
     {
-        if (!$this->due_date || $this->is_completed) {
+        if (! $this->due_date || $this->is_completed) {
             return null;
         }
 
@@ -98,7 +98,7 @@ class Task extends Model
 
     public function getEfficiencyRateAttribute(): ?float
     {
-        if (!$this->estimated_hours || !$this->actual_hours) {
+        if (! $this->estimated_hours || ! $this->actual_hours) {
             return null;
         }
 
@@ -107,18 +107,18 @@ class Task extends Model
 
     public function getDurationAttribute(): ?string
     {
-        if (!$this->start_date || !$this->completed_at) {
+        if (! $this->start_date || ! $this->completed_at) {
             return null;
         }
 
         $diff = $this->start_date->diff($this->completed_at);
 
         if ($diff->days > 0) {
-            return $diff->days . 'd ' . $diff->h . 'h';
+            return $diff->days.'d '.$diff->h.'h';
         } elseif ($diff->h > 0) {
-            return $diff->h . 'h ' . $diff->i . 'm';
+            return $diff->h.'h '.$diff->i.'m';
         } else {
-            return $diff->i . 'm';
+            return $diff->i.'m';
         }
     }
 

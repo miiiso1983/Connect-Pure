@@ -72,23 +72,37 @@ class Vendor extends Model
 
     public function getFormattedBalanceAttribute()
     {
-        return number_format((float)$this->balance, 2) . ' ' . $this->currency;
+        return number_format((float) $this->balance, 2).' '.$this->currency;
     }
 
     public function getFullAddressAttribute()
     {
         $address = $this->address;
-        if ($this->city) $address .= ', ' . $this->city;
-        if ($this->state) $address .= ', ' . $this->state;
-        if ($this->postal_code) $address .= ' ' . $this->postal_code;
-        if ($this->country) $address .= ', ' . $this->country;
+        if ($this->city) {
+            $address .= ', '.$this->city;
+        }
+        if ($this->state) {
+            $address .= ', '.$this->state;
+        }
+        if ($this->postal_code) {
+            $address .= ' '.$this->postal_code;
+        }
+        if ($this->country) {
+            $address .= ', '.$this->country;
+        }
+
         return $address;
     }
 
     public function getStatusColorAttribute()
     {
-        if (!$this->is_active) return 'red';
-        if ($this->balance > 0) return 'orange';
+        if (! $this->is_active) {
+            return 'red';
+        }
+        if ($this->balance > 0) {
+            return 'orange';
+        }
+
         return 'green';
     }
 
@@ -105,6 +119,7 @@ class Vendor extends Model
         if ($year) {
             $query->whereYear('expense_date', $year);
         }
+
         return $query->sum('total_amount');
     }
 
@@ -114,6 +129,7 @@ class Vendor extends Model
         if ($year) {
             $query->whereYear('payment_date', $year);
         }
+
         return $query->sum('amount');
     }
 
@@ -122,8 +138,8 @@ class Vendor extends Model
         parent::boot();
 
         static::creating(function ($vendor) {
-            if (!$vendor->vendor_number) {
-                $vendor->vendor_number = 'VEND-' . str_pad(
+            if (! $vendor->vendor_number) {
+                $vendor->vendor_number = 'VEND-'.str_pad(
                     static::max('id') + 1, 6, '0', STR_PAD_LEFT
                 );
             }

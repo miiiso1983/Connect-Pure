@@ -109,7 +109,7 @@ class Role extends Model
      */
     public function getLocalizedNameAttribute(): string
     {
-        return __('roles.' . $this->slug);
+        return __('roles.'.$this->slug);
     }
 
     /**
@@ -117,7 +117,7 @@ class Role extends Model
      */
     public function getLocalizedDescriptionAttribute(): string
     {
-        return __('roles.' . $this->slug . '_description');
+        return __('roles.'.$this->slug.'_description');
     }
 
     /**
@@ -125,7 +125,7 @@ class Role extends Model
      */
     public function hasPermission(string $permission): bool
     {
-        if (!$this->permissions) {
+        if (! $this->permissions) {
             return false;
         }
 
@@ -137,11 +137,11 @@ class Role extends Model
      */
     public function hasAnyPermission(array $permissions): bool
     {
-        if (!$this->permissions) {
+        if (! $this->permissions) {
             return false;
         }
 
-        return !empty(array_intersect($permissions, $this->permissions));
+        return ! empty(array_intersect($permissions, $this->permissions));
     }
 
     /**
@@ -149,7 +149,7 @@ class Role extends Model
      */
     public function hasAllPermissions(array $permissions): bool
     {
-        if (!$this->permissions) {
+        if (! $this->permissions) {
             return false;
         }
 
@@ -162,8 +162,8 @@ class Role extends Model
     public function addPermission(string $permission): void
     {
         $permissions = $this->permissions ?? [];
-        
-        if (!in_array($permission, $permissions)) {
+
+        if (! in_array($permission, $permissions)) {
             $permissions[] = $permission;
             $this->permissions = $permissions;
             $this->save();
@@ -176,7 +176,7 @@ class Role extends Model
     public function removePermission(string $permission): void
     {
         $permissions = $this->permissions ?? [];
-        
+
         if (($key = array_search($permission, $permissions)) !== false) {
             unset($permissions[$key]);
             $this->permissions = array_values($permissions);
@@ -201,7 +201,7 @@ class Role extends Model
         return [
             // Dashboard
             'dashboard.view',
-            
+
             // HR Module
             'hr.view',
             'hr.employees.view',
@@ -222,7 +222,7 @@ class Role extends Model
             'hr.payroll.process',
             'hr.payroll.approve',
             'hr.reports.view',
-            
+
             // Accounting Module
             'accounting.view',
             'accounting.entries.view',
@@ -235,7 +235,7 @@ class Role extends Model
             'accounting.reports.view',
             'accounting.reports.generate',
             'accounting.settings.manage',
-            
+
             // CRM Module
             'crm.view',
             'crm.contacts.view',
@@ -248,7 +248,7 @@ class Role extends Model
             'crm.followups.view',
             'crm.followups.manage',
             'crm.reports.view',
-            
+
             // Performance Module
             'performance.view',
             'performance.tasks.view',
@@ -260,7 +260,7 @@ class Role extends Model
             'performance.metrics.manage',
             'performance.reports.view',
             'performance.analytics.view',
-            
+
             // User Management
             'users.view',
             'users.create',
@@ -269,7 +269,7 @@ class Role extends Model
             'roles.view',
             'roles.manage',
             'permissions.manage',
-            
+
             // System Settings
             'settings.view',
             'settings.manage',
@@ -289,11 +289,11 @@ class Role extends Model
         foreach ($permissions as $permission) {
             $parts = explode('.', $permission);
             $module = $parts[0];
-            
-            if (!isset($grouped[$module])) {
+
+            if (! isset($grouped[$module])) {
                 $grouped[$module] = [];
             }
-            
+
             $grouped[$module][] = $permission;
         }
 
@@ -369,7 +369,7 @@ class Role extends Model
     {
         if ($this->parent) {
             $this->level = $this->parent->level + 1;
-            $this->path = $this->parent->path ? $this->parent->path . '/' . $this->id : (string) $this->id;
+            $this->path = $this->parent->path ? $this->parent->path.'/'.$this->id : (string) $this->id;
         } else {
             $this->level = 0;
             $this->path = (string) $this->id;
@@ -441,7 +441,7 @@ class Role extends Model
         }
 
         $parent = self::find($parentId);
-        if (!$parent) {
+        if (! $parent) {
             return false;
         }
 

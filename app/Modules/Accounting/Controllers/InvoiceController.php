@@ -3,9 +3,9 @@
 namespace App\Modules\Accounting\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Modules\Accounting\Models\Invoice;
-use App\Modules\Accounting\Models\Customer;
 use App\Modules\Accounting\Models\Account;
+use App\Modules\Accounting\Models\Customer;
+use App\Modules\Accounting\Models\Invoice;
 use App\Modules\Accounting\Models\TaxRate;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -37,15 +37,15 @@ class InvoiceController extends Controller
             $search = $request->search;
             $query->where(function ($q) use ($search) {
                 $q->where('invoice_number', 'like', "%{$search}%")
-                  ->orWhereHas('customer', function ($customerQuery) use ($search) {
-                      $customerQuery->where('name', 'like', "%{$search}%")
-                                   ->orWhere('company_name', 'like', "%{$search}%");
-                  });
+                    ->orWhereHas('customer', function ($customerQuery) use ($search) {
+                        $customerQuery->where('name', 'like', "%{$search}%")
+                            ->orWhere('company_name', 'like', "%{$search}%");
+                    });
             });
         }
 
         $invoices = $query->orderBy('invoice_date', 'desc')
-                         ->paginate(20);
+            ->paginate(20);
 
         $customers = Customer::active()->orderBy('name')->get();
         $statuses = Invoice::getStatuses();
@@ -134,19 +134,20 @@ class InvoiceController extends Controller
             DB::commit();
 
             return redirect()->route('modules.accounting.invoices.show', $invoice)
-                           ->with('success', __('accounting.invoice_created_successfully'));
+                ->with('success', __('accounting.invoice_created_successfully'));
 
         } catch (\Exception $e) {
             DB::rollback();
+
             return back()->withInput()
-                        ->withErrors(['error' => __('accounting.error_creating_invoice')]);
+                ->withErrors(['error' => __('accounting.error_creating_invoice')]);
         }
     }
 
     public function show(Invoice $invoice)
     {
         $invoice->load(['customer', 'items.account', 'payments']);
-        
+
         return view('modules.accounting.invoices.show', compact('invoice'));
     }
 
@@ -154,7 +155,7 @@ class InvoiceController extends Controller
     {
         if ($invoice->status === 'paid') {
             return redirect()->route('modules.accounting.invoices.show', $invoice)
-                           ->withErrors(['error' => __('accounting.cannot_edit_paid_invoice')]);
+                ->withErrors(['error' => __('accounting.cannot_edit_paid_invoice')]);
         }
 
         $invoice->load(['items']);
@@ -171,7 +172,7 @@ class InvoiceController extends Controller
     {
         if ($invoice->status === 'paid') {
             return redirect()->route('modules.accounting.invoices.show', $invoice)
-                           ->withErrors(['error' => __('accounting.cannot_edit_paid_invoice')]);
+                ->withErrors(['error' => __('accounting.cannot_edit_paid_invoice')]);
         }
 
         $request->validate([
@@ -232,12 +233,13 @@ class InvoiceController extends Controller
             DB::commit();
 
             return redirect()->route('modules.accounting.invoices.show', $invoice)
-                           ->with('success', __('accounting.invoice_updated_successfully'));
+                ->with('success', __('accounting.invoice_updated_successfully'));
 
         } catch (\Exception $e) {
             DB::rollback();
+
             return back()->withInput()
-                        ->withErrors(['error' => __('accounting.error_updating_invoice')]);
+                ->withErrors(['error' => __('accounting.error_updating_invoice')]);
         }
     }
 
@@ -245,25 +247,26 @@ class InvoiceController extends Controller
     {
         if ($invoice->status === 'paid' || $invoice->paid_amount > 0) {
             return redirect()->route('modules.accounting.invoices.index')
-                           ->withErrors(['error' => __('accounting.cannot_delete_paid_invoice')]);
+                ->withErrors(['error' => __('accounting.cannot_delete_paid_invoice')]);
         }
 
         DB::beginTransaction();
         try {
             // Update customer balance
             $invoice->customer->updateBalance(-$invoice->total_amount);
-            
+
             $invoice->delete();
-            
+
             DB::commit();
 
             return redirect()->route('modules.accounting.invoices.index')
-                           ->with('success', __('accounting.invoice_deleted_successfully'));
+                ->with('success', __('accounting.invoice_deleted_successfully'));
 
         } catch (\Exception $e) {
             DB::rollback();
+
             return redirect()->route('modules.accounting.invoices.index')
-                           ->withErrors(['error' => __('accounting.error_deleting_invoice')]);
+                ->withErrors(['error' => __('accounting.error_deleting_invoice')]);
         }
     }
 
@@ -279,17 +282,17 @@ class InvoiceController extends Controller
             // Mail::to($invoice->customer->email)->send(new InvoiceMail($invoice));
 
             return redirect()->route('modules.accounting.invoices.show', $invoice)
-                           ->with('success', __('accounting.invoice_sent_successfully_with_whatsapp'));
+                ->with('success', __('accounting.invoice_sent_successfully_with_whatsapp'));
         }
 
         return redirect()->route('modules.accounting.invoices.show', $invoice)
-                       ->withErrors(['error' => __('accounting.invoice_already_sent')]);
+            ->withErrors(['error' => __('accounting.invoice_already_sent')]);
     }
 
     public function markAsPaid(Request $request, Invoice $invoice)
     {
         $request->validate([
-            'payment_amount' => 'required|numeric|min:0.01|max:' . $invoice->balance_due,
+            'payment_amount' => 'required|numeric|min:0.01|max:'.$invoice->balance_due,
             'payment_date' => 'required|date',
             'payment_method' => 'required|string',
             'reference_number' => 'nullable|string',
@@ -307,12 +310,13 @@ class InvoiceController extends Controller
             DB::commit();
 
             return redirect()->route('modules.accounting.invoices.show', $invoice)
-                           ->with('success', __('accounting.payment_recorded_successfully'));
+                ->with('success', __('accounting.payment_recorded_successfully'));
 
         } catch (\Exception $e) {
             DB::rollback();
+
             return back()->withInput()
-                        ->withErrors(['error' => __('accounting.error_recording_payment')]);
+                ->withErrors(['error' => __('accounting.error_recording_payment')]);
         }
     }
 
@@ -340,13 +344,13 @@ class InvoiceController extends Controller
         $newInvoice->calculateTotals();
 
         return redirect()->route('modules.accounting.invoices.edit', $newInvoice)
-                       ->with('success', __('accounting.invoice_duplicated_successfully'));
+            ->with('success', __('accounting.invoice_duplicated_successfully'));
     }
 
     public function pdf(Invoice $invoice)
     {
         $invoice->load(['customer', 'items']);
-        
+
         // Here you would generate PDF using a library like DomPDF or wkhtmltopdf
         // For now, return a view that can be printed
         return view('modules.accounting.invoices.pdf', compact('invoice'));

@@ -91,18 +91,19 @@ class Employee extends Model
     // Accessors
     public function getFullNameAttribute()
     {
-        return $this->first_name . ' ' . $this->last_name;
+        return $this->first_name.' '.$this->last_name;
     }
 
     public function getFormattedPayRateAttribute()
     {
-        $rate = number_format((float)$this->pay_rate, 2) . ' ' . $this->currency;
-        return $this->pay_type === 'hourly' ? $rate . '/hr' : $rate . '/year';
+        $rate = number_format((float) $this->pay_rate, 2).' '.$this->currency;
+
+        return $this->pay_type === 'hourly' ? $rate.'/hr' : $rate.'/year';
     }
 
     public function getStatusColorAttribute()
     {
-        return match($this->status) {
+        return match ($this->status) {
             'active' => 'green',
             'inactive' => 'yellow',
             'terminated' => 'red',
@@ -113,6 +114,7 @@ class Employee extends Model
     public function getYearsOfServiceAttribute()
     {
         $endDate = $this->termination_date ?: now();
+
         return $this->hire_date->diffInYears($endDate);
     }
 
@@ -120,13 +122,14 @@ class Employee extends Model
     public function calculateGrossPay($hours = null, $payPeriod = null)
     {
         if ($this->pay_type === 'salary') {
-            $periodsPerYear = match($this->pay_frequency) {
+            $periodsPerYear = match ($this->pay_frequency) {
                 'weekly' => 52,
                 'bi_weekly' => 26,
                 'semi_monthly' => 24,
                 'monthly' => 12,
                 default => 26
             };
+
             return $this->pay_rate / $periodsPerYear;
         } else {
             return ($hours ?: 40) * $this->pay_rate;
@@ -136,6 +139,7 @@ class Employee extends Model
     public function getYearToDatePay($year = null)
     {
         $year = $year ?: now()->year;
+
         return $this->payroll()
             ->whereYear('pay_date', $year)
             ->sum('gross_pay');
@@ -144,6 +148,7 @@ class Employee extends Model
     public function getYearToDateTaxes($year = null)
     {
         $year = $year ?: now()->year;
+
         return $this->payroll()
             ->whereYear('pay_date', $year)
             ->sum('total_deductions');
@@ -191,8 +196,8 @@ class Employee extends Model
         parent::boot();
 
         static::creating(function ($employee) {
-            if (!$employee->employee_number) {
-                $employee->employee_number = 'EMP-' . str_pad(
+            if (! $employee->employee_number) {
+                $employee->employee_number = 'EMP-'.str_pad(
                     static::max('id') + 1, 6, '0', STR_PAD_LEFT
                 );
             }

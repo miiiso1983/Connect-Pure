@@ -17,13 +17,13 @@ class TaskAssignment extends Model
         'started_at',
         'completed_at',
         'assignment_notes',
-        'assignment_status'
+        'assignment_status',
     ];
 
     protected $casts = [
         'assigned_at' => 'datetime',
         'started_at' => 'datetime',
-        'completed_at' => 'datetime'
+        'completed_at' => 'datetime',
     ];
 
     public function task(): BelongsTo
@@ -33,7 +33,7 @@ class TaskAssignment extends Model
 
     public function getStatusColorAttribute(): string
     {
-        return match($this->assignment_status) {
+        return match ($this->assignment_status) {
             'assigned' => 'gray',
             'accepted' => 'blue',
             'in_progress' => 'yellow',
@@ -55,18 +55,18 @@ class TaskAssignment extends Model
 
     public function getDurationAttribute(): ?string
     {
-        if (!$this->started_at || !$this->completed_at) {
+        if (! $this->started_at || ! $this->completed_at) {
             return null;
         }
 
         $diff = $this->started_at->diff($this->completed_at);
 
         if ($diff->days > 0) {
-            return $diff->days . 'd ' . $diff->h . 'h';
+            return $diff->days.'d '.$diff->h.'h';
         } elseif ($diff->h > 0) {
-            return $diff->h . 'h ' . $diff->i . 'm';
+            return $diff->h.'h '.$diff->i.'m';
         } else {
-            return $diff->i . 'm';
+            return $diff->i.'m';
         }
     }
 

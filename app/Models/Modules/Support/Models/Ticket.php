@@ -22,13 +22,13 @@ class Ticket extends Model
         'due_date',
         'resolved_at',
         'resolution_notes',
-        'tags'
+        'tags',
     ];
 
     protected $casts = [
         'due_date' => 'datetime',
         'resolved_at' => 'datetime',
-        'tags' => 'array'
+        'tags' => 'array',
     ];
 
     protected static function boot()
@@ -37,7 +37,7 @@ class Ticket extends Model
 
         static::creating(function ($ticket) {
             if (empty($ticket->ticket_number)) {
-                $ticket->ticket_number = 'TKT-' . strtoupper(uniqid());
+                $ticket->ticket_number = 'TKT-'.strtoupper(uniqid());
             }
         });
     }
@@ -68,7 +68,7 @@ class Ticket extends Model
 
     public function getStatusColorAttribute(): string
     {
-        return match($this->status) {
+        return match ($this->status) {
             'open' => 'blue',
             'in_progress' => 'yellow',
             'pending' => 'orange',
@@ -80,7 +80,7 @@ class Ticket extends Model
 
     public function getPriorityColorAttribute(): string
     {
-        return match($this->priority) {
+        return match ($this->priority) {
             'low' => 'green',
             'medium' => 'yellow',
             'high' => 'orange',
@@ -91,7 +91,7 @@ class Ticket extends Model
 
     public function getCategoryColorAttribute(): string
     {
-        return match($this->category) {
+        return match ($this->category) {
             'technical' => 'blue',
             'billing' => 'purple',
             'general' => 'gray',
@@ -103,7 +103,7 @@ class Ticket extends Model
 
     public function getIsOverdueAttribute(): bool
     {
-        return $this->due_date && $this->due_date < now() && !in_array($this->status, ['resolved', 'closed']);
+        return $this->due_date && $this->due_date < now() && ! in_array($this->status, ['resolved', 'closed']);
     }
 
     public function getResponseTimeAttribute(): ?string
@@ -112,18 +112,18 @@ class Ticket extends Model
             ->where('author_type', '!=', 'customer')
             ->first();
 
-        if (!$firstResponse) {
+        if (! $firstResponse) {
             return null;
         }
 
         $diff = $this->created_at->diff($firstResponse->created_at);
 
         if ($diff->days > 0) {
-            return $diff->days . 'd ' . $diff->h . 'h';
+            return $diff->days.'d '.$diff->h.'h';
         } elseif ($diff->h > 0) {
-            return $diff->h . 'h ' . $diff->i . 'm';
+            return $diff->h.'h '.$diff->i.'m';
         } else {
-            return $diff->i . 'm';
+            return $diff->i.'m';
         }
     }
 

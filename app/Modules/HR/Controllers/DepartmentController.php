@@ -5,10 +5,10 @@ namespace App\Modules\HR\Controllers;
 use App\Http\Controllers\Controller;
 use App\Modules\HR\Models\Department;
 use App\Modules\HR\Models\Employee;
-use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\View\View;
+use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
+use Illuminate\View\View;
 
 class DepartmentController extends Controller
 {
@@ -81,7 +81,7 @@ class DepartmentController extends Controller
         $department = Department::create($validated);
 
         return redirect()->route('modules.hr.departments.show', $department)
-                        ->with('success', __('hr.department_created_successfully'));
+            ->with('success', __('hr.department_created_successfully'));
     }
 
     /**
@@ -96,7 +96,7 @@ class DepartmentController extends Controller
             },
             'roles' => function ($query) {
                 $query->withCount('employees');
-            }
+            },
         ]);
 
         // Get department statistics
@@ -159,7 +159,7 @@ class DepartmentController extends Controller
         $department->update($validated);
 
         return redirect()->route('modules.hr.departments.show', $department)
-                        ->with('success', __('hr.department_updated_successfully'));
+            ->with('success', __('hr.department_updated_successfully'));
     }
 
     /**
@@ -175,7 +175,7 @@ class DepartmentController extends Controller
         $department->delete();
 
         return redirect()->route('modules.hr.departments.index')
-                        ->with('success', __('hr.department_deleted_successfully'));
+            ->with('success', __('hr.department_deleted_successfully'));
     }
 
     /**
@@ -184,7 +184,7 @@ class DepartmentController extends Controller
     public function performance(Department $department)
     {
         $employees = $department->activeEmployees()->with('role')->get();
-        
+
         $performance = [
             'employee_count' => $employees->count(),
             'average_salary' => $employees->avg('basic_salary') ?? 0,
@@ -209,7 +209,7 @@ class DepartmentController extends Controller
         $totalSalary = $department->getTotalSalaryExpense();
         $budget = $department->budget ?? 0;
         $utilization = $department->getBudgetUtilization();
-        
+
         $analysis = [
             'budget' => $budget,
             'total_salary_expense' => $totalSalary,
@@ -227,10 +227,10 @@ class DepartmentController extends Controller
      */
     public function toggleStatus(Department $department): RedirectResponse
     {
-        $department->update(['is_active' => !$department->is_active]);
-        
+        $department->update(['is_active' => ! $department->is_active]);
+
         $status = $department->is_active ? 'activated' : 'deactivated';
-        
+
         return back()->with('success', "Department has been {$status} successfully.");
     }
 
@@ -254,9 +254,9 @@ class DepartmentController extends Controller
         $departments = Department::withCount(['employees', 'activeEmployees'])
             ->with('manager')
             ->get();
-        
-        $filename = 'departments_' . now()->format('Y-m-d') . '.csv';
-        
+
+        $filename = 'departments_'.now()->format('Y-m-d').'.csv';
+
         $headers = [
             'Content-Type' => 'text/csv',
             'Content-Disposition' => "attachment; filename=\"$filename\"",
@@ -264,7 +264,7 @@ class DepartmentController extends Controller
 
         $callback = function () use ($departments) {
             $file = fopen('php://output', 'w');
-            
+
             // CSV headers
             fputcsv($file, [
                 'Department Code',
@@ -275,7 +275,7 @@ class DepartmentController extends Controller
                 'Budget',
                 'Budget Utilization %',
                 'Location',
-                'Status'
+                'Status',
             ]);
 
             // CSV data
@@ -289,7 +289,7 @@ class DepartmentController extends Controller
                     $department->budget ?? 0,
                     round($department->getBudgetUtilization(), 2),
                     $department->location ?? 'N/A',
-                    $department->is_active ? 'Active' : 'Inactive'
+                    $department->is_active ? 'Active' : 'Inactive',
                 ]);
             }
 

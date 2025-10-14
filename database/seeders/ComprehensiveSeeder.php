@@ -2,20 +2,20 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Seeder;
 use App\Models\User;
-use App\Modules\HR\Models\Employee;
-use App\Modules\HR\Models\Department;
-use App\Modules\HR\Models\AttendanceRecord;
-use App\Modules\HR\Models\LeaveRequest;
-use App\Modules\HR\Models\SalaryRecord;
-use App\Modules\HR\Models\PerformanceReview;
-use App\Modules\Accounting\Models\Customer;
-use App\Modules\Accounting\Models\Vendor;
-use App\Modules\Accounting\Models\Invoice;
-use App\Modules\Accounting\Models\Expense;
 use App\Modules\Accounting\Models\Currency;
+use App\Modules\Accounting\Models\Customer;
+use App\Modules\Accounting\Models\Expense;
+use App\Modules\Accounting\Models\Invoice;
 use App\Modules\Accounting\Models\Tax;
+use App\Modules\Accounting\Models\Vendor;
+use App\Modules\HR\Models\AttendanceRecord;
+use App\Modules\HR\Models\Department;
+use App\Modules\HR\Models\Employee;
+use App\Modules\HR\Models\LeaveRequest;
+use App\Modules\HR\Models\PerformanceReview;
+use App\Modules\HR\Models\SalaryRecord;
+use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 
 class ComprehensiveSeeder extends Seeder
@@ -29,13 +29,13 @@ class ComprehensiveSeeder extends Seeder
 
         // Seed Users
         $this->seedUsers();
-        
+
         // Seed HR Data
         $this->seedHRData();
-        
+
         // Seed Accounting Data
         $this->seedAccountingData();
-        
+
         $this->command->info('Comprehensive data seeding completed!');
     }
 
@@ -122,7 +122,7 @@ class ComprehensiveSeeder extends Seeder
                     'salary' => $emp['salary'],
                     'job_title' => $emp['job_title'],
                     'hire_date' => now()->subMonths(rand(1, 24)),
-                    'phone' => '+971-50-' . rand(1000000, 9999999),
+                    'phone' => '+971-50-'.rand(1000000, 9999999),
                     'employment_status' => 'active',
                 ]
             );
@@ -130,13 +130,13 @@ class ComprehensiveSeeder extends Seeder
 
         // Seed Attendance Records
         $this->seedAttendanceRecords();
-        
+
         // Seed Leave Requests
         $this->seedLeaveRequests();
-        
+
         // Seed Salary Records
         $this->seedSalaryRecords();
-        
+
         // Seed Performance Reviews
         $this->seedPerformanceReviews();
     }
@@ -145,22 +145,22 @@ class ComprehensiveSeeder extends Seeder
     {
         $employees = Employee::all();
         $startDate = now()->subDays(30);
-        
+
         foreach ($employees as $employee) {
             for ($i = 0; $i < 30; $i++) {
                 $date = $startDate->copy()->addDays($i);
-                
+
                 // Skip weekends
                 if ($date->isWeekend()) {
                     continue;
                 }
-                
+
                 // 90% attendance rate
                 if (rand(1, 100) <= 90) {
                     $checkIn = $date->copy()->setTime(8, rand(0, 30), 0);
                     $checkOut = $checkIn->copy()->addHours(8)->addMinutes(rand(0, 60));
                     $hoursWorked = $checkOut->diffInHours($checkIn, true);
-                    
+
                     AttendanceRecord::updateOrCreate(
                         [
                             'employee_id' => $employee->id,
@@ -183,14 +183,14 @@ class ComprehensiveSeeder extends Seeder
     {
         $employees = Employee::all();
         $leaveTypes = ['annual', 'sick', 'emergency', 'maternity', 'paternity'];
-        
+
         foreach ($employees as $employee) {
             // Create 2-3 leave requests per employee
             for ($i = 0; $i < rand(2, 3); $i++) {
                 $startDate = now()->addDays(rand(1, 60));
                 $days = rand(1, 5);
                 $endDate = $startDate->copy()->addDays($days - 1);
-                
+
                 LeaveRequest::create([
                     'employee_id' => $employee->id,
                     'leave_type' => $leaveTypes[array_rand($leaveTypes)],
@@ -208,12 +208,12 @@ class ComprehensiveSeeder extends Seeder
     private function seedSalaryRecords()
     {
         $employees = Employee::all();
-        
+
         // Create salary records for last 3 months
         for ($month = 3; $month >= 1; $month--) {
             $periodStart = now()->subMonths($month)->startOfMonth();
             $periodEnd = $periodStart->copy()->endOfMonth();
-            
+
             foreach ($employees as $employee) {
                 SalaryRecord::create([
                     'employee_id' => $employee->id,
@@ -241,7 +241,7 @@ class ComprehensiveSeeder extends Seeder
     private function seedPerformanceReviews()
     {
         $employees = Employee::all();
-        
+
         foreach ($employees as $employee) {
             PerformanceReview::create([
                 'employee_id' => $employee->id,
@@ -308,7 +308,7 @@ class ComprehensiveSeeder extends Seeder
             Vendor::updateOrCreate(
                 ['email' => $vendor['email']],
                 array_merge($vendor, [
-                    'phone' => '+971-4-' . rand(1000000, 9999999),
+                    'phone' => '+971-4-'.rand(1000000, 9999999),
                     'address' => 'Dubai, UAE',
                     'city' => 'Dubai',
                     'country' => 'UAE',
@@ -321,7 +321,7 @@ class ComprehensiveSeeder extends Seeder
 
         // Seed Invoices
         $this->seedInvoices();
-        
+
         // Seed Expenses
         $this->seedExpenses();
     }
@@ -331,15 +331,15 @@ class ComprehensiveSeeder extends Seeder
         $customers = Customer::all();
         $currency = Currency::where('code', 'AED')->first() ?? Currency::first();
         $tax = Tax::where('code', 'VAT_AE')->first() ?? Tax::first();
-        
+
         for ($i = 1; $i <= 20; $i++) {
             $customer = $customers->random();
             $subtotal = rand(5000, 50000);
             $taxAmount = $subtotal * 0.05; // 5% VAT
             $total = $subtotal + $taxAmount;
-            
+
             Invoice::create([
-                'invoice_number' => 'INV-' . str_pad($i, 4, '0', STR_PAD_LEFT),
+                'invoice_number' => 'INV-'.str_pad($i, 4, '0', STR_PAD_LEFT),
                 'customer_id' => $customer->id,
                 'invoice_date' => now()->subDays(rand(1, 90)),
                 'due_date' => now()->addDays(rand(15, 45)),
@@ -359,19 +359,19 @@ class ComprehensiveSeeder extends Seeder
         $vendors = Vendor::all();
         $categories = ['office_supplies', 'equipment', 'utilities', 'marketing', 'travel', 'software'];
         $currency = Currency::where('code', 'AED')->first() ?? Currency::first();
-        
+
         for ($i = 1; $i <= 30; $i++) {
             $vendor = $vendors->random();
             $amount = rand(500, 10000);
-            
+
             Expense::create([
-                'expense_number' => 'EXP-' . str_pad($i, 4, '0', STR_PAD_LEFT),
+                'expense_number' => 'EXP-'.str_pad($i, 4, '0', STR_PAD_LEFT),
                 'vendor_id' => $vendor->id,
                 'expense_date' => now()->subDays(rand(1, 60)),
                 'amount' => $amount,
                 'currency_id' => $currency->id,
                 'category' => $categories[array_rand($categories)],
-                'description' => 'Sample expense for ' . $categories[array_rand($categories)],
+                'description' => 'Sample expense for '.$categories[array_rand($categories)],
                 'status' => ['pending', 'approved', 'paid'][rand(0, 2)],
                 'receipt_path' => null,
                 'notes' => 'Sample expense for testing purposes',

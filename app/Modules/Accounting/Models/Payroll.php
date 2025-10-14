@@ -129,7 +129,7 @@ class Payroll extends Model
     // Accessors
     public function getStatusColorAttribute()
     {
-        return match($this->status) {
+        return match ($this->status) {
             'draft' => 'gray',
             'processed' => 'blue',
             'paid' => 'green',
@@ -140,12 +140,12 @@ class Payroll extends Model
 
     public function getFormattedGrossPayAttribute()
     {
-        return number_format((float)$this->gross_pay, 2) . ' ' . $this->currency;
+        return number_format((float) $this->gross_pay, 2).' '.$this->currency;
     }
 
     public function getFormattedNetPayAttribute()
     {
-        return number_format((float)$this->net_pay, 2) . ' ' . $this->currency;
+        return number_format((float) $this->net_pay, 2).' '.$this->currency;
     }
 
     public function getTotalHoursAttribute()
@@ -162,7 +162,7 @@ class Payroll extends Model
     public function calculatePayroll()
     {
         $employee = $this->employee;
-        
+
         // Calculate earnings
         if ($employee->pay_type === 'hourly') {
             $this->regular_pay = $this->regular_hours * $employee->pay_rate;
@@ -172,7 +172,7 @@ class Payroll extends Model
             $this->vacation_pay = $this->vacation_hours * $employee->pay_rate;
         } else {
             // Salary calculation
-            $periodsPerYear = match($employee->pay_frequency) {
+            $periodsPerYear = match ($employee->pay_frequency) {
                 'weekly' => 52,
                 'bi_weekly' => 26,
                 'semi_monthly' => 24,
@@ -188,7 +188,7 @@ class Payroll extends Model
         $this->calculateTaxes();
         $this->calculateDeductions();
 
-        $this->total_deductions = $this->federal_tax + $this->state_tax + $this->local_tax + 
+        $this->total_deductions = $this->federal_tax + $this->state_tax + $this->local_tax +
                                  $this->social_security + $this->medicare + $this->unemployment_tax +
                                  $this->health_insurance + $this->dental_insurance + $this->vision_insurance +
                                  $this->retirement_401k + $this->other_deductions;
@@ -211,7 +211,7 @@ class Payroll extends Model
     private function calculateDeductions()
     {
         $benefits = $this->employee->benefits ?? [];
-        
+
         $this->health_insurance = $benefits['health_insurance'] ?? 0;
         $this->dental_insurance = $benefits['dental_insurance'] ?? 0;
         $this->vision_insurance = $benefits['vision_insurance'] ?? 0;
@@ -229,7 +229,7 @@ class Payroll extends Model
     public function markAsPaid($paymentData = [])
     {
         $payment = $this->payments()->create(array_merge([
-            'payment_number' => 'PAY-' . str_pad(Payment::max('id') + 1, 6, '0', STR_PAD_LEFT),
+            'payment_number' => 'PAY-'.str_pad(Payment::max('id') + 1, 6, '0', STR_PAD_LEFT),
             'type' => 'employee_payment',
             'employee_id' => $this->employee_id,
             'amount' => $this->net_pay,
@@ -259,8 +259,8 @@ class Payroll extends Model
         parent::boot();
 
         static::creating(function ($payroll) {
-            if (!$payroll->payroll_number) {
-                $payroll->payroll_number = 'PAY-' . date('Y') . '-' . str_pad(
+            if (! $payroll->payroll_number) {
+                $payroll->payroll_number = 'PAY-'.date('Y').'-'.str_pad(
                     static::whereYear('created_at', date('Y'))->count() + 1, 4, '0', STR_PAD_LEFT
                 );
             }

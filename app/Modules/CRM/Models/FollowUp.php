@@ -97,7 +97,7 @@ class FollowUp extends Model
     public function scopeOverdue($query)
     {
         return $query->where('due_date', '<', now())
-                    ->where('status', 'pending');
+            ->where('status', 'pending');
     }
 
     /**
@@ -106,7 +106,7 @@ class FollowUp extends Model
     public function scopeDueToday($query)
     {
         return $query->whereDate('due_date', today())
-                    ->where('status', 'pending');
+            ->where('status', 'pending');
     }
 
     /**
@@ -115,7 +115,7 @@ class FollowUp extends Model
     public function scopeDueThisWeek($query)
     {
         return $query->whereBetween('due_date', [now()->startOfWeek(), now()->endOfWeek()])
-                    ->where('status', 'pending');
+            ->where('status', 'pending');
     }
 
     /**
@@ -184,7 +184,7 @@ class FollowUp extends Model
      */
     public function getPriorityColor()
     {
-        return match($this->priority) {
+        return match ($this->priority) {
             'high' => 'red',
             'medium' => 'yellow',
             'low' => 'green',
@@ -197,7 +197,7 @@ class FollowUp extends Model
      */
     public function getStatusColor()
     {
-        return match($this->status) {
+        return match ($this->status) {
             'pending' => $this->isOverdue() ? 'red' : 'yellow',
             'completed' => 'green',
             'cancelled' => 'gray',
@@ -210,20 +210,20 @@ class FollowUp extends Model
      */
     public function getFormattedDueDate()
     {
-        if (!$this->due_date) {
+        if (! $this->due_date) {
             return null;
         }
 
         if ($this->due_date->isToday()) {
-            return 'Today at ' . $this->due_date->format('H:i');
+            return 'Today at '.$this->due_date->format('H:i');
         }
 
         if ($this->due_date->isTomorrow()) {
-            return 'Tomorrow at ' . $this->due_date->format('H:i');
+            return 'Tomorrow at '.$this->due_date->format('H:i');
         }
 
         if ($this->due_date->isYesterday()) {
-            return 'Yesterday at ' . $this->due_date->format('H:i');
+            return 'Yesterday at '.$this->due_date->format('H:i');
         }
 
         return $this->due_date->format('M j, Y \a\t H:i');

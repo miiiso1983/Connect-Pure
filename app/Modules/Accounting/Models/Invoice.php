@@ -116,7 +116,7 @@ class Invoice extends Model
     // Accessors
     public function getStatusColorAttribute()
     {
-        return match($this->status) {
+        return match ($this->status) {
             'draft' => 'gray',
             'sent' => 'blue',
             'viewed' => 'yellow',
@@ -130,12 +130,12 @@ class Invoice extends Model
 
     public function getFormattedTotalAttribute()
     {
-        return number_format((float)$this->total_amount, 2) . ' ' . $this->currency;
+        return number_format((float) $this->total_amount, 2).' '.$this->currency;
     }
 
     public function getFormattedBalanceAttribute()
     {
-        return number_format((float)$this->balance_due, 2) . ' ' . $this->currency;
+        return number_format((float) $this->balance_due, 2).' '.$this->currency;
     }
 
     public function getDaysOverdueAttribute()
@@ -143,6 +143,7 @@ class Invoice extends Model
         if ($this->status === 'paid' || $this->due_date >= now()) {
             return 0;
         }
+
         return now()->diffInDays($this->due_date);
     }
 
@@ -180,7 +181,7 @@ class Invoice extends Model
     public function addPayment($amount, $paymentData = [])
     {
         $payment = $this->payments()->create(array_merge([
-            'payment_number' => 'PAY-' . str_pad(Payment::max('id') + 1, 6, '0', STR_PAD_LEFT),
+            'payment_number' => 'PAY-'.str_pad(Payment::max('id') + 1, 6, '0', STR_PAD_LEFT),
             'type' => 'customer_payment',
             'customer_id' => $this->customer_id,
             'amount' => $amount,
@@ -223,12 +224,12 @@ class Invoice extends Model
         parent::boot();
 
         static::creating(function ($invoice) {
-            if (!$invoice->invoice_number) {
+            if (! $invoice->invoice_number) {
                 $currentYear = date('Y');
                 $startOfYear = now()->startOfYear();
                 $endOfYear = now()->endOfYear();
 
-                $invoice->invoice_number = 'INV-' . $currentYear . '-' . str_pad(
+                $invoice->invoice_number = 'INV-'.$currentYear.'-'.str_pad(
                     static::whereBetween('created_at', [$startOfYear, $endOfYear])->count() + 1, 4, '0', STR_PAD_LEFT
                 );
             }

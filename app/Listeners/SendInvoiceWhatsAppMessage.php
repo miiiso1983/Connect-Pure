@@ -3,8 +3,8 @@
 namespace App\Listeners;
 
 use App\Events\InvoiceSubmitted;
-use App\Services\WhatsAppService;
 use App\Services\InvoicePdfService;
+use App\Services\WhatsAppService;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Support\Facades\Log;
@@ -14,6 +14,7 @@ class SendInvoiceWhatsAppMessage implements ShouldQueue
     use InteractsWithQueue;
 
     protected WhatsAppService $whatsAppService;
+
     protected InvoicePdfService $pdfService;
 
     /**
@@ -41,16 +42,18 @@ class SendInvoiceWhatsAppMessage implements ShouldQueue
         if (empty($whatsappNumber)) {
             Log::warning('Invoice WhatsApp notification skipped - no phone number', [
                 'invoice_id' => $invoice->id,
-                'customer_id' => $invoice->customer->id
+                'customer_id' => $invoice->customer->id,
             ]);
+
             return;
         }
 
         // Check if WhatsApp service is configured
-        if (!$this->whatsAppService->isConfigured()) {
+        if (! $this->whatsAppService->isConfigured()) {
             Log::warning('Invoice WhatsApp notification skipped - service not configured', [
-                'invoice_id' => $invoice->id
+                'invoice_id' => $invoice->id,
             ]);
+
             return;
         }
 
@@ -80,20 +83,20 @@ class SendInvoiceWhatsAppMessage implements ShouldQueue
                     'invoice_id' => $invoice->id,
                     'customer_id' => $invoice->customer->id,
                     'whatsapp_number' => $whatsappNumber,
-                    'message_id' => $result['text_message']['message_id'] ?? null
+                    'message_id' => $result['text_message']['message_id'] ?? null,
                 ]);
 
                 // Update invoice to mark WhatsApp notification as sent
                 $invoice->update([
                     'whatsapp_sent_at' => now(),
-                    'whatsapp_message_id' => $result['text_message']['message_id'] ?? null
+                    'whatsapp_message_id' => $result['text_message']['message_id'] ?? null,
                 ]);
             } else {
                 Log::error('Failed to send invoice WhatsApp notification', [
                     'invoice_id' => $invoice->id,
                     'customer_id' => $invoice->customer->id,
                     'whatsapp_number' => $whatsappNumber,
-                    'error' => $result['error'] ?? 'Unknown error'
+                    'error' => $result['error'] ?? 'Unknown error',
                 ]);
             }
 
@@ -107,7 +110,7 @@ class SendInvoiceWhatsAppMessage implements ShouldQueue
                 'invoice_id' => $invoice->id,
                 'customer_id' => $invoice->customer->id,
                 'error' => $e->getMessage(),
-                'trace' => $e->getTraceAsString()
+                'trace' => $e->getTraceAsString(),
             ]);
 
             // Re-throw the exception to mark the job as failed
@@ -122,7 +125,7 @@ class SendInvoiceWhatsAppMessage implements ShouldQueue
     {
         Log::error('Invoice WhatsApp notification job failed', [
             'invoice_id' => $event->invoice->id,
-            'error' => $exception->getMessage()
+            'error' => $exception->getMessage(),
         ]);
     }
 }

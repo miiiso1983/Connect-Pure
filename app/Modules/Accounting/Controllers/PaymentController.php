@@ -3,9 +3,9 @@
 namespace App\Modules\Accounting\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Modules\Accounting\Models\Payment;
-use App\Modules\Accounting\Models\Invoice;
 use App\Modules\Accounting\Models\Customer;
+use App\Modules\Accounting\Models\Invoice;
+use App\Modules\Accounting\Models\Payment;
 use Illuminate\Http\Request;
 
 class PaymentController extends Controller
@@ -13,6 +13,7 @@ class PaymentController extends Controller
     public function index()
     {
         $payments = Payment::with(['invoice', 'customer'])->paginate(15);
+
         return view('modules.accounting.payments.index', compact('payments'));
     }
 
@@ -20,6 +21,7 @@ class PaymentController extends Controller
     {
         $invoices = Invoice::where('status', '!=', 'paid')->get();
         $customers = Customer::all();
+
         return view('modules.accounting.payments.create', compact('invoices', 'customers'));
     }
 
@@ -49,6 +51,7 @@ class PaymentController extends Controller
     {
         $invoices = Invoice::where('status', '!=', 'paid')->get();
         $customers = Customer::all();
+
         return view('modules.accounting.payments.edit', compact('payment', 'invoices', 'customers'));
     }
 

@@ -2,10 +2,10 @@
 
 namespace App\Modules\Accounting\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Bill extends Model
 {
@@ -67,7 +67,7 @@ class Bill extends Model
     // Accessors
     public function getStatusColorAttribute(): string
     {
-        return match($this->status) {
+        return match ($this->status) {
             'draft' => 'gray',
             'sent' => 'blue',
             'received' => 'yellow',
@@ -81,7 +81,7 @@ class Bill extends Model
 
     public function getFormattedTotalAttribute(): string
     {
-        return $this->currency . ' ' . number_format((float)$this->total_amount, 2);
+        return $this->currency.' '.number_format((float) $this->total_amount, 2);
     }
 
     public function getIsOverdueAttribute(): bool
@@ -94,14 +94,14 @@ class Bill extends Model
     {
         $this->paid_amount += $amount;
         $this->balance_due = $this->total_amount - $this->paid_amount;
-        
+
         if ($this->balance_due <= 0) {
             $this->status = 'paid';
             $this->balance_due = 0;
         } elseif ($this->paid_amount > 0) {
             $this->status = 'partial';
         }
-        
+
         $this->save();
     }
 
@@ -109,14 +109,14 @@ class Bill extends Model
     {
         $this->paid_amount -= $amount;
         $this->balance_due = $this->total_amount - $this->paid_amount;
-        
+
         if ($this->paid_amount <= 0) {
             $this->status = 'received';
             $this->paid_amount = 0;
         } else {
             $this->status = 'partial';
         }
-        
+
         $this->save();
     }
 }

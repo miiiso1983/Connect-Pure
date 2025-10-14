@@ -2,9 +2,9 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Seeder;
 use App\Modules\Accounting\Models\Currency;
 use App\Modules\Accounting\Models\Tax;
+use Illuminate\Database\Seeder;
 
 class CurrencyAndTaxSeeder extends Seeder
 {

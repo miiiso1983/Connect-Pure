@@ -3,11 +3,11 @@
 namespace App\Modules\HR\Models;
 
 use App\Models\User;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Database\Factories\HR\EmployeeFactory;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Employee extends Model
 {
@@ -154,23 +154,23 @@ class Employee extends Model
     {
         return $query->where(function ($q) use ($search) {
             $q->where('first_name', 'like', "%{$search}%")
-              ->orWhere('last_name', 'like', "%{$search}%")
-              ->orWhere('first_name_ar', 'like', "%{$search}%")
-              ->orWhere('last_name_ar', 'like', "%{$search}%")
-              ->orWhere('employee_number', 'like', "%{$search}%")
-              ->orWhere('email', 'like', "%{$search}%");
+                ->orWhere('last_name', 'like', "%{$search}%")
+                ->orWhere('first_name_ar', 'like', "%{$search}%")
+                ->orWhere('last_name_ar', 'like', "%{$search}%")
+                ->orWhere('employee_number', 'like', "%{$search}%")
+                ->orWhere('email', 'like', "%{$search}%");
         });
     }
 
     // Accessors
     public function getFullNameAttribute(): string
     {
-        return trim($this->first_name . ' ' . $this->last_name);
+        return trim($this->first_name.' '.$this->last_name);
     }
 
     public function getFullNameArAttribute(): string
     {
-        return trim(($this->first_name_ar ?? $this->first_name) . ' ' . ($this->last_name_ar ?? $this->last_name));
+        return trim(($this->first_name_ar ?? $this->first_name).' '.($this->last_name_ar ?? $this->last_name));
     }
 
     public function getDisplayNameAttribute(): string
@@ -195,7 +195,7 @@ class Employee extends Model
 
     public function getStatusColorAttribute(): string
     {
-        return match($this->status) {
+        return match ($this->status) {
             'active' => 'green',
             'inactive' => 'yellow',
             'terminated' => 'red',
@@ -206,7 +206,7 @@ class Employee extends Model
 
     public function getEmploymentTypeTextAttribute(): string
     {
-        return match($this->employment_type) {
+        return match ($this->employment_type) {
             'full_time' => __('hr.full_time'),
             'part_time' => __('hr.part_time'),
             'contract' => __('hr.contract'),
@@ -217,7 +217,7 @@ class Employee extends Model
 
     public function getGenderTextAttribute(): string
     {
-        return match($this->gender) {
+        return match ($this->gender) {
             'male' => __('hr.male'),
             'female' => __('hr.female'),
             default => __('hr.not_specified')
@@ -226,7 +226,7 @@ class Employee extends Model
 
     public function getMaritalStatusTextAttribute(): string
     {
-        return match($this->marital_status) {
+        return match ($this->marital_status) {
             'single' => __('hr.single'),
             'married' => __('hr.married'),
             'divorced' => __('hr.divorced'),
@@ -252,16 +252,16 @@ class Employee extends Model
             $this->city,
             $this->state,
             $this->postal_code,
-            $this->country
+            $this->country,
         ]);
-        
+
         return implode(', ', $parts);
     }
 
     // Methods
     public function getTotalAllowances(): float
     {
-        if (!$this->allowances) {
+        if (! $this->allowances) {
             return 0;
         }
 
@@ -280,7 +280,7 @@ class Employee extends Model
 
     public function getLeaveBalance(string $leaveType): int
     {
-        return match($leaveType) {
+        return match ($leaveType) {
             'annual' => $this->annual_leave_balance,
             'sick' => $this->sick_leave_balance,
             'emergency' => $this->emergency_leave_balance,
@@ -290,7 +290,7 @@ class Employee extends Model
 
     public function deductLeaveBalance(string $leaveType, int $days): void
     {
-        match($leaveType) {
+        match ($leaveType) {
             'annual' => $this->decrement('annual_leave_balance', $days),
             'sick' => $this->decrement('sick_leave_balance', $days),
             'emergency' => $this->decrement('emergency_leave_balance', $days),
@@ -299,7 +299,7 @@ class Employee extends Model
 
     public function restoreLeaveBalance(string $leaveType, int $days): void
     {
-        match($leaveType) {
+        match ($leaveType) {
             'annual' => $this->increment('annual_leave_balance', $days),
             'sick' => $this->increment('sick_leave_balance', $days),
             'emergency' => $this->increment('emergency_leave_balance', $days),
@@ -332,14 +332,14 @@ class Employee extends Model
     public static function generateEmployeeNumber(): string
     {
         $lastEmployee = static::orderBy('employee_number', 'desc')->first();
-        
+
         if ($lastEmployee && preg_match('/EMP(\d+)/', $lastEmployee->employee_number, $matches)) {
             $nextNumber = (int) $matches[1] + 1;
         } else {
             $nextNumber = 1001;
         }
 
-        return 'EMP' . str_pad($nextNumber, 4, '0', STR_PAD_LEFT);
+        return 'EMP'.str_pad($nextNumber, 4, '0', STR_PAD_LEFT);
     }
 
     public static function getEmploymentTypeOptions(): array

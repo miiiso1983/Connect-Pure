@@ -2,13 +2,14 @@
 
 namespace App\Console\Commands;
 
-use Illuminate\Console\Command;
-use App\Models\User;
 use App\Models\Role;
+use App\Models\User;
+use Illuminate\Console\Command;
 
 class SetupDemoUsers extends Command
 {
     protected $signature = 'demo:setup-users';
+
     protected $description = 'Setup demo users with appropriate roles';
 
     public function handle()
@@ -24,8 +25,8 @@ class SetupDemoUsers extends Command
                     'hr.view', 'hr.employees.view', 'hr.employees.create', 'hr.employees.edit', 'hr.employees.delete',
                     'hr.leave.view', 'hr.leave.create', 'hr.leave.approve', 'hr.leave.manage',
                     'hr.departments.view', 'hr.departments.manage', 'hr.attendance.view', 'hr.attendance.manage',
-                    'hr.payroll.view', 'hr.payroll.manage', 'hr.performance.view', 'hr.performance.manage'
-                ]
+                    'hr.payroll.view', 'hr.payroll.manage', 'hr.performance.view', 'hr.performance.manage',
+                ],
             ],
             'accounting_manager' => [
                 'name' => 'Accounting Manager',
@@ -33,8 +34,8 @@ class SetupDemoUsers extends Command
                 'permissions' => [
                     'accounting.view', 'accounting.invoices.view', 'accounting.invoices.create', 'accounting.invoices.edit', 'accounting.invoices.delete',
                     'accounting.expenses.view', 'accounting.expenses.create', 'accounting.expenses.edit', 'accounting.expenses.delete',
-                    'accounting.reports.view', 'accounting.reports.export'
-                ]
+                    'accounting.reports.view', 'accounting.reports.export',
+                ],
             ],
             'sales_manager' => [
                 'name' => 'Sales Manager',
@@ -43,17 +44,17 @@ class SetupDemoUsers extends Command
                     'crm.view', 'crm.leads.view', 'crm.leads.create', 'crm.leads.edit', 'crm.leads.delete',
                     'crm.customers.view', 'crm.customers.create', 'crm.customers.edit', 'crm.customers.delete',
                     'crm.contacts.view', 'crm.contacts.create', 'crm.contacts.edit', 'crm.contacts.delete',
-                    'crm.deals.view', 'crm.deals.create', 'crm.deals.edit', 'crm.deals.delete'
-                ]
+                    'crm.deals.view', 'crm.deals.create', 'crm.deals.edit', 'crm.deals.delete',
+                ],
             ],
             'support_manager' => [
                 'name' => 'Support Manager',
                 'description' => 'Support Manager with full support access',
                 'permissions' => [
                     'support.view', 'support.tickets.view', 'support.tickets.create', 'support.tickets.edit', 'support.tickets.delete',
-                    'support.tickets.assign', 'support.tickets.close'
-                ]
-            ]
+                    'support.tickets.assign', 'support.tickets.close',
+                ],
+            ],
         ];
 
         foreach ($roles as $slug => $roleData) {
@@ -88,28 +89,28 @@ class SetupDemoUsers extends Command
             if ($user && $role) {
                 // Remove existing roles
                 $user->roles()->detach();
-                
+
                 // Assign new role
                 $user->roles()->attach($role->id, [
                     'assigned_at' => now(),
                     'assigned_by' => 1,
                 ]);
-                
+
                 $this->info("Assigned {$role->name} to {$user->name} ({$user->email})");
             } else {
-                if (!$user) {
+                if (! $user) {
                     $this->warn("User not found: {$email}");
                 }
-                if (!$role) {
+                if (! $role) {
                     $this->warn("Role not found: {$roleSlug}");
                 }
             }
         }
 
         $this->info("\n=== DEMO USERS SETUP COMPLETE ===");
-        $this->info("Demo users have been assigned appropriate roles.");
-        $this->info("You can now test role-based login redirection.");
-        $this->info("=====================================");
+        $this->info('Demo users have been assigned appropriate roles.');
+        $this->info('You can now test role-based login redirection.');
+        $this->info('=====================================');
 
         return 0;
     }

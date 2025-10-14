@@ -127,7 +127,7 @@ class Expense extends Model
     // Accessors
     public function getStatusColorAttribute()
     {
-        return match($this->status) {
+        return match ($this->status) {
             'draft' => 'gray',
             'pending' => 'yellow',
             'approved' => 'blue',
@@ -139,12 +139,12 @@ class Expense extends Model
 
     public function getFormattedAmountAttribute()
     {
-        return number_format((float)$this->amount, 2) . ' ' . $this->currency;
+        return number_format((float) $this->amount, 2).' '.$this->currency;
     }
 
     public function getFormattedTotalAttribute()
     {
-        return number_format((float)$this->total_amount, 2) . ' ' . $this->currency;
+        return number_format((float) $this->total_amount, 2).' '.$this->currency;
     }
 
     public function getVendorNameAttribute()
@@ -175,7 +175,7 @@ class Expense extends Model
     public function markAsPaid($paymentData = [])
     {
         $payment = $this->payments()->create(array_merge([
-            'payment_number' => 'PAY-' . str_pad(Payment::max('id') + 1, 6, '0', STR_PAD_LEFT),
+            'payment_number' => 'PAY-'.str_pad(Payment::max('id') + 1, 6, '0', STR_PAD_LEFT),
             'type' => 'vendor_payment',
             'vendor_id' => $this->vendor_id,
             'amount' => $this->total_amount,
@@ -234,17 +234,17 @@ class Expense extends Model
         parent::boot();
 
         static::creating(function ($expense) {
-            if (!$expense->expense_number) {
+            if (! $expense->expense_number) {
                 $currentYear = date('Y');
                 $startOfYear = now()->startOfYear();
                 $endOfYear = now()->endOfYear();
 
-                $expense->expense_number = 'EXP-' . $currentYear . '-' . str_pad(
+                $expense->expense_number = 'EXP-'.$currentYear.'-'.str_pad(
                     static::whereBetween('created_at', [$startOfYear, $endOfYear])->count() + 1, 4, '0', STR_PAD_LEFT
                 );
             }
-            
-            if (!$expense->total_amount) {
+
+            if (! $expense->total_amount) {
                 $expense->total_amount = $expense->amount + $expense->tax_amount;
             }
         });

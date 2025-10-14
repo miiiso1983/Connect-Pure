@@ -2,10 +2,10 @@
 
 namespace App\Modules\HR\Models;
 
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Models\User;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class PerformanceReview extends Model
 {
@@ -131,12 +131,12 @@ class PerformanceReview extends Model
 
     public function getOverallRatingTextAttribute()
     {
-        if (!$this->overall_rating) {
+        if (! $this->overall_rating) {
             return 'Not Rated';
         }
 
         $rating = round($this->overall_rating, 1);
-        
+
         if ($rating >= 4.5) {
             return 'Excellent';
         } elseif ($rating >= 3.5) {
@@ -167,7 +167,7 @@ class PerformanceReview extends Model
         ];
 
         foreach ($ratingFields as $field) {
-            if (!is_null($this->$field)) {
+            if (! is_null($this->$field)) {
                 $completedFields++;
             }
         }
@@ -188,8 +188,8 @@ class PerformanceReview extends Model
             $this->quality_of_work,
         ];
 
-        $validRatings = array_filter($ratings, function($rating) {
-            return !is_null($rating);
+        $validRatings = array_filter($ratings, function ($rating) {
+            return ! is_null($rating);
         });
 
         if (empty($validRatings)) {
@@ -228,8 +228,8 @@ class PerformanceReview extends Model
         $halfStar = ($rating - $fullStars) >= 0.5 ? 1 : 0;
         $emptyStars = 5 - $fullStars - $halfStar;
 
-        return str_repeat('★', $fullStars) . 
-               str_repeat('☆', $halfStar) . 
+        return str_repeat('★', $fullStars).
+               str_repeat('☆', $halfStar).
                str_repeat('☆', $emptyStars);
     }
 

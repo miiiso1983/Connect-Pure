@@ -2,9 +2,9 @@
 
 namespace App\Modules\HR\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class SalaryRecord extends Model
 {
@@ -132,11 +132,11 @@ class SalaryRecord extends Model
     public function scopeByPeriod($query, $year, $month = null)
     {
         $query->where('year', $year);
-        
+
         if ($month) {
             $query->where('month', $month);
         }
-        
+
         return $query;
     }
 
@@ -163,7 +163,7 @@ class SalaryRecord extends Model
     // Accessors
     public function getStatusColorAttribute(): string
     {
-        return match($this->status) {
+        return match ($this->status) {
             'draft' => 'gray',
             'approved' => 'blue',
             'paid' => 'green',
@@ -174,7 +174,7 @@ class SalaryRecord extends Model
 
     public function getStatusTextAttribute(): string
     {
-        return match($this->status) {
+        return match ($this->status) {
             'draft' => __('hr.draft'),
             'approved' => __('hr.approved'),
             'paid' => __('hr.paid'),
@@ -185,7 +185,7 @@ class SalaryRecord extends Model
 
     public function getPaymentMethodTextAttribute(): string
     {
-        return match($this->payment_method) {
+        return match ($this->payment_method) {
             'bank_transfer' => __('hr.bank_transfer'),
             'cash' => __('hr.cash'),
             'check' => __('hr.check'),
@@ -215,8 +215,8 @@ class SalaryRecord extends Model
 
     public function getTotalAllowancesAttribute(): float
     {
-        return $this->housing_allowance + $this->transport_allowance + 
-               $this->food_allowance + $this->communication_allowance + 
+        return $this->housing_allowance + $this->transport_allowance +
+               $this->food_allowance + $this->communication_allowance +
                $this->other_allowances;
     }
 
@@ -238,15 +238,15 @@ class SalaryRecord extends Model
     // Methods
     public function calculateGrossSalary(): void
     {
-        $this->gross_salary = $this->basic_salary + $this->total_allowances + 
+        $this->gross_salary = $this->basic_salary + $this->total_allowances +
                              $this->overtime_amount + $this->bonus + $this->commission;
     }
 
     public function calculateTotalDeductions(): void
     {
-        $this->total_deductions = $this->social_insurance + $this->income_tax + 
-                                 $this->loan_deduction + $this->advance_deduction + 
-                                 $this->absence_deduction + $this->late_deduction + 
+        $this->total_deductions = $this->social_insurance + $this->income_tax +
+                                 $this->loan_deduction + $this->advance_deduction +
+                                 $this->absence_deduction + $this->late_deduction +
                                  $this->other_deductions + $this->leave_deduction;
     }
 
@@ -265,7 +265,7 @@ class SalaryRecord extends Model
         $this->save();
     }
 
-    public function markAsPaid(string $paymentMethod = null, string $paymentReference = null): void
+    public function markAsPaid(?string $paymentMethod = null, ?string $paymentReference = null): void
     {
         $this->status = 'paid';
         $this->payment_date = now();
@@ -282,7 +282,7 @@ class SalaryRecord extends Model
 
     public function postToAccounting(): void
     {
-        $service = new \App\Modules\HR\Services\PayrollAccountingService();
+        $service = new \App\Modules\HR\Services\PayrollAccountingService;
         $service->postSalaryToAccounting($this);
     }
 
@@ -337,14 +337,14 @@ class SalaryRecord extends Model
     public static function generatePayrollNumber(): string
     {
         $lastRecord = static::orderBy('payroll_number', 'desc')->first();
-        
+
         if ($lastRecord && preg_match('/PAY(\d+)/', $lastRecord->payroll_number, $matches)) {
             $nextNumber = (int) $matches[1] + 1;
         } else {
             $nextNumber = 1001;
         }
 
-        return 'PAY' . str_pad($nextNumber, 4, '0', STR_PAD_LEFT);
+        return 'PAY'.str_pad($nextNumber, 4, '0', STR_PAD_LEFT);
     }
 
     public static function getPaymentMethodOptions(): array
@@ -366,14 +366,14 @@ class SalaryRecord extends Model
         ];
     }
 
-    public static function getPayrollStats(int $year = null, int $month = null): array
+    public static function getPayrollStats(?int $year = null, ?int $month = null): array
     {
         $query = static::query();
-        
+
         if ($year) {
             $query->where('year', $year);
         }
-        
+
         if ($month) {
             $query->where('month', $month);
         }

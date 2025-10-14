@@ -2,10 +2,10 @@
 
 namespace App\Modules\Accounting\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class BankAccount extends Model
 {
@@ -61,7 +61,7 @@ class BankAccount extends Model
     // Accessors
     public function getFormattedBalanceAttribute(): string
     {
-        return $this->currency . ' ' . number_format((float)$this->current_balance, 2);
+        return $this->currency.' '.number_format((float) $this->current_balance, 2);
     }
 
     public function getMaskedAccountNumberAttribute(): string
@@ -69,13 +69,13 @@ class BankAccount extends Model
         if (strlen($this->account_number) <= 4) {
             return $this->account_number;
         }
-        
-        return '****' . substr($this->account_number, -4);
+
+        return '****'.substr($this->account_number, -4);
     }
 
     public function getAccountTypeTextAttribute(): string
     {
-        return match($this->account_type) {
+        return match ($this->account_type) {
             'checking' => __('accounting.checking_account'),
             'savings' => __('accounting.savings_account'),
             'credit_card' => __('accounting.credit_card'),

@@ -319,7 +319,7 @@ return [
     'recent_hires' => 'التوظيفات الحديثة',
     'upcoming_birthdays' => 'أعياد الميلاد القادمة',
     'employees_on_probation' => 'الموظفون في فترة التجربة',
-    
+
     // Additional terms
     'manage_employees' => 'إدارة الموظفين',
     'manage_departments' => 'إدارة الأقسام',

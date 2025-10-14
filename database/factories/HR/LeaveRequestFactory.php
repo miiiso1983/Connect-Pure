@@ -2,8 +2,8 @@
 
 namespace Database\Factories\HR;
 
-use App\Modules\HR\Models\LeaveRequest;
 use App\Modules\HR\Models\Employee;
+use App\Modules\HR\Models\LeaveRequest;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class LeaveRequestFactory extends Factory
@@ -13,8 +13,8 @@ class LeaveRequestFactory extends Factory
     public function definition(): array
     {
         $startDate = $this->faker->dateTimeBetween('now', '+3 months');
-        $endDate = $this->faker->dateTimeBetween($startDate, $startDate->format('Y-m-d') . ' +14 days');
-        
+        $endDate = $this->faker->dateTimeBetween($startDate, $startDate->format('Y-m-d').' +14 days');
+
         $leaveTypes = ['annual', 'sick', 'emergency', 'maternity', 'paternity', 'unpaid', 'study', 'hajj', 'bereavement'];
         $leaveType = $this->faker->randomElement($leaveTypes);
 
@@ -136,18 +136,18 @@ class LeaveRequestFactory extends Factory
     {
         $start = is_string($startDate) ? new \DateTime($startDate) : $startDate;
         $end = is_string($endDate) ? new \DateTime($endDate) : $endDate;
-        
+
         $workingDays = 0;
         $current = clone $start;
-        
+
         while ($current <= $end) {
             // Skip weekends (Friday = 5, Saturday = 6 in Saudi Arabia)
-            if (!in_array($current->format('w'), [5, 6])) {
+            if (! in_array($current->format('w'), [5, 6])) {
                 $workingDays++;
             }
             $current->add(new \DateInterval('P1D'));
         }
-        
+
         return $workingDays;
     }
 }

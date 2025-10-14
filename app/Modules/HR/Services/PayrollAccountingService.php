@@ -2,11 +2,11 @@
 
 namespace App\Modules\HR\Services;
 
-use App\Modules\HR\Models\SalaryRecord;
-use App\Modules\Accounting\Models\JournalEntry;
 use App\Modules\Accounting\Models\ChartOfAccount;
 use App\Modules\Accounting\Models\Expense;
+use App\Modules\Accounting\Models\JournalEntry;
 use App\Modules\Accounting\Models\Vendor;
+use App\Modules\HR\Models\SalaryRecord;
 use Carbon\Carbon;
 
 class PayrollAccountingService
@@ -65,9 +65,9 @@ class PayrollAccountingService
         }
 
         // Credit: Other deductions if any
-        $otherDeductions = $salaryRecord->loan_deduction + $salaryRecord->advance_deduction + 
+        $otherDeductions = $salaryRecord->loan_deduction + $salaryRecord->advance_deduction +
                           $salaryRecord->other_deductions + $salaryRecord->leave_deduction;
-        
+
         if ($otherDeductions > 0) {
             $otherDeductionsAccount = $this->getOtherDeductionsAccount();
             $journalEntry->lines()->create([
@@ -106,13 +106,13 @@ class PayrollAccountingService
         foreach ($salaryRecordIds as $id) {
             try {
                 $salaryRecord = SalaryRecord::find($id);
-                if ($salaryRecord && !$salaryRecord->is_posted_to_accounting) {
+                if ($salaryRecord && ! $salaryRecord->is_posted_to_accounting) {
                     $this->postSalaryToAccounting($salaryRecord);
                     $results['success']++;
                 }
             } catch (\Exception $e) {
                 $results['failed']++;
-                $results['errors'][] = "Record ID {$id}: " . $e->getMessage();
+                $results['errors'][] = "Record ID {$id}: ".$e->getMessage();
             }
         }
 
@@ -126,7 +126,7 @@ class PayrollAccountingService
     {
         // Get or create employee as vendor
         $vendor = $this->getEmployeeAsVendor($salaryRecord->employee);
-        
+
         // Get salary expense account
         $expenseAccount = $this->getSalaryExpenseAccount();
 
@@ -143,7 +143,7 @@ class PayrollAccountingService
             'status' => 'paid',
             'payment_method' => $salaryRecord->payment_method ?? 'bank_transfer',
             'payment_date' => $salaryRecord->payment_date,
-            'notes' => "Auto-generated from payroll system",
+            'notes' => 'Auto-generated from payroll system',
         ]);
     }
 
@@ -263,14 +263,14 @@ class PayrollAccountingService
     private function generateEntryNumber(): string
     {
         $lastEntry = JournalEntry::orderBy('entry_number', 'desc')->first();
-        
+
         if ($lastEntry && preg_match('/JE(\d+)/', $lastEntry->entry_number, $matches)) {
             $nextNumber = (int) $matches[1] + 1;
         } else {
             $nextNumber = 1001;
         }
 
-        return 'JE' . str_pad($nextNumber, 4, '0', STR_PAD_LEFT);
+        return 'JE'.str_pad($nextNumber, 4, '0', STR_PAD_LEFT);
     }
 
     /**
@@ -279,14 +279,14 @@ class PayrollAccountingService
     private function generateExpenseNumber(): string
     {
         $lastExpense = Expense::orderBy('expense_number', 'desc')->first();
-        
+
         if ($lastExpense && preg_match('/EXP(\d+)/', $lastExpense->expense_number, $matches)) {
             $nextNumber = (int) $matches[1] + 1;
         } else {
             $nextNumber = 1001;
         }
 
-        return 'EXP' . str_pad($nextNumber, 4, '0', STR_PAD_LEFT);
+        return 'EXP'.str_pad($nextNumber, 4, '0', STR_PAD_LEFT);
     }
 
     /**
@@ -317,12 +317,12 @@ class PayrollAccountingService
      */
     public function reverseSalaryAccounting(SalaryRecord $salaryRecord): void
     {
-        if (!$salaryRecord->is_posted_to_accounting || !$salaryRecord->accounting_entry_id) {
+        if (! $salaryRecord->is_posted_to_accounting || ! $salaryRecord->accounting_entry_id) {
             return;
         }
 
         $originalEntry = JournalEntry::find($salaryRecord->accounting_entry_id);
-        if (!$originalEntry) {
+        if (! $originalEntry) {
             return;
         }
 

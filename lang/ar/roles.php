@@ -44,7 +44,7 @@ return [
 
     // Specific Permissions
     'dashboard.view' => 'عرض لوحة التحكم',
-    
+
     // HR Permissions
     'hr.view' => 'عرض وحدة الموارد البشرية',
     'hr.employees.view' => 'عرض الموظفين',

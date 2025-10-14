@@ -3,12 +3,12 @@
 namespace App\Modules\HR\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Modules\HR\Models\SalaryRecord;
 use App\Modules\HR\Models\Employee;
-use Illuminate\Http\Request;
-use Illuminate\Http\RedirectResponse;
-use Illuminate\View\View;
+use App\Modules\HR\Models\SalaryRecord;
 use Carbon\Carbon;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 class SalaryRecordController extends Controller
 {
@@ -117,7 +117,7 @@ class SalaryRecordController extends Controller
 
         if ($existing) {
             return back()->withErrors(['month' => 'Salary record already exists for this period.'])
-                        ->withInput();
+                ->withInput();
         }
 
         // Generate payroll number
@@ -137,7 +137,7 @@ class SalaryRecordController extends Controller
         $salaryRecord->calculateNetSalary();
 
         return redirect()->route('modules.hr.payroll.show', $salaryRecord)
-                        ->with('success', __('hr.salary_record_created_successfully'));
+            ->with('success', __('hr.salary_record_created_successfully'));
     }
 
     /**
@@ -150,7 +150,7 @@ class SalaryRecordController extends Controller
             'employee.role',
             'preparedBy',
             'approvedBy',
-            'accountingEntry'
+            'accountingEntry',
         ]);
 
         return view('modules.hr.payroll.show', compact('salaryRecord'));
@@ -212,7 +212,7 @@ class SalaryRecordController extends Controller
         $salaryRecord->calculateNetSalary();
 
         return redirect()->route('modules.hr.payroll.show', $salaryRecord)
-                        ->with('success', 'Salary record updated successfully.');
+            ->with('success', 'Salary record updated successfully.');
     }
 
     /**
@@ -228,7 +228,7 @@ class SalaryRecordController extends Controller
         $salaryRecord->delete();
 
         return redirect()->route('modules.hr.payroll.index')
-                        ->with('success', 'Salary record deleted successfully.');
+            ->with('success', 'Salary record deleted successfully.');
     }
 
     /**
@@ -236,7 +236,7 @@ class SalaryRecordController extends Controller
      */
     public function approve(SalaryRecord $salaryRecord): RedirectResponse
     {
-        if (!$salaryRecord->can_be_approved) {
+        if (! $salaryRecord->can_be_approved) {
             return back()->with('error', 'Cannot approve this salary record.');
         }
 
@@ -255,7 +255,7 @@ class SalaryRecordController extends Controller
      */
     public function markAsPaid(Request $request, SalaryRecord $salaryRecord): RedirectResponse
     {
-        if (!$salaryRecord->can_be_paid) {
+        if (! $salaryRecord->can_be_paid) {
             return back()->with('error', 'Cannot mark this salary record as paid.');
         }
 
@@ -320,6 +320,7 @@ class SalaryRecordController extends Controller
             // Check if record already exists
             if ($employee->hasActiveSalaryRecord($validated['year'], $validated['month'])) {
                 $skipped++;
+
                 continue;
             }
 
@@ -358,9 +359,10 @@ class SalaryRecordController extends Controller
 
         try {
             $salaryRecord->postToAccounting();
+
             return back()->with('success', 'Posted to accounting successfully.');
         } catch (\Exception $e) {
-            return back()->with('error', 'Failed to post to accounting: ' . $e->getMessage());
+            return back()->with('error', 'Failed to post to accounting: '.$e->getMessage());
         }
     }
 
@@ -374,7 +376,7 @@ class SalaryRecordController extends Controller
             'salary_record_ids.*' => 'exists:hr_salary_records,id',
         ]);
 
-        $service = new \App\Modules\HR\Services\PayrollAccountingService();
+        $service = new \App\Modules\HR\Services\PayrollAccountingService;
         $results = $service->postBulkSalariesToAccounting($validated['salary_record_ids']);
 
         $message = "Posted {$results['success']} records to accounting.";
@@ -406,9 +408,9 @@ class SalaryRecordController extends Controller
         }
 
         $salaryRecords = $query->get();
-        
-        $filename = 'salary_records_' . now()->format('Y-m-d') . '.csv';
-        
+
+        $filename = 'salary_records_'.now()->format('Y-m-d').'.csv';
+
         $headers = [
             'Content-Type' => 'text/csv',
             'Content-Disposition' => "attachment; filename=\"$filename\"",
@@ -416,7 +418,7 @@ class SalaryRecordController extends Controller
 
         $callback = function () use ($salaryRecords) {
             $file = fopen('php://output', 'w');
-            
+
             // CSV headers
             fputcsv($file, [
                 'Payroll Number',
@@ -428,7 +430,7 @@ class SalaryRecordController extends Controller
                 'Total Deductions',
                 'Net Salary',
                 'Status',
-                'Payment Date'
+                'Payment Date',
             ]);
 
             // CSV data
@@ -443,7 +445,7 @@ class SalaryRecordController extends Controller
                     $record->total_deductions,
                     $record->net_salary,
                     $record->status_text,
-                    $record->payment_date ? $record->payment_date->format('Y-m-d') : 'N/A'
+                    $record->payment_date ? $record->payment_date->format('Y-m-d') : 'N/A',
                 ]);
             }
 

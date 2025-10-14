@@ -3,54 +3,48 @@
 namespace App\Imports;
 
 use App\Models\Modules\CRM\Models\Contact;
-use Maatwebsite\Excel\Concerns\ToModel;
-use Maatwebsite\Excel\Concerns\WithHeadingRow;
-use Maatwebsite\Excel\Concerns\WithValidation;
 use Maatwebsite\Excel\Concerns\Importable;
 use Maatwebsite\Excel\Concerns\SkipsErrors;
-use Maatwebsite\Excel\Concerns\SkipsOnError;
 use Maatwebsite\Excel\Concerns\SkipsFailures;
+use Maatwebsite\Excel\Concerns\SkipsOnError;
 use Maatwebsite\Excel\Concerns\SkipsOnFailure;
+use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithBatchInserts;
 use Maatwebsite\Excel\Concerns\WithChunkReading;
+use Maatwebsite\Excel\Concerns\WithHeadingRow;
+use Maatwebsite\Excel\Concerns\WithValidation;
 
-class ContactsImport implements
-    ToModel,
-    WithHeadingRow,
-    WithValidation,
-    SkipsOnError,
-    SkipsOnFailure,
-    WithBatchInserts,
-    WithChunkReading
+class ContactsImport implements SkipsOnError, SkipsOnFailure, ToModel, WithBatchInserts, WithChunkReading, WithHeadingRow, WithValidation
 {
     use Importable, SkipsErrors, SkipsFailures;
 
     private $importedCount = 0;
+
     private $skippedCount = 0;
 
     /**
-    * @param array $row
-    *
-    * @return \Illuminate\Database\Eloquent\Model|null
-    */
+     * @return \Illuminate\Database\Eloquent\Model|null
+     */
     public function model(array $row)
     {
         // Skip empty rows
         if (empty($row['name'])) {
             $this->skippedCount++;
+
             return null;
         }
 
         // Check if contact already exists
         $existingContact = Contact::where('email', $row['email'])
-            ->orWhere(function($query) use ($row) {
+            ->orWhere(function ($query) use ($row) {
                 $query->where('name', $row['name'])
-                      ->where('company', $row['company']);
+                    ->where('company', $row['company']);
             })
             ->first();
 
         if ($existingContact) {
             $this->skippedCount++;
+
             return null;
         }
 
@@ -112,12 +106,14 @@ class ContactsImport implements
     private function validateType($type): string
     {
         $validTypes = ['lead', 'client'];
+
         return in_array(strtolower($type), $validTypes) ? strtolower($type) : 'lead';
     }
 
     private function validateStatus($status): string
     {
         $validStatuses = ['new', 'contacted', 'qualified', 'proposal', 'negotiation', 'closed_won', 'closed_lost'];
+
         return in_array(strtolower($status), $validStatuses) ? strtolower($status) : 'new';
     }
 

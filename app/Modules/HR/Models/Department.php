@@ -2,11 +2,11 @@
 
 namespace App\Modules\HR\Models;
 
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Database\Factories\HR\DepartmentFactory;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Department extends Model
 {
@@ -72,24 +72,24 @@ class Department extends Model
     {
         return $query->where(function ($q) use ($search) {
             $q->where('name', 'like', "%{$search}%")
-              ->orWhere('name_ar', 'like', "%{$search}%")
-              ->orWhere('code', 'like', "%{$search}%")
-              ->orWhere('description', 'like', "%{$search}%");
+                ->orWhere('name_ar', 'like', "%{$search}%")
+                ->orWhere('code', 'like', "%{$search}%")
+                ->orWhere('description', 'like', "%{$search}%");
         });
     }
 
     // Accessors
     public function getDisplayNameAttribute(): string
     {
-        return app()->getLocale() === 'ar' && $this->name_ar 
-            ? $this->name_ar 
+        return app()->getLocale() === 'ar' && $this->name_ar
+            ? $this->name_ar
             : $this->name;
     }
 
     public function getDisplayDescriptionAttribute(): string
     {
-        return app()->getLocale() === 'ar' && $this->description_ar 
-            ? $this->description_ar 
+        return app()->getLocale() === 'ar' && $this->description_ar
+            ? $this->description_ar
             : $this->description;
     }
 
@@ -121,17 +121,18 @@ class Department extends Model
 
     public function getBudgetUtilization(): float
     {
-        if (!$this->budget || $this->budget <= 0) {
+        if (! $this->budget || $this->budget <= 0) {
             return 0;
         }
 
         $totalSalary = $this->getTotalSalaryExpense();
+
         return ($totalSalary / $this->budget) * 100;
     }
 
     public function canAddEmployee(): bool
     {
-        if (!$this->budget) {
+        if (! $this->budget) {
             return true; // No budget limit
         }
 
@@ -167,8 +168,8 @@ class Department extends Model
     public static function getDepartmentsByEmployeeCount(): \Illuminate\Database\Eloquent\Collection
     {
         return static::withCount(['employees' => function ($query) {
-                $query->where('status', 'active');
-            }])
+            $query->where('status', 'active');
+        }])
             ->orderBy('employees_count', 'desc')
             ->get();
     }
@@ -176,7 +177,7 @@ class Department extends Model
     public static function getBudgetSummary(): array
     {
         $departments = static::whereNotNull('budget')->get();
-        
+
         return [
             'total_budget' => $departments->sum('budget'),
             'total_salary_expense' => $departments->sum(function ($dept) {

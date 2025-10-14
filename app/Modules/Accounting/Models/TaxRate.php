@@ -44,7 +44,7 @@ class TaxRate extends Model
             ->where('effective_date', '<=', now())
             ->where(function ($q) {
                 $q->whereNull('expiry_date')
-                  ->orWhere('expiry_date', '>=', now());
+                    ->orWhere('expiry_date', '>=', now());
             });
     }
 
@@ -56,15 +56,15 @@ class TaxRate extends Model
     public function scopeByJurisdiction($query, $country, $state = null, $city = null)
     {
         $query->where('country', $country);
-        
+
         if ($state) {
             $query->where('state', $state);
         }
-        
+
         if ($city) {
             $query->where('city', $city);
         }
-        
+
         return $query;
     }
 
@@ -81,21 +81,31 @@ class TaxRate extends Model
 
     public function getFormattedRateAttribute()
     {
-        return number_format((float)$this->rate * 100, 2) . '%';
+        return number_format((float) $this->rate * 100, 2).'%';
     }
 
     public function getStatusColorAttribute()
     {
-        if (!$this->is_active) return 'red';
-        if ($this->expiry_date && $this->expiry_date < now()) return 'orange';
+        if (! $this->is_active) {
+            return 'red';
+        }
+        if ($this->expiry_date && $this->expiry_date < now()) {
+            return 'orange';
+        }
+
         return 'green';
     }
 
     public function getJurisdictionTextAttribute()
     {
         $jurisdiction = $this->country;
-        if ($this->state) $jurisdiction .= ', ' . $this->state;
-        if ($this->city) $jurisdiction .= ', ' . $this->city;
+        if ($this->state) {
+            $jurisdiction .= ', '.$this->state;
+        }
+        if ($this->city) {
+            $jurisdiction .= ', '.$this->city;
+        }
+
         return $jurisdiction;
     }
 
@@ -108,19 +118,19 @@ class TaxRate extends Model
     public function isValidForDate($date = null)
     {
         $date = $date ?: now();
-        
-        if (!$this->is_active) {
+
+        if (! $this->is_active) {
             return false;
         }
-        
+
         if ($this->effective_date > $date) {
             return false;
         }
-        
+
         if ($this->expiry_date && $this->expiry_date < $date) {
             return false;
         }
-        
+
         return true;
     }
 
@@ -162,7 +172,7 @@ class TaxRate extends Model
         foreach ($taxRates as $taxRate) {
             $tax = $taxRate->calculateTax($taxableAmount);
             $totalTax += $tax;
-            
+
             // If compound tax, add this tax to the taxable amount for next calculation
             if ($taxRate->is_compound) {
                 $taxableAmount += $tax;

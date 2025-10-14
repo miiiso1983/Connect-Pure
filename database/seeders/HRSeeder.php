@@ -2,13 +2,13 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Seeder;
+use App\Modules\HR\Models\Attendance;
 use App\Modules\HR\Models\Department;
-use App\Modules\HR\Models\Role;
 use App\Modules\HR\Models\Employee;
 use App\Modules\HR\Models\LeaveRequest;
-use App\Modules\HR\Models\Attendance;
+use App\Modules\HR\Models\Role;
 use App\Modules\HR\Models\SalaryRecord;
+use Illuminate\Database\Seeder;
 
 class HRSeeder extends Seeder
 {
@@ -431,11 +431,11 @@ class HRSeeder extends Seeder
     private function createAttendanceRecords(): void
     {
         $employees = Employee::all();
-        
+
         // Create attendance for the last 30 days
         for ($i = 29; $i >= 0; $i--) {
             $date = now()->subDays($i);
-            
+
             // Skip weekends (Friday and Saturday)
             if (in_array($date->dayOfWeek, [5, 6])) {
                 continue;
@@ -445,7 +445,7 @@ class HRSeeder extends Seeder
                 $status = 'present';
                 $actualIn = $date->copy()->setTime(9, rand(0, 30)); // 9:00-9:30 AM
                 $actualOut = $date->copy()->setTime(17, rand(0, 30)); // 5:00-5:30 PM
-                
+
                 // Randomly make some employees late or absent
                 $random = rand(1, 100);
                 if ($random <= 5) { // 5% absent

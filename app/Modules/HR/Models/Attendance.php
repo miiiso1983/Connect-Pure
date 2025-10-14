@@ -2,10 +2,10 @@
 
 namespace App\Modules\HR\Models;
 
+use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Carbon\Carbon;
 
 class Attendance extends Model
 {
@@ -85,7 +85,7 @@ class Attendance extends Model
     public function scopeCurrentMonth($query)
     {
         return $query->whereYear('date', now()->year)
-                    ->whereMonth('date', now()->month);
+            ->whereMonth('date', now()->month);
     }
 
     public function scopePresent($query)
@@ -106,13 +106,13 @@ class Attendance extends Model
     public function scopeNeedsApproval($query)
     {
         return $query->where('is_approved', false)
-                    ->whereIn('status', ['present', 'late', 'half_day']);
+            ->whereIn('status', ['present', 'late', 'half_day']);
     }
 
     // Accessors
     public function getStatusColorAttribute(): string
     {
-        return match($this->status) {
+        return match ($this->status) {
             'present' => 'green',
             'late' => 'yellow',
             'absent' => 'red',
@@ -128,7 +128,7 @@ class Attendance extends Model
 
     public function getStatusTextAttribute(): string
     {
-        return match($this->status) {
+        return match ($this->status) {
             'present' => __('hr.present'),
             'absent' => __('hr.absent'),
             'late' => __('hr.late'),
@@ -144,25 +144,25 @@ class Attendance extends Model
 
     public function getFormattedTotalHoursAttribute(): string
     {
-        if (!$this->total_hours) {
+        if (! $this->total_hours) {
             return '0:00';
         }
 
         $hours = intval($this->total_hours / 60);
         $minutes = $this->total_hours % 60;
-        
+
         return sprintf('%d:%02d', $hours, $minutes);
     }
 
     public function getFormattedOvertimeHoursAttribute(): string
     {
-        if (!$this->overtime_hours) {
+        if (! $this->overtime_hours) {
             return '0:00';
         }
 
         $hours = intval($this->overtime_hours / 60);
         $minutes = $this->overtime_hours % 60;
-        
+
         return sprintf('%d:%02d', $hours, $minutes);
     }
 
@@ -178,32 +178,34 @@ class Attendance extends Model
 
     public function getIsLateAttribute(): bool
     {
-        if (!$this->actual_in || !$this->scheduled_in) {
+        if (! $this->actual_in || ! $this->scheduled_in) {
             return false;
         }
 
-        $scheduledTime = Carbon::parse($this->date->format('Y-m-d') . ' ' . $this->scheduled_in->format('H:i:s'));
+        $scheduledTime = Carbon::parse($this->date->format('Y-m-d').' '.$this->scheduled_in->format('H:i:s'));
+
         return $this->actual_in->gt($scheduledTime);
     }
 
     public function getIsEarlyDepartureAttribute(): bool
     {
-        if (!$this->actual_out || !$this->scheduled_out) {
+        if (! $this->actual_out || ! $this->scheduled_out) {
             return false;
         }
 
-        $scheduledTime = Carbon::parse($this->date->format('Y-m-d') . ' ' . $this->scheduled_out->format('H:i:s'));
+        $scheduledTime = Carbon::parse($this->date->format('Y-m-d').' '.$this->scheduled_out->format('H:i:s'));
+
         return $this->actual_out->lt($scheduledTime);
     }
 
     public function getHasCheckedInAttribute(): bool
     {
-        return !is_null($this->actual_in);
+        return ! is_null($this->actual_in);
     }
 
     public function getHasCheckedOutAttribute(): bool
     {
-        return !is_null($this->actual_out);
+        return ! is_null($this->actual_out);
     }
 
     public function getIsCompleteAttribute(): bool
@@ -212,16 +214,16 @@ class Attendance extends Model
     }
 
     // Methods
-    public function checkIn(Carbon $time = null, array $location = null, string $ipAddress = null): void
+    public function checkIn(?Carbon $time = null, ?array $location = null, ?string $ipAddress = null): void
     {
         $checkInTime = $time ?? now();
-        
+
         $this->actual_in = $checkInTime;
         $this->check_in_location = $location;
         $this->ip_address = $ipAddress;
-        
+
         // Calculate late minutes
-        $scheduledTime = Carbon::parse($this->date->format('Y-m-d') . ' ' . $this->scheduled_in->format('H:i:s'));
+        $scheduledTime = Carbon::parse($this->date->format('Y-m-d').' '.$this->scheduled_in->format('H:i:s'));
         if ($checkInTime->gt($scheduledTime)) {
             $this->late_minutes = $checkInTime->diffInMinutes($scheduledTime);
             $this->status = 'late';
@@ -229,46 +231,46 @@ class Attendance extends Model
             $this->late_minutes = 0;
             $this->status = 'present';
         }
-        
+
         $this->save();
     }
 
-    public function checkOut(Carbon $time = null, array $location = null): void
+    public function checkOut(?Carbon $time = null, ?array $location = null): void
     {
         $checkOutTime = $time ?? now();
-        
+
         $this->actual_out = $checkOutTime;
         $this->check_out_location = $location;
-        
+
         // Calculate early departure minutes
-        $scheduledTime = Carbon::parse($this->date->format('Y-m-d') . ' ' . $this->scheduled_out->format('H:i:s'));
+        $scheduledTime = Carbon::parse($this->date->format('Y-m-d').' '.$this->scheduled_out->format('H:i:s'));
         if ($checkOutTime->lt($scheduledTime)) {
             $this->early_departure_minutes = $scheduledTime->diffInMinutes($checkOutTime);
         } else {
             $this->early_departure_minutes = 0;
         }
-        
+
         // Calculate total hours and overtime
         if ($this->actual_in) {
             $this->calculateWorkingHours();
         }
-        
+
         $this->save();
     }
 
     public function calculateWorkingHours(): void
     {
-        if (!$this->actual_in || !$this->actual_out) {
+        if (! $this->actual_in || ! $this->actual_out) {
             return;
         }
 
         // Calculate total minutes worked
         $totalMinutes = $this->actual_out->diffInMinutes($this->actual_in);
-        
+
         // Subtract break time if recorded
         if ($this->break_start && $this->break_end) {
-            $breakStart = Carbon::parse($this->date->format('Y-m-d') . ' ' . $this->break_start->format('H:i:s'));
-            $breakEnd = Carbon::parse($this->date->format('Y-m-d') . ' ' . $this->break_end->format('H:i:s'));
+            $breakStart = Carbon::parse($this->date->format('Y-m-d').' '.$this->break_start->format('H:i:s'));
+            $breakEnd = Carbon::parse($this->date->format('Y-m-d').' '.$this->break_end->format('H:i:s'));
             $breakMinutes = $breakEnd->diffInMinutes($breakStart);
             $totalMinutes -= $breakMinutes;
         }
@@ -344,10 +346,10 @@ class Attendance extends Model
         ];
     }
 
-    public static function createDailyAttendance(Carbon $date = null): void
+    public static function createDailyAttendance(?Carbon $date = null): void
     {
         $date = $date ?? now()->toDateString();
-        
+
         // Skip weekends (Friday and Saturday)
         $dayOfWeek = Carbon::parse($date)->dayOfWeek;
         if (in_array($dayOfWeek, [5, 6])) { // 5 = Friday, 6 = Saturday
@@ -355,10 +357,10 @@ class Attendance extends Model
         }
 
         $employees = Employee::active()->get();
-        
+
         foreach ($employees as $employee) {
             // Check if attendance record already exists
-            if (!static::where('employee_id', $employee->id)->where('date', $date)->exists()) {
+            if (! static::where('employee_id', $employee->id)->where('date', $date)->exists()) {
                 static::create([
                     'employee_id' => $employee->id,
                     'date' => $date,
@@ -370,10 +372,10 @@ class Attendance extends Model
         }
     }
 
-    public static function getAttendanceStats(Carbon $startDate = null, Carbon $endDate = null): array
+    public static function getAttendanceStats(?Carbon $startDate = null, ?Carbon $endDate = null): array
     {
         $query = static::query();
-        
+
         if ($startDate && $endDate) {
             $query->whereBetween('date', [$startDate, $endDate]);
         } else {
@@ -381,7 +383,7 @@ class Attendance extends Model
         }
 
         $totalRecords = $query->count();
-        
+
         return [
             'total_records' => $totalRecords,
             'present_count' => $query->clone()->present()->count(),
@@ -390,7 +392,7 @@ class Attendance extends Model
             'on_leave_count' => $query->clone()->byStatus('on_leave')->count(),
             'average_working_hours' => $query->clone()->present()->avg('total_hours') ?? 0,
             'total_overtime_hours' => $query->clone()->sum('overtime_hours'),
-            'attendance_rate' => $totalRecords > 0 ? 
+            'attendance_rate' => $totalRecords > 0 ?
                 ($query->clone()->whereIn('status', ['present', 'late'])->count() / $totalRecords) * 100 : 0,
         ];
     }
@@ -411,7 +413,7 @@ class Attendance extends Model
             'total_working_hours' => $records->sum('total_hours'),
             'total_overtime_hours' => $records->sum('overtime_hours'),
             'total_late_minutes' => $records->sum('late_minutes'),
-            'attendance_rate' => $records->count() > 0 ? 
+            'attendance_rate' => $records->count() > 0 ?
                 ($records->whereIn('status', ['present', 'late'])->count() / $records->count()) * 100 : 0,
         ];
     }

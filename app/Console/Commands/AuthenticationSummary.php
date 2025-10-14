@@ -2,13 +2,14 @@
 
 namespace App\Console\Commands;
 
-use Illuminate\Console\Command;
-use App\Models\User;
 use App\Models\Role;
+use App\Models\User;
+use Illuminate\Console\Command;
 
 class AuthenticationSummary extends Command
 {
     protected $signature = 'auth:summary';
+
     protected $description = 'Display authentication system summary';
 
     public function handle()
@@ -16,20 +17,20 @@ class AuthenticationSummary extends Command
         $this->info('');
         $this->info('🔐 AUTHENTICATION SYSTEM SUMMARY');
         $this->info('=====================================');
-        
+
         // System Overview
         $totalUsers = User::count();
         $usersWithRoles = User::whereHas('roles')->count();
         $totalRoles = Role::count();
         $activeRoles = Role::where('is_active', true)->count();
-        
-        $this->info("📊 System Statistics:");
+
+        $this->info('📊 System Statistics:');
         $this->info("   • Total Users: {$totalUsers}");
         $this->info("   • Users with Roles: {$usersWithRoles}");
         $this->info("   • Total Roles: {$totalRoles}");
         $this->info("   • Active Roles: {$activeRoles}");
         $this->info('');
-        
+
         // Authentication Features
         $this->info('🚀 Authentication Features:');
         $this->info('   ✅ Enhanced Login Page with Modern UI');
@@ -41,7 +42,7 @@ class AuthenticationSummary extends Command
         $this->info('   ✅ Remember Me Feature');
         $this->info('   ✅ Demo Accounts for Testing');
         $this->info('');
-        
+
         // Role-Based Redirection
         $this->info('🎯 Role-Based Redirection:');
         $this->info('   • Master Admin → Main Dashboard (Full Access)');
@@ -53,7 +54,7 @@ class AuthenticationSummary extends Command
         $this->info('   • Project Roles → Performance Module');
         $this->info('   • Default → Main Dashboard');
         $this->info('');
-        
+
         // Demo Accounts
         $this->info('👥 Demo Accounts:');
         $demoAccounts = [
@@ -62,7 +63,7 @@ class AuthenticationSummary extends Command
             'accounting@connectpure.com' => ['Accounting Manager', 'password', 'Accounting Module Access'],
             'admin@connectpure.com' => ['Master Administrator', 'password', 'Full System Access'],
         ];
-        
+
         foreach ($demoAccounts as $email => $details) {
             $user = User::where('email', $email)->with('roles')->first();
             $status = $user ? '✅' : '❌';
@@ -72,7 +73,7 @@ class AuthenticationSummary extends Command
             $this->info("      Access: {$details[2]}");
         }
         $this->info('');
-        
+
         // Security Features
         $this->info('🛡️ Security Features:');
         $this->info('   ✅ Permission Middleware with Master Admin Bypass');
@@ -83,7 +84,7 @@ class AuthenticationSummary extends Command
         $this->info('   ✅ Email Verification Support');
         $this->info('   ✅ Password Hashing with Bcrypt');
         $this->info('');
-        
+
         // URLs
         $this->info('🌐 Important URLs:');
         $this->info('   • Login Page: /login');
@@ -94,7 +95,7 @@ class AuthenticationSummary extends Command
         $this->info('   • Role Hierarchy: /modules/roles/hierarchy');
         $this->info('   • User Role Assignment: /admin/user-roles');
         $this->info('');
-        
+
         // Next Steps
         $this->info('📋 Usage Instructions:');
         $this->info('   1. Visit /login to access the enhanced login page');
@@ -104,10 +105,10 @@ class AuthenticationSummary extends Command
         $this->info('   5. Use the user menu (top right) to logout');
         $this->info('   6. Logged out users are redirected to login page');
         $this->info('');
-        
+
         $this->info('🎉 Authentication system is fully operational!');
         $this->info('=====================================');
-        
+
         return 0;
     }
 }

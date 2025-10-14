@@ -3,12 +3,12 @@
 namespace App\Modules\HR\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Modules\HR\Models\Role;
 use App\Modules\HR\Models\Department;
-use Illuminate\Http\Request;
+use App\Modules\HR\Models\Role;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\View\View;
+use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
+use Illuminate\View\View;
 
 class RoleController extends Controller
 {
@@ -91,7 +91,7 @@ class RoleController extends Controller
         $role = Role::create($validated);
 
         return redirect()->route('modules.hr.roles.show', $role)
-                        ->with('success', __('hr.role_created_successfully'));
+            ->with('success', __('hr.role_created_successfully'));
     }
 
     /**
@@ -103,7 +103,7 @@ class RoleController extends Controller
             'department',
             'employees' => function ($query) {
                 $query->with('department')->orderBy('first_name');
-            }
+            },
         ]);
 
         // Get role statistics
@@ -153,7 +153,7 @@ class RoleController extends Controller
         $role->update($validated);
 
         return redirect()->route('modules.hr.roles.show', $role)
-                        ->with('success', __('hr.role_updated_successfully'));
+            ->with('success', __('hr.role_updated_successfully'));
     }
 
     /**
@@ -169,7 +169,7 @@ class RoleController extends Controller
         $role->delete();
 
         return redirect()->route('modules.hr.roles.index')
-                        ->with('success', __('hr.role_deleted_successfully'));
+            ->with('success', __('hr.role_deleted_successfully'));
     }
 
     /**
@@ -177,10 +177,10 @@ class RoleController extends Controller
      */
     public function toggleStatus(Role $role): RedirectResponse
     {
-        $role->update(['is_active' => !$role->is_active]);
-        
+        $role->update(['is_active' => ! $role->is_active]);
+
         $status = $role->is_active ? 'activated' : 'deactivated';
-        
+
         return back()->with('success', "Role has been {$status} successfully.");
     }
 
@@ -225,9 +225,9 @@ class RoleController extends Controller
         }
 
         $roles = $query->get();
-        
-        $filename = 'roles_' . now()->format('Y-m-d') . '.csv';
-        
+
+        $filename = 'roles_'.now()->format('Y-m-d').'.csv';
+
         $headers = [
             'Content-Type' => 'text/csv',
             'Content-Disposition' => "attachment; filename=\"$filename\"",
@@ -235,7 +235,7 @@ class RoleController extends Controller
 
         $callback = function () use ($roles) {
             $file = fopen('php://output', 'w');
-            
+
             // CSV headers
             fputcsv($file, [
                 'Role Code',
@@ -247,7 +247,7 @@ class RoleController extends Controller
                 'Total Employees',
                 'Active Employees',
                 'Average Salary',
-                'Status'
+                'Status',
             ]);
 
             // CSV data
@@ -262,7 +262,7 @@ class RoleController extends Controller
                     $role->employees_count,
                     $role->active_employees_count,
                     number_format($role->getAverageSalary(), 2),
-                    $role->is_active ? 'Active' : 'Inactive'
+                    $role->is_active ? 'Active' : 'Inactive',
                 ]);
             }
 

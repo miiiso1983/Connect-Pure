@@ -2,10 +2,10 @@
 
 namespace App\Modules\Accounting\Models;
 
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class ChartOfAccount extends Model
 {
@@ -102,17 +102,17 @@ class ChartOfAccount extends Model
     // Accessors
     public function getDisplayNameAttribute(): string
     {
-        return $this->account_code . ' - ' . $this->account_name;
+        return $this->account_code.' - '.$this->account_name;
     }
 
     public function getFormattedBalanceAttribute(): string
     {
-        return number_format((float)$this->current_balance, 2);
+        return number_format((float) $this->current_balance, 2);
     }
 
     public function getAccountTypeTextAttribute(): string
     {
-        return match($this->account_type) {
+        return match ($this->account_type) {
             'asset' => __('accounting.asset'),
             'liability' => __('accounting.liability'),
             'equity' => __('accounting.equity'),
@@ -124,7 +124,7 @@ class ChartOfAccount extends Model
 
     public function getAccountSubtypeTextAttribute(): string
     {
-        return match($this->account_subtype) {
+        return match ($this->account_subtype) {
             'current_asset' => __('accounting.current_asset'),
             'fixed_asset' => __('accounting.fixed_asset'),
             'current_liability' => __('accounting.current_liability'),
@@ -147,18 +147,18 @@ class ChartOfAccount extends Model
     public function updateBalance(float $amount, string $type = 'debit'): void
     {
         $balanceType = $this->balance_type;
-        
-        if (($balanceType === 'debit' && $type === 'debit') || 
+
+        if (($balanceType === 'debit' && $type === 'debit') ||
             ($balanceType === 'credit' && $type === 'credit')) {
             $this->current_balance += $amount;
         } else {
             $this->current_balance -= $amount;
         }
-        
+
         $this->save();
     }
 
-    public function getBalance(string $startDate = null, string $endDate = null): float
+    public function getBalance(?string $startDate = null, ?string $endDate = null): float
     {
         $query = $this->journalEntryLines()
             ->whereHas('journalEntry', function ($q) {
@@ -181,7 +181,7 @@ class ChartOfAccount extends Model
         $credits = $query->sum('credit_amount');
 
         $balance = $this->opening_balance;
-        
+
         if ($this->balance_type === 'debit') {
             $balance += ($debits - $credits);
         } else {
@@ -216,12 +216,12 @@ class ChartOfAccount extends Model
     {
         $level = 0;
         $parent = $this->parentAccount;
-        
+
         while ($parent) {
             $level++;
             $parent = $parent->parentAccount;
         }
-        
+
         return $level;
     }
 
@@ -229,12 +229,12 @@ class ChartOfAccount extends Model
     {
         $path = [$this->account_name];
         $parent = $this->parentAccount;
-        
+
         while ($parent) {
             array_unshift($path, $parent->account_name);
             $parent = $parent->parentAccount;
         }
-        
+
         return implode(' > ', $path);
     }
 
@@ -267,7 +267,7 @@ class ChartOfAccount extends Model
 
     public static function generateAccountCode(string $type): string
     {
-        $prefix = match($type) {
+        $prefix = match ($type) {
             'asset' => '1',
             'liability' => '2',
             'equity' => '3',
@@ -276,7 +276,7 @@ class ChartOfAccount extends Model
             default => '9'
         };
 
-        $lastAccount = static::where('account_code', 'like', $prefix . '%')
+        $lastAccount = static::where('account_code', 'like', $prefix.'%')
             ->orderBy('account_code', 'desc')
             ->first();
 
@@ -284,12 +284,12 @@ class ChartOfAccount extends Model
             $lastNumber = (int) substr($lastAccount->account_code, 1);
             $newNumber = $lastNumber + 1;
         } else {
-            $newNumber = $prefix === '1' ? 1000 : 
-                        ($prefix === '2' ? 2000 : 
-                        ($prefix === '3' ? 3000 : 
+            $newNumber = $prefix === '1' ? 1000 :
+                        ($prefix === '2' ? 2000 :
+                        ($prefix === '3' ? 3000 :
                         ($prefix === '4' ? 4000 : 5000)));
         }
 
-        return $prefix . str_pad($newNumber, 3, '0', STR_PAD_LEFT);
+        return $prefix.str_pad($newNumber, 3, '0', STR_PAD_LEFT);
     }
 }

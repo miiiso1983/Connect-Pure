@@ -4,11 +4,10 @@ namespace App\Modules\Support\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Modules\Support\Models\Ticket;
-use App\Modules\Support\Models\TicketComment;
 use App\Modules\Support\Models\TicketAttachment;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 class SupportController extends Controller
@@ -81,10 +80,10 @@ class SupportController extends Controller
             $search = $request->search;
             $query->where(function ($q) use ($search) {
                 $q->where('title', 'like', "%{$search}%")
-                  ->orWhere('description', 'like', "%{$search}%")
-                  ->orWhere('ticket_number', 'like', "%{$search}%")
-                  ->orWhere('customer_name', 'like', "%{$search}%")
-                  ->orWhere('customer_email', 'like', "%{$search}%");
+                    ->orWhere('description', 'like', "%{$search}%")
+                    ->orWhere('ticket_number', 'like', "%{$search}%")
+                    ->orWhere('customer_name', 'like', "%{$search}%")
+                    ->orWhere('customer_email', 'like', "%{$search}%");
             });
         }
 
@@ -216,7 +215,7 @@ class SupportController extends Controller
 
     public function downloadAttachment(TicketAttachment $attachment)
     {
-        if (!Storage::exists($attachment->file_path)) {
+        if (! Storage::exists($attachment->file_path)) {
             abort(404, 'File not found');
         }
 
@@ -235,7 +234,7 @@ class SupportController extends Controller
     private function storeAttachment(Ticket $ticket, $file, string $uploadedBy, ?int $commentId = null): TicketAttachment
     {
         $originalName = $file->getClientOriginalName();
-        $fileName = Str::uuid() . '.' . $file->getClientOriginalExtension();
+        $fileName = Str::uuid().'.'.$file->getClientOriginalExtension();
         $filePath = $file->storeAs('support/attachments', $fileName, 'public');
 
         return TicketAttachment::create([
@@ -276,9 +275,9 @@ class SupportController extends Controller
         $minutes = $avgMinutes % 60;
 
         if ($hours > 0) {
-            return $hours . 'h ' . round($minutes) . 'm';
+            return $hours.'h '.round($minutes).'m';
         } else {
-            return round($minutes) . 'm';
+            return round($minutes).'m';
         }
     }
 

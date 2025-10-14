@@ -11,6 +11,7 @@ class TaxRateController extends Controller
     public function index()
     {
         $taxRates = TaxRate::paginate(15);
+
         return view('modules.accounting.tax-rates.index', compact('taxRates'));
     }
 
@@ -71,7 +72,7 @@ class TaxRateController extends Controller
     {
         $location = $request->get('location');
         $taxRates = TaxRate::where('location', $location)->where('is_active', true)->get();
-        
+
         return response()->json($taxRates);
     }
 }

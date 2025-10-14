@@ -2,8 +2,8 @@
 
 namespace Database\Factories\HR;
 
-use App\Modules\HR\Models\Role;
 use App\Modules\HR\Models\Department;
+use App\Modules\HR\Models\Role;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class RoleFactory extends Factory
@@ -15,13 +15,13 @@ class RoleFactory extends Factory
         $jobTitles = [
             'Software Engineer', 'Project Manager', 'Business Analyst', 'Quality Assurance',
             'Marketing Specialist', 'Sales Representative', 'HR Specialist', 'Accountant',
-            'Operations Manager', 'Customer Service Representative'
+            'Operations Manager', 'Customer Service Representative',
         ];
 
         $jobTitlesAr = [
             'مهندس برمجيات', 'مدير مشروع', 'محلل أعمال', 'ضمان الجودة',
             'أخصائي تسويق', 'مندوب مبيعات', 'أخصائي موارد بشرية', 'محاسب',
-            'مدير عمليات', 'ممثل خدمة العملاء'
+            'مدير عمليات', 'ممثل خدمة العملاء',
         ];
 
         $index = $this->faker->numberBetween(0, count($jobTitles) - 1);

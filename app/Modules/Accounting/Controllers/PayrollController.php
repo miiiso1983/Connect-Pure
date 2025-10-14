@@ -3,8 +3,8 @@
 namespace App\Modules\Accounting\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Modules\Accounting\Models\Payroll;
 use App\Modules\Accounting\Models\Employee;
+use App\Modules\Accounting\Models\Payroll;
 use Illuminate\Http\Request;
 
 class PayrollController extends Controller
@@ -12,12 +12,14 @@ class PayrollController extends Controller
     public function index()
     {
         $payrolls = Payroll::with('employee')->paginate(15);
+
         return view('modules.accounting.payroll.index', compact('payrolls'));
     }
 
     public function create()
     {
         $employees = Employee::where('status', 'active')->get();
+
         return view('modules.accounting.payroll.create', compact('employees'));
     }
 
@@ -46,6 +48,7 @@ class PayrollController extends Controller
     public function edit(Payroll $payroll)
     {
         $employees = Employee::where('status', 'active')->get();
+
         return view('modules.accounting.payroll.edit', compact('payroll', 'employees'));
     }
 
@@ -102,6 +105,7 @@ class PayrollController extends Controller
     public function employees()
     {
         $employees = Employee::paginate(15);
+
         return view('modules.accounting.payroll.employees.index', compact('employees'));
     }
 
@@ -141,7 +145,7 @@ class PayrollController extends Controller
         $validated = $request->validate([
             'first_name' => 'required|string|max:255',
             'last_name' => 'required|string|max:255',
-            'email' => 'required|email|unique:employees,email,' . $employee->id,
+            'email' => 'required|email|unique:employees,email,'.$employee->id,
             'pay_rate' => 'required|numeric|min:0',
             'pay_type' => 'required|in:hourly,salary',
         ]);

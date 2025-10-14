@@ -16,8 +16,8 @@ class TaxController extends Controller
             $search = $request->search;
             $query->where(function ($q) use ($search) {
                 $q->where('name', 'like', "%{$search}%")
-                  ->orWhere('code', 'like', "%{$search}%")
-                  ->orWhere('description', 'like', "%{$search}%");
+                    ->orWhere('code', 'like', "%{$search}%")
+                    ->orWhere('description', 'like', "%{$search}%");
             });
         }
 
@@ -63,13 +63,13 @@ class TaxController extends Controller
             'name' => 'required|string|max:255',
             'code' => 'required|string|max:50|unique:accounting_taxes,code',
             'rate' => 'required|numeric|min:0|max:100',
-            'type' => 'required|in:' . implode(',', array_keys(Tax::getTaxTypes())),
+            'type' => 'required|in:'.implode(',', array_keys(Tax::getTaxTypes())),
             'description' => 'nullable|string',
             'country_code' => 'nullable|string|size:2',
             'region' => 'nullable|string|max:255',
             'applies_to' => 'nullable|array',
-            'applies_to.*' => 'in:' . implode(',', array_keys(Tax::getAppliesTo())),
-            'calculation_method' => 'required|in:' . implode(',', array_keys(Tax::getCalculationMethods())),
+            'applies_to.*' => 'in:'.implode(',', array_keys(Tax::getAppliesTo())),
+            'calculation_method' => 'required|in:'.implode(',', array_keys(Tax::getCalculationMethods())),
             'compound_tax' => 'boolean',
             'inclusive' => 'boolean',
             'effective_date' => 'nullable|date',
@@ -81,13 +81,13 @@ class TaxController extends Controller
         $tax = Tax::create($request->all());
 
         return redirect()->route('modules.accounting.taxes.index')
-                       ->with('success', __('accounting.tax_created_successfully'));
+            ->with('success', __('accounting.tax_created_successfully'));
     }
 
     public function show(Tax $tax)
     {
         $tax->load(['invoices', 'expenses']);
-        
+
         // Get usage statistics
         $stats = [
             'invoices_count' => $tax->invoices()->count(),
@@ -112,15 +112,15 @@ class TaxController extends Controller
     {
         $request->validate([
             'name' => 'required|string|max:255',
-            'code' => 'required|string|max:50|unique:accounting_taxes,code,' . $tax->id,
+            'code' => 'required|string|max:50|unique:accounting_taxes,code,'.$tax->id,
             'rate' => 'required|numeric|min:0|max:100',
-            'type' => 'required|in:' . implode(',', array_keys(Tax::getTaxTypes())),
+            'type' => 'required|in:'.implode(',', array_keys(Tax::getTaxTypes())),
             'description' => 'nullable|string',
             'country_code' => 'nullable|string|size:2',
             'region' => 'nullable|string|max:255',
             'applies_to' => 'nullable|array',
-            'applies_to.*' => 'in:' . implode(',', array_keys(Tax::getAppliesTo())),
-            'calculation_method' => 'required|in:' . implode(',', array_keys(Tax::getCalculationMethods())),
+            'applies_to.*' => 'in:'.implode(',', array_keys(Tax::getAppliesTo())),
+            'calculation_method' => 'required|in:'.implode(',', array_keys(Tax::getCalculationMethods())),
             'compound_tax' => 'boolean',
             'inclusive' => 'boolean',
             'effective_date' => 'nullable|date',
@@ -132,7 +132,7 @@ class TaxController extends Controller
         $tax->update($request->all());
 
         return redirect()->route('modules.accounting.taxes.index')
-                       ->with('success', __('accounting.tax_updated_successfully'));
+            ->with('success', __('accounting.tax_updated_successfully'));
     }
 
     public function destroy(Tax $tax)
@@ -145,32 +145,32 @@ class TaxController extends Controller
         $tax->delete();
 
         return redirect()->route('modules.accounting.taxes.index')
-                       ->with('success', __('accounting.tax_deleted_successfully'));
+            ->with('success', __('accounting.tax_deleted_successfully'));
     }
 
     public function setDefault(Tax $tax)
     {
         // Update all taxes to not be default
         Tax::where('is_default', true)->update(['is_default' => false]);
-        
+
         // Set this tax as default
         $tax->update(['is_default' => true]);
 
         return response()->json([
             'success' => true,
-            'message' => __('accounting.default_tax_updated')
+            'message' => __('accounting.default_tax_updated'),
         ]);
     }
 
     public function toggleStatus(Tax $tax)
     {
-        $tax->update(['is_active' => !$tax->is_active]);
+        $tax->update(['is_active' => ! $tax->is_active]);
 
         return response()->json([
             'success' => true,
-            'message' => $tax->is_active 
-                ? __('accounting.tax_activated') 
-                : __('accounting.tax_deactivated')
+            'message' => $tax->is_active
+                ? __('accounting.tax_activated')
+                : __('accounting.tax_deactivated'),
         ]);
     }
 
@@ -184,10 +184,10 @@ class TaxController extends Controller
 
         $tax = Tax::findOrFail($request->tax_id);
         $quantity = $request->quantity ?? 1;
-        
+
         $taxAmount = $tax->calculateTax($request->amount, $quantity);
         $totalAmount = $request->amount * $quantity;
-        
+
         if ($tax->inclusive) {
             $netAmount = $totalAmount - $taxAmount;
         } else {
@@ -213,47 +213,47 @@ class TaxController extends Controller
         ]);
 
         $taxes = Tax::active()
-                   ->effective()
-                   ->byCountry($request->country_code)
-                   ->get(['id', 'name', 'code', 'rate', 'type']);
+            ->effective()
+            ->byCountry($request->country_code)
+            ->get(['id', 'name', 'code', 'rate', 'type']);
 
         return response()->json([
             'success' => true,
-            'taxes' => $taxes
+            'taxes' => $taxes,
         ]);
     }
 
     public function duplicate(Tax $tax)
     {
         $newTax = $tax->replicate();
-        $newTax->name = $tax->name . ' (Copy)';
-        $newTax->code = $tax->code . '_COPY';
+        $newTax->name = $tax->name.' (Copy)';
+        $newTax->code = $tax->code.'_COPY';
         $newTax->is_default = false;
         $newTax->save();
 
         return redirect()->route('modules.accounting.taxes.edit', $newTax)
-                       ->with('success', __('accounting.tax_duplicated_successfully'));
+            ->with('success', __('accounting.tax_duplicated_successfully'));
     }
 
     public function export()
     {
         $taxes = Tax::with(['invoices', 'expenses'])->get();
-        
-        $filename = 'taxes_' . now()->format('Y_m_d') . '.csv';
-        
+
+        $filename = 'taxes_'.now()->format('Y_m_d').'.csv';
+
         $headers = [
             'Content-Type' => 'text/csv',
             'Content-Disposition' => "attachment; filename=\"{$filename}\"",
         ];
 
-        $callback = function() use ($taxes) {
+        $callback = function () use ($taxes) {
             $file = fopen('php://output', 'w');
-            
+
             // CSV headers
             fputcsv($file, [
                 'Tax Name', 'Tax Code', 'Rate (%)', 'Type', 'Country', 'Region',
                 'Calculation Method', 'Is Active', 'Is Default', 'Effective Date',
-                'Expiry Date', 'Invoices Count', 'Expenses Count'
+                'Expiry Date', 'Invoices Count', 'Expenses Count',
             ]);
 
             // CSV data

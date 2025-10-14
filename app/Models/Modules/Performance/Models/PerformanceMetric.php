@@ -25,7 +25,7 @@ class PerformanceMetric extends Model
         'productivity_score',
         'quality_score',
         'overall_score',
-        'additional_metrics'
+        'additional_metrics',
     ];
 
     protected $casts = [
@@ -36,14 +36,14 @@ class PerformanceMetric extends Model
         'productivity_score' => 'decimal:2',
         'quality_score' => 'decimal:2',
         'overall_score' => 'decimal:2',
-        'additional_metrics' => 'array'
+        'additional_metrics' => 'array',
     ];
 
     public function getPerformanceGradeAttribute(): string
     {
         $score = $this->overall_score;
 
-        return match(true) {
+        return match (true) {
             $score >= 90 => 'A+',
             $score >= 85 => 'A',
             $score >= 80 => 'B+',
@@ -59,7 +59,7 @@ class PerformanceMetric extends Model
     {
         $score = $this->overall_score;
 
-        return match(true) {
+        return match (true) {
             $score >= 85 => 'green',
             $score >= 75 => 'blue',
             $score >= 65 => 'yellow',
@@ -72,7 +72,7 @@ class PerformanceMetric extends Model
     {
         $score = $this->productivity_score;
 
-        return match(true) {
+        return match (true) {
             $score >= 90 => 'Excellent',
             $score >= 80 => 'Very Good',
             $score >= 70 => 'Good',
@@ -86,7 +86,7 @@ class PerformanceMetric extends Model
     {
         $rate = $this->efficiency_rate;
 
-        return match(true) {
+        return match (true) {
             $rate >= 95 => 'Highly Efficient',
             $rate >= 85 => 'Efficient',
             $rate >= 75 => 'Moderately Efficient',

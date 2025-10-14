@@ -40,6 +40,7 @@ class ProcessRecurringPayments extends Command
 
         if ($profiles->isEmpty()) {
             $this->info('No recurring profiles are due for processing.');
+
             return 0;
         }
 
@@ -55,6 +56,7 @@ class ProcessRecurringPayments extends Command
                 $this->line("  - Would create: {$profile->type}");
                 $this->line("  - Amount: {$profile->formatted_amount}");
                 $this->line("  - Next run date: {$profile->next_run_date_formatted}");
+
                 continue;
             }
 
@@ -70,7 +72,7 @@ class ProcessRecurringPayments extends Command
                         'profile_name' => $profile->profile_name,
                         'created_type' => $profile->type,
                         'created_id' => $created->id,
-                        'amount' => $profile->amount
+                        'amount' => $profile->amount,
                     ]);
                 } else {
                     $this->error("  ✗ Failed to create {$profile->type}");
@@ -85,7 +87,7 @@ class ProcessRecurringPayments extends Command
                     'profile_id' => $profile->id,
                     'profile_name' => $profile->profile_name,
                     'error' => $e->getMessage(),
-                    'trace' => $e->getTraceAsString()
+                    'trace' => $e->getTraceAsString(),
                 ]);
             }
         }
@@ -93,11 +95,12 @@ class ProcessRecurringPayments extends Command
         if ($dryRun) {
             $this->info("DRY RUN COMPLETE - {$profiles->count()} profiles would be processed");
         } else {
-            $this->info("Processing complete!");
+            $this->info('Processing complete!');
             $this->info("Successfully processed: {$processed}");
 
             if ($errors > 0) {
                 $this->error("Errors encountered: {$errors}");
+
                 return 1;
             }
         }

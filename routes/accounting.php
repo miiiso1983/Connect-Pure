@@ -1,19 +1,19 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-use App\Modules\Accounting\Controllers\DashboardController;
-use App\Modules\Accounting\Controllers\InvoiceController;
-use App\Modules\Accounting\Controllers\CustomerController;
-use App\Modules\Accounting\Controllers\VendorController;
-use App\Modules\Accounting\Controllers\ExpenseController;
-use App\Modules\Accounting\Controllers\ProductController;
-use App\Modules\Accounting\Controllers\PaymentController;
-use App\Modules\Accounting\Controllers\ReportController;
 use App\Modules\Accounting\Controllers\ChartOfAccountController;
-use App\Modules\Accounting\Controllers\PayrollController;
-use App\Modules\Accounting\Controllers\RecurringController;
-use App\Modules\Accounting\Controllers\TaxRateController;
+use App\Modules\Accounting\Controllers\CustomerController;
+use App\Modules\Accounting\Controllers\DashboardController;
+use App\Modules\Accounting\Controllers\ExpenseController;
+use App\Modules\Accounting\Controllers\InvoiceController;
 use App\Modules\Accounting\Controllers\JournalEntryController;
+use App\Modules\Accounting\Controllers\PaymentController;
+use App\Modules\Accounting\Controllers\PayrollController;
+use App\Modules\Accounting\Controllers\ProductController;
+use App\Modules\Accounting\Controllers\RecurringController;
+use App\Modules\Accounting\Controllers\ReportController;
+use App\Modules\Accounting\Controllers\TaxRateController;
+use App\Modules\Accounting\Controllers\VendorController;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,7 +26,7 @@ use App\Modules\Accounting\Controllers\JournalEntryController;
 */
 
 Route::prefix('modules/accounting')->name('modules.accounting.')->middleware(['auth'])->group(function () {
-    
+
     // Dashboard
     Route::get('/', [DashboardController::class, 'index'])->name('index');
     Route::get('/dashboard-data', [DashboardController::class, 'getDashboardData'])->name('dashboard.data');
@@ -49,7 +49,7 @@ Route::prefix('modules/accounting')->name('modules.accounting.')->middleware(['a
         Route::get('/{invoice}/pdf', [InvoiceController::class, 'downloadPDF'])->name('pdf');
         Route::post('/{invoice}/mark-paid', [InvoiceController::class, 'markAsPaid'])->name('mark-paid');
         Route::post('/{invoice}/mark-viewed', [InvoiceController::class, 'markAsViewed'])->name('mark-viewed');
-        
+
         // Invoice Items
         Route::post('/{invoice}/items', [InvoiceController::class, 'addItem'])->name('items.store');
         Route::put('/{invoice}/items/{item}', [InvoiceController::class, 'updateItem'])->name('items.update');
@@ -187,7 +187,7 @@ Route::prefix('modules/accounting')->name('modules.accounting.')->middleware(['a
         Route::post('/{payroll}/calculate', [PayrollController::class, 'calculate'])->name('calculate');
         Route::post('/{payroll}/approve', [PayrollController::class, 'approve'])->name('approve');
         Route::post('/{payroll}/process', [PayrollController::class, 'process'])->name('process');
-        
+
         // Employees
         Route::prefix('employees')->name('employees.')->group(function () {
             Route::get('/', [PayrollController::class, 'employees'])->name('index');
@@ -203,31 +203,31 @@ Route::prefix('modules/accounting')->name('modules.accounting.')->middleware(['a
     // Reports
     Route::prefix('reports')->name('reports.')->group(function () {
         Route::get('/', [ReportController::class, 'index'])->name('index');
-        
+
         // Financial Reports
         Route::get('/profit-loss', [ReportController::class, 'profitLoss'])->name('profit-loss');
         Route::get('/balance-sheet', [ReportController::class, 'balanceSheet'])->name('balance-sheet');
         Route::get('/cash-flow', [ReportController::class, 'cashFlow'])->name('cash-flow');
         Route::get('/trial-balance', [ReportController::class, 'trialBalance'])->name('trial-balance');
         Route::get('/general-ledger', [ReportController::class, 'generalLedger'])->name('general-ledger');
-        
+
         // Customer Reports
         Route::get('/customer-aging', [ReportController::class, 'customerAging'])->name('customer-aging');
         Route::get('/customer-statements', [ReportController::class, 'customerStatements'])->name('customer-statements');
         Route::get('/sales-by-customer', [ReportController::class, 'salesByCustomer'])->name('sales-by-customer');
-        
+
         // Vendor Reports
         Route::get('/vendor-aging', [ReportController::class, 'vendorAging'])->name('vendor-aging');
         Route::get('/expenses-by-vendor', [ReportController::class, 'expensesByVendor'])->name('expenses-by-vendor');
-        
+
         // Product Reports
         Route::get('/inventory-valuation', [ReportController::class, 'inventoryValuation'])->name('inventory-valuation');
         Route::get('/sales-by-product', [ReportController::class, 'salesByProduct'])->name('sales-by-product');
-        
+
         // Tax Reports
         Route::get('/sales-tax', [ReportController::class, 'salesTax'])->name('sales-tax');
         Route::get('/purchase-tax', [ReportController::class, 'purchaseTax'])->name('purchase-tax');
-        
+
         // Export Routes
         Route::post('/export/{type}', [ReportController::class, 'export'])->name('export');
         Route::get('/download/{file}', [ReportController::class, 'download'])->name('download');

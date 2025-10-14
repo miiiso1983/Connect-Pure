@@ -16,12 +16,12 @@ class WhatsAppServiceProvider extends ServiceProvider
     {
         // Register WhatsApp service as singleton
         $this->app->singleton(\App\Services\WhatsAppService::class, function ($app) {
-            return new \App\Services\WhatsAppService();
+            return new \App\Services\WhatsAppService;
         });
 
         // Register PDF service as singleton
         $this->app->singleton(\App\Services\InvoicePdfService::class, function ($app) {
-            return new \App\Services\InvoicePdfService();
+            return new \App\Services\InvoicePdfService;
         });
     }
 

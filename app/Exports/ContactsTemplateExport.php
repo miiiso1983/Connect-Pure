@@ -3,14 +3,14 @@
 namespace App\Exports;
 
 use Maatwebsite\Excel\Concerns\FromArray;
+use Maatwebsite\Excel\Concerns\ShouldAutoSize;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 use Maatwebsite\Excel\Concerns\WithStyles;
-use Maatwebsite\Excel\Concerns\ShouldAutoSize;
-use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
-use PhpOffice\PhpSpreadsheet\Style\Fill;
 use PhpOffice\PhpSpreadsheet\Style\Color;
+use PhpOffice\PhpSpreadsheet\Style\Fill;
+use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
 
-class ContactsTemplateExport implements FromArray, WithHeadings, WithStyles, ShouldAutoSize
+class ContactsTemplateExport implements FromArray, ShouldAutoSize, WithHeadings, WithStyles
 {
     public function array(): array
     {
@@ -26,7 +26,7 @@ class ContactsTemplateExport implements FromArray, WithHeadings, WithStyles, Sho
                 '15000.00',
                 'Website',
                 'Sales Rep 1',
-                '2024-08-15 10:00:00'
+                '2024-08-15 10:00:00',
             ],
             [
                 'Sarah Mohammed',
@@ -39,7 +39,7 @@ class ContactsTemplateExport implements FromArray, WithHeadings, WithStyles, Sho
                 '8500.00',
                 'Referral',
                 'Sales Rep 2',
-                '2024-08-10 14:30:00'
+                '2024-08-10 14:30:00',
             ],
             [
                 'Omar Hassan',
@@ -52,8 +52,8 @@ class ContactsTemplateExport implements FromArray, WithHeadings, WithStyles, Sho
                 '25000.00',
                 'Trade Show',
                 'Sales Rep 1',
-                '2024-08-05 09:15:00'
-            ]
+                '2024-08-05 09:15:00',
+            ],
         ];
     }
 
@@ -70,7 +70,7 @@ class ContactsTemplateExport implements FromArray, WithHeadings, WithStyles, Sho
             'potential_value',
             'source',
             'assigned_to',
-            'next_follow_up'
+            'next_follow_up',
         ];
     }
 

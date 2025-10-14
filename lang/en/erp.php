@@ -188,7 +188,7 @@ return [
         'Type should be either "lead" or "client"',
         'Status should be one of: new, contacted, qualified, proposal, negotiation, closed_won, closed_lost',
         'Dates should be in YYYY-MM-DD HH:MM:SS format',
-        'Duplicate contacts (same email or name+company) will be skipped'
+        'Duplicate contacts (same email or name+company) will be skipped',
     ],
     'or_drag_and_drop' => 'or drag and drop',
     'or' => 'or',

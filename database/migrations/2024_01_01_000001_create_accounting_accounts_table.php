@@ -14,7 +14,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('name_ar')->nullable();
             $table->enum('type', [
-                'asset', 'liability', 'equity', 'revenue', 'expense'
+                'asset', 'liability', 'equity', 'revenue', 'expense',
             ]);
             $table->enum('subtype', [
                 // Assets
@@ -26,7 +26,7 @@ return new class extends Migration
                 // Revenue
                 'income', 'other_income',
                 // Expenses
-                'cost_of_goods_sold', 'expense', 'other_expense'
+                'cost_of_goods_sold', 'expense', 'other_expense',
             ]);
             $table->text('description')->nullable();
             $table->text('description_ar')->nullable();

@@ -7,6 +7,7 @@ use Illuminate\Console\Command;
 class ThemeShowcase extends Command
 {
     protected $signature = 'theme:showcase';
+
     protected $description = 'Showcase the dual theme system features';
 
     public function handle()
@@ -14,10 +15,10 @@ class ThemeShowcase extends Command
         $this->info('');
         $this->info('🌓 DUAL THEME SYSTEM SHOWCASE');
         $this->info('=====================================');
-        
+
         $this->info('✨ THEME SYSTEM IMPLEMENTATION COMPLETE!');
         $this->info('');
-        
+
         // Theme System Features
         $this->info('🎯 Dual Theme System Features:');
         $this->info('   ✅ Light Theme - Professional & Clean');
@@ -29,7 +30,7 @@ class ThemeShowcase extends Command
         $this->info('   ✅ No Flash on Page Load');
         $this->info('   ✅ Mobile Theme Color Support');
         $this->info('');
-        
+
         // Theme Variables
         $this->info('🎨 Theme Variable System:');
         $this->info('   ✅ CSS Custom Properties for Dynamic Theming');
@@ -39,7 +40,7 @@ class ThemeShowcase extends Command
         $this->info('   ✅ Consistent Typography Colors');
         $this->info('   ✅ Responsive Theme Adjustments');
         $this->info('');
-        
+
         // Light Theme Colors
         $this->info('☀️ Light Theme Palette:');
         $this->info('   • Background: Pure White (#ffffff)');
@@ -50,7 +51,7 @@ class ThemeShowcase extends Command
         $this->info('   • Shadows: Subtle Black (rgba(0,0,0,0.1))');
         $this->info('   • Gradients: Blue to Purple');
         $this->info('');
-        
+
         // Dark Theme Colors
         $this->info('🌙 Dark Theme Palette:');
         $this->info('   • Background: Dark Slate (#0f172a)');
@@ -61,7 +62,7 @@ class ThemeShowcase extends Command
         $this->info('   • Shadows: Deep Black (rgba(0,0,0,0.3))');
         $this->info('   • Gradients: Dark Slate Variations');
         $this->info('');
-        
+
         // Theme Toggle Components
         $this->info('🔄 Theme Toggle Components:');
         $this->info('   ✅ Header Button Toggle - Modern circular button');
@@ -71,7 +72,7 @@ class ThemeShowcase extends Command
         $this->info('   ✅ Animated Icons - Sun/Moon with smooth transitions');
         $this->info('   ✅ Hover Effects - Scale and color animations');
         $this->info('');
-        
+
         // JavaScript Features
         $this->info('⚡ JavaScript Theme Manager:');
         $this->info('   ✅ ThemeManager Class - Complete theme control');
@@ -82,7 +83,7 @@ class ThemeShowcase extends Command
         $this->info('   ✅ Smooth Transitions - 300ms ease animations');
         $this->info('   ✅ Meta Theme Color Updates - Mobile browser support');
         $this->info('');
-        
+
         // Component Updates
         $this->info('🧩 Updated Components for Dual Themes:');
         $this->info('   ✅ Modern Cards - Adaptive backgrounds and borders');
@@ -93,7 +94,7 @@ class ThemeShowcase extends Command
         $this->info('   ✅ Sidebar - Glass effects with theme adaptation');
         $this->info('   ✅ Header - Backdrop blur with theme colors');
         $this->info('');
-        
+
         // Technical Implementation
         $this->info('⚙️ Technical Implementation:');
         $this->info('   ✅ CSS Custom Properties - Dynamic theme variables');
@@ -103,7 +104,7 @@ class ThemeShowcase extends Command
         $this->info('   ✅ Blade Components - Reusable theme toggles');
         $this->info('   ✅ JavaScript Modules - Organized theme management');
         $this->info('');
-        
+
         // User Experience
         $this->info('👤 Enhanced User Experience:');
         $this->info('   ✅ Instant Theme Switching - No page reload required');
@@ -113,7 +114,7 @@ class ThemeShowcase extends Command
         $this->info('   ✅ Mobile Optimized - Touch-friendly controls');
         $this->info('   ✅ Keyboard Navigation - Full keyboard support');
         $this->info('');
-        
+
         // Browser Support
         $this->info('🌐 Browser Support:');
         $this->info('   ✅ Modern Browsers - Chrome, Firefox, Safari, Edge');
@@ -123,7 +124,7 @@ class ThemeShowcase extends Command
         $this->info('   ✅ Backdrop Filter - Glass morphism effects');
         $this->info('   ✅ CSS Transitions - Smooth theme changes');
         $this->info('');
-        
+
         // Usage Instructions
         $this->info('📖 How to Use the Theme System:');
         $this->info('   1. 🖱️  Click the theme toggle button in the header');
@@ -133,7 +134,7 @@ class ThemeShowcase extends Command
         $this->info('   5. 💾 Theme preference is saved automatically');
         $this->info('   6. 🌓 Enjoy seamless light/dark mode experience');
         $this->info('');
-        
+
         // Theme Toggle Locations
         $this->info('📍 Theme Toggle Locations:');
         $this->info('   • Header Navigation - Primary toggle button');
@@ -141,7 +142,7 @@ class ThemeShowcase extends Command
         $this->info('   • Available as Floating Button - Optional placement');
         $this->info('   • Switch Style - Alternative UI pattern');
         $this->info('');
-        
+
         // Component Variants
         $this->info('🎛️ Theme Toggle Component Variants:');
         $this->info('   • Button Variant - Modern circular button with icons');
@@ -150,7 +151,7 @@ class ThemeShowcase extends Command
         $this->info('   • Floating Variant - Fixed position action button');
         $this->info('   • Sizes: Small (sm), Medium (md), Large (lg)');
         $this->info('');
-        
+
         // Advanced Features
         $this->info('🚀 Advanced Theme Features:');
         $this->info('   ✅ Theme Events - Custom JavaScript events');
@@ -160,7 +161,7 @@ class ThemeShowcase extends Command
         $this->info('   ✅ Theme Validation - Ensures valid theme states');
         $this->info('   ✅ Theme Debugging - Console logging for development');
         $this->info('');
-        
+
         // Performance
         $this->info('⚡ Performance Optimizations:');
         $this->info('   ✅ CSS Variables - Efficient theme switching');
@@ -169,7 +170,7 @@ class ThemeShowcase extends Command
         $this->info('   ✅ Cached Preferences - LocalStorage optimization');
         $this->info('   ✅ Smooth Transitions - Hardware-accelerated animations');
         $this->info('');
-        
+
         // Testing URLs
         $this->info('🔗 Test the Theme System:');
         $this->info('   • Dashboard: /');
@@ -178,7 +179,7 @@ class ThemeShowcase extends Command
         $this->info('   • User Management: /admin/users');
         $this->info('   • All Modules: /modules/*');
         $this->info('');
-        
+
         // Before vs After
         $this->info('📊 Theme System Transformation:');
         $this->info('   BEFORE: Single light theme only');
@@ -193,7 +194,7 @@ class ThemeShowcase extends Command
         $this->info('   BEFORE: No system theme detection');
         $this->info('   AFTER:  Automatic OS preference detection');
         $this->info('');
-        
+
         $this->info('🎉 DUAL THEME SYSTEM STATUS: COMPLETE!');
         $this->info('=====================================');
         $this->info('');
@@ -206,7 +207,7 @@ class ThemeShowcase extends Command
         $this->info('• Professional light and dark color schemes');
         $this->info('• Multiple toggle component variants');
         $this->info('• Full keyboard and accessibility support');
-        
+
         return 0;
     }
 }

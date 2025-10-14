@@ -2,10 +2,10 @@
 
 namespace App\Modules\Accounting\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Product extends Model
 {
@@ -84,25 +84,25 @@ class Product extends Model
     {
         return $query->where(function ($q) use ($search) {
             $q->where('name', 'like', "%{$search}%")
-              ->orWhere('sku', 'like', "%{$search}%")
-              ->orWhere('description', 'like', "%{$search}%");
+                ->orWhere('sku', 'like', "%{$search}%")
+                ->orWhere('description', 'like', "%{$search}%");
         });
     }
 
     // Accessors
     public function getFormattedPriceAttribute(): string
     {
-        return number_format((float)$this->unit_price, 2);
+        return number_format((float) $this->unit_price, 2);
     }
 
     public function getFormattedCostAttribute(): string
     {
-        return number_format((float)$this->cost_price ?? 0, 2);
+        return number_format((float) $this->cost_price ?? 0, 2);
     }
 
     public function getTypeTextAttribute(): string
     {
-        return match($this->type) {
+        return match ($this->type) {
             'product' => __('accounting.product'),
             'service' => __('accounting.service'),
             default => $this->type
@@ -126,7 +126,7 @@ class Product extends Model
 
     public function getStockStatusColorAttribute(): string
     {
-        return match($this->stock_status) {
+        return match ($this->stock_status) {
             'out_of_stock' => 'red',
             'low_stock' => 'yellow',
             'in_stock' => 'green',
@@ -136,7 +136,7 @@ class Product extends Model
 
     public function getStockStatusTextAttribute(): string
     {
-        return match($this->stock_status) {
+        return match ($this->stock_status) {
             'out_of_stock' => __('accounting.out_of_stock'),
             'low_stock' => __('accounting.low_stock'),
             'in_stock' => __('accounting.in_stock'),
@@ -150,7 +150,7 @@ class Product extends Model
         if ($this->cost_price <= 0) {
             return 0;
         }
-        
+
         return (($this->unit_price - $this->cost_price) / $this->cost_price) * 100;
     }
 
@@ -160,7 +160,7 @@ class Product extends Model
     }
 
     // Methods
-    public function adjustStock(int $quantity, string $reason = null): void
+    public function adjustStock(int $quantity, ?string $reason = null): void
     {
         $this->quantity_on_hand += $quantity;
         $this->save();
@@ -169,7 +169,7 @@ class Product extends Model
         if ($reason) {
             // Could log to stock adjustment table
         }
-        
+
         // Log stock adjustment if needed
         // StockAdjustment::create([...]);
     }
@@ -182,7 +182,7 @@ class Product extends Model
 
     public function isLowStock(): bool
     {
-        return $this->type === 'product' && 
+        return $this->type === 'product' &&
                $this->quantity_on_hand <= $this->reorder_point;
     }
 
@@ -193,11 +193,11 @@ class Product extends Model
 
     public function canBeSold(): bool
     {
-        return $this->is_active && 
+        return $this->is_active &&
                ($this->type === 'service' || $this->quantity_on_hand > 0);
     }
 
-    public function getTotalSold(string $startDate = null, string $endDate = null): float
+    public function getTotalSold(?string $startDate = null, ?string $endDate = null): float
     {
         $query = $this->invoiceItems()
             ->whereHas('invoice', function ($q) {
@@ -219,7 +219,7 @@ class Product extends Model
         return $query->sum('quantity');
     }
 
-    public function getTotalRevenue(string $startDate = null, string $endDate = null): float
+    public function getTotalRevenue(?string $startDate = null, ?string $endDate = null): float
     {
         $query = $this->invoiceItems()
             ->whereHas('invoice', function ($q) {
@@ -245,9 +245,9 @@ class Product extends Model
     {
         $newProduct = $this->replicate();
         $newProduct->sku = static::generateSKU();
-        $newProduct->name = $this->name . ' (Copy)';
+        $newProduct->name = $this->name.' (Copy)';
         $newProduct->save();
-        
+
         return $newProduct;
     }
 
@@ -255,14 +255,14 @@ class Product extends Model
     public static function generateSKU(): string
     {
         $lastProduct = static::orderBy('sku', 'desc')->first();
-        
+
         if ($lastProduct && preg_match('/SKU(\d+)/', $lastProduct->sku, $matches)) {
             $nextNumber = (int) $matches[1] + 1;
         } else {
             $nextNumber = 1001;
         }
 
-        return 'SKU' . str_pad($nextNumber, 4, '0', STR_PAD_LEFT);
+        return 'SKU'.str_pad($nextNumber, 4, '0', STR_PAD_LEFT);
     }
 
     public static function getTypeOptions(): array

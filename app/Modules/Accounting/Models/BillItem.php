@@ -67,6 +67,7 @@ class BillItem extends Model
     public function getDiscountedAmountAttribute()
     {
         $subtotal = $this->subtotal;
+
         return $subtotal - $this->discount_amount;
     }
 
@@ -80,19 +81,19 @@ class BillItem extends Model
     {
         // Calculate base amount
         $this->amount = $this->quantity * $this->unit_price;
-        
+
         // Calculate discount
         if ($this->discount_rate > 0) {
             $this->discount_amount = $this->amount * ($this->discount_rate / 100);
         }
-        
+
         $amountAfterDiscount = $this->amount - $this->discount_amount;
-        
+
         // Calculate tax
         if ($this->taxRate) {
             $this->tax_amount = $amountAfterDiscount * ($this->taxRate->rate / 100);
         }
-        
+
         // Calculate total
         $this->total_amount = $amountAfterDiscount + $this->tax_amount;
     }

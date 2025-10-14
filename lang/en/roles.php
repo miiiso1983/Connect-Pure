@@ -61,7 +61,7 @@ return [
 
     // Specific Permissions
     'dashboard.view' => 'View Dashboard',
-    
+
     // HR Permissions
     'hr.view' => 'View HR Module',
     'hr.employees.view' => 'View Employees',

@@ -4,11 +4,10 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Cache;
-use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
-use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Schema;
 
 class SystemSettingsController extends Controller
@@ -25,7 +24,7 @@ class SystemSettingsController extends Controller
     {
         $systemInfo = $this->getSystemInfo();
         $settings = $this->getSystemSettings();
-        
+
         return view('admin.system-settings.index', compact('systemInfo', 'settings'));
     }
 
@@ -35,6 +34,7 @@ class SystemSettingsController extends Controller
     public function general()
     {
         $settings = $this->getGeneralSettings();
+
         return view('admin.system-settings.general', compact('settings'));
     }
 
@@ -83,6 +83,7 @@ class SystemSettingsController extends Controller
     public function email()
     {
         $settings = $this->getEmailSettings();
+
         return view('admin.system-settings.email', compact('settings'));
     }
 
@@ -122,6 +123,7 @@ class SystemSettingsController extends Controller
     public function database()
     {
         $dbInfo = $this->getDatabaseInfo();
+
         return view('admin.system-settings.database', compact('dbInfo'));
     }
 
@@ -131,6 +133,7 @@ class SystemSettingsController extends Controller
     public function security()
     {
         $settings = $this->getSecuritySettings();
+
         return view('admin.system-settings.security', compact('settings'));
     }
 
@@ -167,7 +170,7 @@ class SystemSettingsController extends Controller
     {
         $isDown = app()->isDownForMaintenance();
         $settings = $this->getMaintenanceSettings();
-        
+
         return view('admin.system-settings.maintenance', compact('isDown', 'settings'));
     }
 
@@ -177,7 +180,7 @@ class SystemSettingsController extends Controller
     public function toggleMaintenance(Request $request)
     {
         $isDown = app()->isDownForMaintenance();
-        
+
         if ($isDown) {
             Artisan::call('up');
             $message = 'Application is now live!';
@@ -185,7 +188,7 @@ class SystemSettingsController extends Controller
             $secret = $request->input('secret', 'admin-access');
             Artisan::call('down', [
                 '--secret' => $secret,
-                '--render' => 'errors::503'
+                '--render' => 'errors::503',
             ]);
             $message = 'Application is now in maintenance mode!';
         }
@@ -203,10 +206,10 @@ class SystemSettingsController extends Controller
             Artisan::call('config:clear');
             Artisan::call('route:clear');
             Artisan::call('view:clear');
-            
+
             return redirect()->back()->with('success', 'All caches cleared successfully!');
         } catch (\Exception $e) {
-            return redirect()->back()->with('error', 'Error clearing caches: ' . $e->getMessage());
+            return redirect()->back()->with('error', 'Error clearing caches: '.$e->getMessage());
         }
     }
 
@@ -219,10 +222,10 @@ class SystemSettingsController extends Controller
             Artisan::call('config:cache');
             Artisan::call('route:cache');
             Artisan::call('view:cache');
-            
+
             return redirect()->back()->with('success', 'System optimized successfully!');
         } catch (\Exception $e) {
-            return redirect()->back()->with('error', 'Error optimizing system: ' . $e->getMessage());
+            return redirect()->back()->with('error', 'Error optimizing system: '.$e->getMessage());
         }
     }
 
@@ -253,11 +256,11 @@ class SystemSettingsController extends Controller
     {
         $bytes = disk_free_space('/');
         $total = disk_total_space('/');
-        
+
         return [
             'free' => $this->formatBytes($bytes),
             'total' => $this->formatBytes($total),
-            'used_percentage' => round((($total - $bytes) / $total) * 100, 2)
+            'used_percentage' => round((($total - $bytes) / $total) * 100, 2),
         ];
     }
 
@@ -266,13 +269,13 @@ class SystemSettingsController extends Controller
      */
     private function formatBytes($bytes, $precision = 2)
     {
-        $units = array('B', 'KB', 'MB', 'GB', 'TB');
-        
+        $units = ['B', 'KB', 'MB', 'GB', 'TB'];
+
         for ($i = 0; $bytes > 1024 && $i < count($units) - 1; $i++) {
             $bytes /= 1024;
         }
-        
-        return round($bytes, $precision) . ' ' . $units[$i];
+
+        return round($bytes, $precision).' '.$units[$i];
     }
 
     /**
@@ -280,9 +283,10 @@ class SystemSettingsController extends Controller
      */
     private function getSystemSettings()
     {
-        if (!Schema::hasTable('system_settings')) {
+        if (! Schema::hasTable('system_settings')) {
             return [];
         }
+
         return Cache::remember('system_settings', 3600, function () {
             return DB::table('system_settings')->pluck('value', 'key')->toArray();
         });
@@ -299,7 +303,7 @@ class SystemSettingsController extends Controller
                 ['value' => $value, 'updated_at' => now()]
             );
         }
-        
+
         Cache::forget('system_settings');
     }
 
@@ -312,8 +316,8 @@ class SystemSettingsController extends Controller
         $envContent = File::get($envFile);
 
         foreach ($data as $key => $value) {
-            $value = is_string($value) ? '"' . $value . '"' : $value;
-            
+            $value = is_string($value) ? '"'.$value.'"' : $value;
+
             if (preg_match("/^{$key}=.*/m", $envContent)) {
                 $envContent = preg_replace("/^{$key}=.*/m", "{$key}={$value}", $envContent);
             } else {
@@ -372,7 +376,7 @@ class SystemSettingsController extends Controller
             'port' => config('database.connections.mysql.port'),
             'database' => config('database.connections.mysql.database'),
             'username' => config('database.connections.mysql.username'),
-            'tables_count' => DB::select("SELECT COUNT(*) as count FROM information_schema.tables WHERE table_schema = ?", [config('database.connections.mysql.database')])[0]->count ?? 0,
+            'tables_count' => DB::select('SELECT COUNT(*) as count FROM information_schema.tables WHERE table_schema = ?', [config('database.connections.mysql.database')])[0]->count ?? 0,
         ];
     }
 
@@ -408,6 +412,7 @@ class SystemSettingsController extends Controller
     private function getSetting($key, $default = null)
     {
         $settings = $this->getSystemSettings();
+
         return $settings[$key] ?? $default;
     }
 }

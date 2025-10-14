@@ -74,7 +74,7 @@ class JournalEntry extends Model
     // Accessors
     public function getStatusColorAttribute()
     {
-        return match($this->status) {
+        return match ($this->status) {
             'draft' => 'gray',
             'posted' => 'green',
             'reversed' => 'red',
@@ -89,12 +89,12 @@ class JournalEntry extends Model
 
     public function getFormattedTotalDebitsAttribute()
     {
-        return number_format((float)$this->total_debits, 2) . ' ' . $this->currency;
+        return number_format((float) $this->total_debits, 2).' '.$this->currency;
     }
 
     public function getFormattedTotalCreditsAttribute()
     {
-        return number_format((float)$this->total_credits, 2) . ' ' . $this->currency;
+        return number_format((float) $this->total_credits, 2).' '.$this->currency;
     }
 
     // Methods
@@ -107,7 +107,7 @@ class JournalEntry extends Model
 
     public function post($postedBy = null)
     {
-        if (!$this->is_balanced) {
+        if (! $this->is_balanced) {
             throw new \Exception(__('accounting.journal_entry_not_balanced'));
         }
 
@@ -136,8 +136,8 @@ class JournalEntry extends Model
         // Create reversing entry
         $reversingEntry = static::create([
             'entry_date' => now(),
-            'reference' => 'REV-' . $this->entry_number,
-            'description' => 'Reversal of ' . $this->description,
+            'reference' => 'REV-'.$this->entry_number,
+            'description' => 'Reversal of '.$this->description,
             'type' => 'adjustment',
             'currency' => $this->currency,
         ]);
@@ -146,7 +146,7 @@ class JournalEntry extends Model
         foreach ($this->lines as $line) {
             $reversingEntry->lines()->create([
                 'account_id' => $line->account_id,
-                'description' => 'Reversal: ' . $line->description,
+                'description' => 'Reversal: '.$line->description,
                 'debit_amount' => $line->credit_amount, // Swap debits and credits
                 'credit_amount' => $line->debit_amount,
                 'line_number' => $line->line_number,
@@ -189,8 +189,8 @@ class JournalEntry extends Model
         parent::boot();
 
         static::creating(function ($entry) {
-            if (!$entry->entry_number) {
-                $entry->entry_number = 'JE-' . date('Y') . '-' . str_pad(
+            if (! $entry->entry_number) {
+                $entry->entry_number = 'JE-'.date('Y').'-'.str_pad(
                     static::whereYear('created_at', date('Y'))->count() + 1, 4, '0', STR_PAD_LEFT
                 );
             }

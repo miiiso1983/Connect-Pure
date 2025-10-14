@@ -3,13 +3,10 @@
 namespace App\Modules\HR\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Modules\HR\Models\Employee;
 use App\Modules\HR\Models\Department;
+use App\Modules\HR\Models\Employee;
 use App\Modules\HR\Models\LeaveRequest;
-use App\Modules\HR\Models\Attendance;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-use Carbon\Carbon;
 
 class HRController extends Controller
 {
@@ -111,10 +108,10 @@ class HRController extends Controller
     public function updateEmployee(Request $request, Employee $employee)
     {
         $validated = $request->validate([
-            'employee_number' => 'required|unique:hr_employees,employee_number,' . $employee->id,
+            'employee_number' => 'required|unique:hr_employees,employee_number,'.$employee->id,
             'first_name' => 'required|string|max:255',
             'last_name' => 'required|string|max:255',
-            'email' => 'required|email|unique:hr_employees,email,' . $employee->id,
+            'email' => 'required|email|unique:hr_employees,email,'.$employee->id,
             'phone' => 'nullable|string|max:20',
             'department_id' => 'required|exists:hr_departments,id',
             'hire_date' => 'required|date',

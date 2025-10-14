@@ -14,14 +14,14 @@ class Kernel extends ConsoleKernel
     {
         // Process recurring payments daily at 9:00 AM
         $schedule->command('recurring:process')
-                 ->dailyAt('09:00')
-                 ->withoutOverlapping()
-                 ->runInBackground();
+            ->dailyAt('09:00')
+            ->withoutOverlapping()
+            ->runInBackground();
 
         // Send reminder for due recurring payments at 8:00 AM
         $schedule->command('recurring:process --dry-run')
-                 ->dailyAt('08:00')
-                 ->description('Check for due recurring payments');
+            ->dailyAt('08:00')
+            ->description('Check for due recurring payments');
     }
 
     /**

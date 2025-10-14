@@ -2,9 +2,9 @@
 
 namespace Tests\Feature;
 
-use Tests\TestCase;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Tests\TestCase;
 
 class ModuleAccessTest extends TestCase
 {
@@ -15,7 +15,7 @@ class ModuleAccessTest extends TestCase
     protected function setUp(): void
     {
         parent::setUp();
-        
+
         $this->user = User::factory()->create([
             'email' => 'test@connectpure.com',
             'password' => bcrypt('password'),
@@ -26,7 +26,7 @@ class ModuleAccessTest extends TestCase
     public function user_can_access_dashboard()
     {
         $response = $this->actingAs($this->user)
-                         ->get('/dashboard');
+            ->get('/dashboard');
 
         $response->assertStatus(200);
         $response->assertSee('Dashboard');
@@ -36,7 +36,7 @@ class ModuleAccessTest extends TestCase
     public function user_can_access_hr_module()
     {
         $response = $this->actingAs($this->user)
-                         ->get('/modules/hr');
+            ->get('/modules/hr');
 
         $response->assertStatus(200);
         $response->assertSee('Human Resources');
@@ -46,7 +46,7 @@ class ModuleAccessTest extends TestCase
     public function user_can_access_accounting_module()
     {
         $response = $this->actingAs($this->user)
-                         ->get('/modules/accounting');
+            ->get('/modules/accounting');
 
         $response->assertStatus(200);
         $response->assertSee('Accounting');
@@ -56,7 +56,7 @@ class ModuleAccessTest extends TestCase
     public function user_can_access_hr_employees_page()
     {
         $response = $this->actingAs($this->user)
-                         ->get('/modules/hr/employees');
+            ->get('/modules/hr/employees');
 
         $response->assertStatus(200);
         $response->assertSee('Employees');
@@ -66,7 +66,7 @@ class ModuleAccessTest extends TestCase
     public function user_can_access_hr_attendance_page()
     {
         $response = $this->actingAs($this->user)
-                         ->get('/modules/hr/attendance');
+            ->get('/modules/hr/attendance');
 
         $response->assertStatus(200);
         $response->assertSee('Attendance');
@@ -76,7 +76,7 @@ class ModuleAccessTest extends TestCase
     public function user_can_access_hr_leave_requests_page()
     {
         $response = $this->actingAs($this->user)
-                         ->get('/modules/hr/leave-requests');
+            ->get('/modules/hr/leave-requests');
 
         $response->assertStatus(200);
         $response->assertSee('Leave Requests');
@@ -86,7 +86,7 @@ class ModuleAccessTest extends TestCase
     public function user_can_access_hr_payroll_page()
     {
         $response = $this->actingAs($this->user)
-                         ->get('/modules/hr/payroll');
+            ->get('/modules/hr/payroll');
 
         $response->assertStatus(200);
         $response->assertSee('Payroll');
@@ -96,7 +96,7 @@ class ModuleAccessTest extends TestCase
     public function user_can_access_hr_performance_reviews_page()
     {
         $response = $this->actingAs($this->user)
-                         ->get('/modules/hr/performance-reviews');
+            ->get('/modules/hr/performance-reviews');
 
         $response->assertStatus(200);
         $response->assertSee('Performance Reviews');
@@ -106,7 +106,7 @@ class ModuleAccessTest extends TestCase
     public function user_can_access_accounting_invoices_page()
     {
         $response = $this->actingAs($this->user)
-                         ->get('/modules/accounting/invoices');
+            ->get('/modules/accounting/invoices');
 
         $response->assertStatus(200);
         $response->assertSee('Invoices');
@@ -116,7 +116,7 @@ class ModuleAccessTest extends TestCase
     public function user_can_access_accounting_expenses_page()
     {
         $response = $this->actingAs($this->user)
-                         ->get('/modules/accounting/expenses');
+            ->get('/modules/accounting/expenses');
 
         $response->assertStatus(200);
         $response->assertSee('Expenses');
@@ -126,7 +126,7 @@ class ModuleAccessTest extends TestCase
     public function user_can_access_accounting_customers_page()
     {
         $response = $this->actingAs($this->user)
-                         ->get('/modules/accounting/customers');
+            ->get('/modules/accounting/customers');
 
         $response->assertStatus(200);
         $response->assertSee('Customers');
@@ -136,7 +136,7 @@ class ModuleAccessTest extends TestCase
     public function user_can_access_accounting_vendors_page()
     {
         $response = $this->actingAs($this->user)
-                         ->get('/modules/accounting/vendors');
+            ->get('/modules/accounting/vendors');
 
         $response->assertStatus(200);
         $response->assertSee('Vendors');
@@ -146,7 +146,7 @@ class ModuleAccessTest extends TestCase
     public function user_can_access_accounting_reports_page()
     {
         $response = $this->actingAs($this->user)
-                         ->get('/modules/accounting/reports');
+            ->get('/modules/accounting/reports');
 
         $response->assertStatus(200);
         $response->assertSee('Financial Reports');
@@ -156,7 +156,7 @@ class ModuleAccessTest extends TestCase
     public function user_can_access_currencies_page()
     {
         $response = $this->actingAs($this->user)
-                         ->get('/modules/accounting/currencies');
+            ->get('/modules/accounting/currencies');
 
         $response->assertStatus(200);
         $response->assertSee('Currencies');
@@ -166,7 +166,7 @@ class ModuleAccessTest extends TestCase
     public function user_can_access_taxes_page()
     {
         $response = $this->actingAs($this->user)
-                         ->get('/modules/accounting/taxes');
+            ->get('/modules/accounting/taxes');
 
         $response->assertStatus(200);
         $response->assertSee('Taxes');
@@ -177,13 +177,13 @@ class ModuleAccessTest extends TestCase
     {
         // Test English
         $response = $this->actingAs($this->user)
-                         ->get('/lang/en');
+            ->get('/lang/en');
 
         $response->assertRedirect();
 
         // Test Arabic
         $response = $this->actingAs($this->user)
-                         ->get('/lang/ar');
+            ->get('/lang/ar');
 
         $response->assertRedirect();
     }

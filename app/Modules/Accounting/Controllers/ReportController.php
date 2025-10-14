@@ -3,12 +3,11 @@
 namespace App\Modules\Accounting\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Modules\Accounting\Models\Invoice;
-use App\Modules\Accounting\Models\Expense;
 use App\Modules\Accounting\Models\Customer;
+use App\Modules\Accounting\Models\Expense;
+use App\Modules\Accounting\Models\Invoice;
 use App\Modules\Accounting\Models\Vendor;
 use Illuminate\Http\Request;
-use Carbon\Carbon;
 
 class ReportController extends Controller
 {
@@ -96,9 +95,9 @@ class ReportController extends Controller
     {
         $asOfDate = $request->get('as_of_date', now());
 
-        $customers = Customer::with(['invoices' => function($query) use ($asOfDate) {
+        $customers = Customer::with(['invoices' => function ($query) use ($asOfDate) {
             $query->where('status', '!=', 'paid')
-                  ->where('due_date', '<=', $asOfDate);
+                ->where('due_date', '<=', $asOfDate);
         }])->get();
 
         return view('modules.accounting.reports.customer-aging', compact('customers', 'asOfDate'));
@@ -109,7 +108,7 @@ class ReportController extends Controller
         $startDate = $request->get('start_date', now()->startOfMonth());
         $endDate = $request->get('end_date', now()->endOfMonth());
 
-        $customers = Customer::with(['invoices' => function($query) use ($startDate, $endDate) {
+        $customers = Customer::with(['invoices' => function ($query) use ($startDate, $endDate) {
             $query->whereBetween('invoice_date', [$startDate, $endDate]);
         }])->get();
 
@@ -121,9 +120,9 @@ class ReportController extends Controller
         $startDate = $request->get('start_date', now()->startOfMonth());
         $endDate = $request->get('end_date', now()->endOfMonth());
 
-        $salesData = Customer::withSum(['invoices' => function($query) use ($startDate, $endDate) {
+        $salesData = Customer::withSum(['invoices' => function ($query) use ($startDate, $endDate) {
             $query->whereBetween('invoice_date', [$startDate, $endDate])
-                  ->where('status', 'paid');
+                ->where('status', 'paid');
         }], 'total_amount')->get();
 
         return view('modules.accounting.reports.sales-by-customer', compact('salesData', 'startDate', 'endDate'));
@@ -133,9 +132,9 @@ class ReportController extends Controller
     {
         $asOfDate = $request->get('as_of_date', now());
 
-        $vendors = Vendor::with(['expenses' => function($query) use ($asOfDate) {
+        $vendors = Vendor::with(['expenses' => function ($query) use ($asOfDate) {
             $query->where('status', '!=', 'paid')
-                  ->where('due_date', '<=', $asOfDate);
+                ->where('due_date', '<=', $asOfDate);
         }])->get();
 
         return view('modules.accounting.reports.vendor-aging', compact('vendors', 'asOfDate'));
@@ -146,9 +145,9 @@ class ReportController extends Controller
         $startDate = $request->get('start_date', now()->startOfMonth());
         $endDate = $request->get('end_date', now()->endOfMonth());
 
-        $expenseData = Vendor::withSum(['expenses' => function($query) use ($startDate, $endDate) {
+        $expenseData = Vendor::withSum(['expenses' => function ($query) use ($startDate, $endDate) {
             $query->whereBetween('expense_date', [$startDate, $endDate])
-                  ->where('status', 'paid');
+                ->where('status', 'paid');
         }], 'amount')->get();
 
         return view('modules.accounting.reports.expenses-by-vendor', compact('expenseData', 'startDate', 'endDate'));

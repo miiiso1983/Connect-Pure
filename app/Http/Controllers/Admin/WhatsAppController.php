@@ -23,10 +23,10 @@ class WhatsAppController extends Controller
     {
         $config = [
             'api_url' => config('services.whatsapp.api_url'),
-            'access_token' => config('services.whatsapp.access_token') ? '***' . substr(config('services.whatsapp.access_token'), -4) : null,
+            'access_token' => config('services.whatsapp.access_token') ? '***'.substr(config('services.whatsapp.access_token'), -4) : null,
             'phone_number_id' => config('services.whatsapp.phone_number_id'),
             'business_account_id' => config('services.whatsapp.business_account_id'),
-            'webhook_verify_token' => config('services.whatsapp.webhook_verify_token') ? '***' . substr(config('services.whatsapp.webhook_verify_token'), -4) : null,
+            'webhook_verify_token' => config('services.whatsapp.webhook_verify_token') ? '***'.substr(config('services.whatsapp.webhook_verify_token'), -4) : null,
         ];
 
         $isConfigured = $this->whatsAppService->isConfigured();
@@ -85,10 +85,10 @@ class WhatsAppController extends Controller
 
         if ($result['success']) {
             return redirect()->route('admin.whatsapp.index')
-                ->with('success', 'Test message sent successfully! Message ID: ' . $result['message_id']);
+                ->with('success', 'Test message sent successfully! Message ID: '.$result['message_id']);
         } else {
             return redirect()->route('admin.whatsapp.index')
-                ->with('error', 'Failed to send test message: ' . $result['error']);
+                ->with('error', 'Failed to send test message: '.$result['error']);
         }
     }
 
@@ -98,7 +98,7 @@ class WhatsAppController extends Controller
     public function profile()
     {
         $profile = $this->whatsAppService->getBusinessProfile();
-        
+
         return response()->json($profile);
     }
 

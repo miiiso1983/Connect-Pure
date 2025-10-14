@@ -2,8 +2,8 @@
 
 namespace App\Modules\Accounting\Models;
 
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Tax extends Model
@@ -45,15 +45,15 @@ class Tax extends Model
     public function invoices()
     {
         return $this->belongsToMany(Invoice::class, 'accounting_invoice_taxes')
-                    ->withPivot('tax_amount', 'taxable_amount')
-                    ->withTimestamps();
+            ->withPivot('tax_amount', 'taxable_amount')
+            ->withTimestamps();
     }
 
     public function expenses()
     {
         return $this->belongsToMany(Expense::class, 'accounting_expense_taxes')
-                    ->withPivot('tax_amount', 'taxable_amount')
-                    ->withTimestamps();
+            ->withPivot('tax_amount', 'taxable_amount')
+            ->withTimestamps();
     }
 
     // Scopes
@@ -80,20 +80,20 @@ class Tax extends Model
     public function scopeEffective($query, $date = null)
     {
         $date = $date ?? now();
-        
+
         return $query->where(function ($q) use ($date) {
             $q->where('effective_date', '<=', $date)
-              ->where(function ($subQ) use ($date) {
-                  $subQ->whereNull('expiry_date')
-                       ->orWhere('expiry_date', '>=', $date);
-              });
+                ->where(function ($subQ) use ($date) {
+                    $subQ->whereNull('expiry_date')
+                        ->orWhere('expiry_date', '>=', $date);
+                });
         });
     }
 
     // Accessors
     public function getFormattedRateAttribute()
     {
-        return number_format((float)$this->rate, 2) . '%';
+        return number_format((float) $this->rate, 2).'%';
     }
 
     public function getTypeTextAttribute()
@@ -223,25 +223,25 @@ class Tax extends Model
         return [
             // Saudi Arabia
             ['name' => 'VAT (Saudi Arabia)', 'code' => 'VAT_SA', 'rate' => 15.00, 'type' => 'vat', 'country_code' => 'SA', 'is_default' => true],
-            
+
             // UAE
             ['name' => 'VAT (UAE)', 'code' => 'VAT_AE', 'rate' => 5.00, 'type' => 'vat', 'country_code' => 'AE'],
-            
+
             // Egypt
             ['name' => 'VAT (Egypt)', 'code' => 'VAT_EG', 'rate' => 14.00, 'type' => 'vat', 'country_code' => 'EG'],
-            
+
             // USA
             ['name' => 'Sales Tax (USA)', 'code' => 'SALES_US', 'rate' => 8.25, 'type' => 'sales_tax', 'country_code' => 'US'],
-            
+
             // UK
             ['name' => 'VAT (UK)', 'code' => 'VAT_GB', 'rate' => 20.00, 'type' => 'vat', 'country_code' => 'GB'],
-            
+
             // Canada
             ['name' => 'GST (Canada)', 'code' => 'GST_CA', 'rate' => 5.00, 'type' => 'gst', 'country_code' => 'CA'],
-            
+
             // Australia
             ['name' => 'GST (Australia)', 'code' => 'GST_AU', 'rate' => 10.00, 'type' => 'gst', 'country_code' => 'AU'],
-            
+
             // EU
             ['name' => 'VAT (EU Standard)', 'code' => 'VAT_EU', 'rate' => 21.00, 'type' => 'vat', 'country_code' => 'EU'],
         ];

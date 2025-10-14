@@ -2,12 +2,12 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Seeder;
 use App\Modules\Accounting\Models\ChartOfAccount;
 use App\Modules\Accounting\Models\Customer;
-use App\Modules\Accounting\Models\Vendor;
-use App\Modules\Accounting\Models\Product;
 use App\Modules\Accounting\Models\Expense;
+use App\Modules\Accounting\Models\Product;
+use App\Modules\Accounting\Models\Vendor;
+use Illuminate\Database\Seeder;
 
 class SimpleAccountingSeeder extends Seeder
 {

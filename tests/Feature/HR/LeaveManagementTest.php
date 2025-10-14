@@ -2,41 +2,44 @@
 
 namespace Tests\Feature\HR;
 
-use Tests\TestCase;
 use App\Models\User;
-use App\Modules\HR\Models\Employee;
 use App\Modules\HR\Models\Department;
-use App\Modules\HR\Models\Role;
+use App\Modules\HR\Models\Employee;
 use App\Modules\HR\Models\LeaveRequest;
+use App\Modules\HR\Models\Role;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
-use Carbon\Carbon;
+use Tests\TestCase;
 
 class LeaveManagementTest extends TestCase
 {
     use RefreshDatabase, WithFaker;
 
     protected $user;
+
     protected $employee;
+
     protected $manager;
+
     protected $department;
+
     protected $role;
 
     protected function setUp(): void
     {
         parent::setUp();
-        
+
         $this->user = User::factory()->create();
         $this->department = Department::factory()->create();
         $this->role = Role::factory()->create(['department_id' => $this->department->id]);
-        
+
         $this->manager = Employee::factory()->create([
             'department_id' => $this->department->id,
             'role_id' => $this->role->id,
         ]);
-        
+
         $this->employee = Employee::factory()->create([
             'department_id' => $this->department->id,
             'role_id' => $this->role->id,
@@ -174,7 +177,7 @@ class LeaveManagementTest extends TestCase
 
         $response->assertRedirect();
         $leaveRequest->refresh();
-        
+
         $this->assertEquals('approved', $leaveRequest->status);
         $this->assertNotNull($leaveRequest->approver_id);
         $this->assertNotNull($leaveRequest->approved_at);
@@ -202,7 +205,7 @@ class LeaveManagementTest extends TestCase
 
         $response->assertRedirect();
         $leaveRequest->refresh();
-        
+
         $this->assertEquals('rejected', $leaveRequest->status);
         $this->assertNotNull($leaveRequest->approver_id);
         $this->assertNotNull($leaveRequest->approved_at);
@@ -229,7 +232,7 @@ class LeaveManagementTest extends TestCase
 
         $response->assertRedirect();
         $leaveRequest->refresh();
-        
+
         $this->assertEquals('cancelled', $leaveRequest->status);
     }
 
@@ -253,9 +256,9 @@ class LeaveManagementTest extends TestCase
 
         $response->assertRedirect();
         $leaveRequest->refresh();
-        
+
         $this->assertEquals('cancelled', $leaveRequest->status);
-        
+
         // Check that leave balance was restored
         $this->employee->refresh();
         $this->assertEquals(21, $this->employee->annual_leave_balance); // 18 + 3
@@ -307,7 +310,7 @@ class LeaveManagementTest extends TestCase
     public function user_can_download_leave_request_attachment()
     {
         Storage::fake('public');
-        
+
         $file = UploadedFile::fake()->create('document.pdf', 100);
         $path = $file->store('leave-requests/attachments', 'public');
 
@@ -318,7 +321,7 @@ class LeaveManagementTest extends TestCase
                     'name' => 'document.pdf',
                     'path' => $path,
                     'size' => 100,
-                ]
+                ],
             ],
         ]);
 

@@ -21,8 +21,8 @@ class CustomerController extends Controller
             $search = $request->search;
             $query->where(function ($q) use ($search) {
                 $q->where('name', 'like', "%{$search}%")
-                  ->orWhere('company_name', 'like', "%{$search}%")
-                  ->orWhere('email', 'like', "%{$search}%");
+                    ->orWhere('company_name', 'like', "%{$search}%")
+                    ->orWhere('email', 'like', "%{$search}%");
             });
         }
 
@@ -90,24 +90,25 @@ class CustomerController extends Controller
             DB::commit();
 
             return redirect()->route('modules.accounting.customers.show', $customer)
-                           ->with('success', __('accounting.customer_created_successfully'));
+                ->with('success', __('accounting.customer_created_successfully'));
 
         } catch (\Exception $e) {
             DB::rollback();
+
             return back()->withInput()
-                        ->withErrors(['error' => __('accounting.error_creating_customer')]);
+                ->withErrors(['error' => __('accounting.error_creating_customer')]);
         }
     }
 
     public function show(Customer $customer)
     {
         $customer->load(['invoices', 'payments']);
-        
+
         // Calculate customer statistics
         $totalInvoiced = $customer->getTotalInvoiced();
         $totalPaid = $customer->getTotalPaid();
         $overdueInvoices = $customer->getOverdueInvoices();
-        
+
         $stats = [
             'total_invoiced' => $totalInvoiced,
             'total_paid' => $totalPaid,
@@ -128,7 +129,7 @@ class CustomerController extends Controller
     {
         $request->validate([
             'name' => 'required|string|max:255',
-            'email' => 'nullable|email|unique:accounting_customers,email,' . $customer->id,
+            'email' => 'nullable|email|unique:accounting_customers,email,'.$customer->id,
             'phone' => 'nullable|string|max:20',
             'currency' => 'required|string|size:3',
             'payment_terms' => 'required|in:net_15,net_30,net_45,net_60,due_on_receipt',
@@ -159,12 +160,13 @@ class CustomerController extends Controller
             DB::commit();
 
             return redirect()->route('modules.accounting.customers.show', $customer)
-                           ->with('success', __('accounting.customer_updated_successfully'));
+                ->with('success', __('accounting.customer_updated_successfully'));
 
         } catch (\Exception $e) {
             DB::rollback();
+
             return back()->withInput()
-                        ->withErrors(['error' => __('accounting.error_updating_customer')]);
+                ->withErrors(['error' => __('accounting.error_updating_customer')]);
         }
     }
 
@@ -173,22 +175,23 @@ class CustomerController extends Controller
         // Check if customer has invoices
         if ($customer->invoices()->count() > 0) {
             return redirect()->route('modules.accounting.customers.index')
-                           ->withErrors(['error' => __('accounting.cannot_delete_customer_with_invoices')]);
+                ->withErrors(['error' => __('accounting.cannot_delete_customer_with_invoices')]);
         }
 
         DB::beginTransaction();
         try {
             $customer->delete();
-            
+
             DB::commit();
 
             return redirect()->route('modules.accounting.customers.index')
-                           ->with('success', __('accounting.customer_deleted_successfully'));
+                ->with('success', __('accounting.customer_deleted_successfully'));
 
         } catch (\Exception $e) {
             DB::rollback();
+
             return redirect()->route('modules.accounting.customers.index')
-                           ->withErrors(['error' => __('accounting.error_deleting_customer')]);
+                ->withErrors(['error' => __('accounting.error_deleting_customer')]);
         }
     }
 
@@ -197,7 +200,7 @@ class CustomerController extends Controller
         $customer->update(['is_active' => true]);
 
         return redirect()->route('modules.accounting.customers.show', $customer)
-                       ->with('success', __('accounting.customer_activated_successfully'));
+            ->with('success', __('accounting.customer_activated_successfully'));
     }
 
     public function deactivate(Customer $customer)
@@ -205,7 +208,7 @@ class CustomerController extends Controller
         $customer->update(['is_active' => false]);
 
         return redirect()->route('modules.accounting.customers.show', $customer)
-                       ->with('success', __('accounting.customer_deactivated_successfully'));
+            ->with('success', __('accounting.customer_deactivated_successfully'));
     }
 
     public function bulkUpload()
@@ -259,7 +262,7 @@ class CustomerController extends Controller
                         'currency' => $row[12] ?? 'USD',
                         'payment_terms' => $row[13] ?? 'net_30',
                         'credit_limit' => is_numeric($row[14] ?? 0) ? $row[14] : 0,
-                        'is_active' => !empty($row[15]) ? (strtolower($row[15]) === 'yes' || $row[15] === '1') : true,
+                        'is_active' => ! empty($row[15]) ? (strtolower($row[15]) === 'yes' || $row[15] === '1') : true,
                         'notes' => $row[16] ?? null,
                     ];
 
@@ -274,8 +277,9 @@ class CustomerController extends Controller
                     ]);
 
                     if ($validator->fails()) {
-                        $errors[] = "Row {$rowNumber}: " . implode(', ', $validator->errors()->all());
+                        $errors[] = "Row {$rowNumber}: ".implode(', ', $validator->errors()->all());
                         $errorCount++;
+
                         continue;
                     }
 
@@ -283,7 +287,7 @@ class CustomerController extends Controller
                     $successCount++;
 
                 } catch (\Exception $e) {
-                    $errors[] = "Row {$rowNumber}: " . $e->getMessage();
+                    $errors[] = "Row {$rowNumber}: ".$e->getMessage();
                     $errorCount++;
                 }
             }
@@ -296,19 +300,20 @@ class CustomerController extends Controller
             }
 
             return redirect()->route('modules.accounting.customers.index')
-                           ->with('success', $message)
-                           ->with('upload_errors', $errors);
+                ->with('success', $message)
+                ->with('upload_errors', $errors);
 
         } catch (\Exception $e) {
             DB::rollBack();
+
             return redirect()->back()
-                           ->with('error', 'Error processing file: ' . $e->getMessage());
+                ->with('error', 'Error processing file: '.$e->getMessage());
         }
     }
 
     public function downloadTemplate()
     {
-        $spreadsheet = new Spreadsheet();
+        $spreadsheet = new Spreadsheet;
         $sheet = $spreadsheet->getActiveSheet();
 
         // Set headers
@@ -316,7 +321,7 @@ class CustomerController extends Controller
             'Name*', 'Company Name', 'Email', 'Phone', 'Website',
             'Billing Address', 'Shipping Address', 'City', 'State', 'Postal Code',
             'Country', 'Tax Number', 'Currency*', 'Payment Terms*', 'Credit Limit',
-            'Active (Yes/No)', 'Notes'
+            'Active (Yes/No)', 'Notes',
         ];
 
         $sheet->fromArray($headers, null, 'A1');
@@ -327,8 +332,8 @@ class CustomerController extends Controller
                 'John Doe', 'Doe Enterprises', 'john@example.com', '+1234567890', 'https://example.com',
                 '123 Main St', '123 Main St', 'New York', 'NY', '10001',
                 'USA', 'TAX123456', 'USD', 'net_30', '5000',
-                'Yes', 'Sample customer'
-            ]
+                'Yes', 'Sample customer',
+            ],
         ];
 
         $sheet->fromArray($sampleData, null, 'A2');

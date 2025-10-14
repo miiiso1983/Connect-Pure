@@ -3,15 +3,14 @@
 namespace App\Modules\Performance\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\Modules\Performance\Models\PerformanceMetric;
 use App\Models\Modules\Performance\Models\Task;
 use App\Models\Modules\Performance\Models\TaskAssignment;
-use App\Models\Modules\Performance\Models\PerformanceMetric;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Cache;
 use Barryvdh\DomPDF\Facade\Pdf;
-
 use Carbon\Carbon;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\DB;
 
 class PerformanceController extends Controller
 {
@@ -101,8 +100,8 @@ class PerformanceController extends Controller
             $search = $request->search;
             $query->where(function ($q) use ($search) {
                 $q->where('title', 'like', "%{$search}%")
-                  ->orWhere('description', 'like', "%{$search}%")
-                  ->orWhere('project_name', 'like', "%{$search}%");
+                    ->orWhere('description', 'like', "%{$search}%")
+                    ->orWhere('project_name', 'like', "%{$search}%");
             });
         }
 
@@ -143,12 +142,12 @@ class PerformanceController extends Controller
         $task = Task::create($validated);
 
         // Create assignments if employees are specified
-        if (!empty($validated['assigned_employees'])) {
+        if (! empty($validated['assigned_employees'])) {
             foreach ($validated['assigned_employees'] as $employeeName) {
                 TaskAssignment::create([
                     'task_id' => $task->id,
                     'employee_name' => $employeeName,
-                    'employee_email' => strtolower(str_replace(' ', '.', $employeeName)) . '@company.com',
+                    'employee_email' => strtolower(str_replace(' ', '.', $employeeName)).'@company.com',
                     'assigned_by' => $validated['created_by'],
                     'assigned_at' => now(),
                 ]);
@@ -256,8 +255,6 @@ class PerformanceController extends Controller
             ->with('success', 'Assignment updated successfully');
     }
 
-
-
     public function analytics(Request $request)
     {
         $period = $request->get('period', 'month');
@@ -322,7 +319,7 @@ class PerformanceController extends Controller
         return response()->json([
             'success' => true,
             'message' => 'Task status updated successfully',
-            'task' => $task->fresh()
+            'task' => $task->fresh(),
         ]);
     }
 
@@ -355,7 +352,7 @@ class PerformanceController extends Controller
         return response()->json([
             'success' => true,
             'message' => 'Tasks updated successfully',
-            'updated_count' => count($validated['task_ids'])
+            'updated_count' => count($validated['task_ids']),
         ]);
     }
 
@@ -435,8 +432,6 @@ class PerformanceController extends Controller
         return collect($performanceData)->sortByDesc('score')->values()->all();
     }
 
-
-
     private function getPerformanceTrends(): array
     {
         $last6Months = collect();
@@ -486,8 +481,6 @@ class PerformanceController extends Controller
         return $totalTasks > 0 ? ($completedTasks / $totalTasks) * 100 : 0;
     }
 
-
-
     private function calculateEmployeeCompletionRate($employeeName): float
     {
         $totalTasks = Task::byEmployee($employeeName)->count();
@@ -531,6 +524,7 @@ class PerformanceController extends Controller
             if ($task->start_date && $task->completed_at) {
                 return Carbon::parse($task->start_date)->diffInMinutes(Carbon::parse($task->completed_at));
             }
+
             return 0;
         });
 
@@ -539,9 +533,9 @@ class PerformanceController extends Controller
         $minutes = $avgMinutes % 60;
 
         if ($hours > 0) {
-            return $hours . 'h ' . round($minutes) . 'm';
+            return $hours.'h '.round($minutes).'m';
         } else {
-            return round($minutes) . 'm';
+            return round($minutes).'m';
         }
     }
 
@@ -600,7 +594,7 @@ class PerformanceController extends Controller
         }
 
         return [
-            'period' => $startDate->format('M j') . ' - ' . $endDate->format('M j, Y'),
+            'period' => $startDate->format('M j').' - '.$endDate->format('M j, Y'),
             'tasks_created' => $query->count(),
             'tasks_completed' => $query->completed()->count(),
             'tasks_overdue' => $query->overdue()->count(),
@@ -643,9 +637,9 @@ class PerformanceController extends Controller
         $hours = floor(($avgMinutes % 1440) / 60);
 
         if ($days > 0) {
-            return $days . 'd ' . $hours . 'h';
+            return $days.'d '.$hours.'h';
         } else {
-            return $hours . 'h';
+            return $hours.'h';
         }
     }
 
@@ -694,12 +688,12 @@ class PerformanceController extends Controller
      */
     private function exportToPDF($data, $period, $employee = null)
     {
-        $filename = "performance_report_{$period}" . ($employee ? "_{$employee}" : '') . '_' . date('Y-m-d') . '.pdf';
+        $filename = "performance_report_{$period}".($employee ? "_{$employee}" : '').'_'.date('Y-m-d').'.pdf';
 
         $pdf = Pdf::loadView('modules.performance.pdf.report', [
             'data' => $data,
             'period' => $period,
-            'employee' => $employee
+            'employee' => $employee,
         ]);
 
         $pdf->setPaper('A4', 'portrait');
@@ -712,7 +706,7 @@ class PerformanceController extends Controller
      */
     private function exportToCSV($data, $period, $employee = null)
     {
-        $filename = "performance_report_{$period}" . ($employee ? "_{$employee}" : '') . '_' . date('Y-m-d') . '.csv';
+        $filename = "performance_report_{$period}".($employee ? "_{$employee}" : '').'_'.date('Y-m-d').'.csv';
 
         $headers = [
             'Content-Type' => 'text/csv',
@@ -722,7 +716,7 @@ class PerformanceController extends Controller
         $callback = function () use ($data) {
             $file = fopen('php://output', 'w');
 
-            if (!empty($data)) {
+            if (! empty($data)) {
                 fputcsv($file, array_keys($data[0]));
                 foreach ($data as $row) {
                     fputcsv($file, $row);
@@ -780,8 +774,8 @@ class PerformanceController extends Controller
                     'borderColor' => 'rgb(59, 130, 246)',
                     'backgroundColor' => 'rgba(59, 130, 246, 0.1)',
                     'tension' => 0.4,
-                ]
-            ]
+                ],
+            ],
         ];
     }
 
@@ -807,8 +801,8 @@ class PerformanceController extends Controller
                     'borderColor' => 'rgb(16, 185, 129)',
                     'backgroundColor' => 'rgba(16, 185, 129, 0.1)',
                     'tension' => 0.4,
-                ]
-            ]
+                ],
+            ],
         ];
     }
 
@@ -832,7 +826,7 @@ class PerformanceController extends Controller
      */
     private function getDateRange($period): array
     {
-        return match($period) {
+        return match ($period) {
             'week' => [Carbon::now()->startOfWeek(), Carbon::now()->endOfWeek()],
             'month' => [Carbon::now()->startOfMonth(), Carbon::now()->endOfMonth()],
             'quarter' => [Carbon::now()->startOfQuarter(), Carbon::now()->endOfQuarter()],
@@ -936,7 +930,7 @@ class PerformanceController extends Controller
         $avgMinutes = $totalMinutes / $tasks->count();
         $hours = round($avgMinutes / 60, 1);
 
-        return $hours . 'h';
+        return $hours.'h';
     }
 
     /**
@@ -978,7 +972,7 @@ class PerformanceController extends Controller
      */
     private function getPreviousDateRange($period): array
     {
-        return match($period) {
+        return match ($period) {
             'week' => [Carbon::now()->subWeek()->startOfWeek(), Carbon::now()->subWeek()->endOfWeek()],
             'month' => [Carbon::now()->subMonth()->startOfMonth(), Carbon::now()->subMonth()->endOfMonth()],
             'quarter' => [Carbon::now()->subQuarter()->startOfQuarter(), Carbon::now()->subQuarter()->endOfQuarter()],
@@ -1001,8 +995,6 @@ class PerformanceController extends Controller
 
         return round($query->avg('efficiency_rate') ?? 0, 1);
     }
-
-
 
     /**
      * Generate summary report.
@@ -1091,12 +1083,6 @@ class PerformanceController extends Controller
         ];
     }
 
-
-
-
-
-
-
     /**
      * Calculate trend from metrics.
      */
@@ -1145,6 +1131,6 @@ class PerformanceController extends Controller
         $avgMinutes = $totalMinutes / $completedTasks->count();
         $hours = round($avgMinutes / 60, 1);
 
-        return $hours . 'h';
+        return $hours.'h';
     }
 }

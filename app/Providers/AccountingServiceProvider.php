@@ -2,11 +2,11 @@
 
 namespace App\Providers;
 
-use Illuminate\Support\ServiceProvider;
-use Illuminate\Support\Facades\View;
-use Illuminate\Support\Facades\Gate;
 use App\Modules\Accounting\Services\DashboardService;
 use App\Modules\Accounting\Services\ReportService;
+use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\View;
+use Illuminate\Support\ServiceProvider;
 
 class AccountingServiceProvider extends ServiceProvider
 {
@@ -22,11 +22,11 @@ class AccountingServiceProvider extends ServiceProvider
 
         // Register services
         $this->app->singleton(DashboardService::class, function ($app) {
-            return new DashboardService();
+            return new DashboardService;
         });
 
         $this->app->singleton(ReportService::class, function ($app) {
-            return new ReportService();
+            return new ReportService;
         });
 
         // Register aliases
@@ -109,7 +109,7 @@ class AccountingServiceProvider extends ServiceProvider
             'accounting::invoices.*',
             'accounting::customers.*',
             'accounting::vendors.*',
-            'accounting::expenses.*'
+            'accounting::expenses.*',
         ], function ($view) {
             $view->with('currencies', config('accounting.currencies.symbols'));
         });
@@ -118,7 +118,7 @@ class AccountingServiceProvider extends ServiceProvider
         View::composer([
             'accounting::payments.*',
             'accounting::invoices.*',
-            'accounting::expenses.*'
+            'accounting::expenses.*',
         ], function ($view) {
             $view->with('paymentMethods', config('accounting.payments.methods'));
         });
@@ -127,7 +127,7 @@ class AccountingServiceProvider extends ServiceProvider
         View::composer([
             'accounting::invoices.*',
             'accounting::products.*',
-            'accounting::expenses.*'
+            'accounting::expenses.*',
         ], function ($view) {
             $view->with('defaultTaxRates', config('accounting.taxes.default_rates'));
         });
@@ -290,12 +290,14 @@ class AccountingServiceProvider extends ServiceProvider
         // Validate invoice number format
         \Validator::extend('invoice_number', function ($attribute, $value, $parameters, $validator) {
             $prefix = config('accounting.defaults.invoice_prefix');
+
             return str_starts_with($value, $prefix);
         });
 
         // Validate expense amount
         \Validator::extend('expense_amount', function ($attribute, $value, $parameters, $validator) {
             $limit = config('accounting.expenses.approval_limit');
+
             return is_numeric($value) && $value > 0 && $value <= $limit * 10; // Max 10x approval limit
         });
     }
@@ -321,7 +323,7 @@ class AccountingServiceProvider extends ServiceProvider
         });
 
         \Blade::directive('endcanAccounting', function () {
-            return "<?php endif; ?>";
+            return '<?php endif; ?>';
         });
 
         // Display invoice status badge

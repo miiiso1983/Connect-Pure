@@ -108,7 +108,7 @@ class Payment extends Model
     // Accessors
     public function getStatusColorAttribute()
     {
-        return match($this->status) {
+        return match ($this->status) {
             'pending' => 'yellow',
             'completed' => 'green',
             'failed' => 'red',
@@ -119,12 +119,12 @@ class Payment extends Model
 
     public function getFormattedAmountAttribute()
     {
-        return number_format((float) $this->amount, 2) . ' ' . $this->currency;
+        return number_format((float) $this->amount, 2).' '.$this->currency;
     }
 
     public function getPayeeNameAttribute()
     {
-        return match($this->type) {
+        return match ($this->type) {
             'customer_payment' => $this->customer?->display_name,
             'vendor_payment' => $this->vendor?->display_name,
             'employee_payment' => $this->employee?->full_name,
@@ -134,7 +134,7 @@ class Payment extends Model
 
     public function getTypeColorAttribute()
     {
-        return match($this->type) {
+        return match ($this->type) {
             'customer_payment' => 'green',
             'vendor_payment' => 'red',
             'employee_payment' => 'blue',
@@ -203,8 +203,8 @@ class Payment extends Model
         parent::boot();
 
         static::creating(function ($payment) {
-            if (!$payment->payment_number) {
-                $payment->payment_number = 'PAY-' . date('Y') . '-' . str_pad(
+            if (! $payment->payment_number) {
+                $payment->payment_number = 'PAY-'.date('Y').'-'.str_pad(
                     static::whereYear('created_at', date('Y'))->count() + 1, 4, '0', STR_PAD_LEFT
                 );
             }

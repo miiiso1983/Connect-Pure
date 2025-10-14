@@ -3,30 +3,24 @@
 namespace App\Modules\CRM\Imports;
 
 use App\Modules\CRM\Models\Contact;
-use Maatwebsite\Excel\Concerns\ToModel;
-use Maatwebsite\Excel\Concerns\WithHeadingRow;
-use Maatwebsite\Excel\Concerns\WithValidation;
+use Illuminate\Validation\Rule;
 use Maatwebsite\Excel\Concerns\Importable;
 use Maatwebsite\Excel\Concerns\SkipsErrors;
 use Maatwebsite\Excel\Concerns\SkipsFailures;
 use Maatwebsite\Excel\Concerns\SkipsOnError;
 use Maatwebsite\Excel\Concerns\SkipsOnFailure;
+use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithBatchInserts;
 use Maatwebsite\Excel\Concerns\WithChunkReading;
-use Illuminate\Validation\Rule;
+use Maatwebsite\Excel\Concerns\WithHeadingRow;
+use Maatwebsite\Excel\Concerns\WithValidation;
 
-class ContactsImport implements 
-    ToModel, 
-    WithHeadingRow, 
-    WithValidation, 
-    SkipsOnError, 
-    SkipsOnFailure, 
-    WithBatchInserts, 
-    WithChunkReading
+class ContactsImport implements SkipsOnError, SkipsOnFailure, ToModel, WithBatchInserts, WithChunkReading, WithHeadingRow, WithValidation
 {
     use Importable, SkipsErrors, SkipsFailures;
 
     private $importedCount = 0;
+
     private $skippedCount = 0;
 
     /**
@@ -37,6 +31,7 @@ class ContactsImport implements
         // Skip empty rows
         if (empty($row['name']) || empty($row['email'])) {
             $this->skippedCount++;
+
             return null;
         }
 
@@ -44,6 +39,7 @@ class ContactsImport implements
         $existingContact = Contact::where('email', $row['email'])->first();
         if ($existingContact) {
             $this->skippedCount++;
+
             return null;
         }
 
@@ -132,7 +128,7 @@ class ContactsImport implements
     {
         $validStatuses = ['lead', 'prospect', 'customer', 'inactive'];
         $status = strtolower(trim($status ?? ''));
-        
+
         return in_array($status, $validStatuses) ? $status : 'lead';
     }
 
@@ -143,7 +139,7 @@ class ContactsImport implements
     {
         $validPriorities = ['low', 'medium', 'high'];
         $priority = strtolower(trim($priority ?? ''));
-        
+
         return in_array($priority, $validPriorities) ? $priority : 'medium';
     }
 
@@ -154,7 +150,7 @@ class ContactsImport implements
     {
         $validSources = ['website', 'social_media', 'referral', 'advertising', 'cold_call', 'email', 'event', 'other'];
         $source = strtolower(str_replace(' ', '_', trim($source ?? '')));
-        
+
         return in_array($source, $validSources) ? $source : 'other';
     }
 
@@ -224,16 +220,16 @@ class ContactsImport implements
     public function getSuccessMessage(): string
     {
         $stats = $this->getImportStats();
-        
-        $message = "Import completed successfully! ";
+
+        $message = 'Import completed successfully! ';
         $message .= "Imported: {$stats['imported']} contacts";
-        
+
         if ($stats['skipped'] > 0) {
             $message .= ", Skipped: {$stats['skipped']} (duplicates or empty)";
         }
-        
+
         if ($stats['errors'] > 0 || $stats['failures'] > 0) {
-            $message .= ", Errors: " . ($stats['errors'] + $stats['failures']);
+            $message .= ', Errors: '.($stats['errors'] + $stats['failures']);
         }
 
         return $message;

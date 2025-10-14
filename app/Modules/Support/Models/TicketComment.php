@@ -2,11 +2,11 @@
 
 namespace App\Modules\Support\Models;
 
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use App\Models\User;
 
 class TicketComment extends Model
 {
@@ -76,7 +76,7 @@ class TicketComment extends Model
     // Accessors & Mutators
     public function getIsEditedAttribute()
     {
-        return !is_null($this->edited_at);
+        return ! is_null($this->edited_at);
     }
 
     public function getFormattedCommentAttribute()
@@ -98,7 +98,8 @@ class TicketComment extends Model
 
         // Generate avatar URL based on email or name
         $email = $this->createdBy ? $this->createdBy->email : 'unknown@example.com';
-        return 'https://www.gravatar.com/avatar/' . md5(strtolower(trim($email))) . '?d=identicon&s=40';
+
+        return 'https://www.gravatar.com/avatar/'.md5(strtolower(trim($email))).'?d=identicon&s=40';
     }
 
     public function getTimeAgoAttribute()
@@ -111,7 +112,7 @@ class TicketComment extends Model
     {
         // Remove solution flag from other comments
         $this->ticket->comments()->where('id', '!=', $this->id)->update(['is_solution' => false]);
-        
+
         // Mark this comment as solution
         $this->update(['is_solution' => true]);
     }
@@ -137,7 +138,7 @@ class TicketComment extends Model
 
     public function toggleInternal(): void
     {
-        $this->update(['is_internal' => !$this->is_internal]);
+        $this->update(['is_internal' => ! $this->is_internal]);
     }
 
     // Static methods
@@ -154,7 +155,7 @@ class TicketComment extends Model
     public static function getCommentStatistics(int $ticketId): array
     {
         $comments = self::where('ticket_id', $ticketId);
-        
+
         return [
             'total' => $comments->count(),
             'public' => $comments->where('is_internal', false)->count(),

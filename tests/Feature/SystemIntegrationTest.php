@@ -2,10 +2,10 @@
 
 namespace Tests\Feature;
 
-use Tests\TestCase;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
+use Tests\TestCase;
 
 class SystemIntegrationTest extends TestCase
 {
@@ -16,7 +16,7 @@ class SystemIntegrationTest extends TestCase
     protected function setUp(): void
     {
         parent::setUp();
-        
+
         $this->user = User::factory()->create([
             'email' => 'test@connectpure.com',
             'password' => bcrypt('password'),
@@ -27,7 +27,7 @@ class SystemIntegrationTest extends TestCase
     public function user_can_access_dashboard()
     {
         $response = $this->actingAs($this->user)
-                         ->get('/dashboard');
+            ->get('/dashboard');
 
         $response->assertStatus(200);
         $response->assertSee('Dashboard');
@@ -37,7 +37,7 @@ class SystemIntegrationTest extends TestCase
     public function user_can_access_hr_module()
     {
         $response = $this->actingAs($this->user)
-                         ->get('/modules/hr');
+            ->get('/modules/hr');
 
         $response->assertStatus(200);
         $response->assertSee('Human Resources');
@@ -47,7 +47,7 @@ class SystemIntegrationTest extends TestCase
     public function user_can_access_accounting_module()
     {
         $response = $this->actingAs($this->user)
-                         ->get('/modules/accounting');
+            ->get('/modules/accounting');
 
         $response->assertStatus(200);
         $response->assertSee('Accounting');
@@ -57,7 +57,7 @@ class SystemIntegrationTest extends TestCase
     public function user_can_access_hr_employees_page()
     {
         $response = $this->actingAs($this->user)
-                         ->get('/modules/hr/employees');
+            ->get('/modules/hr/employees');
 
         $response->assertStatus(200);
         $response->assertSee('Employees');
@@ -67,7 +67,7 @@ class SystemIntegrationTest extends TestCase
     public function user_can_access_hr_attendance_page()
     {
         $response = $this->actingAs($this->user)
-                         ->get('/modules/hr/attendance');
+            ->get('/modules/hr/attendance');
 
         $response->assertStatus(200);
         $response->assertSee('Attendance');
@@ -77,7 +77,7 @@ class SystemIntegrationTest extends TestCase
     public function user_can_access_hr_leave_requests_page()
     {
         $response = $this->actingAs($this->user)
-                         ->get('/modules/hr/leave-requests');
+            ->get('/modules/hr/leave-requests');
 
         $response->assertStatus(200);
         $response->assertSee('Leave Requests');
@@ -87,7 +87,7 @@ class SystemIntegrationTest extends TestCase
     public function user_can_access_hr_payroll_page()
     {
         $response = $this->actingAs($this->user)
-                         ->get('/modules/hr/payroll');
+            ->get('/modules/hr/payroll');
 
         $response->assertStatus(200);
         $response->assertSee('Payroll');
@@ -97,7 +97,7 @@ class SystemIntegrationTest extends TestCase
     public function user_can_access_hr_performance_reviews_page()
     {
         $response = $this->actingAs($this->user)
-                         ->get('/modules/hr/performance-reviews');
+            ->get('/modules/hr/performance-reviews');
 
         $response->assertStatus(200);
         $response->assertSee('Performance Reviews');
@@ -107,7 +107,7 @@ class SystemIntegrationTest extends TestCase
     public function user_can_access_accounting_invoices_page()
     {
         $response = $this->actingAs($this->user)
-                         ->get('/modules/accounting/invoices');
+            ->get('/modules/accounting/invoices');
 
         $response->assertStatus(200);
         $response->assertSee('Invoices');
@@ -117,7 +117,7 @@ class SystemIntegrationTest extends TestCase
     public function user_can_access_accounting_expenses_page()
     {
         $response = $this->actingAs($this->user)
-                         ->get('/modules/accounting/expenses');
+            ->get('/modules/accounting/expenses');
 
         $response->assertStatus(200);
         $response->assertSee('Expenses');
@@ -127,7 +127,7 @@ class SystemIntegrationTest extends TestCase
     public function user_can_access_accounting_customers_page()
     {
         $response = $this->actingAs($this->user)
-                         ->get('/modules/accounting/customers');
+            ->get('/modules/accounting/customers');
 
         $response->assertStatus(200);
         $response->assertSee('Customers');
@@ -137,7 +137,7 @@ class SystemIntegrationTest extends TestCase
     public function user_can_access_accounting_vendors_page()
     {
         $response = $this->actingAs($this->user)
-                         ->get('/modules/accounting/vendors');
+            ->get('/modules/accounting/vendors');
 
         $response->assertStatus(200);
         $response->assertSee('Vendors');
@@ -147,7 +147,7 @@ class SystemIntegrationTest extends TestCase
     public function user_can_access_accounting_reports_page()
     {
         $response = $this->actingAs($this->user)
-                         ->get('/modules/accounting/reports');
+            ->get('/modules/accounting/reports');
 
         $response->assertStatus(200);
         $response->assertSee('Financial Reports');
@@ -157,7 +157,7 @@ class SystemIntegrationTest extends TestCase
     public function user_can_access_currencies_page()
     {
         $response = $this->actingAs($this->user)
-                         ->get('/modules/accounting/currencies');
+            ->get('/modules/accounting/currencies');
 
         $response->assertStatus(200);
         $response->assertSee('Currencies');
@@ -167,7 +167,7 @@ class SystemIntegrationTest extends TestCase
     public function user_can_access_taxes_page()
     {
         $response = $this->actingAs($this->user)
-                         ->get('/modules/accounting/taxes');
+            ->get('/modules/accounting/taxes');
 
         $response->assertStatus(200);
         $response->assertSee('Taxes');
@@ -178,13 +178,13 @@ class SystemIntegrationTest extends TestCase
     {
         // Test English
         $response = $this->actingAs($this->user)
-                         ->get('/lang/en');
+            ->get('/lang/en');
 
         $response->assertRedirect();
 
         // Test Arabic
         $response = $this->actingAs($this->user)
-                         ->get('/lang/ar');
+            ->get('/lang/ar');
 
         $response->assertRedirect();
     }
@@ -231,7 +231,7 @@ class SystemIntegrationTest extends TestCase
     {
         // Run currency and tax seeder
         $this->artisan('db:seed', ['--class' => 'CurrencyAndTaxSeeder']);
-        
+
         // Check that currencies exist
         $this->assertDatabaseHas('accounting_currencies', [
             'code' => 'USD',
@@ -264,7 +264,7 @@ class SystemIntegrationTest extends TestCase
 
         // Test that authenticated users can access protected routes
         $response = $this->actingAs($this->user)
-                         ->get('/modules/hr');
+            ->get('/modules/hr');
         $response->assertStatus(200);
     }
 
@@ -273,7 +273,7 @@ class SystemIntegrationTest extends TestCase
     {
         // Test 404 page
         $response = $this->actingAs($this->user)
-                         ->get('/non-existent-page');
+            ->get('/non-existent-page');
         $response->assertStatus(404);
     }
 

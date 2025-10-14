@@ -3,12 +3,12 @@
 namespace App\Modules\HR\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Modules\HR\Models\LeaveRequest;
 use App\Modules\HR\Models\Employee;
-use Illuminate\Http\Request;
+use App\Modules\HR\Models\LeaveRequest;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\View\View;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\View\View;
 
 class LeaveRequestController extends Controller
 {
@@ -104,7 +104,7 @@ class LeaveRequestController extends Controller
     public function create(): View
     {
         $employees = Employee::active()->orderBy('first_name')->get();
-        
+
         return view('modules.hr.leave-requests.create', compact('employees'));
     }
 
@@ -139,7 +139,7 @@ class LeaveRequestController extends Controller
             $balance = $employee->getLeaveBalance($validated['leave_type']);
             if ($balance < $validated['total_days']) {
                 return back()->withErrors(['leave_type' => __('hr.insufficient_leave_balance')])
-                            ->withInput();
+                    ->withInput();
             }
         }
 
@@ -148,17 +148,17 @@ class LeaveRequestController extends Controller
             ->whereIn('status', ['pending', 'approved'])
             ->where(function ($query) use ($validated) {
                 $query->whereBetween('start_date', [$validated['start_date'], $validated['end_date']])
-                      ->orWhereBetween('end_date', [$validated['start_date'], $validated['end_date']])
-                      ->orWhere(function ($subQuery) use ($validated) {
-                          $subQuery->where('start_date', '<=', $validated['start_date'])
-                                   ->where('end_date', '>=', $validated['end_date']);
-                      });
+                    ->orWhereBetween('end_date', [$validated['start_date'], $validated['end_date']])
+                    ->orWhere(function ($subQuery) use ($validated) {
+                        $subQuery->where('start_date', '<=', $validated['start_date'])
+                            ->where('end_date', '>=', $validated['end_date']);
+                    });
             })
             ->exists();
 
         if ($overlapping) {
             return back()->withErrors(['start_date' => __('hr.overlapping_leave_request')])
-                        ->withInput();
+                ->withInput();
         }
 
         // Handle file attachments
@@ -178,7 +178,7 @@ class LeaveRequestController extends Controller
         $leaveRequest = LeaveRequest::create($validated);
 
         return redirect()->route('modules.hr.leave-requests.show', $leaveRequest)
-                        ->with('success', __('hr.leave_request_submitted_successfully'));
+            ->with('success', __('hr.leave_request_submitted_successfully'));
     }
 
     /**
@@ -237,7 +237,7 @@ class LeaveRequestController extends Controller
             $balance = $leaveRequest->employee->getLeaveBalance($validated['leave_type']);
             if ($balance < $validated['total_days']) {
                 return back()->withErrors(['leave_type' => __('hr.insufficient_leave_balance')])
-                            ->withInput();
+                    ->withInput();
             }
         }
 
@@ -265,7 +265,7 @@ class LeaveRequestController extends Controller
         $leaveRequest->update($validated);
 
         return redirect()->route('modules.hr.leave-requests.show', $leaveRequest)
-                        ->with('success', 'Leave request updated successfully.');
+            ->with('success', 'Leave request updated successfully.');
     }
 
     /**
@@ -319,7 +319,7 @@ class LeaveRequestController extends Controller
      */
     public function cancel(LeaveRequest $leaveRequest): RedirectResponse
     {
-        if (!$leaveRequest->can_be_cancelled) {
+        if (! $leaveRequest->can_be_cancelled) {
             return back()->with('error', 'Cannot cancel this leave request.');
         }
 
@@ -333,17 +333,17 @@ class LeaveRequestController extends Controller
      */
     public function downloadAttachment(LeaveRequest $leaveRequest, $index)
     {
-        if (!$leaveRequest->attachments || !isset($leaveRequest->attachments[$index])) {
+        if (! $leaveRequest->attachments || ! isset($leaveRequest->attachments[$index])) {
             abort(404);
         }
 
         $attachment = $leaveRequest->attachments[$index];
-        
-        if (!Storage::disk('public')->exists($attachment['path'])) {
+
+        if (! Storage::disk('public')->exists($attachment['path'])) {
             abort(404);
         }
 
-        return response()->download(storage_path('app/public/' . $attachment['path']), $attachment['name']);
+        return response()->download(storage_path('app/public/'.$attachment['path']), $attachment['name']);
     }
 
     /**
@@ -354,7 +354,7 @@ class LeaveRequestController extends Controller
         $employeeId = $request->get('employee_id');
         $employee = Employee::find($employeeId);
 
-        if (!$employee) {
+        if (! $employee) {
             return response()->json(['error' => 'Employee not found'], 404);
         }
 
@@ -382,9 +382,9 @@ class LeaveRequestController extends Controller
         }
 
         $leaveRequests = $query->get();
-        
-        $filename = 'leave_requests_' . now()->format('Y-m-d') . '.csv';
-        
+
+        $filename = 'leave_requests_'.now()->format('Y-m-d').'.csv';
+
         $headers = [
             'Content-Type' => 'text/csv',
             'Content-Disposition' => "attachment; filename=\"$filename\"",
@@ -392,7 +392,7 @@ class LeaveRequestController extends Controller
 
         $callback = function () use ($leaveRequests) {
             $file = fopen('php://output', 'w');
-            
+
             // CSV headers
             fputcsv($file, [
                 'Request Number',
@@ -404,7 +404,7 @@ class LeaveRequestController extends Controller
                 'Total Days',
                 'Status',
                 'Approver',
-                'Approved At'
+                'Approved At',
             ]);
 
             // CSV data
@@ -419,7 +419,7 @@ class LeaveRequestController extends Controller
                     $request->total_days,
                     $request->status_text,
                     $request->approver ? $request->approver->display_name : 'N/A',
-                    $request->approved_at ? $request->approved_at->format('Y-m-d H:i') : 'N/A'
+                    $request->approved_at ? $request->approved_at->format('Y-m-d H:i') : 'N/A',
                 ]);
             }
 

@@ -3,16 +3,15 @@
 namespace App\Modules\CRM\Exports;
 
 use Maatwebsite\Excel\Concerns\FromArray;
+use Maatwebsite\Excel\Concerns\WithColumnWidths;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 use Maatwebsite\Excel\Concerns\WithStyles;
-use Maatwebsite\Excel\Concerns\WithColumnWidths;
 use Maatwebsite\Excel\Concerns\WithTitle;
-use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
 use PhpOffice\PhpSpreadsheet\Style\Alignment;
 use PhpOffice\PhpSpreadsheet\Style\Fill;
-use PhpOffice\PhpSpreadsheet\Style\Font;
+use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
 
-class ContactTemplateExport implements FromArray, WithHeadings, WithStyles, WithColumnWidths, WithTitle
+class ContactTemplateExport implements FromArray, WithColumnWidths, WithHeadings, WithStyles, WithTitle
 {
     /**
      * Return the template data with sample rows.
@@ -32,7 +31,7 @@ class ContactTemplateExport implements FromArray, WithHeadings, WithStyles, With
                 'Saudi Arabia',
                 'Interested in our premium services',
                 'LinkedIn',
-                'John Smith'
+                'John Smith',
             ],
             [
                 'Sarah Al-Mahmoud',
@@ -46,7 +45,7 @@ class ContactTemplateExport implements FromArray, WithHeadings, WithStyles, With
                 'Saudi Arabia',
                 'Requested product demo',
                 'Website',
-                'Jane Doe'
+                'Jane Doe',
             ],
             [
                 'Omar Al-Zahrani',
@@ -60,8 +59,8 @@ class ContactTemplateExport implements FromArray, WithHeadings, WithStyles, With
                 'Saudi Arabia',
                 'Existing customer - renewal due',
                 'Referral',
-                'Mike Johnson'
-            ]
+                'Mike Johnson',
+            ],
         ];
     }
 
@@ -82,7 +81,7 @@ class ContactTemplateExport implements FromArray, WithHeadings, WithStyles, With
             'Country',
             'Notes',
             'Source',
-            'Assigned To'
+            'Assigned To',
         ];
     }
 

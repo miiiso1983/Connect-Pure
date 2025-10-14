@@ -81,23 +81,37 @@ class Customer extends Model
 
     public function getFormattedBalanceAttribute()
     {
-        return number_format((float)$this->balance, 2) . ' ' . $this->currency;
+        return number_format((float) $this->balance, 2).' '.$this->currency;
     }
 
     public function getFullAddressAttribute()
     {
         $address = $this->billing_address;
-        if ($this->city) $address .= ', ' . $this->city;
-        if ($this->state) $address .= ', ' . $this->state;
-        if ($this->postal_code) $address .= ' ' . $this->postal_code;
-        if ($this->country) $address .= ', ' . $this->country;
+        if ($this->city) {
+            $address .= ', '.$this->city;
+        }
+        if ($this->state) {
+            $address .= ', '.$this->state;
+        }
+        if ($this->postal_code) {
+            $address .= ' '.$this->postal_code;
+        }
+        if ($this->country) {
+            $address .= ', '.$this->country;
+        }
+
         return $address;
     }
 
     public function getStatusColorAttribute()
     {
-        if (!$this->is_active) return 'red';
-        if ($this->balance > 0) return 'orange';
+        if (! $this->is_active) {
+            return 'red';
+        }
+        if ($this->balance > 0) {
+            return 'orange';
+        }
+
         return 'green';
     }
 
@@ -114,6 +128,7 @@ class Customer extends Model
         if ($year) {
             $query->whereYear('invoice_date', $year);
         }
+
         return $query->sum('total_amount');
     }
 
@@ -123,6 +138,7 @@ class Customer extends Model
         if ($year) {
             $query->whereYear('invoice_date', $year);
         }
+
         return $query->sum('paid_amount');
     }
 
@@ -150,8 +166,8 @@ class Customer extends Model
         parent::boot();
 
         static::creating(function ($customer) {
-            if (!$customer->customer_number) {
-                $customer->customer_number = 'CUST-' . str_pad(
+            if (! $customer->customer_number) {
+                $customer->customer_number = 'CUST-'.str_pad(
                     static::max('id') + 1, 6, '0', STR_PAD_LEFT
                 );
             }

@@ -5,8 +5,8 @@ namespace App\Modules\Accounting\Controllers;
 use App\Http\Controllers\Controller;
 use App\Modules\Accounting\Models\ChartOfAccount;
 use Illuminate\Http\Request;
-use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\IOFactory;
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Style\Fill;
 
 class ChartOfAccountController extends Controller
@@ -14,12 +14,14 @@ class ChartOfAccountController extends Controller
     public function index()
     {
         $accounts = ChartOfAccount::orderBy('account_code')->paginate(15);
+
         return view('modules.accounting.chart-of-accounts.index', compact('accounts'));
     }
 
     public function create()
     {
         $parentAccounts = ChartOfAccount::whereNull('parent_id')->get();
+
         return view('modules.accounting.chart-of-accounts.create', compact('parentAccounts'));
     }
 
@@ -43,6 +45,7 @@ class ChartOfAccountController extends Controller
     public function show(ChartOfAccount $account)
     {
         $account->load(['parentAccount', 'subAccounts']);
+
         return view('modules.accounting.chart-of-accounts.show', compact('account'));
     }
 
@@ -58,7 +61,7 @@ class ChartOfAccountController extends Controller
     public function update(Request $request, ChartOfAccount $account)
     {
         $validated = $request->validate([
-            'account_code' => 'required|string|unique:chart_of_accounts,account_code,' . $account->id,
+            'account_code' => 'required|string|unique:chart_of_accounts,account_code,'.$account->id,
             'account_name' => 'required|string|max:255',
             'account_type' => 'required|in:asset,liability,equity,revenue,expense',
             'parent_id' => 'nullable|exists:chart_of_accounts,id',
@@ -83,7 +86,7 @@ class ChartOfAccountController extends Controller
     public function search(Request $request)
     {
         $query = $request->get('q');
-        
+
         $accounts = ChartOfAccount::where('account_name', 'like', "%{$query}%")
             ->orWhere('account_code', 'like', "%{$query}%")
             ->where('is_active', true)
@@ -96,16 +99,16 @@ class ChartOfAccountController extends Controller
     public function export()
     {
         $accounts = ChartOfAccount::with('parentAccount')
-                                 ->orderBy('account_code')
-                                 ->get();
+            ->orderBy('account_code')
+            ->get();
 
-        $spreadsheet = new Spreadsheet();
+        $spreadsheet = new Spreadsheet;
         $sheet = $spreadsheet->getActiveSheet();
 
         // Set headers
         $headers = [
             'Account Code', 'Account Name', 'Account Type', 'Normal Balance',
-            'Parent Account', 'Current Balance', 'Opening Balance', 'Status', 'Description'
+            'Parent Account', 'Current Balance', 'Opening Balance', 'Status', 'Description',
         ];
 
         $sheet->fromArray($headers, null, 'A1');
@@ -122,10 +125,10 @@ class ChartOfAccountController extends Controller
                 number_format($account->current_balance, 2),
                 number_format($account->opening_balance, 2),
                 $account->is_active ? 'Active' : 'Inactive',
-                $account->description ?? ''
+                $account->description ?? '',
             ];
 
-            $sheet->fromArray($data, null, 'A' . $row);
+            $sheet->fromArray($data, null, 'A'.$row);
             $row++;
         }
 
@@ -137,12 +140,12 @@ class ChartOfAccountController extends Controller
         // Style headers
         $sheet->getStyle('A1:I1')->getFont()->setBold(true);
         $sheet->getStyle('A1:I1')->getFill()
-              ->setFillType(Fill::FILL_SOLID)
-              ->getStartColor()->setARGB('FFE2E8F0');
+            ->setFillType(Fill::FILL_SOLID)
+            ->getStartColor()->setARGB('FFE2E8F0');
 
         $writer = IOFactory::createWriter($spreadsheet, 'Xlsx');
 
-        $filename = 'chart_of_accounts_' . date('Y-m-d_H-i-s') . '.xlsx';
+        $filename = 'chart_of_accounts_'.date('Y-m-d_H-i-s').'.xlsx';
         $tempFile = tempnam(sys_get_temp_dir(), $filename);
         $writer->save($tempFile);
 

@@ -6,4 +6,3 @@ return [
     'download_chart' => 'تنزيل الرسم البياني',
     'refresh_chart' => 'تحديث الرسم البياني',
 ];
-

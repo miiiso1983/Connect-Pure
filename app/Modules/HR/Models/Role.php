@@ -2,11 +2,11 @@
 
 namespace App\Modules\HR\Models;
 
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Database\Factories\HR\RoleFactory;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Role extends Model
 {
@@ -81,43 +81,43 @@ class Role extends Model
     {
         return $query->where(function ($q) use ($search) {
             $q->where('name', 'like', "%{$search}%")
-              ->orWhere('name_ar', 'like', "%{$search}%")
-              ->orWhere('code', 'like', "%{$search}%")
-              ->orWhere('description', 'like', "%{$search}%");
+                ->orWhere('name_ar', 'like', "%{$search}%")
+                ->orWhere('code', 'like', "%{$search}%")
+                ->orWhere('description', 'like', "%{$search}%");
         });
     }
 
     // Accessors
     public function getDisplayNameAttribute(): string
     {
-        return app()->getLocale() === 'ar' && $this->name_ar 
-            ? $this->name_ar 
+        return app()->getLocale() === 'ar' && $this->name_ar
+            ? $this->name_ar
             : $this->name;
     }
 
     public function getDisplayDescriptionAttribute(): string
     {
-        return app()->getLocale() === 'ar' && $this->description_ar 
-            ? $this->description_ar 
+        return app()->getLocale() === 'ar' && $this->description_ar
+            ? $this->description_ar
             : $this->description;
     }
 
     public function getFormattedSalaryRangeAttribute(): string
     {
         if ($this->min_salary && $this->max_salary) {
-            return number_format($this->min_salary, 0) . ' - ' . number_format($this->max_salary, 0);
+            return number_format($this->min_salary, 0).' - '.number_format($this->max_salary, 0);
         } elseif ($this->min_salary) {
-            return 'من ' . number_format($this->min_salary, 0);
+            return 'من '.number_format($this->min_salary, 0);
         } elseif ($this->max_salary) {
-            return 'حتى ' . number_format($this->max_salary, 0);
+            return 'حتى '.number_format($this->max_salary, 0);
         }
-        
+
         return 'غير محدد';
     }
 
     public function getLevelTextAttribute(): string
     {
-        return match($this->level) {
+        return match ($this->level) {
             'junior' => __('hr.junior'),
             'mid' => __('hr.mid_level'),
             'senior' => __('hr.senior'),
@@ -146,15 +146,15 @@ class Role extends Model
     public function isSalaryInRange(float $salary): bool
     {
         $inRange = true;
-        
+
         if ($this->min_salary && $salary < $this->min_salary) {
             $inRange = false;
         }
-        
+
         if ($this->max_salary && $salary > $this->max_salary) {
             $inRange = false;
         }
-        
+
         return $inRange;
     }
 
@@ -181,21 +181,21 @@ class Role extends Model
     public function canAcceptSalary(float $salary): array
     {
         $result = ['valid' => true, 'message' => ''];
-        
+
         if ($this->min_salary && $salary < $this->min_salary) {
             $result['valid'] = false;
             $result['message'] = __('hr.salary_below_minimum', [
-                'min' => number_format($this->min_salary, 0)
+                'min' => number_format($this->min_salary, 0),
             ]);
         }
-        
+
         if ($this->max_salary && $salary > $this->max_salary) {
             $result['valid'] = false;
             $result['message'] = __('hr.salary_above_maximum', [
-                'max' => number_format($this->max_salary, 0)
+                'max' => number_format($this->max_salary, 0),
             ]);
         }
-        
+
         return $result;
     }
 

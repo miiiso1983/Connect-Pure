@@ -6,7 +6,6 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Carbon\Carbon;
 
 class RecurringProfile extends Model
 {
@@ -82,7 +81,7 @@ class RecurringProfile extends Model
     // Accessors
     public function getStatusColorAttribute()
     {
-        return match($this->status) {
+        return match ($this->status) {
             'active' => 'green',
             'paused' => 'yellow',
             'completed' => 'blue',
@@ -93,12 +92,12 @@ class RecurringProfile extends Model
 
     public function getFormattedAmountAttribute()
     {
-        return number_format((float) $this->amount, 2) . ' ' . $this->currency;
+        return number_format((float) $this->amount, 2).' '.$this->currency;
     }
 
     public function getFrequencyTextAttribute()
     {
-        $frequency = match($this->frequency) {
+        $frequency = match ($this->frequency) {
             'weekly' => __('accounting.weekly'),
             'bi_weekly' => __('accounting.bi_weekly'),
             'monthly' => __('accounting.monthly'),
@@ -108,7 +107,7 @@ class RecurringProfile extends Model
             default => $this->frequency
         };
 
-        return $this->interval > 1 ? 
+        return $this->interval > 1 ?
             __('accounting.every_x_frequency', ['interval' => $this->interval, 'frequency' => $frequency]) :
             $frequency;
     }
@@ -120,9 +119,10 @@ class RecurringProfile extends Model
 
     public function getRemainingOccurrencesAttribute()
     {
-        if (!$this->max_occurrences) {
+        if (! $this->max_occurrences) {
             return null; // Unlimited
         }
+
         return max(0, $this->max_occurrences - $this->occurrences_created);
     }
 
@@ -131,7 +131,7 @@ class RecurringProfile extends Model
     {
         $baseDate = \Carbon\Carbon::parse($this->last_run_date ?: $this->start_date);
 
-        $nextDate = match($this->frequency) {
+        $nextDate = match ($this->frequency) {
             'weekly' => $baseDate->addWeeks($this->interval),
             'bi_weekly' => $baseDate->addWeeks(2 * $this->interval),
             'monthly' => $baseDate->addMonths($this->interval),
@@ -160,12 +160,14 @@ class RecurringProfile extends Model
         if ($this->end_date && $this->end_date < now()) {
             $this->status = 'completed';
             $this->save();
+
             return false;
         }
 
         if ($this->max_occurrences && $this->occurrences_created >= $this->max_occurrences) {
             $this->status = 'completed';
             $this->save();
+
             return false;
         }
 
@@ -174,7 +176,7 @@ class RecurringProfile extends Model
 
     public function process()
     {
-        if (!$this->shouldProcess()) {
+        if (! $this->shouldProcess()) {
             return null;
         }
 
@@ -204,7 +206,7 @@ class RecurringProfile extends Model
     private function createInvoice()
     {
         $templateData = $this->template_data;
-        
+
         $invoice = Invoice::create([
             'customer_id' => $this->customer_id,
             'invoice_date' => now(),

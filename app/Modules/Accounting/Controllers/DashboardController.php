@@ -3,21 +3,21 @@
 namespace App\Modules\Accounting\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Modules\Accounting\Models\Invoice;
-use App\Modules\Accounting\Models\Customer;
-use App\Modules\Accounting\Models\Product;
-use App\Modules\Accounting\Models\Expense;
 use App\Modules\Accounting\Models\ChartOfAccount;
-use App\Modules\Accounting\Services\ReportService;
+use App\Modules\Accounting\Models\Customer;
+use App\Modules\Accounting\Models\Expense;
+use App\Modules\Accounting\Models\Invoice;
+use App\Modules\Accounting\Models\Product;
 use App\Modules\Accounting\Services\DashboardService;
+use App\Modules\Accounting\Services\ReportService;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
-use Illuminate\Http\JsonResponse;
-use Carbon\Carbon;
 
 class DashboardController extends Controller
 {
     protected DashboardService $dashboardService;
+
     protected ReportService $reportService;
 
     public function __construct(DashboardService $dashboardService, ReportService $reportService)
@@ -48,7 +48,7 @@ class DashboardController extends Controller
         $startDate = $request->get('start_date', now()->startOfMonth()->toDateString());
         $endDate = $request->get('end_date', now()->endOfMonth()->toDateString());
 
-        $reportData = match($reportType) {
+        $reportData = match ($reportType) {
             'profit_loss' => $this->reportService->getProfitLossReport($startDate, $endDate),
             'balance_sheet' => $this->reportService->getBalanceSheetReport($endDate),
             'cash_flow' => $this->reportService->getCashFlowReport($startDate, $endDate),
@@ -75,12 +75,12 @@ class DashboardController extends Controller
             $search = $request->search;
             $query->where(function ($q) use ($search) {
                 $q->where('account_name', 'like', "%{$search}%")
-                  ->orWhere('account_code', 'like', "%{$search}%");
+                    ->orWhere('account_code', 'like', "%{$search}%");
             });
         }
 
         $accounts = $query->get();
-        
+
         $stats = [
             'total_accounts' => ChartOfAccount::count(),
             'active_accounts' => ChartOfAccount::active()->count(),
@@ -100,7 +100,7 @@ class DashboardController extends Controller
     {
         $period = $request->get('period', '30');
         $data = $this->dashboardService->getDashboardData($period);
-        
+
         return response()->json($data);
     }
 
@@ -111,8 +111,8 @@ class DashboardController extends Controller
     {
         $type = $request->get('type', 'revenue_expense');
         $period = $request->get('period', '12');
-        
-        $data = match($type) {
+
+        $data = match ($type) {
             'revenue_expense' => $this->dashboardService->getRevenueExpenseChartData($period),
             'invoice_status' => $this->dashboardService->getInvoiceStatusChartData(),
             'customer_balance' => $this->dashboardService->getCustomerBalanceChartData(),
@@ -131,9 +131,9 @@ class DashboardController extends Controller
         $reportType = $request->get('type');
         $startDate = $request->get('start_date');
         $endDate = $request->get('end_date');
-        
+
         $pdf = $this->reportService->exportToPDF($reportType, $startDate, $endDate);
-        
+
         return response($pdf)
             ->header('Content-Type', 'application/pdf')
             ->header('Content-Disposition', "attachment; filename=\"{$reportType}_report.pdf\"");
@@ -154,7 +154,7 @@ class DashboardController extends Controller
                 return [
                     'id' => $customer->id,
                     'text' => $customer->display_name,
-                    'type' => 'customer'
+                    'type' => 'customer',
                 ];
             });
         }
@@ -166,7 +166,7 @@ class DashboardController extends Controller
                     'id' => $product->id,
                     'text' => $product->name,
                     'price' => $product->unit_price,
-                    'type' => 'product'
+                    'type' => 'product',
                 ];
             });
         }
@@ -181,7 +181,7 @@ class DashboardController extends Controller
                 return [
                     'id' => $account->id,
                     'text' => $account->display_name,
-                    'type' => 'account'
+                    'type' => 'account',
                 ];
             });
         }

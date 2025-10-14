@@ -1,12 +1,9 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
 use App\Modules\CRM\Controllers\CRMController;
 use App\Modules\Support\Controllers\SupportController;
-
-use App\Modules\Performance\Controllers\PerformanceController;
-use App\Modules\HR\Controllers\HRController;
+use Illuminate\Support\Facades\Route;
 
 // Dashboard Routes
 Route::middleware('auth')->group(function () {
@@ -334,7 +331,6 @@ Route::middleware('auth')->prefix('admin')->name('admin.')->group(function () {
             return view('admin.styleguide.index');
         })->name('styleguide');
 
-
         // System Settings Routes
         Route::prefix('system-settings')->name('system-settings.')->group(function () {
             Route::get('/', [\App\Http\Controllers\Admin\SystemSettingsController::class, 'index'])->name('index');
@@ -369,7 +365,6 @@ Route::middleware('auth')->prefix('admin')->name('admin.')->group(function () {
             Route::get('/download', [\App\Http\Controllers\Admin\ErrorViewerController::class, 'download'])->name('download');
             Route::post('/clear', [\App\Http\Controllers\Admin\ErrorViewerController::class, 'clear'])->name('clear');
         });
-
 
         // WhatsApp Configuration
         Route::prefix('whatsapp')->name('whatsapp.')->group(function () {

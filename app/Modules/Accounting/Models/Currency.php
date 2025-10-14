@@ -2,8 +2,8 @@
 
 namespace App\Modules\Accounting\Models;
 
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Currency extends Model
@@ -86,9 +86,9 @@ class Currency extends Model
         );
 
         if ($this->symbol_position === 'before') {
-            return $this->symbol . $formattedAmount;
+            return $this->symbol.$formattedAmount;
         } else {
-            return $formattedAmount . $this->symbol;
+            return $formattedAmount.$this->symbol;
         }
     }
 
@@ -114,7 +114,7 @@ class Currency extends Model
     {
         // Convert to base currency first
         $baseAmount = $this->convertToBaseCurrency($amount);
-        
+
         // Then convert to target currency
         return $targetCurrency->convertFromBaseCurrency($baseAmount);
     }
@@ -176,8 +176,8 @@ class Currency extends Model
             if ($currency->is_base_currency && $currency->isDirty('is_base_currency')) {
                 // Ensure only one base currency exists
                 static::where('id', '!=', $currency->id)
-                      ->where('is_base_currency', true)
-                      ->update(['is_base_currency' => false]);
+                    ->where('is_base_currency', true)
+                    ->update(['is_base_currency' => false]);
             }
         });
     }

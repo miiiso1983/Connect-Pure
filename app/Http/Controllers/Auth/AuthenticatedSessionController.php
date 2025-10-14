@@ -48,7 +48,7 @@ class AuthenticatedSessionController extends Controller
         // Get user's primary role (first role)
         $primaryRole = $user->roles->first();
 
-        if (!$primaryRole) {
+        if (! $primaryRole) {
             return route('dashboard');
         }
 

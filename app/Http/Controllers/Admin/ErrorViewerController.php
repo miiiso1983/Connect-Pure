@@ -58,7 +58,9 @@ class ErrorViewerController extends Controller
         $current = null;
         foreach ($lines as $line) {
             if (preg_match('/^\[(\d{4}-\d{2}-\d{2} [^\]]+)\] (\w+)\.([A-Za-z]+):\s*(.*)$/', $line, $m)) {
-                if ($current) { $entries[] = $current; }
+                if ($current) {
+                    $entries[] = $current;
+                }
                 $current = [
                     'id' => substr(md5(uniqid('', true)), 0, 10),
                     'timestamp' => $m[1],
@@ -69,24 +71,28 @@ class ErrorViewerController extends Controller
                 ];
             } else {
                 if ($current !== null) {
-                    $current['body'] .= $line . "\n";
+                    $current['body'] .= $line."\n";
                 }
             }
         }
-        if ($current) { $entries[] = $current; }
+        if ($current) {
+            $entries[] = $current;
+        }
         // keep only the most recent 50 entries and reverse to show newest first
         if (count($entries) > 50) {
             $entries = array_slice($entries, -50);
         }
+
         return array_reverse($entries);
     }
 
     public function download()
     {
         $path = storage_path('logs/laravel.log');
-        if (!File::exists($path)) {
+        if (! File::exists($path)) {
             abort(404);
         }
+
         return response()->download($path, 'laravel.log');
     }
 
@@ -95,9 +101,10 @@ class ErrorViewerController extends Controller
         $path = storage_path('logs/laravel.log');
         if (File::exists($path) && File::isWritable($path)) {
             File::put($path, '');
+
             return back()->with('status', __('Logs cleared.'));
         }
+
         return back()->with('error', __('Cannot clear log file. Check permissions.'));
     }
 }
-

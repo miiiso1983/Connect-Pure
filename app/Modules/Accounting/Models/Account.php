@@ -4,8 +4,8 @@ namespace App\Modules\Accounting\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Account extends Model
 {
@@ -89,7 +89,7 @@ class Account extends Model
 
     public function getFormattedBalanceAttribute()
     {
-        return number_format((float)$this->balance, 2) . ' ' . $this->currency;
+        return number_format((float) $this->balance, 2).' '.$this->currency;
     }
 
     // Methods
@@ -97,15 +97,15 @@ class Account extends Model
     {
         if ($type === 'debit') {
             if (in_array($this->type, ['asset', 'expense'])) {
-                $this->balance = (float)$this->balance + $amount;
+                $this->balance = (float) $this->balance + $amount;
             } else {
-                $this->balance = (float)$this->balance - $amount;
+                $this->balance = (float) $this->balance - $amount;
             }
         } else { // credit
             if (in_array($this->type, ['liability', 'equity', 'revenue'])) {
-                $this->balance = (float)$this->balance + $amount;
+                $this->balance = (float) $this->balance + $amount;
             } else {
-                $this->balance = (float)$this->balance - $amount;
+                $this->balance = (float) $this->balance - $amount;
             }
         }
         $this->save();
@@ -113,7 +113,7 @@ class Account extends Model
 
     public function getAccountTypeColor()
     {
-        return match($this->type) {
+        return match ($this->type) {
             'asset' => 'green',
             'liability' => 'red',
             'equity' => 'blue',

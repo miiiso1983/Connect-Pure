@@ -2,28 +2,30 @@
 
 namespace Tests\Feature\HR;
 
-use Tests\TestCase;
 use App\Models\User;
-use App\Modules\HR\Models\Employee;
 use App\Modules\HR\Models\Department;
+use App\Modules\HR\Models\Employee;
 use App\Modules\HR\Models\Role;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
+use Tests\TestCase;
 
 class EmployeeManagementTest extends TestCase
 {
     use RefreshDatabase, WithFaker;
 
     protected $user;
+
     protected $department;
+
     protected $role;
 
     protected function setUp(): void
     {
         parent::setUp();
-        
+
         $this->user = User::factory()->create();
         $this->department = Department::factory()->create();
         $this->role = Role::factory()->create(['department_id' => $this->department->id]);

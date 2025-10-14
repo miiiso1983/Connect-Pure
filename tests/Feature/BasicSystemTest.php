@@ -2,9 +2,9 @@
 
 namespace Tests\Feature;
 
-use Tests\TestCase;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Tests\TestCase;
 
 class BasicSystemTest extends TestCase
 {
@@ -143,7 +143,7 @@ class BasicSystemTest extends TestCase
     public function error_pages_work()
     {
         $user = User::factory()->create();
-        
+
         $response = $this->actingAs($user)->get('/non-existent-page');
         $response->assertStatus(404);
     }
@@ -174,9 +174,9 @@ class BasicSystemTest extends TestCase
     public function database_connection_works()
     {
         $this->assertDatabaseCount('users', 0);
-        
+
         User::factory()->create();
-        
+
         $this->assertDatabaseCount('users', 1);
     }
 
@@ -225,7 +225,7 @@ class BasicSystemTest extends TestCase
     {
         $this->assertFileExists(lang_path('en'));
         $this->assertFileExists(lang_path('ar'));
-        
+
         // Check for specific language files
         $this->assertFileExists(lang_path('en/auth.php'));
         $this->assertFileExists(lang_path('ar/auth.php'));

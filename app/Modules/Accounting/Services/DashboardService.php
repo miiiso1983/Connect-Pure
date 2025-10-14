@@ -2,11 +2,10 @@
 
 namespace App\Modules\Accounting\Services;
 
-use App\Modules\Accounting\Models\Invoice;
 use App\Modules\Accounting\Models\Customer;
-use App\Modules\Accounting\Models\Product;
 use App\Modules\Accounting\Models\Expense;
-use App\Modules\Accounting\Models\ChartOfAccount;
+use App\Modules\Accounting\Models\Invoice;
+use App\Modules\Accounting\Models\Product;
 use Carbon\Carbon;
 use Illuminate\Support\Collection;
 
@@ -132,8 +131,8 @@ class DashboardService
     public function getTopCustomers(int $limit = 10): Collection
     {
         return Customer::withSum(['invoices' => function ($query) {
-                $query->where('status', 'paid');
-            }], 'total_amount')
+            $query->where('status', 'paid');
+        }], 'total_amount')
             ->orderBy('invoices_sum_total_amount', 'desc')
             ->limit($limit)
             ->get();
@@ -217,7 +216,7 @@ class DashboardService
 
         return [
             'labels' => $statuses->pluck('status')->map(function ($status) {
-                return __('accounting.' . $status);
+                return __('accounting.'.$status);
             })->toArray(),
             'counts' => $statuses->pluck('count')->toArray(),
             'amounts' => $statuses->pluck('amount')->toArray(),
@@ -230,7 +229,7 @@ class DashboardService
     public function getExpenseCategoryChartData(int $days = 30): array
     {
         $startDate = now()->subDays($days);
-        
+
         $categories = Expense::with('expenseAccount')
             ->where('expense_date', '>=', $startDate)
             ->where('status', 'paid')
@@ -337,8 +336,8 @@ class DashboardService
             ->whereBetween('invoice_date', [$lastMonth, $lastMonthEnd])
             ->sum('total_amount');
 
-        $revenueGrowth = $lastMonthRevenue > 0 
-            ? (($currentRevenue - $lastMonthRevenue) / $lastMonthRevenue) * 100 
+        $revenueGrowth = $lastMonthRevenue > 0
+            ? (($currentRevenue - $lastMonthRevenue) / $lastMonthRevenue) * 100
             : 0;
 
         $averageInvoiceValue = Invoice::where('status', 'paid')
@@ -389,12 +388,12 @@ class DashboardService
         $lastMonthCustomers = Customer::whereHas('invoices', function ($query) {
             $query->whereBetween('invoice_date', [
                 now()->subMonth()->startOfMonth(),
-                now()->subMonth()->endOfMonth()
+                now()->subMonth()->endOfMonth(),
             ]);
         })->count();
 
-        return $lastMonthCustomers > 0 
-            ? ($currentMonthCustomers / $lastMonthCustomers) * 100 
+        return $lastMonthCustomers > 0
+            ? ($currentMonthCustomers / $lastMonthCustomers) * 100
             : 0;
     }
 

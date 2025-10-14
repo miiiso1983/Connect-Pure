@@ -3,7 +3,6 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-use Illuminate\Support\Facades\DB;
 
 return new class extends Migration
 {
@@ -13,31 +12,31 @@ return new class extends Migration
     public function up(): void
     {
         // Check if columns exist before adding them
-        if (!Schema::hasColumn('contacts', 'position')) {
+        if (! Schema::hasColumn('contacts', 'position')) {
             Schema::table('contacts', function (Blueprint $table) {
                 $table->string('position')->nullable();
             });
         }
 
-        if (!Schema::hasColumn('contacts', 'priority')) {
+        if (! Schema::hasColumn('contacts', 'priority')) {
             Schema::table('contacts', function (Blueprint $table) {
                 $table->enum('priority', ['low', 'medium', 'high'])->default('medium');
             });
         }
 
-        if (!Schema::hasColumn('contacts', 'city')) {
+        if (! Schema::hasColumn('contacts', 'city')) {
             Schema::table('contacts', function (Blueprint $table) {
                 $table->string('city')->nullable();
             });
         }
 
-        if (!Schema::hasColumn('contacts', 'country')) {
+        if (! Schema::hasColumn('contacts', 'country')) {
             Schema::table('contacts', function (Blueprint $table) {
                 $table->string('country')->nullable();
             });
         }
 
-        if (!Schema::hasColumn('contacts', 'deleted_at')) {
+        if (! Schema::hasColumn('contacts', 'deleted_at')) {
             Schema::table('contacts', function (Blueprint $table) {
                 $table->softDeletes();
             });

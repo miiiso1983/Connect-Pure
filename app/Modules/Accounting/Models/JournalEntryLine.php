@@ -41,12 +41,12 @@ class JournalEntryLine extends Model
     // Accessors
     public function getFormattedDebitAmountAttribute()
     {
-        return $this->debit_amount > 0 ? number_format((float)$this->debit_amount, 2) : '';
+        return $this->debit_amount > 0 ? number_format((float) $this->debit_amount, 2) : '';
     }
 
     public function getFormattedCreditAmountAttribute()
     {
-        return $this->credit_amount > 0 ? number_format((float)$this->credit_amount, 2) : '';
+        return $this->credit_amount > 0 ? number_format((float) $this->credit_amount, 2) : '';
     }
 
     public function getAmountAttribute()

@@ -2,14 +2,14 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Seeder;
 use App\Models\User;
-use App\Modules\HR\Models\Employee;
-use App\Modules\HR\Models\Department;
 use App\Modules\HR\Models\AttendanceRecord;
+use App\Modules\HR\Models\Department;
+use App\Modules\HR\Models\Employee;
 use App\Modules\HR\Models\LeaveRequest;
-use App\Modules\HR\Models\SalaryRecord;
 use App\Modules\HR\Models\PerformanceReview;
+use App\Modules\HR\Models\SalaryRecord;
+use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 
 class SampleDataSeeder extends Seeder
@@ -23,22 +23,22 @@ class SampleDataSeeder extends Seeder
 
         // Create sample users
         $this->createSampleUsers();
-        
+
         // Create sample departments
         $this->createSampleDepartments();
-        
+
         // Create sample employees
         $this->createSampleEmployees();
-        
+
         // Create sample attendance records
         $this->createSampleAttendance();
-        
+
         // Create sample leave requests
         $this->createSampleLeaveRequests();
-        
+
         // Create sample salary records
         $this->createSampleSalaryRecords();
-        
+
         // Create sample performance reviews
         $this->createSamplePerformanceReviews();
 
@@ -193,7 +193,7 @@ class SampleDataSeeder extends Seeder
 
         foreach ($employees as $empData) {
             $department = Department::where('code', $empData['department_code'])->first();
-            
+
             if ($department) {
                 Employee::updateOrCreate(
                     ['employee_number' => $empData['employee_number']],
@@ -206,12 +206,12 @@ class SampleDataSeeder extends Seeder
                         'job_title' => $empData['job_title'],
                         'salary' => $empData['salary'],
                         'hire_date' => $empData['hire_date'],
-                        'phone' => '+971-50-' . rand(1000000, 9999999),
+                        'phone' => '+971-50-'.rand(1000000, 9999999),
                         'employment_status' => 'active',
                         'date_of_birth' => now()->subYears(rand(25, 45)),
                         'address' => 'Dubai, UAE',
                         'emergency_contact_name' => 'Emergency Contact',
-                        'emergency_contact_phone' => '+971-50-' . rand(1000000, 9999999),
+                        'emergency_contact_phone' => '+971-50-'.rand(1000000, 9999999),
                     ]
                 );
             }
@@ -222,22 +222,22 @@ class SampleDataSeeder extends Seeder
     {
         $employees = Employee::all();
         $startDate = now()->subDays(30);
-        
+
         foreach ($employees as $employee) {
             for ($i = 0; $i < 30; $i++) {
                 $date = $startDate->copy()->addDays($i);
-                
+
                 // Skip weekends
                 if ($date->isWeekend()) {
                     continue;
                 }
-                
+
                 // 95% attendance rate
                 if (rand(1, 100) <= 95) {
                     $checkIn = $date->copy()->setTime(8, rand(0, 30), 0);
                     $checkOut = $checkIn->copy()->addHours(8)->addMinutes(rand(0, 60));
                     $hoursWorked = $checkOut->diffInHours($checkIn, true);
-                    
+
                     AttendanceRecord::updateOrCreate(
                         [
                             'employee_id' => $employee->id,
@@ -262,21 +262,21 @@ class SampleDataSeeder extends Seeder
         $employees = Employee::all();
         $leaveTypes = ['annual', 'sick', 'emergency', 'personal'];
         $statuses = ['pending', 'approved', 'rejected'];
-        
+
         foreach ($employees as $employee) {
             // Create 2-4 leave requests per employee
             for ($i = 0; $i < rand(2, 4); $i++) {
                 $startDate = now()->addDays(rand(1, 90));
                 $days = rand(1, 7);
                 $endDate = $startDate->copy()->addDays($days - 1);
-                
+
                 LeaveRequest::create([
                     'employee_id' => $employee->id,
                     'leave_type' => $leaveTypes[array_rand($leaveTypes)],
                     'start_date' => $startDate,
                     'end_date' => $endDate,
                     'days' => $days,
-                    'reason' => 'Sample leave request for ' . $leaveTypes[array_rand($leaveTypes)] . ' leave',
+                    'reason' => 'Sample leave request for '.$leaveTypes[array_rand($leaveTypes)].' leave',
                     'status' => $statuses[array_rand($statuses)],
                     'applied_at' => now()->subDays(rand(1, 30)),
                     'approved_by' => rand(1, 10) > 5 ? 1 : null,
@@ -289,12 +289,12 @@ class SampleDataSeeder extends Seeder
     private function createSampleSalaryRecords()
     {
         $employees = Employee::all();
-        
+
         // Create salary records for last 6 months
         for ($month = 6; $month >= 1; $month--) {
             $periodStart = now()->subMonths($month)->startOfMonth();
             $periodEnd = $periodStart->copy()->endOfMonth();
-            
+
             foreach ($employees as $employee) {
                 $basicSalary = $employee->salary;
                 $allowances = $basicSalary * 0.15; // 15% allowances
@@ -302,7 +302,7 @@ class SampleDataSeeder extends Seeder
                 $deductions = rand(0, 300);
                 $taxDeduction = $basicSalary * 0.05; // 5% tax
                 $netSalary = $basicSalary + $allowances + $overtimeAmount - $deductions - $taxDeduction;
-                
+
                 SalaryRecord::create([
                     'employee_id' => $employee->id,
                     'period_start' => $periodStart,
@@ -329,7 +329,7 @@ class SampleDataSeeder extends Seeder
     private function createSamplePerformanceReviews()
     {
         $employees = Employee::all();
-        
+
         foreach ($employees as $employee) {
             // Create annual performance review
             PerformanceReview::create([
@@ -352,7 +352,7 @@ class SampleDataSeeder extends Seeder
                     'Complete professional certification',
                     'Lead a major project initiative',
                     'Mentor junior team members',
-                    'Improve specific technical skills'
+                    'Improve specific technical skills',
                 ],
                 'reviewer_comments' => 'Strong performer with consistent delivery and positive attitude. Shows great potential for growth.',
                 'employee_comments' => 'Thank you for the constructive feedback. I am committed to achieving the goals set for the next period.',

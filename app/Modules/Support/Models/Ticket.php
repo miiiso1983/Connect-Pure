@@ -2,11 +2,11 @@
 
 namespace App\Modules\Support\Models;
 
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use App\Models\User;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Ticket extends Model
 {
@@ -109,7 +109,7 @@ class Ticket extends Model
     public function scopeOverdue($query)
     {
         return $query->where('due_date', '<', now())
-                    ->whereNotIn('status', ['resolved', 'closed']);
+            ->whereNotIn('status', ['resolved', 'closed']);
     }
 
     /**
@@ -142,7 +142,7 @@ class Ticket extends Model
     public function scopeDueToday($query)
     {
         return $query->whereDate('due_date', today())
-                    ->whereNotIn('status', ['resolved', 'closed']);
+            ->whereNotIn('status', ['resolved', 'closed']);
     }
 
     /**
@@ -151,7 +151,7 @@ class Ticket extends Model
     public function scopeDueThisWeek($query)
     {
         return $query->whereBetween('due_date', [now()->startOfWeek(), now()->endOfWeek()])
-                    ->whereNotIn('status', ['resolved', 'closed']);
+            ->whereNotIn('status', ['resolved', 'closed']);
     }
 
     /**
@@ -189,7 +189,7 @@ class Ticket extends Model
     // Accessors & Mutators
     public function getStatusColorAttribute()
     {
-        return match($this->status) {
+        return match ($this->status) {
             'open' => 'red',
             'in_progress' => 'yellow',
             'resolved' => 'green',
@@ -200,7 +200,7 @@ class Ticket extends Model
 
     public function getPriorityColorAttribute()
     {
-        return match($this->priority) {
+        return match ($this->priority) {
             'low' => 'green',
             'medium' => 'yellow',
             'high' => 'red',
@@ -211,7 +211,7 @@ class Ticket extends Model
 
     public function getIsOverdueAttribute()
     {
-        return $this->due_date && $this->due_date->isPast() && !in_array($this->status, ['resolved', 'closed']);
+        return $this->due_date && $this->due_date->isPast() && ! in_array($this->status, ['resolved', 'closed']);
     }
 
     /**
@@ -219,7 +219,7 @@ class Ticket extends Model
      */
     public function isActive()
     {
-        return !in_array($this->status, ['resolved', 'closed']);
+        return ! in_array($this->status, ['resolved', 'closed']);
     }
 
     /**
@@ -227,7 +227,7 @@ class Ticket extends Model
      */
     public function isAssigned()
     {
-        return !empty($this->assigned_to);
+        return ! empty($this->assigned_to);
     }
 
     /**
@@ -238,13 +238,11 @@ class Ticket extends Model
         return $this->due_date && $this->due_date->isToday() && $this->isActive();
     }
 
-
-
     public function getResponseTimeAttribute()
     {
         $firstComment = $this->comments()->where('created_by', '!=', $this->created_by)->first();
-        
-        if (!$firstComment) {
+
+        if (! $firstComment) {
             return null;
         }
 
@@ -253,7 +251,7 @@ class Ticket extends Model
 
     public function getResolutionTimeAttribute()
     {
-        if (!$this->resolved_at) {
+        if (! $this->resolved_at) {
             return null;
         }
 
@@ -313,7 +311,7 @@ class Ticket extends Model
     {
         $oldPriority = $this->priority;
         $this->update(['priority' => $priority]);
-        
+
         $this->addComment("Priority changed from {$oldPriority} to {$priority}", $userId);
     }
 
@@ -335,8 +333,8 @@ class Ticket extends Model
 
         // Get the last ticket number for today
         $lastTicket = static::where('ticket_number', 'like', "{$prefix}-{$date}-%")
-                           ->orderBy('ticket_number', 'desc')
-                           ->first();
+            ->orderBy('ticket_number', 'desc')
+            ->first();
 
         if ($lastTicket) {
             // Extract the sequence number and increment

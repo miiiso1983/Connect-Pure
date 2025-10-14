@@ -2,9 +2,9 @@
 
 namespace App\Modules\Accounting\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class PaymentApplication extends Model
 {
@@ -34,7 +34,7 @@ class PaymentApplication extends Model
     // Accessors
     public function getFormattedAmountAttribute(): string
     {
-        return number_format((float)$this->amount_applied, 2);
+        return number_format((float) $this->amount_applied, 2);
     }
 
     // Methods

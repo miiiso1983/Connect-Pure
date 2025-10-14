@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
 use App\Modules\Performance\Controllers\PerformanceController;
+use Illuminate\Support\Facades\Route;
 
 // Performance Module Routes
 Route::middleware('auth')->prefix('modules/performance')->name('modules.performance.')->group(function () {

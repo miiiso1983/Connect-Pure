@@ -153,7 +153,7 @@ class Communication extends Model
      */
     public function getFormattedScheduledDateAttribute()
     {
-        if (!$this->scheduled_at) {
+        if (! $this->scheduled_at) {
             return null;
         }
 
@@ -175,7 +175,7 @@ class Communication extends Model
      */
     public function getTypeIconAttribute()
     {
-        return match($this->type) {
+        return match ($this->type) {
             'email' => 'mail',
             'phone' => 'phone',
             'meeting' => 'calendar',
@@ -190,7 +190,7 @@ class Communication extends Model
      */
     public function getStatusColorAttribute()
     {
-        return match($this->status) {
+        return match ($this->status) {
             'pending' => $this->isOverdue() ? 'red' : 'yellow',
             'completed' => 'green',
             'cancelled' => 'gray',

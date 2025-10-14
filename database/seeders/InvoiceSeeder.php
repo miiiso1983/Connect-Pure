@@ -2,11 +2,11 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Seeder;
+use App\Modules\Accounting\Models\Customer;
 use App\Modules\Accounting\Models\Invoice;
 use App\Modules\Accounting\Models\InvoiceItem;
-use App\Modules\Accounting\Models\Customer;
 use App\Modules\Accounting\Models\Product;
+use Illuminate\Database\Seeder;
 
 class InvoiceSeeder extends Seeder
 {
@@ -20,6 +20,7 @@ class InvoiceSeeder extends Seeder
 
         if ($customers->isEmpty() || $products->isEmpty()) {
             $this->command->warn('No customers or products found. Please run SimpleAccountingSeeder first.');
+
             return;
         }
 
@@ -44,8 +45,8 @@ class InvoiceSeeder extends Seeder
                         'quantity' => 1,
                         'unit_price' => 1200.00,
                         'total_amount' => 1200.00,
-                    ]
-                ]
+                    ],
+                ],
             ],
             [
                 'invoice_number' => 'INV-1002',
@@ -67,8 +68,8 @@ class InvoiceSeeder extends Seeder
                         'quantity' => 20,
                         'unit_price' => 150.00,
                         'total_amount' => 3000.00,
-                    ]
-                ]
+                    ],
+                ],
             ],
             [
                 'invoice_number' => 'INV-1003',
@@ -90,8 +91,8 @@ class InvoiceSeeder extends Seeder
                         'quantity' => 5,
                         'unit_price' => 500.00,
                         'total_amount' => 2500.00,
-                    ]
-                ]
+                    ],
+                ],
             ],
             [
                 'invoice_number' => 'INV-1004',
@@ -113,8 +114,8 @@ class InvoiceSeeder extends Seeder
                         'quantity' => 12,
                         'unit_price' => 150.00,
                         'total_amount' => 1800.00,
-                    ]
-                ]
+                    ],
+                ],
             ],
             [
                 'invoice_number' => 'INV-1005',
@@ -135,8 +136,8 @@ class InvoiceSeeder extends Seeder
                         'quantity' => 0.5,
                         'unit_price' => 1200.00,
                         'total_amount' => 600.00,
-                    ]
-                ]
+                    ],
+                ],
             ],
         ];
 
@@ -158,6 +159,6 @@ class InvoiceSeeder extends Seeder
             }
         }
 
-        $this->command->info('Created ' . count($invoices) . ' sample invoices with items.');
+        $this->command->info('Created '.count($invoices).' sample invoices with items.');
     }
 }

@@ -3,14 +3,14 @@
 namespace App\Modules\HR\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Modules\HR\Models\Employee;
 use App\Modules\HR\Models\Department;
+use App\Modules\HR\Models\Employee;
 use App\Modules\HR\Models\Role;
-use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\View\View;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rule;
+use Illuminate\View\View;
 
 class EmployeeController extends Controller
 {
@@ -136,15 +136,15 @@ class EmployeeController extends Controller
         // Validate salary against role range
         $role = Role::find($validated['role_id']);
         $salaryValidation = $role->canAcceptSalary($validated['basic_salary']);
-        if (!$salaryValidation['valid']) {
+        if (! $salaryValidation['valid']) {
             return back()->withErrors(['basic_salary' => $salaryValidation['message']])
-                        ->withInput();
+                ->withInput();
         }
 
         $employee = Employee::create($validated);
 
         return redirect()->route('modules.hr.employees.show', $employee)
-                        ->with('success', __('hr.employee_created_successfully'));
+            ->with('success', __('hr.employee_created_successfully'));
     }
 
     /**
@@ -165,7 +165,7 @@ class EmployeeController extends Controller
             },
             'salaryRecords' => function ($query) {
                 $query->orderBy('period_end', 'desc')->limit(12);
-            }
+            },
         ]);
 
         // Get attendance summary for current month
@@ -266,7 +266,7 @@ class EmployeeController extends Controller
             if ($employee->profile_photo) {
                 Storage::disk('public')->delete($employee->profile_photo);
             }
-            
+
             $validated['profile_photo'] = $request->file('profile_photo')
                 ->store('employees/photos', 'public');
         }
@@ -274,15 +274,15 @@ class EmployeeController extends Controller
         // Validate salary against role range
         $role = Role::find($validated['role_id']);
         $salaryValidation = $role->canAcceptSalary($validated['basic_salary']);
-        if (!$salaryValidation['valid']) {
+        if (! $salaryValidation['valid']) {
             return back()->withErrors(['basic_salary' => $salaryValidation['message']])
-                        ->withInput();
+                ->withInput();
         }
 
         $employee->update($validated);
 
         return redirect()->route('modules.hr.employees.show', $employee)
-                        ->with('success', __('hr.employee_updated_successfully'));
+            ->with('success', __('hr.employee_updated_successfully'));
     }
 
     /**
@@ -308,7 +308,7 @@ class EmployeeController extends Controller
         $employee->delete();
 
         return redirect()->route('modules.hr.employees.index')
-                        ->with('success', __('hr.employee_deleted_successfully'));
+            ->with('success', __('hr.employee_deleted_successfully'));
     }
 
     /**
@@ -317,7 +317,7 @@ class EmployeeController extends Controller
     public function getRolesByDepartment(Request $request)
     {
         $departmentId = $request->get('department_id');
-        
+
         $roles = Role::active()
             ->where('department_id', $departmentId)
             ->orderBy('name')
@@ -333,11 +333,11 @@ class EmployeeController extends Controller
     {
         // This would implement Excel export functionality
         // For now, return a simple CSV
-        
+
         $employees = Employee::with(['department', 'role'])->get();
-        
-        $filename = 'employees_' . now()->format('Y-m-d') . '.csv';
-        
+
+        $filename = 'employees_'.now()->format('Y-m-d').'.csv';
+
         $headers = [
             'Content-Type' => 'text/csv',
             'Content-Disposition' => "attachment; filename=\"$filename\"",
@@ -345,7 +345,7 @@ class EmployeeController extends Controller
 
         $callback = function () use ($employees) {
             $file = fopen('php://output', 'w');
-            
+
             // CSV headers
             fputcsv($file, [
                 'Employee Number',
@@ -356,7 +356,7 @@ class EmployeeController extends Controller
                 'Hire Date',
                 'Employment Type',
                 'Status',
-                'Basic Salary'
+                'Basic Salary',
             ]);
 
             // CSV data
@@ -370,7 +370,7 @@ class EmployeeController extends Controller
                     $employee->hire_date->format('Y-m-d'),
                     $employee->employment_type_text,
                     $employee->status,
-                    $employee->basic_salary
+                    $employee->basic_salary,
                 ]);
             }
 

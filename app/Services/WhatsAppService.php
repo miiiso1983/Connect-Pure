@@ -4,13 +4,15 @@ namespace App\Services;
 
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
-use Illuminate\Support\Facades\Storage;
 
 class WhatsAppService
 {
     protected $apiUrl;
+
     protected $accessToken;
+
     protected $phoneNumberId;
+
     protected $businessAccountId;
 
     public function __construct()
@@ -33,8 +35,8 @@ class WhatsAppService
             'to' => $this->formatPhoneNumber($to),
             'type' => 'text',
             'text' => [
-                'body' => $message
-            ]
+                'body' => $message,
+            ],
         ];
 
         return $this->makeRequest($url, $payload);
@@ -43,12 +45,12 @@ class WhatsAppService
     /**
      * Send a document (PDF) via WhatsApp
      */
-    public function sendDocument(string $to, string $filePath, string $filename, string $caption = null): array
+    public function sendDocument(string $to, string $filePath, string $filename, ?string $caption = null): array
     {
         // First upload the document to get media ID
         $mediaId = $this->uploadMedia($filePath, 'document');
-        
-        if (!$mediaId) {
+
+        if (! $mediaId) {
             return ['success' => false, 'error' => 'Failed to upload document'];
         }
 
@@ -60,8 +62,8 @@ class WhatsAppService
             'type' => 'document',
             'document' => [
                 'id' => $mediaId,
-                'filename' => $filename
-            ]
+                'filename' => $filename,
+            ],
         ];
 
         if ($caption) {
@@ -74,25 +76,25 @@ class WhatsAppService
     /**
      * Send invoice with template message
      */
-    public function sendInvoiceMessage(string $to, array $invoiceData, string $pdfPath = null): array
+    public function sendInvoiceMessage(string $to, array $invoiceData, ?string $pdfPath = null): array
     {
         $message = $this->buildInvoiceMessage($invoiceData);
-        
+
         // Send text message first
         $textResult = $this->sendTextMessage($to, $message);
-        
+
         // If PDF is provided, send it as attachment
         if ($pdfPath && file_exists($pdfPath)) {
             $filename = "Invoice-{$invoiceData['invoice_number']}.pdf";
             $documentResult = $this->sendDocument($to, $pdfPath, $filename, "Invoice {$invoiceData['invoice_number']} - PDF Copy");
-            
+
             return [
                 'success' => $textResult['success'] && $documentResult['success'],
                 'text_message' => $textResult,
-                'document_message' => $documentResult
+                'document_message' => $documentResult,
             ];
         }
-        
+
         return $textResult;
     }
 
@@ -108,25 +110,27 @@ class WhatsAppService
                 ->attach('file', file_get_contents($filePath), basename($filePath))
                 ->post($url, [
                     'messaging_product' => 'whatsapp',
-                    'type' => $type
+                    'type' => $type,
                 ]);
 
             if ($response->successful()) {
                 $data = $response->json();
+
                 return $data['id'] ?? null;
             }
 
             Log::error('WhatsApp media upload failed', [
                 'status' => $response->status(),
-                'response' => $response->body()
+                'response' => $response->body(),
             ]);
 
             return null;
         } catch (\Exception $e) {
             Log::error('WhatsApp media upload exception', [
                 'error' => $e->getMessage(),
-                'file' => $filePath
+                'file' => $filePath,
             ]);
+
             return null;
         }
     }
@@ -142,17 +146,17 @@ class WhatsAppService
 
             if ($response->successful()) {
                 $data = $response->json();
-                
+
                 Log::info('WhatsApp message sent successfully', [
                     'to' => $payload['to'],
                     'type' => $payload['type'],
-                    'message_id' => $data['messages'][0]['id'] ?? null
+                    'message_id' => $data['messages'][0]['id'] ?? null,
                 ]);
 
                 return [
                     'success' => true,
                     'message_id' => $data['messages'][0]['id'] ?? null,
-                    'data' => $data
+                    'data' => $data,
                 ];
             }
 
@@ -160,25 +164,25 @@ class WhatsAppService
             Log::error('WhatsApp API error', [
                 'status' => $response->status(),
                 'error' => $errorData,
-                'payload' => $payload
+                'payload' => $payload,
             ]);
 
             return [
                 'success' => false,
                 'error' => $errorData['error']['message'] ?? 'Unknown error',
-                'error_code' => $errorData['error']['code'] ?? null
+                'error_code' => $errorData['error']['code'] ?? null,
             ];
 
         } catch (\Exception $e) {
             Log::error('WhatsApp request exception', [
                 'error' => $e->getMessage(),
                 'url' => $url,
-                'payload' => $payload
+                'payload' => $payload,
             ]);
 
             return [
                 'success' => false,
-                'error' => $e->getMessage()
+                'error' => $e->getMessage(),
             ];
         }
     }
@@ -189,21 +193,21 @@ class WhatsAppService
     protected function buildInvoiceMessage(array $invoiceData): string
     {
         $companyName = config('app.name', 'Connect Pure ERP');
-        
-        return "🧾 *Invoice from {$companyName}*\n\n" .
-               "📄 Invoice #: {$invoiceData['invoice_number']}\n" .
-               "📅 Date: {$invoiceData['invoice_date']}\n" .
-               "⏰ Due Date: {$invoiceData['due_date']}\n" .
-               "💰 Amount: {$invoiceData['total_amount']} {$invoiceData['currency']}\n\n" .
-               "Dear {$invoiceData['customer_name']},\n\n" .
-               "We have generated a new invoice for you. Please find the details above.\n\n" .
-               "📎 The PDF invoice is attached to this message.\n\n" .
-               "💳 Payment can be made through:\n" .
-               "• Bank Transfer\n" .
-               "• Online Payment Portal\n" .
-               "• Cash/Cheque\n\n" .
-               "📞 For any questions, please contact us.\n\n" .
-               "Thank you for your business! 🙏";
+
+        return "🧾 *Invoice from {$companyName}*\n\n".
+               "📄 Invoice #: {$invoiceData['invoice_number']}\n".
+               "📅 Date: {$invoiceData['invoice_date']}\n".
+               "⏰ Due Date: {$invoiceData['due_date']}\n".
+               "💰 Amount: {$invoiceData['total_amount']} {$invoiceData['currency']}\n\n".
+               "Dear {$invoiceData['customer_name']},\n\n".
+               "We have generated a new invoice for you. Please find the details above.\n\n".
+               "📎 The PDF invoice is attached to this message.\n\n".
+               "💳 Payment can be made through:\n".
+               "• Bank Transfer\n".
+               "• Online Payment Portal\n".
+               "• Cash/Cheque\n\n".
+               "📞 For any questions, please contact us.\n\n".
+               'Thank you for your business! 🙏';
     }
 
     /**
@@ -213,20 +217,20 @@ class WhatsAppService
     {
         // Remove all non-numeric characters
         $cleaned = preg_replace('/[^0-9]/', '', $phoneNumber);
-        
+
         // If number doesn't start with country code, assume it's local
-        if (!str_starts_with($cleaned, '966') && !str_starts_with($cleaned, '+966')) {
+        if (! str_starts_with($cleaned, '966') && ! str_starts_with($cleaned, '+966')) {
             // Add Saudi Arabia country code if not present
             if (str_starts_with($cleaned, '0')) {
-                $cleaned = '966' . substr($cleaned, 1);
+                $cleaned = '966'.substr($cleaned, 1);
             } else {
-                $cleaned = '966' . $cleaned;
+                $cleaned = '966'.$cleaned;
             }
         }
-        
+
         // Remove + if present
         $cleaned = ltrim($cleaned, '+');
-        
+
         return $cleaned;
     }
 
@@ -235,9 +239,9 @@ class WhatsAppService
      */
     public function isConfigured(): bool
     {
-        return !empty($this->accessToken) && 
-               !empty($this->phoneNumberId) && 
-               !empty($this->businessAccountId);
+        return ! empty($this->accessToken) &&
+               ! empty($this->phoneNumberId) &&
+               ! empty($this->businessAccountId);
     }
 
     /**
@@ -246,14 +250,14 @@ class WhatsAppService
     public function getBusinessProfile(): array
     {
         $url = "{$this->apiUrl}/{$this->phoneNumberId}";
-        
+
         try {
             $response = Http::withToken($this->accessToken)->get($url);
-            
+
             if ($response->successful()) {
                 return $response->json();
             }
-            
+
             return ['error' => 'Failed to fetch business profile'];
         } catch (\Exception $e) {
             return ['error' => $e->getMessage()];

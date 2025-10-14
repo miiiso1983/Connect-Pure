@@ -5,11 +5,9 @@ namespace App\Modules\HR\Controllers;
 use App\Http\Controllers\Controller;
 use App\Modules\HR\Models\Employee;
 use App\Modules\HR\Models\SalaryRecord;
-use App\Modules\HR\Models\AttendanceRecord;
-use App\Modules\HR\Models\LeaveRequest;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Carbon\Carbon;
 
 class PayrollController extends Controller
 {
@@ -17,9 +15,9 @@ class PayrollController extends Controller
     {
         $currentMonth = $request->get('month', now()->month);
         $currentYear = $request->get('year', now()->year);
-        
+
         $query = SalaryRecord::with(['employee.department'])
-                            ->byPeriod($currentYear, $currentMonth);
+            ->byPeriod($currentYear, $currentMonth);
 
         if ($request->filled('department_id')) {
             $query->whereHas('employee', function ($q) use ($request) {
@@ -32,7 +30,7 @@ class PayrollController extends Controller
         }
 
         $payrollRecords = $query->orderBy('created_at', 'desc')->paginate(20);
-        
+
         // Summary statistics
         $summary = [
             'total_employees' => Employee::active()->count(),
@@ -45,10 +43,10 @@ class PayrollController extends Controller
         $months = collect(range(1, 12))->map(function ($month) {
             return [
                 'value' => $month,
-                'label' => Carbon::create()->month($month)->format('F')
+                'label' => Carbon::create()->month($month)->format('F'),
             ];
         });
-        
+
         $years = collect(range(now()->year - 2, now()->year + 1));
 
         return view('modules.hr.payroll.index', compact(
@@ -61,17 +59,17 @@ class PayrollController extends Controller
     {
         $month = $request->get('month', now()->month);
         $year = $request->get('year', now()->year);
-        
+
         // Check if payroll already exists for this period
         $existingPayroll = SalaryRecord::byPeriod($year, $month)->exists();
-        
+
         if ($existingPayroll) {
             return redirect()->route('modules.hr.payroll.index')
-                           ->with('error', __('hr.payroll_already_exists_for_period'));
+                ->with('error', __('hr.payroll_already_exists_for_period'));
         }
 
         $employees = Employee::active()->with(['department', 'attendanceRecords', 'leaveRequests'])->get();
-        
+
         // Calculate payroll data for each employee
         $payrollData = $employees->map(function ($employee) use ($month, $year) {
             return $this->calculateEmployeePayroll($employee, $month, $year);
@@ -96,7 +94,7 @@ class PayrollController extends Controller
         try {
             foreach ($request->payroll_data as $data) {
                 $employee = Employee::findOrFail($data['employee_id']);
-                
+
                 SalaryRecord::create([
                     'employee_id' => $employee->id,
                     'period_start' => Carbon::create($request->year, $request->month, 1),
@@ -120,19 +118,20 @@ class PayrollController extends Controller
             DB::commit();
 
             return redirect()->route('modules.hr.payroll.index')
-                           ->with('success', __('hr.payroll_created_successfully'));
+                ->with('success', __('hr.payroll_created_successfully'));
 
         } catch (\Exception $e) {
             DB::rollback();
+
             return back()->withInput()
-                        ->withErrors(['error' => __('hr.error_creating_payroll')]);
+                ->withErrors(['error' => __('hr.error_creating_payroll')]);
         }
     }
 
     public function show(SalaryRecord $payroll)
     {
         $payroll->load(['employee.department', 'preparedBy', 'approvedBy']);
-        
+
         return view('modules.hr.payroll.show', compact('payroll'));
     }
 
@@ -141,7 +140,7 @@ class PayrollController extends Controller
         if ($payroll->status !== 'pending') {
             return response()->json([
                 'success' => false,
-                'message' => __('hr.payroll_already_processed')
+                'message' => __('hr.payroll_already_processed'),
             ]);
         }
 
@@ -153,20 +152,20 @@ class PayrollController extends Controller
 
         return response()->json([
             'success' => true,
-            'message' => __('hr.payroll_approved_successfully')
+            'message' => __('hr.payroll_approved_successfully'),
         ]);
     }
 
     public function reject(Request $request, SalaryRecord $payroll)
     {
         $request->validate([
-            'reason' => 'required|string|max:500'
+            'reason' => 'required|string|max:500',
         ]);
 
         if ($payroll->status !== 'pending') {
             return response()->json([
                 'success' => false,
-                'message' => __('hr.payroll_already_processed')
+                'message' => __('hr.payroll_already_processed'),
             ]);
         }
 
@@ -179,7 +178,7 @@ class PayrollController extends Controller
 
         return response()->json([
             'success' => true,
-            'message' => __('hr.payroll_rejected_successfully')
+            'message' => __('hr.payroll_rejected_successfully'),
         ]);
     }
 
@@ -187,20 +186,20 @@ class PayrollController extends Controller
     {
         $request->validate([
             'payroll_ids' => 'required|array',
-            'payroll_ids.*' => 'exists:hr_salary_records,id'
+            'payroll_ids.*' => 'exists:hr_salary_records,id',
         ]);
 
         $updated = SalaryRecord::whereIn('id', $request->payroll_ids)
-                              ->where('status', 'pending')
-                              ->update([
-                                  'status' => 'approved',
-                                  'approved_by' => auth()->id(),
-                                  'approved_at' => now(),
-                              ]);
+            ->where('status', 'pending')
+            ->update([
+                'status' => 'approved',
+                'approved_by' => auth()->id(),
+                'approved_at' => now(),
+            ]);
 
         return response()->json([
             'success' => true,
-            'message' => __('hr.bulk_payroll_approved', ['count' => $updated])
+            'message' => __('hr.bulk_payroll_approved', ['count' => $updated]),
         ]);
     }
 
@@ -210,12 +209,12 @@ class PayrollController extends Controller
             'month' => 'required|integer|between:1,12',
             'year' => 'required|integer|min:2020',
             'employee_ids' => 'nullable|array',
-            'employee_ids.*' => 'exists:hr_employees,id'
+            'employee_ids.*' => 'exists:hr_employees,id',
         ]);
 
         $query = SalaryRecord::with(['employee.department'])
-                            ->byPeriod($request->year, $request->month)
-                            ->where('status', 'approved');
+            ->byPeriod($request->year, $request->month)
+            ->where('status', 'approved');
 
         if ($request->filled('employee_ids')) {
             $query->whereIn('employee_id', $request->employee_ids);
@@ -229,9 +228,9 @@ class PayrollController extends Controller
 
         // Generate PDF payslips
         $pdf = \PDF::loadView('modules.hr.payroll.payslips', compact('payrollRecords'));
-        
+
         $filename = "payslips_{$request->year}_{$request->month}.pdf";
-        
+
         return $pdf->download($filename);
     }
 
@@ -239,10 +238,10 @@ class PayrollController extends Controller
     {
         $month = $request->get('month', now()->month);
         $year = $request->get('year', now()->year);
-        
+
         $payrollSummary = SalaryRecord::byPeriod($year, $month)
-                                    ->where('status', 'approved')
-                                    ->selectRaw('
+            ->where('status', 'approved')
+            ->selectRaw('
                                         COUNT(*) as total_employees,
                                         SUM(basic_salary) as total_basic_salary,
                                         SUM(allowances) as total_allowances,
@@ -251,19 +250,19 @@ class PayrollController extends Controller
                                         SUM(tax_deduction) as total_tax,
                                         SUM(net_salary) as total_net_salary
                                     ')
-                                    ->first();
+            ->first();
 
         $departmentSummary = SalaryRecord::byPeriod($year, $month)
-                                       ->where('status', 'approved')
-                                       ->join('hr_employees', 'hr_salary_records.employee_id', '=', 'hr_employees.id')
-                                       ->join('hr_departments', 'hr_employees.department_id', '=', 'hr_departments.id')
-                                       ->selectRaw('
+            ->where('status', 'approved')
+            ->join('hr_employees', 'hr_salary_records.employee_id', '=', 'hr_employees.id')
+            ->join('hr_departments', 'hr_employees.department_id', '=', 'hr_departments.id')
+            ->selectRaw('
                                            hr_departments.name as department_name,
                                            COUNT(*) as employee_count,
                                            SUM(net_salary) as total_amount
                                        ')
-                                       ->groupBy('hr_departments.id', 'hr_departments.name')
-                                       ->get();
+            ->groupBy('hr_departments.id', 'hr_departments.name')
+            ->get();
 
         return view('modules.hr.payroll.reports', compact(
             'payrollSummary', 'departmentSummary', 'month', 'year'
@@ -274,12 +273,12 @@ class PayrollController extends Controller
     {
         $periodStart = Carbon::create($year, $month, 1);
         $periodEnd = $periodStart->copy()->endOfMonth();
-        
+
         // Calculate working days (excluding weekends)
         $workingDays = 0;
         $current = $periodStart->copy();
         while ($current <= $periodEnd) {
-            if (!$current->isWeekend()) {
+            if (! $current->isWeekend()) {
                 $workingDays++;
             }
             $current->addDay();
@@ -287,41 +286,41 @@ class PayrollController extends Controller
 
         // Get attendance records for the period
         $attendanceRecords = $employee->attendanceRecords()
-                                    ->whereBetween('date', [$periodStart, $periodEnd])
-                                    ->get();
+            ->whereBetween('date', [$periodStart, $periodEnd])
+            ->get();
 
         $workedDays = $attendanceRecords->where('status', 'present')->count();
         $overtimeHours = $attendanceRecords->sum('overtime_hours');
 
         // Get approved leave days
         $leaveDays = $employee->leaveRequests()
-                             ->where('status', 'approved')
-                             ->where(function ($query) use ($periodStart, $periodEnd) {
-                                 $query->whereBetween('start_date', [$periodStart, $periodEnd])
-                                       ->orWhereBetween('end_date', [$periodStart, $periodEnd])
-                                       ->orWhere(function ($q) use ($periodStart, $periodEnd) {
-                                           $q->where('start_date', '<=', $periodStart)
-                                             ->where('end_date', '>=', $periodEnd);
-                                       });
-                             })
-                             ->sum('days');
+            ->where('status', 'approved')
+            ->where(function ($query) use ($periodStart, $periodEnd) {
+                $query->whereBetween('start_date', [$periodStart, $periodEnd])
+                    ->orWhereBetween('end_date', [$periodStart, $periodEnd])
+                    ->orWhere(function ($q) use ($periodStart, $periodEnd) {
+                        $q->where('start_date', '<=', $periodStart)
+                            ->where('end_date', '>=', $periodEnd);
+                    });
+            })
+            ->sum('days');
 
         // Calculate salary components
         $basicSalary = $employee->salary;
         $dailySalary = $basicSalary / $workingDays;
         $adjustedBasicSalary = $dailySalary * ($workedDays + $leaveDays);
-        
+
         $allowances = 0; // Can be customized based on employee allowances
         $overtimeRate = ($basicSalary / $workingDays / 8) * 1.5; // 1.5x hourly rate
         $overtimeAmount = $overtimeHours * $overtimeRate;
-        
+
         $grossSalary = $adjustedBasicSalary + $allowances + $overtimeAmount;
-        
+
         // Calculate deductions
         $taxDeduction = $this->calculateTax($grossSalary);
         $otherDeductions = 0; // Can be customized
         $totalDeductions = $taxDeduction + $otherDeductions;
-        
+
         $netSalary = $grossSalary - $totalDeductions;
 
         return [

@@ -11,6 +11,7 @@ class ProductController extends Controller
     public function index()
     {
         $products = Product::paginate(15);
+
         return view('modules.accounting.products.index', compact('products'));
     }
 
@@ -50,7 +51,7 @@ class ProductController extends Controller
     {
         $validated = $request->validate([
             'name' => 'required|string|max:255',
-            'sku' => 'required|string|unique:products,sku,' . $product->id,
+            'sku' => 'required|string|unique:products,sku,'.$product->id,
             'price' => 'required|numeric|min:0',
             'cost' => 'nullable|numeric|min:0',
             'description' => 'nullable|string',
@@ -74,7 +75,7 @@ class ProductController extends Controller
     public function search(Request $request)
     {
         $query = $request->get('q');
-        
+
         $products = Product::where('name', 'like', "%{$query}%")
             ->orWhere('sku', 'like', "%{$query}%")
             ->where('is_active', true)

@@ -3,14 +3,14 @@
 namespace App\Modules\HR\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Modules\HR\Models\Employee;
-use App\Modules\HR\Models\Department;
-use App\Modules\HR\Models\LeaveRequest;
 use App\Modules\HR\Models\Attendance;
+use App\Modules\HR\Models\Department;
+use App\Modules\HR\Models\Employee;
+use App\Modules\HR\Models\LeaveRequest;
 use App\Modules\HR\Models\SalaryRecord;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
-use Carbon\Carbon;
 
 class DashboardController extends Controller
 {
@@ -20,7 +20,7 @@ class DashboardController extends Controller
     public function index(): View
     {
         $dashboardData = $this->getDashboardData();
-        
+
         return view('modules.hr.dashboard', compact('dashboardData'));
     }
 
@@ -72,17 +72,17 @@ class DashboardController extends Controller
         // Monthly Attendance Rate
         $monthlyAttendance = Attendance::whereBetween('date', [
             $currentMonth,
-            $currentMonth->copy()->endOfMonth()
+            $currentMonth->copy()->endOfMonth(),
         ])->get();
 
-        $attendanceRate = $monthlyAttendance->count() > 0 
-            ? ($monthlyAttendance->whereIn('status', ['present', 'late'])->count() / $monthlyAttendance->count()) * 100 
+        $attendanceRate = $monthlyAttendance->count() > 0
+            ? ($monthlyAttendance->whereIn('status', ['present', 'late'])->count() / $monthlyAttendance->count()) * 100
             : 0;
 
         // Salary Statistics
         $averageSalary = Employee::active()->avg('basic_salary') ?? 0;
         $totalSalaryExpense = Employee::active()->sum('basic_salary');
-        
+
         $monthlyPayroll = SalaryRecord::where('year', $currentYear)
             ->where('month', Carbon::now()->month)
             ->sum('net_salary');
@@ -97,7 +97,7 @@ class DashboardController extends Controller
         $upcomingBirthdays = Employee::active()
             ->whereRaw('DATE_FORMAT(date_of_birth, "%m-%d") BETWEEN ? AND ?', [
                 $today->format('m-d'),
-                $today->copy()->addDays(30)->format('m-d')
+                $today->copy()->addDays(30)->format('m-d'),
             ])
             ->orderByRaw('DATE_FORMAT(date_of_birth, "%m-%d")')
             ->limit(5)
@@ -157,13 +157,13 @@ class DashboardController extends Controller
             $count = Employee::whereYear('hire_date', $date->year)
                 ->whereMonth('hire_date', $date->month)
                 ->count();
-            
+
             $data[] = [
                 'month' => $date->format('M Y'),
                 'count' => $count,
             ];
         }
-        
+
         return $data;
     }
 
@@ -192,17 +192,17 @@ class DashboardController extends Controller
         $data = [];
         for ($i = 29; $i >= 0; $i--) {
             $date = Carbon::now()->subDays($i);
-            
+
             // Skip weekends
             if (in_array($date->dayOfWeek, [5, 6])) { // Friday and Saturday
                 continue;
             }
-            
+
             $attendance = Attendance::where('date', $date->toDateString())->get();
             $total = $attendance->count();
             $present = $attendance->whereIn('status', ['present', 'late'])->count();
             $rate = $total > 0 ? ($present / $total) * 100 : 0;
-            
+
             $data[] = [
                 'date' => $date->format('M d'),
                 'rate' => round($rate, 1),
@@ -210,7 +210,7 @@ class DashboardController extends Controller
                 'total' => $total,
             ];
         }
-        
+
         return $data;
     }
 
@@ -220,7 +220,7 @@ class DashboardController extends Controller
     public function quickStats(Request $request)
     {
         $today = Carbon::today();
-        
+
         $stats = [
             'employees_present' => Attendance::where('date', $today)
                 ->whereIn('status', ['present', 'late'])

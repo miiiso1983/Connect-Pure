@@ -90,7 +90,8 @@ class BankTransaction extends Model
     public function getFormattedAmountAttribute()
     {
         $prefix = $this->transaction_type === 'debit' ? '-' : '+';
-        return $prefix . number_format($this->amount, 2);
+
+        return $prefix.number_format($this->amount, 2);
     }
 
     public function getTransactionTypeColorAttribute()
@@ -130,13 +131,13 @@ class BankTransaction extends Model
     public function updateBalance(): void
     {
         $previousBalance = $this->bankAccount->current_balance;
-        
+
         if ($this->transaction_type === 'credit') {
             $newBalance = $previousBalance + $this->amount;
         } else {
             $newBalance = $previousBalance - $this->amount;
         }
-        
+
         $this->update(['balance_after' => $newBalance]);
         $this->bankAccount->update(['current_balance' => $newBalance]);
     }
@@ -167,7 +168,7 @@ class BankTransaction extends Model
     public static function getStatistics(int $bankAccountId): array
     {
         $transactions = self::where('bank_account_id', $bankAccountId);
-        
+
         return [
             'total_transactions' => $transactions->count(),
             'total_debits' => $transactions->debit()->sum('amount'),

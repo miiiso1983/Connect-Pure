@@ -2,11 +2,11 @@
 
 namespace App\Modules\Support\Models;
 
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Facades\Storage;
-use App\Models\User;
 
 class TicketAttachment extends Model
 {
@@ -82,15 +82,15 @@ class TicketAttachment extends Model
     public function getFileSizeHumanAttribute()
     {
         $bytes = $this->file_size;
-        
+
         if ($bytes >= 1073741824) {
-            return number_format($bytes / 1073741824, 2) . ' GB';
+            return number_format($bytes / 1073741824, 2).' GB';
         } elseif ($bytes >= 1048576) {
-            return number_format($bytes / 1048576, 2) . ' MB';
+            return number_format($bytes / 1048576, 2).' MB';
         } elseif ($bytes >= 1024) {
-            return number_format($bytes / 1024, 2) . ' KB';
+            return number_format($bytes / 1024, 2).' KB';
         } else {
-            return $bytes . ' bytes';
+            return $bytes.' bytes';
         }
     }
 
@@ -129,7 +129,7 @@ class TicketAttachment extends Model
         if ($this->is_image) {
             return Storage::url($this->file_path);
         }
-        
+
         return null;
     }
 
@@ -138,7 +138,7 @@ class TicketAttachment extends Model
         if ($this->is_image) {
             return 'fas fa-image';
         } elseif ($this->is_document) {
-            return match($this->file_extension) {
+            return match ($this->file_extension) {
                 'pdf' => 'fas fa-file-pdf',
                 'doc', 'docx' => 'fas fa-file-word',
                 'xls', 'xlsx' => 'fas fa-file-excel',
@@ -172,7 +172,7 @@ class TicketAttachment extends Model
 
     public function toggleVisibility(): void
     {
-        $this->update(['is_public' => !$this->is_public]);
+        $this->update(['is_public' => ! $this->is_public]);
     }
 
     public function delete(): bool
@@ -206,7 +206,7 @@ class TicketAttachment extends Model
             'image/gif',
             'image/webp',
             'image/svg+xml',
-            
+
             // Documents
             'application/pdf',
             'application/msword',
@@ -215,13 +215,13 @@ class TicketAttachment extends Model
             'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
             'application/vnd.ms-powerpoint',
             'application/vnd.openxmlformats-officedocument.presentationml.presentation',
-            
+
             // Text files
             'text/plain',
             'text/csv',
             'application/json',
             'application/xml',
-            
+
             // Archives
             'application/zip',
             'application/x-rar-compressed',
@@ -237,7 +237,7 @@ class TicketAttachment extends Model
     public static function getAttachmentStatistics(int $ticketId): array
     {
         $attachments = self::where('ticket_id', $ticketId);
-        
+
         return [
             'total' => $attachments->count(),
             'images' => $attachments->images()->count(),
@@ -253,14 +253,14 @@ class TicketAttachment extends Model
     {
         $deletedCount = 0;
         $attachments = self::all();
-        
+
         foreach ($attachments as $attachment) {
-            if (!$attachment->exists()) {
+            if (! $attachment->exists()) {
                 $attachment->delete();
                 $deletedCount++;
             }
         }
-        
+
         return $deletedCount;
     }
 }

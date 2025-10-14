@@ -16,7 +16,7 @@ return new class extends Migration
             $table->enum('account_type', ['asset', 'liability', 'equity', 'revenue', 'expense']);
             $table->enum('account_subtype', [
                 'current_asset', 'fixed_asset', 'current_liability', 'long_term_liability',
-                'equity', 'operating_revenue', 'other_revenue', 'operating_expense', 'other_expense'
+                'equity', 'operating_revenue', 'other_revenue', 'operating_expense', 'other_expense',
             ]);
             $table->unsignedBigInteger('parent_account_id')->nullable();
             $table->decimal('opening_balance', 15, 2)->default(0);

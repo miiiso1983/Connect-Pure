@@ -3,11 +3,10 @@
 namespace App\Modules\Accounting\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Modules\Accounting\Models\RecurringProfile;
 use App\Modules\Accounting\Models\Customer;
-use App\Modules\Accounting\Models\Vendor;
-use App\Modules\Accounting\Models\Invoice;
 use App\Modules\Accounting\Models\Expense;
+use App\Modules\Accounting\Models\RecurringProfile;
+use App\Modules\Accounting\Models\Vendor;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -34,12 +33,12 @@ class RecurringController extends Controller
             $search = $request->search;
             $query->where(function ($q) use ($search) {
                 $q->where('profile_name', 'like', "%{$search}%")
-                  ->orWhere('description', 'like', "%{$search}%");
+                    ->orWhere('description', 'like', "%{$search}%");
             });
         }
 
         $profiles = $query->orderBy('next_run_date', 'asc')
-                         ->paginate(20);
+            ->paginate(20);
 
         $types = RecurringProfile::getTypes();
         $statuses = RecurringProfile::getStatuses();
@@ -51,9 +50,9 @@ class RecurringController extends Controller
             'active_profiles' => RecurringProfile::where('status', 'active')->count(),
             'due_for_processing' => RecurringProfile::dueForProcessing()->count(),
             'monthly_revenue' => RecurringProfile::where('type', 'invoice')
-                                               ->where('status', 'active')
-                                               ->where('frequency', 'monthly')
-                                               ->sum('amount'),
+                ->where('status', 'active')
+                ->where('frequency', 'monthly')
+                ->sum('amount'),
         ];
 
         return view('modules.accounting.recurring.index', compact(
@@ -112,19 +111,20 @@ class RecurringController extends Controller
             DB::commit();
 
             return redirect()->route('modules.accounting.recurring.show', $profile)
-                           ->with('success', __('accounting.recurring_profile_created_successfully'));
+                ->with('success', __('accounting.recurring_profile_created_successfully'));
 
         } catch (\Exception $e) {
             DB::rollback();
+
             return back()->withInput()
-                        ->withErrors(['error' => __('accounting.error_creating_recurring_profile')]);
+                ->withErrors(['error' => __('accounting.error_creating_recurring_profile')]);
         }
     }
 
     public function show(RecurringProfile $profile)
     {
         $profile->load(['customer', 'vendor', 'invoices', 'expenses']);
-        
+
         // Get related records based on type
         $relatedRecords = collect();
         switch ($profile->type) {
@@ -133,9 +133,9 @@ class RecurringController extends Controller
                 break;
             case 'expense':
                 $relatedRecords = Expense::where('is_recurring', true)
-                                        ->where('vendor_id', $profile->vendor_id)
-                                        ->orderBy('created_at', 'desc')
-                                        ->get();
+                    ->where('vendor_id', $profile->vendor_id)
+                    ->orderBy('created_at', 'desc')
+                    ->get();
                 break;
         }
 
@@ -183,45 +183,45 @@ class RecurringController extends Controller
         }
 
         return redirect()->route('modules.accounting.recurring.show', $profile)
-                       ->with('success', __('accounting.recurring_profile_updated_successfully'));
+            ->with('success', __('accounting.recurring_profile_updated_successfully'));
     }
 
     public function destroy(RecurringProfile $profile)
     {
         $profile->cancel();
-        
+
         return redirect()->route('modules.accounting.recurring.index')
-                       ->with('success', __('accounting.recurring_profile_cancelled_successfully'));
+            ->with('success', __('accounting.recurring_profile_cancelled_successfully'));
     }
 
     public function pause(RecurringProfile $profile)
     {
         $profile->pause();
-        
+
         return response()->json([
             'success' => true,
             'message' => __('accounting.recurring_profile_paused_successfully'),
-            'status' => $profile->status
+            'status' => $profile->status,
         ]);
     }
 
     public function resume(RecurringProfile $profile)
     {
         $profile->resume();
-        
+
         return response()->json([
             'success' => true,
             'message' => __('accounting.recurring_profile_resumed_successfully'),
-            'status' => $profile->status
+            'status' => $profile->status,
         ]);
     }
 
     public function processNow(RecurringProfile $profile)
     {
-        if (!$profile->shouldProcess()) {
+        if (! $profile->shouldProcess()) {
             return response()->json([
                 'success' => false,
-                'message' => __('accounting.recurring_profile_not_ready_for_processing')
+                'message' => __('accounting.recurring_profile_not_ready_for_processing'),
             ]);
         }
 
@@ -232,13 +232,13 @@ class RecurringController extends Controller
                 'success' => true,
                 'message' => __('accounting.recurring_profile_processed_successfully'),
                 'created_type' => $profile->type,
-                'created_id' => $created->id
+                'created_id' => $created->id,
             ]);
         }
 
         return response()->json([
             'success' => false,
-            'message' => __('accounting.error_processing_recurring_profile')
+            'message' => __('accounting.error_processing_recurring_profile'),
         ]);
     }
 
@@ -256,9 +256,9 @@ class RecurringController extends Controller
                 }
             } catch (\Exception $e) {
                 $errors++;
-                \Log::error('Error processing recurring profile: ' . $e->getMessage(), [
+                \Log::error('Error processing recurring profile: '.$e->getMessage(), [
                     'profile_id' => $profile->id,
-                    'profile_name' => $profile->profile_name
+                    'profile_name' => $profile->profile_name,
                 ]);
             }
         }
@@ -268,7 +268,7 @@ class RecurringController extends Controller
             'message' => __('accounting.processed_x_profiles', ['count' => $processed]),
             'processed' => $processed,
             'errors' => $errors,
-            'total' => $profiles->count()
+            'total' => $profiles->count(),
         ]);
     }
 
@@ -277,14 +277,14 @@ class RecurringController extends Controller
         $data = [
             'due_today' => RecurringProfile::where('next_run_date', today())->count(),
             'due_this_week' => RecurringProfile::whereBetween('next_run_date', [
-                today(), 
-                today()->addWeek()
+                today(),
+                today()->addWeek(),
             ])->count(),
             'active_profiles' => RecurringProfile::where('status', 'active')->count(),
             'monthly_revenue' => RecurringProfile::where('type', 'invoice')
-                                               ->where('status', 'active')
-                                               ->where('frequency', 'monthly')
-                                               ->sum('amount'),
+                ->where('status', 'active')
+                ->where('frequency', 'monthly')
+                ->sum('amount'),
         ];
 
         return response()->json($data);
