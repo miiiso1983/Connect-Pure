@@ -340,7 +340,7 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
     ),
     '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Expense.php' => 
     array (
-      0 => '6b6b9b0e6c6d81fe4a751760221a0de7414354d9',
+      0 => 'd81b472fbdd857850944869b3156dd725645ad09',
       1 => 
       array (
         0 => 'app\\modules\\accounting\\models\\expense',

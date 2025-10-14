@@ -2426,60 +2426,6 @@ return [
        'fixedErrorDiff' => NULL,
     )),
   ),
-  '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Imports/ContactsImport.php' => 
-  array (
-    0 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Call to static method where() on an unknown class App\\Models\\Modules\\CRM\\Models\\Contact.',
-       'file' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Imports/ContactsImport.php',
-       'line' => 38,
-       'canBeIgnored' => true,
-       'filePath' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Imports/ContactsImport.php',
-       'traitFilePath' => NULL,
-       'tip' => 'Learn more at https://phpstan.org/user-guide/discovering-symbols',
-       'nodeLine' => 38,
-       'nodeType' => 'PhpParser\\Node\\Expr\\StaticCall',
-       'identifier' => 'class.notFound',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    1 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Instantiated class App\\Models\\Modules\\CRM\\Models\\Contact not found.',
-       'file' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Imports/ContactsImport.php',
-       'line' => 53,
-       'canBeIgnored' => true,
-       'filePath' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Imports/ContactsImport.php',
-       'traitFilePath' => NULL,
-       'tip' => 'Learn more at https://phpstan.org/user-guide/discovering-symbols',
-       'nodeLine' => 53,
-       'nodeType' => 'PhpParser\\Node\\Expr\\New_',
-       'identifier' => 'class.notFound',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    2 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Method App\\Imports\\ContactsImport::model() should return Illuminate\\Database\\Eloquent\\Model|null but returns App\\Models\\Modules\\CRM\\Models\\Contact.',
-       'file' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Imports/ContactsImport.php',
-       'line' => 53,
-       'canBeIgnored' => true,
-       'filePath' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Imports/ContactsImport.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 53,
-       'nodeType' => 'PhpParser\\Node\\Stmt\\Return_',
-       'identifier' => 'return.type',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-  ),
   '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Listeners/SendInvoiceWhatsAppMessage.php' => 
   array (
     0 => 
@@ -3141,112 +3087,10 @@ return [
       ),
        'fixedErrorDiff' => NULL,
     )),
-    1 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Relation \'vendor\' is not found in App\\Modules\\Accounting\\Models\\Expense model.',
-       'file' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/DashboardController.php',
-       'line' => 206,
-       'canBeIgnored' => true,
-       'filePath' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/DashboardController.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 206,
-       'nodeType' => 'PhpParser\\Node\\Expr\\StaticCall',
-       'identifier' => 'larastan.relationExistence',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
   ),
   '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/ExpenseController.php' => 
   array (
     0 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Relation \'account\' is not found in App\\Modules\\Accounting\\Models\\Expense model.',
-       'file' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/ExpenseController.php',
-       'line' => 18,
-       'canBeIgnored' => true,
-       'filePath' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/ExpenseController.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 18,
-       'nodeType' => 'PhpParser\\Node\\Expr\\StaticCall',
-       'identifier' => 'larastan.relationExistence',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    1 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Relation \'customer\' is not found in App\\Modules\\Accounting\\Models\\Expense model.',
-       'file' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/ExpenseController.php',
-       'line' => 18,
-       'canBeIgnored' => true,
-       'filePath' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/ExpenseController.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 18,
-       'nodeType' => 'PhpParser\\Node\\Expr\\StaticCall',
-       'identifier' => 'larastan.relationExistence',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    2 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Relation \'employee\' is not found in App\\Modules\\Accounting\\Models\\Expense model.',
-       'file' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/ExpenseController.php',
-       'line' => 18,
-       'canBeIgnored' => true,
-       'filePath' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/ExpenseController.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 18,
-       'nodeType' => 'PhpParser\\Node\\Expr\\StaticCall',
-       'identifier' => 'larastan.relationExistence',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    3 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Relation \'vendor\' is not found in App\\Modules\\Accounting\\Models\\Expense model.',
-       'file' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/ExpenseController.php',
-       'line' => 18,
-       'canBeIgnored' => true,
-       'filePath' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/ExpenseController.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 18,
-       'nodeType' => 'PhpParser\\Node\\Expr\\StaticCall',
-       'identifier' => 'larastan.relationExistence',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    4 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Relation \'vendor\' is not found in App\\Modules\\Accounting\\Models\\Expense model.',
-       'file' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/ExpenseController.php',
-       'line' => 48,
-       'canBeIgnored' => true,
-       'filePath' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/ExpenseController.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 48,
-       'nodeType' => 'PhpParser\\Node\\Expr\\MethodCall',
-       'identifier' => 'larastan.relationExistence',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    5 => 
     \PHPStan\Analyser\Error::__set_state(array(
        'message' => 'Parameter #1 $view of function view expects view-string|null, string given.',
        'file' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/ExpenseController.php',
@@ -3263,7 +3107,7 @@ return [
       ),
        'fixedErrorDiff' => NULL,
     )),
-    6 => 
+    1 => 
     \PHPStan\Analyser\Error::__set_state(array(
        'message' => 'Parameter #1 $view of function view expects view-string|null, string given.',
        'file' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/ExpenseController.php',
@@ -5113,150 +4957,14 @@ return [
   array (
     0 => 
     \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Method App\\Modules\\Accounting\\Models\\Expense::vendor() has invalid return type App\\Modules\\Accounting\\Models\\BelongsTo.',
-       'file' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Expense.php',
-       'line' => 56,
-       'canBeIgnored' => true,
-       'filePath' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Expense.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 56,
-       'nodeType' => 'PHPStan\\Node\\InClassMethodNode',
-       'identifier' => 'class.notFound',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    1 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Method App\\Modules\\Accounting\\Models\\Expense::vendor() should return App\\Modules\\Accounting\\Models\\BelongsTo but returns Illuminate\\Database\\Eloquent\\Relations\\BelongsTo<App\\Modules\\Accounting\\Models\\Vendor, $this(App\\Modules\\Accounting\\Models\\Expense)>.',
-       'file' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Expense.php',
-       'line' => 58,
-       'canBeIgnored' => true,
-       'filePath' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Expense.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 58,
-       'nodeType' => 'PhpParser\\Node\\Stmt\\Return_',
-       'identifier' => 'return.type',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    2 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Method App\\Modules\\Accounting\\Models\\Expense::account() has invalid return type App\\Modules\\Accounting\\Models\\BelongsTo.',
-       'file' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Expense.php',
-       'line' => 61,
-       'canBeIgnored' => true,
-       'filePath' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Expense.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 61,
-       'nodeType' => 'PHPStan\\Node\\InClassMethodNode',
-       'identifier' => 'class.notFound',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    3 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Method App\\Modules\\Accounting\\Models\\Expense::account() should return App\\Modules\\Accounting\\Models\\BelongsTo but returns Illuminate\\Database\\Eloquent\\Relations\\BelongsTo<App\\Modules\\Accounting\\Models\\Account, $this(App\\Modules\\Accounting\\Models\\Expense)>.',
-       'file' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Expense.php',
-       'line' => 63,
-       'canBeIgnored' => true,
-       'filePath' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Expense.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 63,
-       'nodeType' => 'PhpParser\\Node\\Stmt\\Return_',
-       'identifier' => 'return.type',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    4 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Method App\\Modules\\Accounting\\Models\\Expense::employee() has invalid return type App\\Modules\\Accounting\\Models\\BelongsTo.',
-       'file' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Expense.php',
-       'line' => 66,
-       'canBeIgnored' => true,
-       'filePath' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Expense.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 66,
-       'nodeType' => 'PHPStan\\Node\\InClassMethodNode',
-       'identifier' => 'class.notFound',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    5 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Method App\\Modules\\Accounting\\Models\\Expense::employee() should return App\\Modules\\Accounting\\Models\\BelongsTo but returns Illuminate\\Database\\Eloquent\\Relations\\BelongsTo<App\\Modules\\Accounting\\Models\\Employee, $this(App\\Modules\\Accounting\\Models\\Expense)>.',
-       'file' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Expense.php',
-       'line' => 68,
-       'canBeIgnored' => true,
-       'filePath' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Expense.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 68,
-       'nodeType' => 'PhpParser\\Node\\Stmt\\Return_',
-       'identifier' => 'return.type',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    6 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Method App\\Modules\\Accounting\\Models\\Expense::customer() has invalid return type App\\Modules\\Accounting\\Models\\BelongsTo.',
-       'file' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Expense.php',
-       'line' => 71,
-       'canBeIgnored' => true,
-       'filePath' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Expense.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 71,
-       'nodeType' => 'PHPStan\\Node\\InClassMethodNode',
-       'identifier' => 'class.notFound',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    7 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Method App\\Modules\\Accounting\\Models\\Expense::customer() should return App\\Modules\\Accounting\\Models\\BelongsTo but returns Illuminate\\Database\\Eloquent\\Relations\\BelongsTo<App\\Modules\\Accounting\\Models\\Customer, $this(App\\Modules\\Accounting\\Models\\Expense)>.',
-       'file' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Expense.php',
-       'line' => 73,
-       'canBeIgnored' => true,
-       'filePath' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Expense.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 73,
-       'nodeType' => 'PhpParser\\Node\\Stmt\\Return_',
-       'identifier' => 'return.type',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    8 => 
-    \PHPStan\Analyser\Error::__set_state(array(
        'message' => 'Match arm comparison between \'rejected\' and \'rejected\' is always true.',
        'file' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Expense.php',
-       'line' => 135,
+       'line' => 140,
        'canBeIgnored' => true,
        'filePath' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Expense.php',
        'traitFilePath' => NULL,
        'tip' => 'Remove remaining cases below this one and this error will disappear too.',
-       'nodeLine' => 130,
+       'nodeLine' => 135,
        'nodeType' => 'PHPStan\\Node\\MatchExpressionNode',
        'identifier' => 'match.alwaysTrue',
        'metadata' => 
@@ -5264,50 +4972,16 @@ return [
       ),
        'fixedErrorDiff' => NULL,
     )),
-    9 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Access to an undefined property App\\Modules\\Accounting\\Models\\Expense::$vendor.',
-       'file' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Expense.php',
-       'line' => 152,
-       'canBeIgnored' => true,
-       'filePath' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Expense.php',
-       'traitFilePath' => NULL,
-       'tip' => 'Learn more: <fg=cyan>https://phpstan.org/blog/solving-phpstan-access-to-undefined-property</>',
-       'nodeLine' => 152,
-       'nodeType' => 'PhpParser\\Node\\Expr\\PropertyFetch',
-       'identifier' => 'property.notFound',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    10 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Access to an undefined property App\\Modules\\Accounting\\Models\\Expense::$employee.',
-       'file' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Expense.php',
-       'line' => 157,
-       'canBeIgnored' => true,
-       'filePath' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Expense.php',
-       'traitFilePath' => NULL,
-       'tip' => 'Learn more: <fg=cyan>https://phpstan.org/blog/solving-phpstan-access-to-undefined-property</>',
-       'nodeLine' => 157,
-       'nodeType' => 'PhpParser\\Node\\Expr\\PropertyFetch',
-       'identifier' => 'property.notFound',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    11 => 
+    1 => 
     \PHPStan\Analyser\Error::__set_state(array(
        'message' => 'Parameter #1 $string of function str_pad expects string, (float|int) given.',
        'file' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Expense.php',
-       'line' => 178,
+       'line' => 190,
        'canBeIgnored' => true,
        'filePath' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Expense.php',
        'traitFilePath' => NULL,
        'tip' => NULL,
-       'nodeLine' => 178,
+       'nodeLine' => 190,
        'nodeType' => 'PhpParser\\Node\\Expr\\FuncCall',
        'identifier' => 'argument.type',
        'metadata' => 
@@ -5315,16 +4989,16 @@ return [
       ),
        'fixedErrorDiff' => NULL,
     )),
-    12 => 
+    2 => 
     \PHPStan\Analyser\Error::__set_state(array(
        'message' => 'Parameter #1 $string of function str_pad expects string, int<1, max> given.',
        'file' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Expense.php',
-       'line' => 243,
+       'line' => 255,
        'canBeIgnored' => true,
        'filePath' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Expense.php',
        'traitFilePath' => NULL,
        'tip' => NULL,
-       'nodeLine' => 242,
+       'nodeLine' => 254,
        'nodeType' => 'PhpParser\\Node\\Expr\\FuncCall',
        'identifier' => 'argument.type',
        'metadata' => 
@@ -6094,23 +5768,6 @@ return [
   '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Services/DashboardService.php' => 
   array (
     0 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Relation \'vendor\' is not found in App\\Modules\\Accounting\\Models\\Expense model.',
-       'file' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Services/DashboardService.php',
-       'line' => 107,
-       'canBeIgnored' => true,
-       'filePath' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Services/DashboardService.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 107,
-       'nodeType' => 'PhpParser\\Node\\Expr\\StaticCall',
-       'identifier' => 'larastan.relationExistence',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    1 => 
     \PHPStan\Analyser\Error::__set_state(array(
        'message' => 'Relation \'expenseAccount\' is not found in App\\Modules\\Accounting\\Models\\Expense model.',
        'file' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Services/DashboardService.php',
@@ -11268,112 +10925,112 @@ return [
       0 => 
       array (
         0 => 'accounting.draft',
-        1 => 196,
+        1 => 208,
       ),
       1 => 
       array (
         0 => 'accounting.pending',
-        1 => 197,
+        1 => 209,
       ),
       2 => 
       array (
         0 => 'accounting.approved',
-        1 => 198,
+        1 => 210,
       ),
       3 => 
       array (
         0 => 'accounting.paid',
-        1 => 199,
+        1 => 211,
       ),
       4 => 
       array (
         0 => 'accounting.rejected',
-        1 => 200,
+        1 => 212,
       ),
       5 => 
       array (
         0 => 'accounting.office_supplies',
-        1 => 207,
+        1 => 219,
       ),
       6 => 
       array (
         0 => 'accounting.travel',
-        1 => 208,
+        1 => 220,
       ),
       7 => 
       array (
         0 => 'accounting.meals',
-        1 => 209,
+        1 => 221,
       ),
       8 => 
       array (
         0 => 'accounting.utilities',
-        1 => 210,
+        1 => 222,
       ),
       9 => 
       array (
         0 => 'accounting.rent',
-        1 => 211,
+        1 => 223,
       ),
       10 => 
       array (
         0 => 'accounting.insurance',
-        1 => 212,
+        1 => 224,
       ),
       11 => 
       array (
         0 => 'accounting.marketing',
-        1 => 213,
+        1 => 225,
       ),
       12 => 
       array (
         0 => 'accounting.professional_services',
-        1 => 214,
+        1 => 226,
       ),
       13 => 
       array (
         0 => 'accounting.equipment',
-        1 => 215,
+        1 => 227,
       ),
       14 => 
       array (
         0 => 'accounting.software',
-        1 => 216,
+        1 => 228,
       ),
       15 => 
       array (
         0 => 'accounting.other',
-        1 => 217,
+        1 => 229,
       ),
       16 => 
       array (
         0 => 'accounting.cash',
-        1 => 224,
+        1 => 236,
       ),
       17 => 
       array (
         0 => 'accounting.check',
-        1 => 225,
+        1 => 237,
       ),
       18 => 
       array (
         0 => 'accounting.credit_card',
-        1 => 226,
+        1 => 238,
       ),
       19 => 
       array (
         0 => 'accounting.bank_transfer',
-        1 => 227,
+        1 => 239,
       ),
       20 => 
       array (
         0 => 'accounting.other',
-        1 => 228,
+        1 => 240,
       ),
       21 => 
       array (
         0 => 'accounting.no_vendor',
-        1 => 152,
+        1 => 157,
       ),
     ),
     'PHPStan\\Rules\\DeadCode\\MethodWithoutImpurePointsCollector' => 
@@ -11382,12 +11039,6 @@ return [
       array (
         0 => 'App\\Modules\\Accounting\\Models\\Expense',
         1 => 'getStatusColorAttribute',
-        2 => 'App\\Modules\\Accounting\\Models\\Expense',
-      ),
-      1 => 
-      array (
-        0 => 'App\\Modules\\Accounting\\Models\\Expense',
-        1 => 'getEmployeeNameAttribute',
         2 => 'App\\Modules\\Accounting\\Models\\Expense',
       ),
     ),
@@ -14670,7 +14321,7 @@ return [
   ),
   '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Imports/ContactsImport.php' => 
   array (
-    'fileHash' => '5b8c0ae32e79df485b03e1eb03da3e48affd56a7',
+    'fileHash' => '9d73e797c16323f0a74ec75bc60aa57fd7bd0e35',
     'dependentFiles' => 
     array (
     ),
@@ -15029,16 +14680,30 @@ return [
     'fileHash' => '9ba68a5bbb36096f617f584d3e5daed3933eb09a',
     'dependentFiles' => 
     array (
-      0 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/ExpenseController.php',
-      1 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/PayrollController.php',
-      2 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Expense.php',
-      3 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Payment.php',
-      4 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Payroll.php',
+      0 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/DashboardController.php',
+      1 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/ExpenseController.php',
+      2 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/PayrollController.php',
+      3 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/RecurringController.php',
+      4 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/ReportController.php',
+      5 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/ReportsController.php',
+      6 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Account.php',
+      7 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/ChartOfAccount.php',
+      8 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Currency.php',
+      9 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Customer.php',
+      10 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Expense.php',
+      11 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Payment.php',
+      12 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Payroll.php',
+      13 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/RecurringProfile.php',
+      14 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Tax.php',
+      15 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Vendor.php',
+      16 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Services/DashboardService.php',
+      17 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Services/ReportService.php',
+      18 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/HR/Services/PayrollAccountingService.php',
     ),
   ),
   '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Expense.php' => 
   array (
-    'fileHash' => '6b6b9b0e6c6d81fe4a751760221a0de7414354d9',
+    'fileHash' => 'd81b472fbdd857850944869b3156dd725645ad09',
     'dependentFiles' => 
     array (
       0 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/DashboardController.php',
@@ -15199,17 +14864,25 @@ return [
     'fileHash' => '85bffe67e7c6c1b2a7f34a714d02f2a317203ecd',
     'dependentFiles' => 
     array (
-      0 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/ExpenseController.php',
-      1 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/RecurringController.php',
-      2 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/ReportController.php',
-      3 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/ReportsController.php',
-      4 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/VendorController.php',
-      5 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Bill.php',
-      6 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Currency.php',
-      7 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Expense.php',
-      8 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Payment.php',
-      9 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/RecurringProfile.php',
-      10 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/HR/Services/PayrollAccountingService.php',
+      0 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/DashboardController.php',
+      1 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/ExpenseController.php',
+      2 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/RecurringController.php',
+      3 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/ReportController.php',
+      4 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/ReportsController.php',
+      5 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/VendorController.php',
+      6 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Account.php',
+      7 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Bill.php',
+      8 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/ChartOfAccount.php',
+      9 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Currency.php',
+      10 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Customer.php',
+      11 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Employee.php',
+      12 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Expense.php',
+      13 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Payment.php',
+      14 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/RecurringProfile.php',
+      15 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Tax.php',
+      16 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Services/DashboardService.php',
+      17 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Services/ReportService.php',
+      18 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/HR/Services/PayrollAccountingService.php',
     ),
   ),
   '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Services/DashboardService.php' => 
@@ -15268,10 +14941,11 @@ return [
     'fileHash' => '603e3d512b7eb49d4e55448254b256540a3672d6',
     'dependentFiles' => 
     array (
-      0 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/CRM/Controllers/CRMController.php',
-      1 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/CRM/Imports/ContactsImport.php',
-      2 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/CRM/Models/Communication.php',
-      3 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/CRM/Models/FollowUp.php',
+      0 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Imports/ContactsImport.php',
+      1 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/CRM/Controllers/CRMController.php',
+      2 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/CRM/Imports/ContactsImport.php',
+      3 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/CRM/Models/Communication.php',
+      4 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/CRM/Models/FollowUp.php',
     ),
   ),
   '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/CRM/Models/FollowUp.php' => 
@@ -21070,7 +20744,7 @@ return [
              'namespace' => 'App\\Imports',
              'uses' => 
             array (
-              'contact' => 'App\\Models\\Modules\\CRM\\Models\\Contact',
+              'contact' => 'App\\Modules\\CRM\\Models\\Contact',
               'importable' => 'Maatwebsite\\Excel\\Concerns\\Importable',
               'skipserrors' => 'Maatwebsite\\Excel\\Concerns\\SkipsErrors',
               'skipsfailures' => 'Maatwebsite\\Excel\\Concerns\\SkipsFailures',
@@ -35602,7 +35276,24 @@ return [
     0 => 
     \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state(array(
        'name' => 'App\\Modules\\Accounting\\Models\\Expense',
-       'phpDoc' => NULL,
+       'phpDoc' => 
+      \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+         'phpDocString' => '/**
+ * @property-read \\App\\Modules\\Accounting\\Models\\Vendor|null $vendor
+ * @property-read \\App\\Modules\\Accounting\\Models\\Employee|null $employee
+ */',
+         'namespace' => 'App\\Modules\\Accounting\\Models',
+         'uses' => 
+        array (
+          'hasfactory' => 'Illuminate\\Database\\Eloquent\\Factories\\HasFactory',
+          'model' => 'Illuminate\\Database\\Eloquent\\Model',
+          'belongsto' => 'Illuminate\\Database\\Eloquent\\Relations\\BelongsTo',
+          'hasmany' => 'Illuminate\\Database\\Eloquent\\Relations\\HasMany',
+        ),
+         'constUses' => 
+        array (
+        ),
+      )),
        'abstract' => false,
        'final' => false,
        'extends' => 'Illuminate\\Database\\Eloquent\\Model',
@@ -35703,7 +35394,7 @@ return [
            'abstract' => false,
            'final' => false,
            'static' => false,
-           'returnType' => 'App\\Modules\\Accounting\\Models\\BelongsTo',
+           'returnType' => 'Illuminate\\Database\\Eloquent\\Relations\\BelongsTo',
            'parameters' => 
           array (
           ),
@@ -35721,7 +35412,7 @@ return [
            'abstract' => false,
            'final' => false,
            'static' => false,
-           'returnType' => 'App\\Modules\\Accounting\\Models\\BelongsTo',
+           'returnType' => 'Illuminate\\Database\\Eloquent\\Relations\\BelongsTo',
            'parameters' => 
           array (
           ),
@@ -35739,7 +35430,7 @@ return [
            'abstract' => false,
            'final' => false,
            'static' => false,
-           'returnType' => 'App\\Modules\\Accounting\\Models\\BelongsTo',
+           'returnType' => 'Illuminate\\Database\\Eloquent\\Relations\\BelongsTo',
            'parameters' => 
           array (
           ),
@@ -35757,7 +35448,7 @@ return [
            'abstract' => false,
            'final' => false,
            'static' => false,
-           'returnType' => 'App\\Modules\\Accounting\\Models\\BelongsTo',
+           'returnType' => 'Illuminate\\Database\\Eloquent\\Relations\\BelongsTo',
            'parameters' => 
           array (
           ),
