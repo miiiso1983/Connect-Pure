@@ -43,8 +43,9 @@
             ]
         ]
     ];
-    
-    $mergedOptions = array_merge_recursive($defaultOptions, $options);
+
+    $options = is_array($options) ? $options : [];
+    $mergedOptions = array_replace_recursive($defaultOptions, $options);
 @endphp
 
 <div {{ $attributes->merge(['class' => 'modern-card overflow-hidden']) }} style="--chart-height: {{ $height }}px">
@@ -58,7 +59,7 @@
             @endif
         </div>
     @endif
-    
+
     <div class="p-6">
         @if($loading)
             <div class="flex items-center justify-center" style="height: var(--chart-height)">
@@ -99,7 +100,7 @@
                     data-chart-type="{{ $type }}"
                     data-chart-theme="{{ $theme }}"
                 ></canvas>
-                
+
                 <!-- Chart Actions -->
                 <div class="absolute top-2 {{ app()->getLocale() === 'ar' ? 'left-2' : 'right-2' }}">
                     <div class="flex items-center space-x-2 {{ app()->getLocale() === 'ar' ? 'space-x-reverse' : '' }}">
@@ -107,8 +108,9 @@
                             onclick="downloadChart('{{ $chartId }}', 'png')"
                             class="chart-action p-2 rounded-md shadow-sm border"
                             title="{{ __('common.download_chart') }}"
+                            aria-label="{{ __('common.download_chart') }}"
                         >
-                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" role="img" aria-hidden="true">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
                             </svg>
                         </button>
@@ -117,8 +119,9 @@
                             onclick="refreshChart('{{ $chartId }}')"
                             class="chart-action p-2 rounded-md shadow-sm border"
                             title="{{ __('common.refresh_chart') }}"
+                            aria-label="{{ __('common.refresh_chart') }}"
                         >
-                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" role="img" aria-hidden="true">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
                             </svg>
                         </button>
@@ -130,7 +133,6 @@
 </div>
 
 @push('scripts')
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 @if(!$loading && !$error && !empty($data))
 <script>
 document.addEventListener('DOMContentLoaded', function() {
@@ -152,6 +154,17 @@ document.addEventListener('DOMContentLoaded', function() {
         chartOptions.scales.x.ticks = { color: '#E5E7EB' };
         chartOptions.scales.y.ticks = { color: '#E5E7EB' };
         chartOptions.scales.x.grid = { color: '#374151' };
+
+    // Locale-aware number formatting for Y axis
+    const locale = document.documentElement.lang || 'en';
+    chartOptions.scales = chartOptions.scales || {};
+    if (chartOptions.scales.y) {
+        const prevTicks = chartOptions.scales.y.ticks || {};
+        chartOptions.scales.y.ticks = Object.assign({}, prevTicks, {
+            callback: (v) => new Intl.NumberFormat(locale).format(v)
+        });
+    }
+
         chartOptions.scales.y.grid = { color: '#374151' };
     }
 

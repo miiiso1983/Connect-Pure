@@ -27,8 +27,8 @@
     $tint = $tints[$color] ?? $tints['blue'];
 @endphp
 
-<a href="{{ $route }}" class="block group focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 rounded-2xl">
-    <div class="modern-card p-6 relative overflow-hidden">
+<a href="{{ $route }}" class="block group focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 rounded-2xl h-full">
+    <div class="modern-card p-6 relative overflow-hidden min-h-[200px] flex flex-col">
         <!-- Accent background circle -->
         <div class="absolute -right-10 -top-10 w-32 h-32 rounded-full bg-gradient-to-br {{ $gradient }} opacity-10"></div>
 
@@ -41,8 +41,8 @@
             </h3>
         </div>
 
-        <p class="text-gray-600 text-sm">{{ $description }}</p>
-        <div class="mt-4 inline-flex items-center text-sm font-medium text-gray-700 group-hover:text-gray-900">
+        <p class="text-gray-600 text-sm" style="display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;">{{ $description }}</p>
+        <div class="mt-auto inline-flex items-center text-sm font-medium text-gray-700 group-hover:text-gray-900">
             {{ __('erp.view') }} {{ __('erp.details') }}
             <svg class="w-4 h-4 {{ app()->getLocale() === 'ar' ? 'mr-2' : 'ml-2' }} group-hover:translate-x-1 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="{{ app()->getLocale() === 'ar' ? 'M15 19l-7-7 7-7' : 'M9 5l7 7-7 7' }}"></path>

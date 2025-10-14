@@ -85,7 +85,7 @@
     <!-- Modules Grid -->
     <div>
         <h2 class="text-2xl font-bold text-gray-900 mb-6">{{ __('erp.modules') }}</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="grid [grid-template-columns:repeat(auto-fit,minmax(260px,1fr))] gap-6">
             <x-module-card
                 title="{{ __('erp.crm_short') }}"
                 description="{{ __('erp.crm_description') }}"
