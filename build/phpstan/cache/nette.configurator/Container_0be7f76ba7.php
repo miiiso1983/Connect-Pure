@@ -8,7 +8,7 @@
 
 declare(strict_types=1);
 
-class Container_0103f16b12 extends _PHPStan_6597ef616\Nette\DI\Container
+class Container_0be7f76ba7 extends _PHPStan_6597ef616\Nette\DI\Container
 {
 	protected $tags = [
 		'phpstan.broker.dynamicMethodReturnTypeExtension' => [
@@ -6248,7 +6248,7 @@ class Container_0103f16b12 extends _PHPStan_6597ef616\Nette\DI\Container
 			private $container;
 
 
-			public function __construct(Container_0103f16b12 $container)
+			public function __construct(Container_0be7f76ba7 $container)
 			{
 				$this->container = $container;
 			}
@@ -6268,7 +6268,7 @@ class Container_0103f16b12 extends _PHPStan_6597ef616\Nette\DI\Container
 			private $container;
 
 
-			public function __construct(Container_0103f16b12 $container)
+			public function __construct(Container_0be7f76ba7 $container)
 			{
 				$this->container = $container;
 			}
@@ -6291,7 +6291,7 @@ class Container_0103f16b12 extends _PHPStan_6597ef616\Nette\DI\Container
 			private $container;
 
 
-			public function __construct(Container_0103f16b12 $container)
+			public function __construct(Container_0be7f76ba7 $container)
 			{
 				$this->container = $container;
 			}
@@ -6311,7 +6311,7 @@ class Container_0103f16b12 extends _PHPStan_6597ef616\Nette\DI\Container
 			private $container;
 
 
-			public function __construct(Container_0103f16b12 $container)
+			public function __construct(Container_0be7f76ba7 $container)
 			{
 				$this->container = $container;
 			}
@@ -6376,7 +6376,7 @@ class Container_0103f16b12 extends _PHPStan_6597ef616\Nette\DI\Container
 			private $container;
 
 
-			public function __construct(Container_0103f16b12 $container)
+			public function __construct(Container_0be7f76ba7 $container)
 			{
 				$this->container = $container;
 			}
@@ -6434,7 +6434,7 @@ class Container_0103f16b12 extends _PHPStan_6597ef616\Nette\DI\Container
 			private $container;
 
 
-			public function __construct(Container_0103f16b12 $container)
+			public function __construct(Container_0be7f76ba7 $container)
 			{
 				$this->container = $container;
 			}
@@ -9606,7 +9606,7 @@ class Container_0103f16b12 extends _PHPStan_6597ef616\Nette\DI\Container
 	}
 
 
-	public function createServiceContainer(): Container_0103f16b12
+	public function createServiceContainer(): Container_0be7f76ba7
 	{
 		return $this;
 	}
@@ -11603,91 +11603,49 @@ class Container_0103f16b12 extends _PHPStan_6597ef616\Nette\DI\Container
 			'usedLevel' => '5',
 			'cliAutoloadFile' => null,
 			'env' => [
-				'APP_FAKER_LOCALE' => 'en_US',
-				'MAIL_FROM_ADDRESS' => 'hello@example.com',
-				'MAIL_PORT' => '2525',
-				'AWS_USE_PATH_STYLE_ENDPOINT' => 'false',
-				'LOG_STACK' => 'single',
 				'TERM_PROGRAM' => 'vscode',
-				'TERM' => 'xterm-256color',
 				'SHELL' => '/bin/bash',
-				'SESSION_DOMAIN' => 'null',
-				'CACHE_STORE' => 'database',
-				'HOMEBREW_REPOSITORY' => '/opt/homebrew',
+				'TERM' => 'xterm-256color',
 				'TMPDIR' => '/var/folders/z4/3r9gm175239_0rwj3kf0z5kw0000gn/T/',
-				'SESSION_DRIVER' => 'database',
+				'HOMEBREW_REPOSITORY' => '/opt/homebrew',
+				'TERM_PROGRAM_VERSION' => '1.105.1',
 				'VSCODE_PYTHON_AUTOACTIVATE_GUARD' => '1',
-				'TERM_PROGRAM_VERSION' => '1.105.0',
-				'APP_FALLBACK_LOCALE' => 'en',
-				'LOG_DEPRECATIONS_CHANNEL' => 'null',
-				'ORIGINAL_XDG_CURRENT_DESKTOP' => 'undefined',
 				'MallocNanoZone' => '0',
-				'APP_NAME' => 'Laravel',
-				'AWS_BUCKET' => '',
-				'MAIL_USERNAME' => 'null',
+				'ORIGINAL_XDG_CURRENT_DESKTOP' => 'undefined',
+				'SCRIPT' => '/var/folders/z4/3r9gm175239_0rwj3kf0z5kw0000gn/T/augment-script-bb5036b257bc951c.log',
 				'USER' => 'mustafaaljaf',
-				'SCRIPT' => '/var/folders/z4/3r9gm175239_0rwj3kf0z5kw0000gn/T/augment-script-15291bac1d8f4d84.log',
 				'COMMAND_MODE' => 'unix2003',
-				'MEMCACHED_HOST' => '127.0.0.1',
-				'SSH_AUTH_SOCK' => '/private/tmp/com.apple.launchd.GK6gHp2bSd/Listeners',
-				'FILESYSTEM_DISK' => 'local',
-				'APP_URL' => 'http://localhost',
+				'SSH_AUTH_SOCK' => '/private/tmp/com.apple.launchd.gUUXcQbtvK/Listeners',
 				'__CF_USER_TEXT_ENCODING' => '0x1F5:0x0:0x0',
-				'REDIS_CLIENT' => 'phpredis',
-				'COLUMNS' => '80',
 				'PAGER' => 'cat',
-				'REDIS_HOST' => '127.0.0.1',
-				'MAIL_PASSWORD' => 'null',
-				'MAIL_MAILER' => 'log',
-				'DB_CONNECTION' => 'sqlite',
 				'PATH' => '/Users/mustafaaljaf/Documents/augment-projects/POS/flutter/bin/cache/dart-sdk/bin/:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/opt/pmk/env/global/bin:/Library/Apple/usr/bin:/Applications/VMware Fusion.app/Contents/Public:/Users/mustafaaljaf/Documents/augment-projects/POS/flutter/bin/cache/dart-sdk/bin/:/Users/mustafaaljaf/.gem/ruby/2.6.0/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/Library/Frameworks/Python.framework/Versions/3.13/bin:/Users/mustafaaljaf/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand',
-				'REDIS_PASSWORD' => 'null',
-				'_' => '/opt/homebrew/Cellar/php/8.4.6/bin/php',
-				'AWS_DEFAULT_REGION' => 'us-east-1',
+				'LaunchInstanceID' => '0B7C07B6-D8B6-4FDB-A539-0801E38CA314',
 				'__CFBundleIdentifier' => 'com.microsoft.VSCode',
 				'PWD' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure',
-				'MAIL_FROM_NAME' => 'Laravel',
-				'SESSION_ENCRYPT' => 'false',
-				'APP_LOCALE' => 'en',
-				'AWS_SECRET_ACCESS_KEY' => '',
-				'PHP_CLI_SERVER_WORKERS' => '4',
-				'BROADCAST_CONNECTION' => 'log',
 				'LANG' => 'C.UTF-8',
-				'SESSION_PATH' => '/',
-				'VSCODE_GIT_ASKPASS_EXTRA_ARGS' => '',
 				'XPC_FLAGS' => '0x0',
-				'APP_DEBUG' => 'true',
-				'APP_KEY' => 'base64:T6K1XFWU8I5jBzZj/7d0HSjj99MxQK06A5Kc9NRJuA0=',
-				'LINES' => '30',
+				'VSCODE_GIT_ASKPASS_EXTRA_ARGS' => '',
 				'XPC_SERVICE_NAME' => '0',
-				'AWS_ACCESS_KEY_ID' => '',
-				'SHELL_VERBOSITY' => '0',
-				'REDIS_PORT' => '6379',
-				'LOG_LEVEL' => 'debug',
-				'SHLVL' => '3',
 				'HOME' => '/Users/mustafaaljaf',
+				'SHLVL' => '2',
 				'VSCODE_GIT_ASKPASS_MAIN' => '/Applications/Visual Studio Code 2.app/Contents/Resources/app/extensions/git/dist/askpass-main.js',
-				'VITE_APP_NAME' => 'Laravel',
 				'HOMEBREW_PREFIX' => '/opt/homebrew',
-				'LOG_CHANNEL' => 'stack',
-				'LESS' => '-FX',
 				'LOGNAME' => 'mustafaaljaf',
-				'MAIL_SCHEME' => 'null',
+				'LESS' => '-FX',
 				'VSCODE_GIT_IPC_HANDLE' => '/var/folders/z4/3r9gm175239_0rwj3kf0z5kw0000gn/T/vscode-git-141ed7594c.sock',
-				'SESSION_LIFETIME' => '120',
-				'QUEUE_CONNECTION' => 'database',
-				'PROMPT_COMMAND' => "__augment_output_end_marker\necho \"\$(pwd)\" > '/var/folders/z4/3r9gm175239_0rwj3kf0z5kw0000gn/T/augment-cwd-15291bac1d8f4d84.txt'",
-				'APP_ENV' => 'local',
-				'VSCODE_GIT_ASKPASS_NODE' => '/Applications/Visual Studio Code 2.app/Contents/Frameworks/Code Helper (Plugin).app/Contents/MacOS/Code Helper (Plugin)',
-				'GIT_ASKPASS' => '/Applications/Visual Studio Code 2.app/Contents/Resources/app/extensions/git/dist/askpass.sh',
-				'INFOPATH' => '/opt/homebrew/share/info:',
+				'PROMPT_COMMAND' => "__augment_output_end_marker\necho \"\$(pwd)\" > '/var/folders/z4/3r9gm175239_0rwj3kf0z5kw0000gn/T/augment-cwd-bb5036b257bc951c.txt'",
 				'HOMEBREW_CELLAR' => '/opt/homebrew/Cellar',
-				'BCRYPT_ROUNDS' => '12',
+				'INFOPATH' => '/opt/homebrew/share/info:',
+				'GIT_ASKPASS' => '/Applications/Visual Studio Code 2.app/Contents/Resources/app/extensions/git/dist/askpass.sh',
+				'VSCODE_GIT_ASKPASS_NODE' => '/Applications/Visual Studio Code 2.app/Contents/Frameworks/Code Helper (Plugin).app/Contents/MacOS/Code Helper (Plugin)',
 				'OSLogRateLimit' => '64',
 				'GIT_PAGER' => 'cat',
-				'MAIL_HOST' => '127.0.0.1',
-				'APP_MAINTENANCE_DRIVER' => 'file',
+				'SECURITYSESSIONID' => '186af',
 				'COLORTERM' => 'truecolor',
+				'_' => 'vendor/bin/phpstan',
+				'LINES' => '29',
+				'COLUMNS' => '144',
+				'SHELL_VERBOSITY' => '0',
 			],
 		];
 	}

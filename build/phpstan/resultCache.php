@@ -2247,12 +2247,12 @@ return [
     \PHPStan\Analyser\Error::__set_state(array(
        'message' => 'Parameter #1 $view of function view expects view-string|null, string given.',
        'file' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Http/Controllers/Admin/UserController.php',
-       'line' => 70,
+       'line' => 64,
        'canBeIgnored' => true,
        'filePath' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Http/Controllers/Admin/UserController.php',
        'traitFilePath' => NULL,
        'tip' => NULL,
-       'nodeLine' => 70,
+       'nodeLine' => 64,
        'nodeType' => 'PhpParser\\Node\\Expr\\FuncCall',
        'identifier' => 'argument.type',
        'metadata' => 
@@ -2264,12 +2264,12 @@ return [
     \PHPStan\Analyser\Error::__set_state(array(
        'message' => 'Parameter #1 $view of function view expects view-string|null, string given.',
        'file' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Http/Controllers/Admin/UserController.php',
-       'line' => 81,
+       'line' => 75,
        'canBeIgnored' => true,
        'filePath' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Http/Controllers/Admin/UserController.php',
        'traitFilePath' => NULL,
        'tip' => NULL,
-       'nodeLine' => 81,
+       'nodeLine' => 75,
        'nodeType' => 'PhpParser\\Node\\Expr\\FuncCall',
        'identifier' => 'argument.type',
        'metadata' => 
@@ -3131,12 +3131,12 @@ return [
     \PHPStan\Analyser\Error::__set_state(array(
        'message' => 'Call to an undefined method Illuminate\\Database\\Eloquent\\Model::updateBalance().',
        'file' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/InvoiceController.php',
-       'line' => 132,
+       'line' => 125,
        'canBeIgnored' => true,
        'filePath' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/InvoiceController.php',
        'traitFilePath' => NULL,
        'tip' => NULL,
-       'nodeLine' => 132,
+       'nodeLine' => 125,
        'nodeType' => 'PhpParser\\Node\\Expr\\MethodCall',
        'identifier' => 'method.notFound',
        'metadata' => 
@@ -3148,12 +3148,12 @@ return [
     \PHPStan\Analyser\Error::__set_state(array(
        'message' => 'Parameter #1 $view of function view expects view-string|null, string given.',
        'file' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/InvoiceController.php',
-       'line' => 151,
+       'line' => 144,
        'canBeIgnored' => true,
        'filePath' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/InvoiceController.php',
        'traitFilePath' => NULL,
        'tip' => NULL,
-       'nodeLine' => 151,
+       'nodeLine' => 144,
        'nodeType' => 'PhpParser\\Node\\Expr\\FuncCall',
        'identifier' => 'argument.type',
        'metadata' => 
@@ -3165,12 +3165,12 @@ return [
     \PHPStan\Analyser\Error::__set_state(array(
        'message' => 'Parameter #1 $view of function view expects view-string|null, string given.',
        'file' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/InvoiceController.php',
-       'line' => 166,
+       'line' => 159,
        'canBeIgnored' => true,
        'filePath' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/InvoiceController.php',
        'traitFilePath' => NULL,
        'tip' => NULL,
-       'nodeLine' => 166,
+       'nodeLine' => 159,
        'nodeType' => 'PhpParser\\Node\\Expr\\FuncCall',
        'identifier' => 'argument.type',
        'metadata' => 
@@ -3182,12 +3182,12 @@ return [
     \PHPStan\Analyser\Error::__set_state(array(
        'message' => 'Call to an undefined method Illuminate\\Database\\Eloquent\\Model::updateBalance().',
        'file' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/InvoiceController.php',
-       'line' => 192,
+       'line' => 176,
        'canBeIgnored' => true,
        'filePath' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/InvoiceController.php',
        'traitFilePath' => NULL,
        'tip' => NULL,
-       'nodeLine' => 192,
+       'nodeLine' => 176,
        'nodeType' => 'PhpParser\\Node\\Expr\\MethodCall',
        'identifier' => 'method.notFound',
        'metadata' => 
@@ -3199,12 +3199,12 @@ return [
     \PHPStan\Analyser\Error::__set_state(array(
        'message' => 'Call to an undefined method Illuminate\\Database\\Eloquent\\Model::updateBalance().',
        'file' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/InvoiceController.php',
-       'line' => 231,
+       'line' => 215,
        'canBeIgnored' => true,
        'filePath' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/InvoiceController.php',
        'traitFilePath' => NULL,
        'tip' => NULL,
-       'nodeLine' => 231,
+       'nodeLine' => 215,
        'nodeType' => 'PhpParser\\Node\\Expr\\MethodCall',
        'identifier' => 'method.notFound',
        'metadata' => 
@@ -3216,12 +3216,12 @@ return [
     \PHPStan\Analyser\Error::__set_state(array(
        'message' => 'Call to an undefined method Illuminate\\Database\\Eloquent\\Model::updateBalance().',
        'file' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/InvoiceController.php',
-       'line' => 256,
+       'line' => 240,
        'canBeIgnored' => true,
        'filePath' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/InvoiceController.php',
        'traitFilePath' => NULL,
        'tip' => NULL,
-       'nodeLine' => 256,
+       'nodeLine' => 240,
        'nodeType' => 'PhpParser\\Node\\Expr\\MethodCall',
        'identifier' => 'method.notFound',
        'metadata' => 
@@ -3233,12 +3233,12 @@ return [
     \PHPStan\Analyser\Error::__set_state(array(
        'message' => 'Property App\\Modules\\Accounting\\Models\\Invoice::$invoice_number (string) does not accept null.',
        'file' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/InvoiceController.php',
-       'line' => 326,
+       'line' => 310,
        'canBeIgnored' => true,
        'filePath' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/InvoiceController.php',
        'traitFilePath' => NULL,
        'tip' => NULL,
-       'nodeLine' => 326,
+       'nodeLine' => 310,
        'nodeType' => 'PHPStan\\Node\\PropertyAssignNode',
        'identifier' => 'assign.propertyType',
        'metadata' => 
@@ -3250,12 +3250,12 @@ return [
     \PHPStan\Analyser\Error::__set_state(array(
        'message' => 'Access to an undefined property Illuminate\\Database\\Eloquent\\Model::$invoice_id.',
        'file' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/InvoiceController.php',
-       'line' => 340,
+       'line' => 324,
        'canBeIgnored' => true,
        'filePath' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/InvoiceController.php',
        'traitFilePath' => NULL,
        'tip' => 'Learn more: <fg=cyan>https://phpstan.org/blog/solving-phpstan-access-to-undefined-property</>',
-       'nodeLine' => 340,
+       'nodeLine' => 324,
        'nodeType' => 'PHPStan\\Node\\PropertyAssignNode',
        'identifier' => 'property.notFound',
        'metadata' => 
@@ -3267,12 +3267,12 @@ return [
     \PHPStan\Analyser\Error::__set_state(array(
        'message' => 'Parameter #1 $view of function view expects view-string|null, string given.',
        'file' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/InvoiceController.php',
-       'line' => 356,
+       'line' => 340,
        'canBeIgnored' => true,
        'filePath' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/InvoiceController.php',
        'traitFilePath' => NULL,
        'tip' => NULL,
-       'nodeLine' => 356,
+       'nodeLine' => 340,
        'nodeType' => 'PhpParser\\Node\\Expr\\FuncCall',
        'identifier' => 'argument.type',
        'metadata' => 
@@ -6370,12 +6370,12 @@ return [
     \PHPStan\Analyser\Error::__set_state(array(
        'message' => 'Parameter #1 $view of function view expects view-string|null, string given.',
        'file' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/HR/Controllers/EmployeeController.php',
-       'line' => 206,
+       'line' => 172,
        'canBeIgnored' => true,
        'filePath' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/HR/Controllers/EmployeeController.php',
        'traitFilePath' => NULL,
        'tip' => NULL,
-       'nodeLine' => 206,
+       'nodeLine' => 172,
        'nodeType' => 'PhpParser\\Node\\Expr\\FuncCall',
        'identifier' => 'argument.type',
        'metadata' => 
@@ -6387,12 +6387,12 @@ return [
     \PHPStan\Analyser\Error::__set_state(array(
        'message' => 'Access to an undefined property Illuminate\\Database\\Eloquent\\Model::$display_name.',
        'file' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/HR/Controllers/EmployeeController.php',
-       'line' => 368,
+       'line' => 293,
        'canBeIgnored' => true,
        'filePath' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/HR/Controllers/EmployeeController.php',
        'traitFilePath' => NULL,
        'tip' => 'Learn more: <fg=cyan>https://phpstan.org/blog/solving-phpstan-access-to-undefined-property</>',
-       'nodeLine' => 368,
+       'nodeLine' => 293,
        'nodeType' => 'PhpParser\\Node\\Expr\\PropertyFetch',
        'identifier' => 'property.notFound',
        'metadata' => 
@@ -6404,12 +6404,12 @@ return [
     \PHPStan\Analyser\Error::__set_state(array(
        'message' => 'Access to an undefined property Illuminate\\Database\\Eloquent\\Model::$display_name.',
        'file' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/HR/Controllers/EmployeeController.php',
-       'line' => 369,
+       'line' => 294,
        'canBeIgnored' => true,
        'filePath' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/HR/Controllers/EmployeeController.php',
        'traitFilePath' => NULL,
        'tip' => 'Learn more: <fg=cyan>https://phpstan.org/blog/solving-phpstan-access-to-undefined-property</>',
-       'nodeLine' => 369,
+       'nodeLine' => 294,
        'nodeType' => 'PhpParser\\Node\\Expr\\PropertyFetch',
        'identifier' => 'property.notFound',
        'metadata' => 
@@ -9357,6 +9357,30 @@ return [
       ),
     ),
   ),
+  '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Http/Requests/UserStoreRequest.php' => 
+  array (
+    'PHPStan\\Rules\\DeadCode\\MethodWithoutImpurePointsCollector' => 
+    array (
+      0 => 
+      array (
+        0 => 'App\\Http\\Requests\\UserStoreRequest',
+        1 => 'authorize',
+        2 => 'App\\Http\\Requests\\UserStoreRequest',
+      ),
+    ),
+  ),
+  '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Http/Requests/UserUpdateRequest.php' => 
+  array (
+    'PHPStan\\Rules\\DeadCode\\MethodWithoutImpurePointsCollector' => 
+    array (
+      0 => 
+      array (
+        0 => 'App\\Http\\Requests\\UserUpdateRequest',
+        1 => 'authorize',
+        2 => 'App\\Http\\Requests\\UserUpdateRequest',
+      ),
+    ),
+  ),
   '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Imports/ContactsImport.php' => 
   array (
     'PHPStan\\Rules\\DeadCode\\MethodWithoutImpurePointsCollector' => 
@@ -9903,72 +9927,72 @@ return [
       0 => 
       array (
         0 => 'accounting.invoice_created_successfully',
-        1 => 137,
+        1 => 130,
       ),
       1 => 
       array (
         0 => 'accounting.error_creating_invoice',
-        1 => 143,
+        1 => 136,
       ),
       2 => 
       array (
         0 => 'accounting.cannot_edit_paid_invoice',
-        1 => 158,
+        1 => 151,
       ),
       3 => 
       array (
         0 => 'accounting.cannot_edit_paid_invoice',
-        1 => 175,
+        1 => 168,
       ),
       4 => 
       array (
         0 => 'accounting.invoice_updated_successfully',
-        1 => 236,
+        1 => 220,
       ),
       5 => 
       array (
         0 => 'accounting.error_updating_invoice',
-        1 => 242,
+        1 => 226,
       ),
       6 => 
       array (
         0 => 'accounting.cannot_delete_paid_invoice',
-        1 => 250,
+        1 => 234,
       ),
       7 => 
       array (
         0 => 'accounting.invoice_deleted_successfully',
-        1 => 263,
+        1 => 247,
       ),
       8 => 
       array (
         0 => 'accounting.error_deleting_invoice',
-        1 => 269,
+        1 => 253,
       ),
       9 => 
       array (
         0 => 'accounting.invoice_sent_successfully_with_whatsapp',
-        1 => 285,
+        1 => 269,
       ),
       10 => 
       array (
         0 => 'accounting.invoice_already_sent',
-        1 => 289,
+        1 => 273,
       ),
       11 => 
       array (
         0 => 'accounting.payment_recorded_successfully',
-        1 => 313,
+        1 => 297,
       ),
       12 => 
       array (
         0 => 'accounting.error_recording_payment',
-        1 => 319,
+        1 => 303,
       ),
       13 => 
       array (
         0 => 'accounting.invoice_duplicated_successfully',
-        1 => 347,
+        1 => 331,
       ),
     ),
     'Larastan\\Larastan\\Collectors\\UsedViewFunctionCollector' => 
@@ -9984,7 +10008,7 @@ return [
       0 => 
       array (
         0 => 'event',
-        1 => 279,
+        1 => 263,
       ),
     ),
   ),
@@ -11866,6 +11890,42 @@ return [
       ),
     ),
   ),
+  '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Requests/InvoiceStoreRequest.php' => 
+  array (
+    'PHPStan\\Rules\\DeadCode\\MethodWithoutImpurePointsCollector' => 
+    array (
+      0 => 
+      array (
+        0 => 'App\\Modules\\Accounting\\Requests\\InvoiceStoreRequest',
+        1 => 'authorize',
+        2 => 'App\\Modules\\Accounting\\Requests\\InvoiceStoreRequest',
+      ),
+      1 => 
+      array (
+        0 => 'App\\Modules\\Accounting\\Requests\\InvoiceStoreRequest',
+        1 => 'rules',
+        2 => 'App\\Modules\\Accounting\\Requests\\InvoiceStoreRequest',
+      ),
+    ),
+  ),
+  '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Requests/InvoiceUpdateRequest.php' => 
+  array (
+    'PHPStan\\Rules\\DeadCode\\MethodWithoutImpurePointsCollector' => 
+    array (
+      0 => 
+      array (
+        0 => 'App\\Modules\\Accounting\\Requests\\InvoiceUpdateRequest',
+        1 => 'authorize',
+        2 => 'App\\Modules\\Accounting\\Requests\\InvoiceUpdateRequest',
+      ),
+      1 => 
+      array (
+        0 => 'App\\Modules\\Accounting\\Requests\\InvoiceUpdateRequest',
+        1 => 'rules',
+        2 => 'App\\Modules\\Accounting\\Requests\\InvoiceUpdateRequest',
+      ),
+    ),
+  ),
   '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Services/DashboardService.php' => 
   array (
     'Larastan\\Larastan\\Collectors\\UsedTranslationFunctionCollector' => 
@@ -12299,17 +12359,17 @@ return [
       0 => 
       array (
         0 => 'hr.employee_created_successfully',
-        1 => 147,
+        1 => 113,
       ),
       1 => 
       array (
         0 => 'hr.employee_updated_successfully',
-        1 => 285,
+        1 => 210,
       ),
       2 => 
       array (
         0 => 'hr.employee_deleted_successfully',
-        1 => 311,
+        1 => 236,
       ),
     ),
     'Larastan\\Larastan\\Collectors\\UsedViewFunctionCollector' => 
@@ -13442,6 +13502,36 @@ return [
       ),
     ),
   ),
+  '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/HR/Requests/EmployeeStoreRequest.php' => 
+  array (
+    'PHPStan\\Rules\\DeadCode\\MethodWithoutImpurePointsCollector' => 
+    array (
+      0 => 
+      array (
+        0 => 'App\\Modules\\HR\\Requests\\EmployeeStoreRequest',
+        1 => 'authorize',
+        2 => 'App\\Modules\\HR\\Requests\\EmployeeStoreRequest',
+      ),
+      1 => 
+      array (
+        0 => 'App\\Modules\\HR\\Requests\\EmployeeStoreRequest',
+        1 => 'rules',
+        2 => 'App\\Modules\\HR\\Requests\\EmployeeStoreRequest',
+      ),
+    ),
+  ),
+  '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/HR/Requests/EmployeeUpdateRequest.php' => 
+  array (
+    'PHPStan\\Rules\\DeadCode\\MethodWithoutImpurePointsCollector' => 
+    array (
+      0 => 
+      array (
+        0 => 'App\\Modules\\HR\\Requests\\EmployeeUpdateRequest',
+        1 => 'authorize',
+        2 => 'App\\Modules\\HR\\Requests\\EmployeeUpdateRequest',
+      ),
+    ),
+  ),
   '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/HR/Services/PayrollAccountingService.php' => 
   array (
     'PHPStan\\Rules\\DeadCode\\PossiblyPureStaticCallCollector' => 
@@ -13729,6 +13819,114 @@ return [
       ),
     ),
   ),
+  '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Policies/EmployeePolicy.php' => 
+  array (
+    'PHPStan\\Rules\\DeadCode\\MethodWithoutImpurePointsCollector' => 
+    array (
+      0 => 
+      array (
+        0 => 'App\\Policies\\EmployeePolicy',
+        1 => 'viewAny',
+        2 => 'App\\Policies\\EmployeePolicy',
+      ),
+      1 => 
+      array (
+        0 => 'App\\Policies\\EmployeePolicy',
+        1 => 'view',
+        2 => 'App\\Policies\\EmployeePolicy',
+      ),
+      2 => 
+      array (
+        0 => 'App\\Policies\\EmployeePolicy',
+        1 => 'create',
+        2 => 'App\\Policies\\EmployeePolicy',
+      ),
+      3 => 
+      array (
+        0 => 'App\\Policies\\EmployeePolicy',
+        1 => 'update',
+        2 => 'App\\Policies\\EmployeePolicy',
+      ),
+      4 => 
+      array (
+        0 => 'App\\Policies\\EmployeePolicy',
+        1 => 'delete',
+        2 => 'App\\Policies\\EmployeePolicy',
+      ),
+    ),
+  ),
+  '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Policies/InvoicePolicy.php' => 
+  array (
+    'PHPStan\\Rules\\DeadCode\\MethodWithoutImpurePointsCollector' => 
+    array (
+      0 => 
+      array (
+        0 => 'App\\Policies\\InvoicePolicy',
+        1 => 'viewAny',
+        2 => 'App\\Policies\\InvoicePolicy',
+      ),
+      1 => 
+      array (
+        0 => 'App\\Policies\\InvoicePolicy',
+        1 => 'view',
+        2 => 'App\\Policies\\InvoicePolicy',
+      ),
+      2 => 
+      array (
+        0 => 'App\\Policies\\InvoicePolicy',
+        1 => 'create',
+        2 => 'App\\Policies\\InvoicePolicy',
+      ),
+      3 => 
+      array (
+        0 => 'App\\Policies\\InvoicePolicy',
+        1 => 'update',
+        2 => 'App\\Policies\\InvoicePolicy',
+      ),
+      4 => 
+      array (
+        0 => 'App\\Policies\\InvoicePolicy',
+        1 => 'delete',
+        2 => 'App\\Policies\\InvoicePolicy',
+      ),
+    ),
+  ),
+  '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Policies/UserPolicy.php' => 
+  array (
+    'PHPStan\\Rules\\DeadCode\\MethodWithoutImpurePointsCollector' => 
+    array (
+      0 => 
+      array (
+        0 => 'App\\Policies\\UserPolicy',
+        1 => 'viewAny',
+        2 => 'App\\Policies\\UserPolicy',
+      ),
+      1 => 
+      array (
+        0 => 'App\\Policies\\UserPolicy',
+        1 => 'view',
+        2 => 'App\\Policies\\UserPolicy',
+      ),
+      2 => 
+      array (
+        0 => 'App\\Policies\\UserPolicy',
+        1 => 'create',
+        2 => 'App\\Policies\\UserPolicy',
+      ),
+      3 => 
+      array (
+        0 => 'App\\Policies\\UserPolicy',
+        1 => 'update',
+        2 => 'App\\Policies\\UserPolicy',
+      ),
+      4 => 
+      array (
+        0 => 'App\\Policies\\UserPolicy',
+        1 => 'delete',
+        2 => 'App\\Policies\\UserPolicy',
+      ),
+    ),
+  ),
   '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Providers/AccountingServiceProvider.php' => 
   array (
     'PHPStan\\Rules\\DeadCode\\MethodWithoutImpurePointsCollector' => 
@@ -13870,6 +14068,30 @@ return [
       ),
     ),
   ),
+  '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Providers/AppServiceProvider.php' => 
+  array (
+    'PHPStan\\Rules\\DeadCode\\PossiblyPureStaticCallCollector' => 
+    array (
+      0 => 
+      array (
+        0 => 'Illuminate\\Support\\Facades\\Gate',
+        1 => 'policy',
+        2 => 30,
+      ),
+      1 => 
+      array (
+        0 => 'Illuminate\\Support\\Facades\\Gate',
+        1 => 'policy',
+        2 => 31,
+      ),
+      2 => 
+      array (
+        0 => 'Illuminate\\Support\\Facades\\Gate',
+        1 => 'policy',
+        2 => 32,
+      ),
+    ),
+  ),
   '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Services/InvoicePdfService.php' => 
   array (
     'PHPStan\\Rules\\DeadCode\\MethodWithoutImpurePointsCollector' => 
@@ -13879,6 +14101,18 @@ return [
         0 => 'App\\Services\\InvoicePdfService',
         1 => 'getPdfSettings',
         2 => 'App\\Services\\InvoicePdfService',
+      ),
+    ),
+  ),
+  '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Services/Settings.php' => 
+  array (
+    'PHPStan\\Rules\\DeadCode\\PossiblyPureStaticCallCollector' => 
+    array (
+      0 => 
+      array (
+        0 => 'Illuminate\\Support\\Facades\\Cache',
+        1 => 'forget',
+        2 => 67,
       ),
     ),
   ),
@@ -14147,7 +14381,7 @@ return [
   ),
   '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Http/Controllers/Admin/UserController.php' => 
   array (
-    'fileHash' => '2a3c4189e7da7c9372647607b50c4946b0982594',
+    'fileHash' => '254f6ecd72010b2873e6bcbc1ff831de5a72bb14',
     'dependentFiles' => 
     array (
       0 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/routes/web.php',
@@ -14319,6 +14553,22 @@ return [
       0 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Http/Controllers/Auth/AuthenticatedSessionController.php',
     ),
   ),
+  '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Http/Requests/UserStoreRequest.php' => 
+  array (
+    'fileHash' => '892b990c569d1bdbe7b6ab82a022f1f39beb4715',
+    'dependentFiles' => 
+    array (
+      0 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Http/Controllers/Admin/UserController.php',
+    ),
+  ),
+  '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Http/Requests/UserUpdateRequest.php' => 
+  array (
+    'fileHash' => '0f7ede35c115241a7d4afa33e675b7b41fa91769',
+    'dependentFiles' => 
+    array (
+      0 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Http/Controllers/Admin/UserController.php',
+    ),
+  ),
   '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Imports/ContactsImport.php' => 
   array (
     'fileHash' => '9d73e797c16323f0a74ec75bc60aa57fd7bd0e35',
@@ -14440,12 +14690,16 @@ return [
       27 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Support/Models/Ticket.php',
       28 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Support/Models/TicketAttachment.php',
       29 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Support/Models/TicketComment.php',
-      30 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/tests/Feature/BasicSystemTest.php',
-      31 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/tests/Feature/HR/EmployeeManagementTest.php',
-      32 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/tests/Feature/HR/LeaveManagementTest.php',
-      33 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/tests/Feature/ModuleAccessTest.php',
-      34 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/tests/Feature/SystemIntegrationTest.php',
-      35 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/tests/Feature/UIComponentTest.php',
+      30 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Policies/EmployeePolicy.php',
+      31 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Policies/InvoicePolicy.php',
+      32 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Policies/UserPolicy.php',
+      33 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Providers/AppServiceProvider.php',
+      34 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/tests/Feature/BasicSystemTest.php',
+      35 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/tests/Feature/HR/EmployeeManagementTest.php',
+      36 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/tests/Feature/HR/LeaveManagementTest.php',
+      37 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/tests/Feature/ModuleAccessTest.php',
+      38 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/tests/Feature/SystemIntegrationTest.php',
+      39 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/tests/Feature/UIComponentTest.php',
     ),
   ),
   '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/ChartOfAccountController.php' => 
@@ -14494,7 +14748,7 @@ return [
   ),
   '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/InvoiceController.php' => 
   array (
-    'fileHash' => 'd373a095989cdf5c92ff9bdacf3f288257543ac6',
+    'fileHash' => '0996e5c00e688218eae79fc7ce348b739a882039',
     'dependentFiles' => 
     array (
       0 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/routes/accounting.php',
@@ -14747,7 +15001,9 @@ return [
       14 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Tax.php',
       15 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Services/DashboardService.php',
       16 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Services/ReportService.php',
-      17 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Services/InvoicePdfService.php',
+      17 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Policies/InvoicePolicy.php',
+      18 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Providers/AppServiceProvider.php',
+      19 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Services/InvoicePdfService.php',
     ),
   ),
   '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/InvoiceItem.php' => 
@@ -14885,6 +15141,22 @@ return [
       18 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/HR/Services/PayrollAccountingService.php',
     ),
   ),
+  '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Requests/InvoiceStoreRequest.php' => 
+  array (
+    'fileHash' => '4b4ca75796ded5356c2fa31d5c337cfefe89b3ad',
+    'dependentFiles' => 
+    array (
+      0 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/InvoiceController.php',
+    ),
+  ),
+  '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Requests/InvoiceUpdateRequest.php' => 
+  array (
+    'fileHash' => '7a55ef773a582b164551fc2c0f86b9446fb3996e',
+    'dependentFiles' => 
+    array (
+      0 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/InvoiceController.php',
+    ),
+  ),
   '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Services/DashboardService.php' => 
   array (
     'fileHash' => '58aa4b0c7f44d49f760aa00253404186bf8f0a12',
@@ -14983,7 +15255,7 @@ return [
   ),
   '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/HR/Controllers/EmployeeController.php' => 
   array (
-    'fileHash' => '10d44543c0dd55f18bc2d49f3d07cfc93ac17ad1',
+    'fileHash' => '36dd1658a528492e07496153ec64770a4257b281',
     'dependentFiles' => 
     array (
       0 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/routes/hr.php',
@@ -15082,8 +15354,10 @@ return [
       12 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/HR/Models/PerformanceReview.php',
       13 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/HR/Models/Role.php',
       14 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/HR/Models/SalaryRecord.php',
-      15 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/tests/Feature/HR/EmployeeManagementTest.php',
-      16 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/tests/Feature/HR/LeaveManagementTest.php',
+      15 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Policies/EmployeePolicy.php',
+      16 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Providers/AppServiceProvider.php',
+      17 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/tests/Feature/HR/EmployeeManagementTest.php',
+      18 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/tests/Feature/HR/LeaveManagementTest.php',
     ),
   ),
   '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/HR/Models/LeaveRequest.php' => 
@@ -15129,6 +15403,22 @@ return [
       2 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/HR/Controllers/SalaryRecordController.php',
       3 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/HR/Models/Employee.php',
       4 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/HR/Services/PayrollAccountingService.php',
+    ),
+  ),
+  '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/HR/Requests/EmployeeStoreRequest.php' => 
+  array (
+    'fileHash' => '5d255b2655435b13857acaa83703e7ca6cda7fd0',
+    'dependentFiles' => 
+    array (
+      0 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/HR/Controllers/EmployeeController.php',
+    ),
+  ),
+  '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/HR/Requests/EmployeeUpdateRequest.php' => 
+  array (
+    'fileHash' => 'e523ac278a153f04bf5944a095d87849b62d0d8e',
+    'dependentFiles' => 
+    array (
+      0 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/HR/Controllers/EmployeeController.php',
     ),
   ),
   '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/HR/Services/PayrollAccountingService.php' => 
@@ -15193,6 +15483,30 @@ return [
       1 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Support/Models/TicketAttachment.php',
     ),
   ),
+  '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Policies/EmployeePolicy.php' => 
+  array (
+    'fileHash' => '7c234be76ad3d20105b592cccef0a275e5a169f0',
+    'dependentFiles' => 
+    array (
+      0 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Providers/AppServiceProvider.php',
+    ),
+  ),
+  '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Policies/InvoicePolicy.php' => 
+  array (
+    'fileHash' => '672d4015e4b97d2bfcd32c7baafe5f52e9aeb21a',
+    'dependentFiles' => 
+    array (
+      0 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Providers/AppServiceProvider.php',
+    ),
+  ),
+  '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Policies/UserPolicy.php' => 
+  array (
+    'fileHash' => 'ad7f3fac0e17f355b100868cd0a33f82c5f5f551',
+    'dependentFiles' => 
+    array (
+      0 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Providers/AppServiceProvider.php',
+    ),
+  ),
   '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Providers/AccountingServiceProvider.php' => 
   array (
     'fileHash' => '9eb9c2a1596f0698f57b89019740f8e7f5229d0a',
@@ -15202,7 +15516,7 @@ return [
   ),
   '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Providers/AppServiceProvider.php' => 
   array (
-    'fileHash' => '01bf9e5cf5bb666446625056b618445ae4749675',
+    'fileHash' => 'c17ccbc5fe3b228d71a2a8df55827aab1e8077d5',
     'dependentFiles' => 
     array (
     ),
@@ -15221,6 +15535,14 @@ return [
     array (
       0 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Listeners/SendInvoiceWhatsAppMessage.php',
       1 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Providers/WhatsAppServiceProvider.php',
+    ),
+  ),
+  '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Services/Settings.php' => 
+  array (
+    'fileHash' => '9d68130914db15af3912514e4358d1149795fd69',
+    'dependentFiles' => 
+    array (
+      0 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Providers/AppServiceProvider.php',
     ),
   ),
   '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Services/WhatsAppService.php' => 
@@ -18237,11 +18559,11 @@ return [
              'uses' => 
             array (
               'controller' => 'App\\Http\\Controllers\\Controller',
+              'userstorerequest' => 'App\\Http\\Requests\\UserStoreRequest',
+              'userupdaterequest' => 'App\\Http\\Requests\\UserUpdateRequest',
               'role' => 'App\\Models\\Role',
               'user' => 'App\\Models\\User',
-              'request' => 'Illuminate\\Http\\Request',
               'hash' => 'Illuminate\\Support\\Facades\\Hash',
-              'rules' => 'Illuminate\\Validation\\Rules',
             ),
              'constUses' => 
             array (
@@ -18273,11 +18595,11 @@ return [
              'uses' => 
             array (
               'controller' => 'App\\Http\\Controllers\\Controller',
+              'userstorerequest' => 'App\\Http\\Requests\\UserStoreRequest',
+              'userupdaterequest' => 'App\\Http\\Requests\\UserUpdateRequest',
               'role' => 'App\\Models\\Role',
               'user' => 'App\\Models\\User',
-              'request' => 'Illuminate\\Http\\Request',
               'hash' => 'Illuminate\\Support\\Facades\\Hash',
-              'rules' => 'Illuminate\\Validation\\Rules',
             ),
              'constUses' => 
             array (
@@ -18309,11 +18631,11 @@ return [
              'uses' => 
             array (
               'controller' => 'App\\Http\\Controllers\\Controller',
+              'userstorerequest' => 'App\\Http\\Requests\\UserStoreRequest',
+              'userupdaterequest' => 'App\\Http\\Requests\\UserUpdateRequest',
               'role' => 'App\\Models\\Role',
               'user' => 'App\\Models\\User',
-              'request' => 'Illuminate\\Http\\Request',
               'hash' => 'Illuminate\\Support\\Facades\\Hash',
-              'rules' => 'Illuminate\\Validation\\Rules',
             ),
              'constUses' => 
             array (
@@ -18331,7 +18653,7 @@ return [
             0 => 
             \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
                'name' => 'request',
-               'type' => 'Illuminate\\Http\\Request',
+               'type' => 'App\\Http\\Requests\\UserStoreRequest',
                'byRef' => false,
                'variadic' => false,
                'hasDefault' => false,
@@ -18356,11 +18678,11 @@ return [
              'uses' => 
             array (
               'controller' => 'App\\Http\\Controllers\\Controller',
+              'userstorerequest' => 'App\\Http\\Requests\\UserStoreRequest',
+              'userupdaterequest' => 'App\\Http\\Requests\\UserUpdateRequest',
               'role' => 'App\\Models\\Role',
               'user' => 'App\\Models\\User',
-              'request' => 'Illuminate\\Http\\Request',
               'hash' => 'Illuminate\\Support\\Facades\\Hash',
-              'rules' => 'Illuminate\\Validation\\Rules',
             ),
              'constUses' => 
             array (
@@ -18403,11 +18725,11 @@ return [
              'uses' => 
             array (
               'controller' => 'App\\Http\\Controllers\\Controller',
+              'userstorerequest' => 'App\\Http\\Requests\\UserStoreRequest',
+              'userupdaterequest' => 'App\\Http\\Requests\\UserUpdateRequest',
               'role' => 'App\\Models\\Role',
               'user' => 'App\\Models\\User',
-              'request' => 'Illuminate\\Http\\Request',
               'hash' => 'Illuminate\\Support\\Facades\\Hash',
-              'rules' => 'Illuminate\\Validation\\Rules',
             ),
              'constUses' => 
             array (
@@ -18450,11 +18772,11 @@ return [
              'uses' => 
             array (
               'controller' => 'App\\Http\\Controllers\\Controller',
+              'userstorerequest' => 'App\\Http\\Requests\\UserStoreRequest',
+              'userupdaterequest' => 'App\\Http\\Requests\\UserUpdateRequest',
               'role' => 'App\\Models\\Role',
               'user' => 'App\\Models\\User',
-              'request' => 'Illuminate\\Http\\Request',
               'hash' => 'Illuminate\\Support\\Facades\\Hash',
-              'rules' => 'Illuminate\\Validation\\Rules',
             ),
              'constUses' => 
             array (
@@ -18472,7 +18794,7 @@ return [
             0 => 
             \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
                'name' => 'request',
-               'type' => 'Illuminate\\Http\\Request',
+               'type' => 'App\\Http\\Requests\\UserUpdateRequest',
                'byRef' => false,
                'variadic' => false,
                'hasDefault' => false,
@@ -18508,11 +18830,11 @@ return [
              'uses' => 
             array (
               'controller' => 'App\\Http\\Controllers\\Controller',
+              'userstorerequest' => 'App\\Http\\Requests\\UserStoreRequest',
+              'userupdaterequest' => 'App\\Http\\Requests\\UserUpdateRequest',
               'role' => 'App\\Models\\Role',
               'user' => 'App\\Models\\User',
-              'request' => 'Illuminate\\Http\\Request',
               'hash' => 'Illuminate\\Support\\Facades\\Hash',
-              'rules' => 'Illuminate\\Validation\\Rules',
             ),
              'constUses' => 
             array (
@@ -20690,6 +21012,130 @@ return [
            'final' => false,
            'static' => false,
            'returnType' => 'string',
+           'parameters' => 
+          array (
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+      ),
+       'attributes' => 
+      array (
+      ),
+    )),
+  ),
+  '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Http/Requests/UserStoreRequest.php' => 
+  array (
+    0 => 
+    \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state(array(
+       'name' => 'App\\Http\\Requests\\UserStoreRequest',
+       'phpDoc' => NULL,
+       'abstract' => false,
+       'final' => false,
+       'extends' => 'Illuminate\\Foundation\\Http\\FormRequest',
+       'implements' => 
+      array (
+      ),
+       'usedTraits' => 
+      array (
+      ),
+       'traitUseAdaptations' => 
+      array (
+      ),
+       'statements' => 
+      array (
+        0 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'authorize',
+           'phpDoc' => NULL,
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => 'bool',
+           'parameters' => 
+          array (
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        1 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'rules',
+           'phpDoc' => NULL,
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => 'array',
+           'parameters' => 
+          array (
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+      ),
+       'attributes' => 
+      array (
+      ),
+    )),
+  ),
+  '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Http/Requests/UserUpdateRequest.php' => 
+  array (
+    0 => 
+    \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state(array(
+       'name' => 'App\\Http\\Requests\\UserUpdateRequest',
+       'phpDoc' => NULL,
+       'abstract' => false,
+       'final' => false,
+       'extends' => 'Illuminate\\Foundation\\Http\\FormRequest',
+       'implements' => 
+      array (
+      ),
+       'usedTraits' => 
+      array (
+      ),
+       'traitUseAdaptations' => 
+      array (
+      ),
+       'statements' => 
+      array (
+        0 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'authorize',
+           'phpDoc' => NULL,
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => 'bool',
+           'parameters' => 
+          array (
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        1 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'rules',
+           'phpDoc' => NULL,
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => 'array',
            'parameters' => 
           array (
           ),
@@ -27454,7 +27900,7 @@ return [
             0 => 
             \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
                'name' => 'request',
-               'type' => 'Illuminate\\Http\\Request',
+               'type' => 'App\\Modules\\Accounting\\Requests\\InvoiceStoreRequest',
                'byRef' => false,
                'variadic' => false,
                'hasDefault' => false,
@@ -27541,7 +27987,7 @@ return [
             0 => 
             \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
                'name' => 'request',
-               'type' => 'Illuminate\\Http\\Request',
+               'type' => 'App\\Modules\\Accounting\\Requests\\InvoiceUpdateRequest',
                'byRef' => false,
                'variadic' => false,
                'hasDefault' => false,
@@ -41726,6 +42172,130 @@ return [
       ),
     )),
   ),
+  '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Requests/InvoiceStoreRequest.php' => 
+  array (
+    0 => 
+    \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state(array(
+       'name' => 'App\\Modules\\Accounting\\Requests\\InvoiceStoreRequest',
+       'phpDoc' => NULL,
+       'abstract' => false,
+       'final' => false,
+       'extends' => 'Illuminate\\Foundation\\Http\\FormRequest',
+       'implements' => 
+      array (
+      ),
+       'usedTraits' => 
+      array (
+      ),
+       'traitUseAdaptations' => 
+      array (
+      ),
+       'statements' => 
+      array (
+        0 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'authorize',
+           'phpDoc' => NULL,
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => 'bool',
+           'parameters' => 
+          array (
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        1 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'rules',
+           'phpDoc' => NULL,
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => 'array',
+           'parameters' => 
+          array (
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+      ),
+       'attributes' => 
+      array (
+      ),
+    )),
+  ),
+  '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Requests/InvoiceUpdateRequest.php' => 
+  array (
+    0 => 
+    \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state(array(
+       'name' => 'App\\Modules\\Accounting\\Requests\\InvoiceUpdateRequest',
+       'phpDoc' => NULL,
+       'abstract' => false,
+       'final' => false,
+       'extends' => 'Illuminate\\Foundation\\Http\\FormRequest',
+       'implements' => 
+      array (
+      ),
+       'usedTraits' => 
+      array (
+      ),
+       'traitUseAdaptations' => 
+      array (
+      ),
+       'statements' => 
+      array (
+        0 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'authorize',
+           'phpDoc' => NULL,
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => 'bool',
+           'parameters' => 
+          array (
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        1 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'rules',
+           'phpDoc' => NULL,
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => 'array',
+           'parameters' => 
+          array (
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+      ),
+       'attributes' => 
+      array (
+      ),
+    )),
+  ),
   '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Services/DashboardService.php' => 
   array (
     0 => 
@@ -48472,10 +49042,11 @@ return [
               'department' => 'App\\Modules\\HR\\Models\\Department',
               'employee' => 'App\\Modules\\HR\\Models\\Employee',
               'role' => 'App\\Modules\\HR\\Models\\Role',
+              'employeestorerequest' => 'App\\Modules\\HR\\Requests\\EmployeeStoreRequest',
+              'employeeupdaterequest' => 'App\\Modules\\HR\\Requests\\EmployeeUpdateRequest',
               'redirectresponse' => 'Illuminate\\Http\\RedirectResponse',
               'request' => 'Illuminate\\Http\\Request',
               'storage' => 'Illuminate\\Support\\Facades\\Storage',
-              'rule' => 'Illuminate\\Validation\\Rule',
               'view' => 'Illuminate\\View\\View',
             ),
              'constUses' => 
@@ -48522,10 +49093,11 @@ return [
               'department' => 'App\\Modules\\HR\\Models\\Department',
               'employee' => 'App\\Modules\\HR\\Models\\Employee',
               'role' => 'App\\Modules\\HR\\Models\\Role',
+              'employeestorerequest' => 'App\\Modules\\HR\\Requests\\EmployeeStoreRequest',
+              'employeeupdaterequest' => 'App\\Modules\\HR\\Requests\\EmployeeUpdateRequest',
               'redirectresponse' => 'Illuminate\\Http\\RedirectResponse',
               'request' => 'Illuminate\\Http\\Request',
               'storage' => 'Illuminate\\Support\\Facades\\Storage',
-              'rule' => 'Illuminate\\Validation\\Rule',
               'view' => 'Illuminate\\View\\View',
             ),
              'constUses' => 
@@ -48561,10 +49133,11 @@ return [
               'department' => 'App\\Modules\\HR\\Models\\Department',
               'employee' => 'App\\Modules\\HR\\Models\\Employee',
               'role' => 'App\\Modules\\HR\\Models\\Role',
+              'employeestorerequest' => 'App\\Modules\\HR\\Requests\\EmployeeStoreRequest',
+              'employeeupdaterequest' => 'App\\Modules\\HR\\Requests\\EmployeeUpdateRequest',
               'redirectresponse' => 'Illuminate\\Http\\RedirectResponse',
               'request' => 'Illuminate\\Http\\Request',
               'storage' => 'Illuminate\\Support\\Facades\\Storage',
-              'rule' => 'Illuminate\\Validation\\Rule',
               'view' => 'Illuminate\\View\\View',
             ),
              'constUses' => 
@@ -48583,7 +49156,7 @@ return [
             0 => 
             \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
                'name' => 'request',
-               'type' => 'Illuminate\\Http\\Request',
+               'type' => 'App\\Modules\\HR\\Requests\\EmployeeStoreRequest',
                'byRef' => false,
                'variadic' => false,
                'hasDefault' => false,
@@ -48611,10 +49184,11 @@ return [
               'department' => 'App\\Modules\\HR\\Models\\Department',
               'employee' => 'App\\Modules\\HR\\Models\\Employee',
               'role' => 'App\\Modules\\HR\\Models\\Role',
+              'employeestorerequest' => 'App\\Modules\\HR\\Requests\\EmployeeStoreRequest',
+              'employeeupdaterequest' => 'App\\Modules\\HR\\Requests\\EmployeeUpdateRequest',
               'redirectresponse' => 'Illuminate\\Http\\RedirectResponse',
               'request' => 'Illuminate\\Http\\Request',
               'storage' => 'Illuminate\\Support\\Facades\\Storage',
-              'rule' => 'Illuminate\\Validation\\Rule',
               'view' => 'Illuminate\\View\\View',
             ),
              'constUses' => 
@@ -48661,10 +49235,11 @@ return [
               'department' => 'App\\Modules\\HR\\Models\\Department',
               'employee' => 'App\\Modules\\HR\\Models\\Employee',
               'role' => 'App\\Modules\\HR\\Models\\Role',
+              'employeestorerequest' => 'App\\Modules\\HR\\Requests\\EmployeeStoreRequest',
+              'employeeupdaterequest' => 'App\\Modules\\HR\\Requests\\EmployeeUpdateRequest',
               'redirectresponse' => 'Illuminate\\Http\\RedirectResponse',
               'request' => 'Illuminate\\Http\\Request',
               'storage' => 'Illuminate\\Support\\Facades\\Storage',
-              'rule' => 'Illuminate\\Validation\\Rule',
               'view' => 'Illuminate\\View\\View',
             ),
              'constUses' => 
@@ -48711,10 +49286,11 @@ return [
               'department' => 'App\\Modules\\HR\\Models\\Department',
               'employee' => 'App\\Modules\\HR\\Models\\Employee',
               'role' => 'App\\Modules\\HR\\Models\\Role',
+              'employeestorerequest' => 'App\\Modules\\HR\\Requests\\EmployeeStoreRequest',
+              'employeeupdaterequest' => 'App\\Modules\\HR\\Requests\\EmployeeUpdateRequest',
               'redirectresponse' => 'Illuminate\\Http\\RedirectResponse',
               'request' => 'Illuminate\\Http\\Request',
               'storage' => 'Illuminate\\Support\\Facades\\Storage',
-              'rule' => 'Illuminate\\Validation\\Rule',
               'view' => 'Illuminate\\View\\View',
             ),
              'constUses' => 
@@ -48733,7 +49309,7 @@ return [
             0 => 
             \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
                'name' => 'request',
-               'type' => 'Illuminate\\Http\\Request',
+               'type' => 'App\\Modules\\HR\\Requests\\EmployeeUpdateRequest',
                'byRef' => false,
                'variadic' => false,
                'hasDefault' => false,
@@ -48772,10 +49348,11 @@ return [
               'department' => 'App\\Modules\\HR\\Models\\Department',
               'employee' => 'App\\Modules\\HR\\Models\\Employee',
               'role' => 'App\\Modules\\HR\\Models\\Role',
+              'employeestorerequest' => 'App\\Modules\\HR\\Requests\\EmployeeStoreRequest',
+              'employeeupdaterequest' => 'App\\Modules\\HR\\Requests\\EmployeeUpdateRequest',
               'redirectresponse' => 'Illuminate\\Http\\RedirectResponse',
               'request' => 'Illuminate\\Http\\Request',
               'storage' => 'Illuminate\\Support\\Facades\\Storage',
-              'rule' => 'Illuminate\\Validation\\Rule',
               'view' => 'Illuminate\\View\\View',
             ),
              'constUses' => 
@@ -48822,10 +49399,11 @@ return [
               'department' => 'App\\Modules\\HR\\Models\\Department',
               'employee' => 'App\\Modules\\HR\\Models\\Employee',
               'role' => 'App\\Modules\\HR\\Models\\Role',
+              'employeestorerequest' => 'App\\Modules\\HR\\Requests\\EmployeeStoreRequest',
+              'employeeupdaterequest' => 'App\\Modules\\HR\\Requests\\EmployeeUpdateRequest',
               'redirectresponse' => 'Illuminate\\Http\\RedirectResponse',
               'request' => 'Illuminate\\Http\\Request',
               'storage' => 'Illuminate\\Support\\Facades\\Storage',
-              'rule' => 'Illuminate\\Validation\\Rule',
               'view' => 'Illuminate\\View\\View',
             ),
              'constUses' => 
@@ -48872,10 +49450,11 @@ return [
               'department' => 'App\\Modules\\HR\\Models\\Department',
               'employee' => 'App\\Modules\\HR\\Models\\Employee',
               'role' => 'App\\Modules\\HR\\Models\\Role',
+              'employeestorerequest' => 'App\\Modules\\HR\\Requests\\EmployeeStoreRequest',
+              'employeeupdaterequest' => 'App\\Modules\\HR\\Requests\\EmployeeUpdateRequest',
               'redirectresponse' => 'Illuminate\\Http\\RedirectResponse',
               'request' => 'Illuminate\\Http\\Request',
               'storage' => 'Illuminate\\Support\\Facades\\Storage',
-              'rule' => 'Illuminate\\Validation\\Rule',
               'view' => 'Illuminate\\View\\View',
             ),
              'constUses' => 
@@ -57588,6 +58167,130 @@ return [
       ),
     )),
   ),
+  '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/HR/Requests/EmployeeStoreRequest.php' => 
+  array (
+    0 => 
+    \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state(array(
+       'name' => 'App\\Modules\\HR\\Requests\\EmployeeStoreRequest',
+       'phpDoc' => NULL,
+       'abstract' => false,
+       'final' => false,
+       'extends' => 'Illuminate\\Foundation\\Http\\FormRequest',
+       'implements' => 
+      array (
+      ),
+       'usedTraits' => 
+      array (
+      ),
+       'traitUseAdaptations' => 
+      array (
+      ),
+       'statements' => 
+      array (
+        0 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'authorize',
+           'phpDoc' => NULL,
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => 'bool',
+           'parameters' => 
+          array (
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        1 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'rules',
+           'phpDoc' => NULL,
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => 'array',
+           'parameters' => 
+          array (
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+      ),
+       'attributes' => 
+      array (
+      ),
+    )),
+  ),
+  '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/HR/Requests/EmployeeUpdateRequest.php' => 
+  array (
+    0 => 
+    \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state(array(
+       'name' => 'App\\Modules\\HR\\Requests\\EmployeeUpdateRequest',
+       'phpDoc' => NULL,
+       'abstract' => false,
+       'final' => false,
+       'extends' => 'Illuminate\\Foundation\\Http\\FormRequest',
+       'implements' => 
+      array (
+      ),
+       'usedTraits' => 
+      array (
+      ),
+       'traitUseAdaptations' => 
+      array (
+      ),
+       'statements' => 
+      array (
+        0 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'authorize',
+           'phpDoc' => NULL,
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => 'bool',
+           'parameters' => 
+          array (
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        1 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'rules',
+           'phpDoc' => NULL,
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => 'array',
+           'parameters' => 
+          array (
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+      ),
+       'attributes' => 
+      array (
+      ),
+    )),
+  ),
   '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/HR/Services/PayrollAccountingService.php' => 
   array (
     0 => 
@@ -62101,6 +62804,618 @@ return [
       ),
     )),
   ),
+  '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Policies/EmployeePolicy.php' => 
+  array (
+    0 => 
+    \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state(array(
+       'name' => 'App\\Policies\\EmployeePolicy',
+       'phpDoc' => NULL,
+       'abstract' => false,
+       'final' => false,
+       'extends' => NULL,
+       'implements' => 
+      array (
+      ),
+       'usedTraits' => 
+      array (
+      ),
+       'traitUseAdaptations' => 
+      array (
+      ),
+       'statements' => 
+      array (
+        0 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'viewAny',
+           'phpDoc' => NULL,
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => 'bool',
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'user',
+               'type' => 'App\\Models\\User',
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        1 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'view',
+           'phpDoc' => NULL,
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => 'bool',
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'user',
+               'type' => 'App\\Models\\User',
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+            1 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'employee',
+               'type' => 'App\\Modules\\HR\\Models\\Employee',
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        2 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'create',
+           'phpDoc' => NULL,
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => 'bool',
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'user',
+               'type' => 'App\\Models\\User',
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        3 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'update',
+           'phpDoc' => NULL,
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => 'bool',
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'user',
+               'type' => 'App\\Models\\User',
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+            1 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'employee',
+               'type' => 'App\\Modules\\HR\\Models\\Employee',
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        4 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'delete',
+           'phpDoc' => NULL,
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => 'bool',
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'user',
+               'type' => 'App\\Models\\User',
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+            1 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'employee',
+               'type' => 'App\\Modules\\HR\\Models\\Employee',
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+      ),
+       'attributes' => 
+      array (
+      ),
+    )),
+  ),
+  '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Policies/InvoicePolicy.php' => 
+  array (
+    0 => 
+    \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state(array(
+       'name' => 'App\\Policies\\InvoicePolicy',
+       'phpDoc' => NULL,
+       'abstract' => false,
+       'final' => false,
+       'extends' => NULL,
+       'implements' => 
+      array (
+      ),
+       'usedTraits' => 
+      array (
+      ),
+       'traitUseAdaptations' => 
+      array (
+      ),
+       'statements' => 
+      array (
+        0 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'viewAny',
+           'phpDoc' => NULL,
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => 'bool',
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'user',
+               'type' => 'App\\Models\\User',
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        1 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'view',
+           'phpDoc' => NULL,
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => 'bool',
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'user',
+               'type' => 'App\\Models\\User',
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+            1 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'invoice',
+               'type' => 'App\\Modules\\Accounting\\Models\\Invoice',
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        2 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'create',
+           'phpDoc' => NULL,
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => 'bool',
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'user',
+               'type' => 'App\\Models\\User',
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        3 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'update',
+           'phpDoc' => NULL,
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => 'bool',
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'user',
+               'type' => 'App\\Models\\User',
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+            1 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'invoice',
+               'type' => 'App\\Modules\\Accounting\\Models\\Invoice',
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        4 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'delete',
+           'phpDoc' => NULL,
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => 'bool',
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'user',
+               'type' => 'App\\Models\\User',
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+            1 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'invoice',
+               'type' => 'App\\Modules\\Accounting\\Models\\Invoice',
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+      ),
+       'attributes' => 
+      array (
+      ),
+    )),
+  ),
+  '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Policies/UserPolicy.php' => 
+  array (
+    0 => 
+    \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state(array(
+       'name' => 'App\\Policies\\UserPolicy',
+       'phpDoc' => NULL,
+       'abstract' => false,
+       'final' => false,
+       'extends' => NULL,
+       'implements' => 
+      array (
+      ),
+       'usedTraits' => 
+      array (
+      ),
+       'traitUseAdaptations' => 
+      array (
+      ),
+       'statements' => 
+      array (
+        0 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'viewAny',
+           'phpDoc' => NULL,
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => 'bool',
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'user',
+               'type' => 'App\\Models\\User',
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        1 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'view',
+           'phpDoc' => NULL,
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => 'bool',
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'user',
+               'type' => 'App\\Models\\User',
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+            1 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'model',
+               'type' => 'App\\Models\\User',
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        2 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'create',
+           'phpDoc' => NULL,
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => 'bool',
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'user',
+               'type' => 'App\\Models\\User',
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        3 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'update',
+           'phpDoc' => NULL,
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => 'bool',
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'user',
+               'type' => 'App\\Models\\User',
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+            1 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'model',
+               'type' => 'App\\Models\\User',
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        4 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'delete',
+           'phpDoc' => NULL,
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => 'bool',
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'user',
+               'type' => 'App\\Models\\User',
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+            1 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'model',
+               'type' => 'App\\Models\\User',
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+      ),
+       'attributes' => 
+      array (
+      ),
+    )),
+  ),
   '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Providers/AccountingServiceProvider.php' => 
   array (
     0 => 
@@ -62438,6 +63753,13 @@ return [
              'namespace' => 'App\\Providers',
              'uses' => 
             array (
+              'user' => 'App\\Models\\User',
+              'invoice' => 'App\\Modules\\Accounting\\Models\\Invoice',
+              'employee' => 'App\\Modules\\HR\\Models\\Employee',
+              'employeepolicy' => 'App\\Policies\\EmployeePolicy',
+              'invoicepolicy' => 'App\\Policies\\InvoicePolicy',
+              'userpolicy' => 'App\\Policies\\UserPolicy',
+              'gate' => 'Illuminate\\Support\\Facades\\Gate',
               'serviceprovider' => 'Illuminate\\Support\\ServiceProvider',
             ),
              'constUses' => 
@@ -62469,6 +63791,13 @@ return [
              'namespace' => 'App\\Providers',
              'uses' => 
             array (
+              'user' => 'App\\Models\\User',
+              'invoice' => 'App\\Modules\\Accounting\\Models\\Invoice',
+              'employee' => 'App\\Modules\\HR\\Models\\Employee',
+              'employeepolicy' => 'App\\Policies\\EmployeePolicy',
+              'invoicepolicy' => 'App\\Policies\\InvoicePolicy',
+              'userpolicy' => 'App\\Policies\\UserPolicy',
+              'gate' => 'Illuminate\\Support\\Facades\\Gate',
               'serviceprovider' => 'Illuminate\\Support\\ServiceProvider',
             ),
              'constUses' => 
@@ -62802,6 +64131,256 @@ return [
               array (
               ),
             )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+      ),
+       'attributes' => 
+      array (
+      ),
+    )),
+  ),
+  '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Services/Settings.php' => 
+  array (
+    0 => 
+    \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state(array(
+       'name' => 'App\\Services\\Settings',
+       'phpDoc' => NULL,
+       'abstract' => false,
+       'final' => false,
+       'extends' => NULL,
+       'implements' => 
+      array (
+      ),
+       'usedTraits' => 
+      array (
+      ),
+       'traitUseAdaptations' => 
+      array (
+      ),
+       'statements' => 
+      array (
+        0 => 
+        \PHPStan\Dependency\ExportedNode\ExportedPropertiesNode::__set_state(array(
+           'names' => 
+          array (
+            0 => 'cacheKey',
+          ),
+           'phpDoc' => NULL,
+           'type' => 'string',
+           'public' => false,
+           'private' => false,
+           'static' => false,
+           'readonly' => false,
+           'abstract' => false,
+           'final' => false,
+           'publicSet' => false,
+           'protectedSet' => false,
+           'privateSet' => false,
+           'virtual' => false,
+           'attributes' => 
+          array (
+          ),
+           'hooks' => 
+          array (
+          ),
+        )),
+        1 => 
+        \PHPStan\Dependency\ExportedNode\ExportedPropertiesNode::__set_state(array(
+           'names' => 
+          array (
+            0 => 'ttl',
+          ),
+           'phpDoc' => NULL,
+           'type' => 'int',
+           'public' => false,
+           'private' => false,
+           'static' => false,
+           'readonly' => false,
+           'abstract' => false,
+           'final' => false,
+           'publicSet' => false,
+           'protectedSet' => false,
+           'privateSet' => false,
+           'virtual' => false,
+           'attributes' => 
+          array (
+          ),
+           'hooks' => 
+          array (
+          ),
+        )),
+        2 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'all',
+           'phpDoc' => NULL,
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => 'array',
+           'parameters' => 
+          array (
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        3 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'get',
+           'phpDoc' => NULL,
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'key',
+               'type' => 'string',
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+            1 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'default',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => true,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        4 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'getMany',
+           'phpDoc' => NULL,
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => 'array',
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'keys',
+               'type' => 'array',
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        5 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'set',
+           'phpDoc' => NULL,
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => 'void',
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'key',
+               'type' => 'string',
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+            1 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'value',
+               'type' => NULL,
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        6 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'setMany',
+           'phpDoc' => NULL,
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => 'void',
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'data',
+               'type' => 'array',
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        7 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'forgetCache',
+           'phpDoc' => NULL,
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => 'void',
+           'parameters' => 
+          array (
           ),
            'attributes' => 
           array (

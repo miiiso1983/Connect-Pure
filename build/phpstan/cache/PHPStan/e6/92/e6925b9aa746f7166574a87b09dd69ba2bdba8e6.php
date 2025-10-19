@@ -7,7 +7,7 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
   array (
     '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Providers/AppServiceProvider.php' => 
     array (
-      0 => '01bf9e5cf5bb666446625056b618445ae4749675',
+      0 => 'c17ccbc5fe3b228d71a2a8df55827aab1e8077d5',
       1 => 
       array (
         0 => 'app\\providers\\appserviceprovider',
@@ -536,7 +536,7 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
     ),
     '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Http/Controllers/Admin/UserController.php' => 
     array (
-      0 => '2a3c4189e7da7c9372647607b50c4946b0982594',
+      0 => '254f6ecd72010b2873e6bcbc1ff831de5a72bb14',
       1 => 
       array (
         0 => 'app\\http\\controllers\\admin\\usercontroller',
@@ -1594,7 +1594,7 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
     ),
     '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/InvoiceController.php' => 
     array (
-      0 => 'd373a095989cdf5c92ff9bdacf3f288257543ac6',
+      0 => '0996e5c00e688218eae79fc7ce348b739a882039',
       1 => 
       array (
         0 => 'app\\modules\\accounting\\controllers\\invoicecontroller',
@@ -2752,7 +2752,7 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
     ),
     '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/HR/Controllers/EmployeeController.php' => 
     array (
-      0 => '10d44543c0dd55f18bc2d49f3d07cfc93ac17ad1',
+      0 => '36dd1658a528492e07496153ec64770a4257b281',
       1 => 
       array (
         0 => 'app\\modules\\hr\\controllers\\employeecontroller',
@@ -3161,6 +3161,179 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
       array (
         0 => 'app\\console\\schedule',
         1 => 'app\\console\\commands',
+      ),
+      3 => 
+      array (
+      ),
+    ),
+    '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/HR/Requests/EmployeeUpdateRequest.php' => 
+    array (
+      0 => 'e523ac278a153f04bf5944a095d87849b62d0d8e',
+      1 => 
+      array (
+        0 => 'app\\modules\\hr\\requests\\employeeupdaterequest',
+      ),
+      2 => 
+      array (
+        0 => 'app\\modules\\hr\\requests\\authorize',
+        1 => 'app\\modules\\hr\\requests\\rules',
+      ),
+      3 => 
+      array (
+      ),
+    ),
+    '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/HR/Requests/EmployeeStoreRequest.php' => 
+    array (
+      0 => '5d255b2655435b13857acaa83703e7ca6cda7fd0',
+      1 => 
+      array (
+        0 => 'app\\modules\\hr\\requests\\employeestorerequest',
+      ),
+      2 => 
+      array (
+        0 => 'app\\modules\\hr\\requests\\authorize',
+        1 => 'app\\modules\\hr\\requests\\rules',
+      ),
+      3 => 
+      array (
+      ),
+    ),
+    '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Policies/EmployeePolicy.php' => 
+    array (
+      0 => '7c234be76ad3d20105b592cccef0a275e5a169f0',
+      1 => 
+      array (
+        0 => 'app\\policies\\employeepolicy',
+      ),
+      2 => 
+      array (
+        0 => 'app\\policies\\viewany',
+        1 => 'app\\policies\\view',
+        2 => 'app\\policies\\create',
+        3 => 'app\\policies\\update',
+        4 => 'app\\policies\\delete',
+      ),
+      3 => 
+      array (
+      ),
+    ),
+    '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Policies/InvoicePolicy.php' => 
+    array (
+      0 => '672d4015e4b97d2bfcd32c7baafe5f52e9aeb21a',
+      1 => 
+      array (
+        0 => 'app\\policies\\invoicepolicy',
+      ),
+      2 => 
+      array (
+        0 => 'app\\policies\\viewany',
+        1 => 'app\\policies\\view',
+        2 => 'app\\policies\\create',
+        3 => 'app\\policies\\update',
+        4 => 'app\\policies\\delete',
+      ),
+      3 => 
+      array (
+      ),
+    ),
+    '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Policies/UserPolicy.php' => 
+    array (
+      0 => 'ad7f3fac0e17f355b100868cd0a33f82c5f5f551',
+      1 => 
+      array (
+        0 => 'app\\policies\\userpolicy',
+      ),
+      2 => 
+      array (
+        0 => 'app\\policies\\viewany',
+        1 => 'app\\policies\\view',
+        2 => 'app\\policies\\create',
+        3 => 'app\\policies\\update',
+        4 => 'app\\policies\\delete',
+      ),
+      3 => 
+      array (
+      ),
+    ),
+    '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Http/Requests/UserStoreRequest.php' => 
+    array (
+      0 => '892b990c569d1bdbe7b6ab82a022f1f39beb4715',
+      1 => 
+      array (
+        0 => 'app\\http\\requests\\userstorerequest',
+      ),
+      2 => 
+      array (
+        0 => 'app\\http\\requests\\authorize',
+        1 => 'app\\http\\requests\\rules',
+      ),
+      3 => 
+      array (
+      ),
+    ),
+    '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Http/Requests/UserUpdateRequest.php' => 
+    array (
+      0 => '0f7ede35c115241a7d4afa33e675b7b41fa91769',
+      1 => 
+      array (
+        0 => 'app\\http\\requests\\userupdaterequest',
+      ),
+      2 => 
+      array (
+        0 => 'app\\http\\requests\\authorize',
+        1 => 'app\\http\\requests\\rules',
+      ),
+      3 => 
+      array (
+      ),
+    ),
+    '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Requests/InvoiceUpdateRequest.php' => 
+    array (
+      0 => '7a55ef773a582b164551fc2c0f86b9446fb3996e',
+      1 => 
+      array (
+        0 => 'app\\modules\\accounting\\requests\\invoiceupdaterequest',
+      ),
+      2 => 
+      array (
+        0 => 'app\\modules\\accounting\\requests\\authorize',
+        1 => 'app\\modules\\accounting\\requests\\rules',
+      ),
+      3 => 
+      array (
+      ),
+    ),
+    '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Requests/InvoiceStoreRequest.php' => 
+    array (
+      0 => '4b4ca75796ded5356c2fa31d5c337cfefe89b3ad',
+      1 => 
+      array (
+        0 => 'app\\modules\\accounting\\requests\\invoicestorerequest',
+      ),
+      2 => 
+      array (
+        0 => 'app\\modules\\accounting\\requests\\authorize',
+        1 => 'app\\modules\\accounting\\requests\\rules',
+      ),
+      3 => 
+      array (
+      ),
+    ),
+    '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Services/Settings.php' => 
+    array (
+      0 => '9d68130914db15af3912514e4358d1149795fd69',
+      1 => 
+      array (
+        0 => 'app\\services\\settings',
+      ),
+      2 => 
+      array (
+        0 => 'app\\services\\all',
+        1 => 'app\\services\\get',
+        2 => 'app\\services\\getmany',
+        3 => 'app\\services\\set',
+        4 => 'app\\services\\setmany',
+        5 => 'app\\services\\forgetcache',
       ),
       3 => 
       array (
