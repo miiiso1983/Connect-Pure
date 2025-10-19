@@ -536,7 +536,7 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
     ),
     '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Http/Controllers/Admin/UserController.php' => 
     array (
-      0 => '254f6ecd72010b2873e6bcbc1ff831de5a72bb14',
+      0 => 'da9e0a2f310e19feeb25174a3909848ea11884a2',
       1 => 
       array (
         0 => 'app\\http\\controllers\\admin\\usercontroller',
@@ -1594,7 +1594,7 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
     ),
     '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/InvoiceController.php' => 
     array (
-      0 => '0996e5c00e688218eae79fc7ce348b739a882039',
+      0 => '36a376dab2d919b0c40b57c412a19a8002d0ed9f',
       1 => 
       array (
         0 => 'app\\modules\\accounting\\controllers\\invoicecontroller',
@@ -3257,7 +3257,7 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
     ),
     '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Http/Requests/UserStoreRequest.php' => 
     array (
-      0 => '892b990c569d1bdbe7b6ab82a022f1f39beb4715',
+      0 => '6f5c9422fdf2a342286460d96a49454314056c36',
       1 => 
       array (
         0 => 'app\\http\\requests\\userstorerequest',
@@ -3273,7 +3273,7 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
     ),
     '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Http/Requests/UserUpdateRequest.php' => 
     array (
-      0 => '0f7ede35c115241a7d4afa33e675b7b41fa91769',
+      0 => 'eb4e65837a929d7d33f3fd71d163257a57efe0b8',
       1 => 
       array (
         0 => 'app\\http\\requests\\userupdaterequest',
@@ -3289,7 +3289,7 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
     ),
     '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Requests/InvoiceUpdateRequest.php' => 
     array (
-      0 => '7a55ef773a582b164551fc2c0f86b9446fb3996e',
+      0 => 'b07a203c19ff7803b1c9cb717c9bd9dbc9d38873',
       1 => 
       array (
         0 => 'app\\modules\\accounting\\requests\\invoiceupdaterequest',
@@ -3305,7 +3305,7 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
     ),
     '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Requests/InvoiceStoreRequest.php' => 
     array (
-      0 => '4b4ca75796ded5356c2fa31d5c337cfefe89b3ad',
+      0 => '831c5b675fd6e5a75206e465ee1cd56b23f11dfa',
       1 => 
       array (
         0 => 'app\\modules\\accounting\\requests\\invoicestorerequest',

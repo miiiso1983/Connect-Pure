@@ -2247,12 +2247,12 @@ return [
     \PHPStan\Analyser\Error::__set_state(array(
        'message' => 'Parameter #1 $view of function view expects view-string|null, string given.',
        'file' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Http/Controllers/Admin/UserController.php',
-       'line' => 64,
+       'line' => 70,
        'canBeIgnored' => true,
        'filePath' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Http/Controllers/Admin/UserController.php',
        'traitFilePath' => NULL,
        'tip' => NULL,
-       'nodeLine' => 64,
+       'nodeLine' => 70,
        'nodeType' => 'PhpParser\\Node\\Expr\\FuncCall',
        'identifier' => 'argument.type',
        'metadata' => 
@@ -2264,12 +2264,12 @@ return [
     \PHPStan\Analyser\Error::__set_state(array(
        'message' => 'Parameter #1 $view of function view expects view-string|null, string given.',
        'file' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Http/Controllers/Admin/UserController.php',
-       'line' => 75,
+       'line' => 83,
        'canBeIgnored' => true,
        'filePath' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Http/Controllers/Admin/UserController.php',
        'traitFilePath' => NULL,
        'tip' => NULL,
-       'nodeLine' => 75,
+       'nodeLine' => 83,
        'nodeType' => 'PhpParser\\Node\\Expr\\FuncCall',
        'identifier' => 'argument.type',
        'metadata' => 
@@ -3131,12 +3131,12 @@ return [
     \PHPStan\Analyser\Error::__set_state(array(
        'message' => 'Call to an undefined method Illuminate\\Database\\Eloquent\\Model::updateBalance().',
        'file' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/InvoiceController.php',
-       'line' => 125,
+       'line' => 129,
        'canBeIgnored' => true,
        'filePath' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/InvoiceController.php',
        'traitFilePath' => NULL,
        'tip' => NULL,
-       'nodeLine' => 125,
+       'nodeLine' => 129,
        'nodeType' => 'PhpParser\\Node\\Expr\\MethodCall',
        'identifier' => 'method.notFound',
        'metadata' => 
@@ -3148,12 +3148,12 @@ return [
     \PHPStan\Analyser\Error::__set_state(array(
        'message' => 'Parameter #1 $view of function view expects view-string|null, string given.',
        'file' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/InvoiceController.php',
-       'line' => 144,
+       'line' => 148,
        'canBeIgnored' => true,
        'filePath' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/InvoiceController.php',
        'traitFilePath' => NULL,
        'tip' => NULL,
-       'nodeLine' => 144,
+       'nodeLine' => 148,
        'nodeType' => 'PhpParser\\Node\\Expr\\FuncCall',
        'identifier' => 'argument.type',
        'metadata' => 
@@ -3165,12 +3165,12 @@ return [
     \PHPStan\Analyser\Error::__set_state(array(
        'message' => 'Parameter #1 $view of function view expects view-string|null, string given.',
        'file' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/InvoiceController.php',
-       'line' => 159,
+       'line' => 165,
        'canBeIgnored' => true,
        'filePath' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/InvoiceController.php',
        'traitFilePath' => NULL,
        'tip' => NULL,
-       'nodeLine' => 159,
+       'nodeLine' => 165,
        'nodeType' => 'PhpParser\\Node\\Expr\\FuncCall',
        'identifier' => 'argument.type',
        'metadata' => 
@@ -3182,12 +3182,12 @@ return [
     \PHPStan\Analyser\Error::__set_state(array(
        'message' => 'Call to an undefined method Illuminate\\Database\\Eloquent\\Model::updateBalance().',
        'file' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/InvoiceController.php',
-       'line' => 176,
+       'line' => 184,
        'canBeIgnored' => true,
        'filePath' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/InvoiceController.php',
        'traitFilePath' => NULL,
        'tip' => NULL,
-       'nodeLine' => 176,
+       'nodeLine' => 184,
        'nodeType' => 'PhpParser\\Node\\Expr\\MethodCall',
        'identifier' => 'method.notFound',
        'metadata' => 
@@ -3199,12 +3199,12 @@ return [
     \PHPStan\Analyser\Error::__set_state(array(
        'message' => 'Call to an undefined method Illuminate\\Database\\Eloquent\\Model::updateBalance().',
        'file' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/InvoiceController.php',
-       'line' => 215,
+       'line' => 223,
        'canBeIgnored' => true,
        'filePath' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/InvoiceController.php',
        'traitFilePath' => NULL,
        'tip' => NULL,
-       'nodeLine' => 215,
+       'nodeLine' => 223,
        'nodeType' => 'PhpParser\\Node\\Expr\\MethodCall',
        'identifier' => 'method.notFound',
        'metadata' => 
@@ -3216,12 +3216,12 @@ return [
     \PHPStan\Analyser\Error::__set_state(array(
        'message' => 'Call to an undefined method Illuminate\\Database\\Eloquent\\Model::updateBalance().',
        'file' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/InvoiceController.php',
-       'line' => 240,
+       'line' => 250,
        'canBeIgnored' => true,
        'filePath' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/InvoiceController.php',
        'traitFilePath' => NULL,
        'tip' => NULL,
-       'nodeLine' => 240,
+       'nodeLine' => 250,
        'nodeType' => 'PhpParser\\Node\\Expr\\MethodCall',
        'identifier' => 'method.notFound',
        'metadata' => 
@@ -3233,12 +3233,12 @@ return [
     \PHPStan\Analyser\Error::__set_state(array(
        'message' => 'Property App\\Modules\\Accounting\\Models\\Invoice::$invoice_number (string) does not accept null.',
        'file' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/InvoiceController.php',
-       'line' => 310,
+       'line' => 326,
        'canBeIgnored' => true,
        'filePath' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/InvoiceController.php',
        'traitFilePath' => NULL,
        'tip' => NULL,
-       'nodeLine' => 310,
+       'nodeLine' => 326,
        'nodeType' => 'PHPStan\\Node\\PropertyAssignNode',
        'identifier' => 'assign.propertyType',
        'metadata' => 
@@ -3250,12 +3250,12 @@ return [
     \PHPStan\Analyser\Error::__set_state(array(
        'message' => 'Access to an undefined property Illuminate\\Database\\Eloquent\\Model::$invoice_id.',
        'file' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/InvoiceController.php',
-       'line' => 324,
+       'line' => 340,
        'canBeIgnored' => true,
        'filePath' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/InvoiceController.php',
        'traitFilePath' => NULL,
        'tip' => 'Learn more: <fg=cyan>https://phpstan.org/blog/solving-phpstan-access-to-undefined-property</>',
-       'nodeLine' => 324,
+       'nodeLine' => 340,
        'nodeType' => 'PHPStan\\Node\\PropertyAssignNode',
        'identifier' => 'property.notFound',
        'metadata' => 
@@ -3267,12 +3267,12 @@ return [
     \PHPStan\Analyser\Error::__set_state(array(
        'message' => 'Parameter #1 $view of function view expects view-string|null, string given.',
        'file' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/InvoiceController.php',
-       'line' => 340,
+       'line' => 358,
        'canBeIgnored' => true,
        'filePath' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/InvoiceController.php',
        'traitFilePath' => NULL,
        'tip' => NULL,
-       'nodeLine' => 340,
+       'nodeLine' => 358,
        'nodeType' => 'PhpParser\\Node\\Expr\\FuncCall',
        'identifier' => 'argument.type',
        'metadata' => 
@@ -9357,30 +9357,6 @@ return [
       ),
     ),
   ),
-  '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Http/Requests/UserStoreRequest.php' => 
-  array (
-    'PHPStan\\Rules\\DeadCode\\MethodWithoutImpurePointsCollector' => 
-    array (
-      0 => 
-      array (
-        0 => 'App\\Http\\Requests\\UserStoreRequest',
-        1 => 'authorize',
-        2 => 'App\\Http\\Requests\\UserStoreRequest',
-      ),
-    ),
-  ),
-  '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Http/Requests/UserUpdateRequest.php' => 
-  array (
-    'PHPStan\\Rules\\DeadCode\\MethodWithoutImpurePointsCollector' => 
-    array (
-      0 => 
-      array (
-        0 => 'App\\Http\\Requests\\UserUpdateRequest',
-        1 => 'authorize',
-        2 => 'App\\Http\\Requests\\UserUpdateRequest',
-      ),
-    ),
-  ),
   '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Imports/ContactsImport.php' => 
   array (
     'PHPStan\\Rules\\DeadCode\\MethodWithoutImpurePointsCollector' => 
@@ -9927,72 +9903,72 @@ return [
       0 => 
       array (
         0 => 'accounting.invoice_created_successfully',
-        1 => 130,
+        1 => 134,
       ),
       1 => 
       array (
         0 => 'accounting.error_creating_invoice',
-        1 => 136,
+        1 => 140,
       ),
       2 => 
       array (
         0 => 'accounting.cannot_edit_paid_invoice',
-        1 => 151,
+        1 => 157,
       ),
       3 => 
       array (
         0 => 'accounting.cannot_edit_paid_invoice',
-        1 => 168,
+        1 => 176,
       ),
       4 => 
       array (
         0 => 'accounting.invoice_updated_successfully',
-        1 => 220,
+        1 => 228,
       ),
       5 => 
       array (
         0 => 'accounting.error_updating_invoice',
-        1 => 226,
+        1 => 234,
       ),
       6 => 
       array (
         0 => 'accounting.cannot_delete_paid_invoice',
-        1 => 234,
+        1 => 244,
       ),
       7 => 
       array (
         0 => 'accounting.invoice_deleted_successfully',
-        1 => 247,
+        1 => 257,
       ),
       8 => 
       array (
         0 => 'accounting.error_deleting_invoice',
-        1 => 253,
+        1 => 263,
       ),
       9 => 
       array (
         0 => 'accounting.invoice_sent_successfully_with_whatsapp',
-        1 => 269,
+        1 => 281,
       ),
       10 => 
       array (
         0 => 'accounting.invoice_already_sent',
-        1 => 273,
+        1 => 285,
       ),
       11 => 
       array (
         0 => 'accounting.payment_recorded_successfully',
-        1 => 297,
+        1 => 311,
       ),
       12 => 
       array (
         0 => 'accounting.error_recording_payment',
-        1 => 303,
+        1 => 317,
       ),
       13 => 
       array (
         0 => 'accounting.invoice_duplicated_successfully',
-        1 => 331,
+        1 => 347,
       ),
     ),
     'Larastan\\Larastan\\Collectors\\UsedViewFunctionCollector' => 
@@ -10008,7 +9984,7 @@ return [
       0 => 
       array (
         0 => 'event',
-        1 => 263,
+        1 => 275,
       ),
     ),
   ),
@@ -11897,12 +11873,6 @@ return [
       0 => 
       array (
         0 => 'App\\Modules\\Accounting\\Requests\\InvoiceStoreRequest',
-        1 => 'authorize',
-        2 => 'App\\Modules\\Accounting\\Requests\\InvoiceStoreRequest',
-      ),
-      1 => 
-      array (
-        0 => 'App\\Modules\\Accounting\\Requests\\InvoiceStoreRequest',
         1 => 'rules',
         2 => 'App\\Modules\\Accounting\\Requests\\InvoiceStoreRequest',
       ),
@@ -11913,12 +11883,6 @@ return [
     'PHPStan\\Rules\\DeadCode\\MethodWithoutImpurePointsCollector' => 
     array (
       0 => 
-      array (
-        0 => 'App\\Modules\\Accounting\\Requests\\InvoiceUpdateRequest',
-        1 => 'authorize',
-        2 => 'App\\Modules\\Accounting\\Requests\\InvoiceUpdateRequest',
-      ),
-      1 => 
       array (
         0 => 'App\\Modules\\Accounting\\Requests\\InvoiceUpdateRequest',
         1 => 'rules',
@@ -14381,7 +14345,7 @@ return [
   ),
   '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Http/Controllers/Admin/UserController.php' => 
   array (
-    'fileHash' => '254f6ecd72010b2873e6bcbc1ff831de5a72bb14',
+    'fileHash' => 'da9e0a2f310e19feeb25174a3909848ea11884a2',
     'dependentFiles' => 
     array (
       0 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/routes/web.php',
@@ -14555,7 +14519,7 @@ return [
   ),
   '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Http/Requests/UserStoreRequest.php' => 
   array (
-    'fileHash' => '892b990c569d1bdbe7b6ab82a022f1f39beb4715',
+    'fileHash' => '6f5c9422fdf2a342286460d96a49454314056c36',
     'dependentFiles' => 
     array (
       0 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Http/Controllers/Admin/UserController.php',
@@ -14563,7 +14527,7 @@ return [
   ),
   '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Http/Requests/UserUpdateRequest.php' => 
   array (
-    'fileHash' => '0f7ede35c115241a7d4afa33e675b7b41fa91769',
+    'fileHash' => 'eb4e65837a929d7d33f3fd71d163257a57efe0b8',
     'dependentFiles' => 
     array (
       0 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Http/Controllers/Admin/UserController.php',
@@ -14678,28 +14642,32 @@ return [
       15 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Http/Controllers/Auth/VerifyEmailController.php',
       16 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Http/Middleware/PermissionMiddleware.php',
       17 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Http/Middleware/RoleMiddleware.php',
-      18 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Models/Role.php',
-      19 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/BankTransaction.php',
-      20 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/CRM/Imports/ContactsImport.php',
-      21 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/CRM/Models/Communication.php',
-      22 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/CRM/Models/Contact.php',
-      23 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/CRM/Models/FollowUp.php',
-      24 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/HR/Models/Employee.php',
-      25 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/HR/Models/PerformanceReview.php',
-      26 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Roles/Controllers/RolesController.php',
-      27 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Support/Models/Ticket.php',
-      28 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Support/Models/TicketAttachment.php',
-      29 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Support/Models/TicketComment.php',
-      30 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Policies/EmployeePolicy.php',
-      31 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Policies/InvoicePolicy.php',
-      32 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Policies/UserPolicy.php',
-      33 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Providers/AppServiceProvider.php',
-      34 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/tests/Feature/BasicSystemTest.php',
-      35 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/tests/Feature/HR/EmployeeManagementTest.php',
-      36 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/tests/Feature/HR/LeaveManagementTest.php',
-      37 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/tests/Feature/ModuleAccessTest.php',
-      38 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/tests/Feature/SystemIntegrationTest.php',
-      39 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/tests/Feature/UIComponentTest.php',
+      18 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Http/Requests/UserStoreRequest.php',
+      19 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Http/Requests/UserUpdateRequest.php',
+      20 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Models/Role.php',
+      21 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/BankTransaction.php',
+      22 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Requests/InvoiceStoreRequest.php',
+      23 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Requests/InvoiceUpdateRequest.php',
+      24 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/CRM/Imports/ContactsImport.php',
+      25 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/CRM/Models/Communication.php',
+      26 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/CRM/Models/Contact.php',
+      27 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/CRM/Models/FollowUp.php',
+      28 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/HR/Models/Employee.php',
+      29 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/HR/Models/PerformanceReview.php',
+      30 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Roles/Controllers/RolesController.php',
+      31 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Support/Models/Ticket.php',
+      32 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Support/Models/TicketAttachment.php',
+      33 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Support/Models/TicketComment.php',
+      34 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Policies/EmployeePolicy.php',
+      35 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Policies/InvoicePolicy.php',
+      36 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Policies/UserPolicy.php',
+      37 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Providers/AppServiceProvider.php',
+      38 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/tests/Feature/BasicSystemTest.php',
+      39 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/tests/Feature/HR/EmployeeManagementTest.php',
+      40 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/tests/Feature/HR/LeaveManagementTest.php',
+      41 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/tests/Feature/ModuleAccessTest.php',
+      42 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/tests/Feature/SystemIntegrationTest.php',
+      43 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/tests/Feature/UIComponentTest.php',
     ),
   ),
   '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/ChartOfAccountController.php' => 
@@ -14748,7 +14716,7 @@ return [
   ),
   '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/InvoiceController.php' => 
   array (
-    'fileHash' => '0996e5c00e688218eae79fc7ce348b739a882039',
+    'fileHash' => '36a376dab2d919b0c40b57c412a19a8002d0ed9f',
     'dependentFiles' => 
     array (
       0 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/routes/accounting.php',
@@ -14999,11 +14967,12 @@ return [
       12 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/PaymentApplication.php',
       13 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/RecurringProfile.php',
       14 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Tax.php',
-      15 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Services/DashboardService.php',
-      16 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Services/ReportService.php',
-      17 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Policies/InvoicePolicy.php',
-      18 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Providers/AppServiceProvider.php',
-      19 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Services/InvoicePdfService.php',
+      15 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Requests/InvoiceStoreRequest.php',
+      16 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Services/DashboardService.php',
+      17 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Services/ReportService.php',
+      18 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Policies/InvoicePolicy.php',
+      19 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Providers/AppServiceProvider.php',
+      20 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Services/InvoicePdfService.php',
     ),
   ),
   '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/InvoiceItem.php' => 
@@ -15143,7 +15112,7 @@ return [
   ),
   '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Requests/InvoiceStoreRequest.php' => 
   array (
-    'fileHash' => '4b4ca75796ded5356c2fa31d5c337cfefe89b3ad',
+    'fileHash' => '831c5b675fd6e5a75206e465ee1cd56b23f11dfa',
     'dependentFiles' => 
     array (
       0 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/InvoiceController.php',
@@ -15151,7 +15120,7 @@ return [
   ),
   '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Requests/InvoiceUpdateRequest.php' => 
   array (
-    'fileHash' => '7a55ef773a582b164551fc2c0f86b9446fb3996e',
+    'fileHash' => 'b07a203c19ff7803b1c9cb717c9bd9dbc9d38873',
     'dependentFiles' => 
     array (
       0 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/InvoiceController.php',
