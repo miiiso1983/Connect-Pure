@@ -243,5 +243,22 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
       array (
       ),
     ),
+    '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/tests/Unit/SettingsTest.php' => 
+    array (
+      0 => 'a6d4df2dc70351515f737620ac231bfa77993fdd',
+      1 => 
+      array (
+        0 => 'tests\\unit\\settingstest',
+      ),
+      2 => 
+      array (
+        0 => 'tests\\unit\\setup',
+        1 => 'tests\\unit\\test_set_and_get_single_setting',
+        2 => 'tests\\unit\\test_set_many_and_all',
+      ),
+      3 => 
+      array (
+      ),
+    ),
   ),
 ));

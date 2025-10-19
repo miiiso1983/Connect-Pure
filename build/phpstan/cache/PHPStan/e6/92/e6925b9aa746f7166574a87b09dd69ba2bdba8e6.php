@@ -557,7 +557,7 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
     ),
     '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Http/Controllers/Admin/SystemSettingsController.php' => 
     array (
-      0 => '8ce193eaed1d9678b10bca747a8fd8c72005d987',
+      0 => '1e2855a573c5d67cf6e497732654555e2b5af2c3',
       1 => 
       array (
         0 => 'app\\http\\controllers\\admin\\systemsettingscontroller',

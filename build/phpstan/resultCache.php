@@ -8981,7 +8981,7 @@ return [
           0 => 'App\\Http\\Controllers\\Admin\\SystemSettingsController',
         ),
         1 => 'updateEnvFile',
-        2 => 60,
+        2 => 62,
       ),
       1 => 
       array (
@@ -8990,7 +8990,7 @@ return [
           0 => 'App\\Http\\Controllers\\Admin\\SystemSettingsController',
         ),
         1 => 'updateSettings',
-        2 => 65,
+        2 => 67,
       ),
       2 => 
       array (
@@ -8999,7 +8999,7 @@ return [
           0 => 'App\\Http\\Controllers\\Admin\\SystemSettingsController',
         ),
         1 => 'updateEnvFile',
-        2 => 106,
+        2 => 108,
       ),
       3 => 
       array (
@@ -9008,7 +9008,7 @@ return [
           0 => 'App\\Http\\Controllers\\Admin\\SystemSettingsController',
         ),
         1 => 'updateSettings',
-        2 => 154,
+        2 => 156,
       ),
     ),
     'PHPStan\\Rules\\DeadCode\\PossiblyPureStaticCallCollector' => 
@@ -9017,67 +9017,61 @@ return [
       array (
         0 => 'Illuminate\\Foundation\\Console\\Kernel',
         1 => 'call',
-        2 => 185,
+        2 => 187,
       ),
       1 => 
       array (
         0 => 'Illuminate\\Foundation\\Console\\Kernel',
         1 => 'call',
-        2 => 189,
+        2 => 191,
       ),
       2 => 
       array (
         0 => 'Illuminate\\Foundation\\Console\\Kernel',
         1 => 'call',
-        2 => 205,
+        2 => 207,
       ),
       3 => 
       array (
         0 => 'Illuminate\\Foundation\\Console\\Kernel',
         1 => 'call',
-        2 => 206,
+        2 => 208,
       ),
       4 => 
       array (
         0 => 'Illuminate\\Foundation\\Console\\Kernel',
         1 => 'call',
-        2 => 207,
+        2 => 209,
       ),
       5 => 
       array (
         0 => 'Illuminate\\Foundation\\Console\\Kernel',
         1 => 'call',
-        2 => 208,
+        2 => 210,
       ),
       6 => 
       array (
         0 => 'Illuminate\\Foundation\\Console\\Kernel',
         1 => 'call',
-        2 => 222,
+        2 => 224,
       ),
       7 => 
       array (
         0 => 'Illuminate\\Foundation\\Console\\Kernel',
         1 => 'call',
-        2 => 223,
+        2 => 225,
       ),
       8 => 
       array (
         0 => 'Illuminate\\Foundation\\Console\\Kernel',
         1 => 'call',
-        2 => 224,
+        2 => 226,
       ),
       9 => 
       array (
-        0 => 'Illuminate\\Support\\Facades\\Cache',
-        1 => 'forget',
-        2 => 307,
-      ),
-      10 => 
-      array (
         0 => 'Illuminate\\Support\\Facades\\File',
         1 => 'put',
-        2 => 328,
+        2 => 317,
       ),
     ),
   ),
@@ -14208,6 +14202,17 @@ return [
       ),
     ),
   ),
+  '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/tests/Unit/SettingsTest.php' => 
+  array (
+    'PHPStan\\Rules\\DeadCode\\PossiblyPureFuncCallCollector' => 
+    array (
+      0 => 
+      array (
+        0 => 'config',
+        1 => 15,
+      ),
+    ),
+  ),
 ); },
 	'dependencies' => array (
   '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Console/Commands/AuthenticationSummary.php' => 
@@ -14337,7 +14342,7 @@ return [
   ),
   '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Http/Controllers/Admin/SystemSettingsController.php' => 
   array (
-    'fileHash' => '8ce193eaed1d9678b10bca747a8fd8c72005d987',
+    'fileHash' => '1e2855a573c5d67cf6e497732654555e2b5af2c3',
     'dependentFiles' => 
     array (
       0 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/routes/web.php',
@@ -15511,7 +15516,9 @@ return [
     'fileHash' => '9d68130914db15af3912514e4358d1149795fd69',
     'dependentFiles' => 
     array (
-      0 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Providers/AppServiceProvider.php',
+      0 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Http/Controllers/Admin/SystemSettingsController.php',
+      1 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Providers/AppServiceProvider.php',
+      2 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/tests/Unit/SettingsTest.php',
     ),
   ),
   '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Services/WhatsAppService.php' => 
@@ -15628,11 +15635,19 @@ return [
       4 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/tests/Feature/ModuleAccessTest.php',
       5 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/tests/Feature/SystemIntegrationTest.php',
       6 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/tests/Feature/UIComponentTest.php',
+      7 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/tests/Unit/SettingsTest.php',
     ),
   ),
   '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/tests/Unit/ExampleTest.php' => 
   array (
     'fileHash' => '91a952d5ada8d3d11d059d9ad547e83f37785842',
+    'dependentFiles' => 
+    array (
+    ),
+  ),
+  '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/tests/Unit/SettingsTest.php' => 
+  array (
+    'fileHash' => 'a6d4df2dc70351515f737620ac231bfa77993fdd',
     'dependentFiles' => 
     array (
     ),
@@ -17985,6 +18000,31 @@ return [
        'statements' => 
       array (
         0 => 
+        \PHPStan\Dependency\ExportedNode\ExportedPropertiesNode::__set_state(array(
+           'names' => 
+          array (
+            0 => 'settings',
+          ),
+           'phpDoc' => NULL,
+           'type' => 'App\\Services\\Settings',
+           'public' => false,
+           'private' => false,
+           'static' => false,
+           'readonly' => false,
+           'abstract' => false,
+           'final' => false,
+           'publicSet' => false,
+           'protectedSet' => false,
+           'privateSet' => false,
+           'virtual' => false,
+           'attributes' => 
+          array (
+          ),
+           'hooks' => 
+          array (
+          ),
+        )),
+        1 => 
         \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
            'name' => '__construct',
            'phpDoc' => NULL,
@@ -17997,12 +18037,23 @@ return [
            'returnType' => NULL,
            'parameters' => 
           array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'settings',
+               'type' => 'App\\Services\\Settings',
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
           ),
            'attributes' => 
           array (
           ),
         )),
-        1 => 
+        2 => 
         \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
            'name' => 'index',
            'phpDoc' => 
@@ -18014,49 +18065,11 @@ return [
              'uses' => 
             array (
               'controller' => 'App\\Http\\Controllers\\Controller',
+              'settings' => 'App\\Services\\Settings',
               'request' => 'Illuminate\\Http\\Request',
               'artisan' => 'Illuminate\\Support\\Facades\\Artisan',
-              'cache' => 'Illuminate\\Support\\Facades\\Cache',
               'db' => 'Illuminate\\Support\\Facades\\DB',
               'file' => 'Illuminate\\Support\\Facades\\File',
-              'schema' => 'Illuminate\\Support\\Facades\\Schema',
-            ),
-             'constUses' => 
-            array (
-            ),
-          )),
-           'byRef' => false,
-           'public' => true,
-           'private' => false,
-           'abstract' => false,
-           'final' => false,
-           'static' => false,
-           'returnType' => NULL,
-           'parameters' => 
-          array (
-          ),
-           'attributes' => 
-          array (
-          ),
-        )),
-        2 => 
-        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
-           'name' => 'general',
-           'phpDoc' => 
-          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
-             'phpDocString' => '/**
-     * Show general settings
-     */',
-             'namespace' => 'App\\Http\\Controllers\\Admin',
-             'uses' => 
-            array (
-              'controller' => 'App\\Http\\Controllers\\Controller',
-              'request' => 'Illuminate\\Http\\Request',
-              'artisan' => 'Illuminate\\Support\\Facades\\Artisan',
-              'cache' => 'Illuminate\\Support\\Facades\\Cache',
-              'db' => 'Illuminate\\Support\\Facades\\DB',
-              'file' => 'Illuminate\\Support\\Facades\\File',
-              'schema' => 'Illuminate\\Support\\Facades\\Schema',
             ),
              'constUses' => 
             array (
@@ -18078,6 +18091,42 @@ return [
         )),
         3 => 
         \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'general',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Show general settings
+     */',
+             'namespace' => 'App\\Http\\Controllers\\Admin',
+             'uses' => 
+            array (
+              'controller' => 'App\\Http\\Controllers\\Controller',
+              'settings' => 'App\\Services\\Settings',
+              'request' => 'Illuminate\\Http\\Request',
+              'artisan' => 'Illuminate\\Support\\Facades\\Artisan',
+              'db' => 'Illuminate\\Support\\Facades\\DB',
+              'file' => 'Illuminate\\Support\\Facades\\File',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        4 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
            'name' => 'updateGeneral',
            'phpDoc' => 
           \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
@@ -18088,12 +18137,11 @@ return [
              'uses' => 
             array (
               'controller' => 'App\\Http\\Controllers\\Controller',
+              'settings' => 'App\\Services\\Settings',
               'request' => 'Illuminate\\Http\\Request',
               'artisan' => 'Illuminate\\Support\\Facades\\Artisan',
-              'cache' => 'Illuminate\\Support\\Facades\\Cache',
               'db' => 'Illuminate\\Support\\Facades\\DB',
               'file' => 'Illuminate\\Support\\Facades\\File',
-              'schema' => 'Illuminate\\Support\\Facades\\Schema',
             ),
              'constUses' => 
             array (
@@ -18124,7 +18172,7 @@ return [
           array (
           ),
         )),
-        4 => 
+        5 => 
         \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
            'name' => 'email',
            'phpDoc' => 
@@ -18136,12 +18184,11 @@ return [
              'uses' => 
             array (
               'controller' => 'App\\Http\\Controllers\\Controller',
+              'settings' => 'App\\Services\\Settings',
               'request' => 'Illuminate\\Http\\Request',
               'artisan' => 'Illuminate\\Support\\Facades\\Artisan',
-              'cache' => 'Illuminate\\Support\\Facades\\Cache',
               'db' => 'Illuminate\\Support\\Facades\\DB',
               'file' => 'Illuminate\\Support\\Facades\\File',
-              'schema' => 'Illuminate\\Support\\Facades\\Schema',
             ),
              'constUses' => 
             array (
@@ -18161,7 +18208,7 @@ return [
           array (
           ),
         )),
-        5 => 
+        6 => 
         \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
            'name' => 'updateEmail',
            'phpDoc' => 
@@ -18173,12 +18220,11 @@ return [
              'uses' => 
             array (
               'controller' => 'App\\Http\\Controllers\\Controller',
+              'settings' => 'App\\Services\\Settings',
               'request' => 'Illuminate\\Http\\Request',
               'artisan' => 'Illuminate\\Support\\Facades\\Artisan',
-              'cache' => 'Illuminate\\Support\\Facades\\Cache',
               'db' => 'Illuminate\\Support\\Facades\\DB',
               'file' => 'Illuminate\\Support\\Facades\\File',
-              'schema' => 'Illuminate\\Support\\Facades\\Schema',
             ),
              'constUses' => 
             array (
@@ -18209,7 +18255,7 @@ return [
           array (
           ),
         )),
-        6 => 
+        7 => 
         \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
            'name' => 'database',
            'phpDoc' => 
@@ -18221,49 +18267,11 @@ return [
              'uses' => 
             array (
               'controller' => 'App\\Http\\Controllers\\Controller',
+              'settings' => 'App\\Services\\Settings',
               'request' => 'Illuminate\\Http\\Request',
               'artisan' => 'Illuminate\\Support\\Facades\\Artisan',
-              'cache' => 'Illuminate\\Support\\Facades\\Cache',
               'db' => 'Illuminate\\Support\\Facades\\DB',
               'file' => 'Illuminate\\Support\\Facades\\File',
-              'schema' => 'Illuminate\\Support\\Facades\\Schema',
-            ),
-             'constUses' => 
-            array (
-            ),
-          )),
-           'byRef' => false,
-           'public' => true,
-           'private' => false,
-           'abstract' => false,
-           'final' => false,
-           'static' => false,
-           'returnType' => NULL,
-           'parameters' => 
-          array (
-          ),
-           'attributes' => 
-          array (
-          ),
-        )),
-        7 => 
-        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
-           'name' => 'security',
-           'phpDoc' => 
-          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
-             'phpDocString' => '/**
-     * Show security settings
-     */',
-             'namespace' => 'App\\Http\\Controllers\\Admin',
-             'uses' => 
-            array (
-              'controller' => 'App\\Http\\Controllers\\Controller',
-              'request' => 'Illuminate\\Http\\Request',
-              'artisan' => 'Illuminate\\Support\\Facades\\Artisan',
-              'cache' => 'Illuminate\\Support\\Facades\\Cache',
-              'db' => 'Illuminate\\Support\\Facades\\DB',
-              'file' => 'Illuminate\\Support\\Facades\\File',
-              'schema' => 'Illuminate\\Support\\Facades\\Schema',
             ),
              'constUses' => 
             array (
@@ -18285,6 +18293,42 @@ return [
         )),
         8 => 
         \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'security',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * Show security settings
+     */',
+             'namespace' => 'App\\Http\\Controllers\\Admin',
+             'uses' => 
+            array (
+              'controller' => 'App\\Http\\Controllers\\Controller',
+              'settings' => 'App\\Services\\Settings',
+              'request' => 'Illuminate\\Http\\Request',
+              'artisan' => 'Illuminate\\Support\\Facades\\Artisan',
+              'db' => 'Illuminate\\Support\\Facades\\DB',
+              'file' => 'Illuminate\\Support\\Facades\\File',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        9 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
            'name' => 'updateSecurity',
            'phpDoc' => 
           \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
@@ -18295,12 +18339,11 @@ return [
              'uses' => 
             array (
               'controller' => 'App\\Http\\Controllers\\Controller',
+              'settings' => 'App\\Services\\Settings',
               'request' => 'Illuminate\\Http\\Request',
               'artisan' => 'Illuminate\\Support\\Facades\\Artisan',
-              'cache' => 'Illuminate\\Support\\Facades\\Cache',
               'db' => 'Illuminate\\Support\\Facades\\DB',
               'file' => 'Illuminate\\Support\\Facades\\File',
-              'schema' => 'Illuminate\\Support\\Facades\\Schema',
             ),
              'constUses' => 
             array (
@@ -18331,7 +18374,7 @@ return [
           array (
           ),
         )),
-        9 => 
+        10 => 
         \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
            'name' => 'maintenance',
            'phpDoc' => 
@@ -18343,12 +18386,11 @@ return [
              'uses' => 
             array (
               'controller' => 'App\\Http\\Controllers\\Controller',
+              'settings' => 'App\\Services\\Settings',
               'request' => 'Illuminate\\Http\\Request',
               'artisan' => 'Illuminate\\Support\\Facades\\Artisan',
-              'cache' => 'Illuminate\\Support\\Facades\\Cache',
               'db' => 'Illuminate\\Support\\Facades\\DB',
               'file' => 'Illuminate\\Support\\Facades\\File',
-              'schema' => 'Illuminate\\Support\\Facades\\Schema',
             ),
              'constUses' => 
             array (
@@ -18368,7 +18410,7 @@ return [
           array (
           ),
         )),
-        10 => 
+        11 => 
         \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
            'name' => 'toggleMaintenance',
            'phpDoc' => 
@@ -18380,12 +18422,11 @@ return [
              'uses' => 
             array (
               'controller' => 'App\\Http\\Controllers\\Controller',
+              'settings' => 'App\\Services\\Settings',
               'request' => 'Illuminate\\Http\\Request',
               'artisan' => 'Illuminate\\Support\\Facades\\Artisan',
-              'cache' => 'Illuminate\\Support\\Facades\\Cache',
               'db' => 'Illuminate\\Support\\Facades\\DB',
               'file' => 'Illuminate\\Support\\Facades\\File',
-              'schema' => 'Illuminate\\Support\\Facades\\Schema',
             ),
              'constUses' => 
             array (
@@ -18416,7 +18457,7 @@ return [
           array (
           ),
         )),
-        11 => 
+        12 => 
         \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
            'name' => 'clearCache',
            'phpDoc' => 
@@ -18428,12 +18469,11 @@ return [
              'uses' => 
             array (
               'controller' => 'App\\Http\\Controllers\\Controller',
+              'settings' => 'App\\Services\\Settings',
               'request' => 'Illuminate\\Http\\Request',
               'artisan' => 'Illuminate\\Support\\Facades\\Artisan',
-              'cache' => 'Illuminate\\Support\\Facades\\Cache',
               'db' => 'Illuminate\\Support\\Facades\\DB',
               'file' => 'Illuminate\\Support\\Facades\\File',
-              'schema' => 'Illuminate\\Support\\Facades\\Schema',
             ),
              'constUses' => 
             array (
@@ -18453,7 +18493,7 @@ return [
           array (
           ),
         )),
-        12 => 
+        13 => 
         \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
            'name' => 'optimize',
            'phpDoc' => 
@@ -18465,12 +18505,11 @@ return [
              'uses' => 
             array (
               'controller' => 'App\\Http\\Controllers\\Controller',
+              'settings' => 'App\\Services\\Settings',
               'request' => 'Illuminate\\Http\\Request',
               'artisan' => 'Illuminate\\Support\\Facades\\Artisan',
-              'cache' => 'Illuminate\\Support\\Facades\\Cache',
               'db' => 'Illuminate\\Support\\Facades\\DB',
               'file' => 'Illuminate\\Support\\Facades\\File',
-              'schema' => 'Illuminate\\Support\\Facades\\Schema',
             ),
              'constUses' => 
             array (
@@ -69062,6 +69101,86 @@ return [
             array (
             ),
           )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => 'void',
+           'parameters' => 
+          array (
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+      ),
+       'attributes' => 
+      array (
+      ),
+    )),
+  ),
+  '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/tests/Unit/SettingsTest.php' => 
+  array (
+    0 => 
+    \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state(array(
+       'name' => 'Tests\\Unit\\SettingsTest',
+       'phpDoc' => NULL,
+       'abstract' => false,
+       'final' => false,
+       'extends' => 'Tests\\TestCase',
+       'implements' => 
+      array (
+      ),
+       'usedTraits' => 
+      array (
+      ),
+       'traitUseAdaptations' => 
+      array (
+      ),
+       'statements' => 
+      array (
+        0 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'setUp',
+           'phpDoc' => NULL,
+           'byRef' => false,
+           'public' => false,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => 'void',
+           'parameters' => 
+          array (
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        1 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'test_set_and_get_single_setting',
+           'phpDoc' => NULL,
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => 'void',
+           'parameters' => 
+          array (
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        2 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'test_set_many_and_all',
+           'phpDoc' => NULL,
            'byRef' => false,
            'public' => true,
            'private' => false,
