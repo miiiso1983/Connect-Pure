@@ -161,6 +161,10 @@ Route::middleware('auth')->prefix('modules')->name('modules.')->group(function (
             Route::get('/{invoice}/edit', [\App\Modules\Accounting\Controllers\InvoiceController::class, 'edit'])->name('edit');
             Route::put('/{invoice}', [\App\Modules\Accounting\Controllers\InvoiceController::class, 'update'])->name('update');
             Route::delete('/{invoice}', [\App\Modules\Accounting\Controllers\InvoiceController::class, 'destroy'])->name('destroy');
+
+            // Actions
+            Route::post('/{invoice}/send', [\App\Modules\Accounting\Controllers\InvoiceController::class, 'send'])->name('send');
+            Route::get('/{invoice}/pdf', [\App\Modules\Accounting\Controllers\InvoiceController::class, 'pdf'])->name('pdf');
         });
 
         // Expenses

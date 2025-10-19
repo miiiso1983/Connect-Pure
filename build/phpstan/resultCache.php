@@ -13401,13 +13401,13 @@ return [
       array (
         0 => 'Illuminate\\Support\\Facades\\Route',
         1 => 'resource',
-        2 => 299,
+        2 => 303,
       ),
       1 => 
       array (
         0 => 'Illuminate\\Support\\Facades\\Route',
         1 => 'resource',
-        2 => 327,
+        2 => 331,
       ),
     ),
   ),
@@ -14894,7 +14894,7 @@ return [
   ),
   '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/routes/web.php' => 
   array (
-    'fileHash' => '733e684bc6378bd46a4a0e2c29c17c2fc6149dd4',
+    'fileHash' => 'bf1a8dcacab10400d84af6ada00f25a964fb90ce',
     'dependentFiles' => 
     array (
     ),
