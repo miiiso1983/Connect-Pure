@@ -103,6 +103,28 @@ class WhatsAppController extends Controller
     }
 
     /**
+     * View WhatsApp message logs
+     */
+    public function logs(Request $request)
+    {
+        $query = \App\Models\WhatsAppMessageLog::query()->orderByDesc('id');
+
+        if ($request->filled('status')) {
+            $query->where('status', $request->string('status'));
+        }
+        if ($request->filled('message_id')) {
+            $query->where('message_id', $request->string('message_id'));
+        }
+        if ($request->filled('invoice_id')) {
+            $query->where('invoice_id', $request->integer('invoice_id'));
+        }
+
+        $logs = $query->paginate(20)->withQueryString();
+
+        return view('admin.whatsapp.logs', compact('logs'));
+    }
+
+    /**
      * Update environment file
      */
     protected function updateEnvFile(array $data)

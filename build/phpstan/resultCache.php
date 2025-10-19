@@ -8435,6 +8435,7 @@ return [
     'Larastan\\Larastan\\Collectors\\UsedViewFunctionCollector' => 
     array (
       0 => 'admin.whatsapp.index',
+      1 => 'admin.whatsapp.logs',
     ),
     'PHPStan\\Rules\\DeadCode\\PossiblyPureStaticCallCollector' => 
     array (
@@ -8443,6 +8444,18 @@ return [
         0 => 'Illuminate\\Foundation\\Console\\Kernel',
         1 => 'call',
         2 => 63,
+      ),
+    ),
+  ),
+  '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Http/Controllers/Api/WhatsAppWebhookController.php' => 
+  array (
+    'PHPStan\\Rules\\DeadCode\\PossiblyPureStaticCallCollector' => 
+    array (
+      0 => 
+      array (
+        0 => 'Illuminate\\Database\\Eloquent\\Builder',
+        1 => 'create',
+        2 => 65,
       ),
     ),
   ),
@@ -8683,6 +8696,21 @@ return [
   ),
   '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Listeners/SendInvoiceWhatsAppMessage.php' => 
   array (
+    'PHPStan\\Rules\\DeadCode\\PossiblyPureStaticCallCollector' => 
+    array (
+      0 => 
+      array (
+        0 => 'Illuminate\\Database\\Eloquent\\Builder',
+        1 => 'create',
+        2 => 99,
+      ),
+      1 => 
+      array (
+        0 => 'Illuminate\\Database\\Eloquent\\Builder',
+        1 => 'create',
+        2 => 114,
+      ),
+    ),
     'PHPStan\\Rules\\Traits\\TraitUseCollector' => 
     array (
       0 => 
@@ -13645,7 +13673,7 @@ return [
   ),
   '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Http/Controllers/Admin/WhatsAppController.php' => 
   array (
-    'fileHash' => '6f5d795ff539c0b2690c4b0c96621cfedff20643',
+    'fileHash' => '25bc60fff404b28f9f453bf9c351b60f86122651',
     'dependentFiles' => 
     array (
       0 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/routes/web.php',
@@ -13653,7 +13681,7 @@ return [
   ),
   '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Http/Controllers/Api/WhatsAppWebhookController.php' => 
   array (
-    'fileHash' => 'd7d5178678479bc15b46c81a73911f1c64f4c7d3',
+    'fileHash' => '250bd0ab84a08a4c35979e73cfe488ec614bbe88',
     'dependentFiles' => 
     array (
       0 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/routes/web.php',
@@ -13835,7 +13863,7 @@ return [
   ),
   '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Listeners/SendInvoiceWhatsAppMessage.php' => 
   array (
-    'fileHash' => '33ca9baaeec3bf0473863161065d81997b23428c',
+    'fileHash' => 'a80c8943e9d874049776ea8b42e63b45beac8fcd',
     'dependentFiles' => 
     array (
       0 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Providers/WhatsAppServiceProvider.php',
@@ -13961,6 +13989,16 @@ return [
       41 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/tests/Feature/ModuleAccessTest.php',
       42 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/tests/Feature/SystemIntegrationTest.php',
       43 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/tests/Feature/UIComponentTest.php',
+    ),
+  ),
+  '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Models/WhatsAppMessageLog.php' => 
+  array (
+    'fileHash' => '57857af6846a72dc08862f202c3e3e1c01477997',
+    'dependentFiles' => 
+    array (
+      0 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Http/Controllers/Admin/WhatsAppController.php',
+      1 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Http/Controllers/Api/WhatsAppWebhookController.php',
+      2 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Listeners/SendInvoiceWhatsAppMessage.php',
     ),
   ),
   '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/ChartOfAccountController.php' => 
@@ -14889,7 +14927,7 @@ return [
   ),
   '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/routes/web.php' => 
   array (
-    'fileHash' => '297ce2382be0666d76b02015ba3ea5366ad5182e',
+    'fileHash' => '8fde5c9054b57277313c478a5993a4bec74b9e07',
     'dependentFiles' => 
     array (
     ),
@@ -18994,6 +19032,51 @@ return [
         )),
         6 => 
         \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'logs',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * View WhatsApp message logs
+     */',
+             'namespace' => 'App\\Http\\Controllers\\Admin',
+             'uses' => 
+            array (
+              'controller' => 'App\\Http\\Controllers\\Controller',
+              'whatsappservice' => 'App\\Services\\WhatsAppService',
+              'request' => 'Illuminate\\Http\\Request',
+              'artisan' => 'Illuminate\\Support\\Facades\\Artisan',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => NULL,
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'request',
+               'type' => 'Illuminate\\Http\\Request',
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        7 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
            'name' => 'updateEnvFile',
            'phpDoc' => 
           \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
@@ -19075,6 +19158,7 @@ return [
              'uses' => 
             array (
               'controller' => 'App\\Http\\Controllers\\Controller',
+              'whatsappmessagelog' => 'App\\Models\\WhatsAppMessageLog',
               'invoice' => 'App\\Modules\\Accounting\\Models\\Invoice',
               'request' => 'Illuminate\\Http\\Request',
               'log' => 'Illuminate\\Support\\Facades\\Log',
@@ -19121,6 +19205,7 @@ return [
              'uses' => 
             array (
               'controller' => 'App\\Http\\Controllers\\Controller',
+              'whatsappmessagelog' => 'App\\Models\\WhatsAppMessageLog',
               'invoice' => 'App\\Modules\\Accounting\\Models\\Invoice',
               'request' => 'Illuminate\\Http\\Request',
               'log' => 'Illuminate\\Support\\Facades\\Log',
@@ -20875,6 +20960,7 @@ return [
              'uses' => 
             array (
               'invoicesubmitted' => 'App\\Events\\InvoiceSubmitted',
+              'whatsappmessagelog' => 'App\\Models\\WhatsAppMessageLog',
               'invoicepdfservice' => 'App\\Services\\InvoicePdfService',
               'whatsappservice' => 'App\\Services\\WhatsAppService',
               'shouldqueue' => 'Illuminate\\Contracts\\Queue\\ShouldQueue',
@@ -20933,6 +21019,7 @@ return [
              'uses' => 
             array (
               'invoicesubmitted' => 'App\\Events\\InvoiceSubmitted',
+              'whatsappmessagelog' => 'App\\Models\\WhatsAppMessageLog',
               'invoicepdfservice' => 'App\\Services\\InvoicePdfService',
               'whatsappservice' => 'App\\Services\\WhatsAppService',
               'shouldqueue' => 'Illuminate\\Contracts\\Queue\\ShouldQueue',
@@ -20980,6 +21067,7 @@ return [
              'uses' => 
             array (
               'invoicesubmitted' => 'App\\Events\\InvoiceSubmitted',
+              'whatsappmessagelog' => 'App\\Models\\WhatsAppMessageLog',
               'invoicepdfservice' => 'App\\Services\\InvoicePdfService',
               'whatsappservice' => 'App\\Services\\WhatsAppService',
               'shouldqueue' => 'Illuminate\\Contracts\\Queue\\ShouldQueue',
@@ -25327,6 +25415,82 @@ return [
             )),
           ),
            'attributes' => 
+          array (
+          ),
+        )),
+      ),
+       'attributes' => 
+      array (
+      ),
+    )),
+  ),
+  '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Models/WhatsAppMessageLog.php' => 
+  array (
+    0 => 
+    \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state(array(
+       'name' => 'App\\Models\\WhatsAppMessageLog',
+       'phpDoc' => NULL,
+       'abstract' => false,
+       'final' => false,
+       'extends' => 'Illuminate\\Database\\Eloquent\\Model',
+       'implements' => 
+      array (
+      ),
+       'usedTraits' => 
+      array (
+      ),
+       'traitUseAdaptations' => 
+      array (
+      ),
+       'statements' => 
+      array (
+        0 => 
+        \PHPStan\Dependency\ExportedNode\ExportedPropertiesNode::__set_state(array(
+           'names' => 
+          array (
+            0 => 'fillable',
+          ),
+           'phpDoc' => NULL,
+           'type' => NULL,
+           'public' => false,
+           'private' => false,
+           'static' => false,
+           'readonly' => false,
+           'abstract' => false,
+           'final' => false,
+           'publicSet' => false,
+           'protectedSet' => false,
+           'privateSet' => false,
+           'virtual' => false,
+           'attributes' => 
+          array (
+          ),
+           'hooks' => 
+          array (
+          ),
+        )),
+        1 => 
+        \PHPStan\Dependency\ExportedNode\ExportedPropertiesNode::__set_state(array(
+           'names' => 
+          array (
+            0 => 'casts',
+          ),
+           'phpDoc' => NULL,
+           'type' => NULL,
+           'public' => false,
+           'private' => false,
+           'static' => false,
+           'readonly' => false,
+           'abstract' => false,
+           'final' => false,
+           'publicSet' => false,
+           'protectedSet' => false,
+           'privateSet' => false,
+           'virtual' => false,
+           'attributes' => 
+          array (
+          ),
+           'hooks' => 
           array (
           ),
         )),

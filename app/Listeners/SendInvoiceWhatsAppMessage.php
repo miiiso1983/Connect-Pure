@@ -3,6 +3,7 @@
 namespace App\Listeners;
 
 use App\Events\InvoiceSubmitted;
+use App\Models\WhatsAppMessageLog;
 use App\Services\InvoicePdfService;
 use App\Services\WhatsAppService;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -79,17 +80,27 @@ class SendInvoiceWhatsAppMessage implements ShouldQueue
             );
 
             if ($result['success']) {
+                $messageId = $result['text_message']['message_id'] ?? null;
+
                 Log::info('Invoice WhatsApp notification sent successfully', [
                     'invoice_id' => $invoice->id,
                     'customer_id' => $invoice->customer->id,
                     'whatsapp_number' => $whatsappNumber,
-                    'message_id' => $result['text_message']['message_id'] ?? null,
+                    'message_id' => $messageId,
                 ]);
 
                 // Update invoice to mark WhatsApp notification as sent
                 $invoice->update([
                     'whatsapp_sent_at' => now(),
-                    'whatsapp_message_id' => $result['text_message']['message_id'] ?? null,
+                    'whatsapp_message_id' => $messageId,
+                ]);
+
+                // Persist log row (sent)
+                WhatsAppMessageLog::create([
+                    'invoice_id' => $invoice->id,
+                    'message_id' => $messageId,
+                    'status' => 'sent',
+                    'payload' => $result,
                 ]);
             } else {
                 Log::error('Failed to send invoice WhatsApp notification', [
@@ -97,6 +108,14 @@ class SendInvoiceWhatsAppMessage implements ShouldQueue
                     'customer_id' => $invoice->customer->id,
                     'whatsapp_number' => $whatsappNumber,
                     'error' => $result['error'] ?? 'Unknown error',
+                ]);
+
+                // Persist log row (failed to send)
+                WhatsAppMessageLog::create([
+                    'invoice_id' => $invoice->id,
+                    'message_id' => $result['text_message']['message_id'] ?? null,
+                    'status' => 'failed',
+                    'payload' => $result,
                 ]);
             }
 

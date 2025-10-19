@@ -376,7 +376,9 @@ Route::middleware('auth')->prefix('admin')->name('admin.')->group(function () {
             Route::put('/update', [\App\Http\Controllers\Admin\WhatsAppController::class, 'update'])->name('update');
             Route::post('/test', [\App\Http\Controllers\Admin\WhatsAppController::class, 'test'])->name('test');
             Route::get('/profile', [\App\Http\Controllers\Admin\WhatsAppController::class, 'profile'])->name('profile');
+            Route::get('/logs', [\App\Http\Controllers\Admin\WhatsAppController::class, 'logs'])->name('logs');
         });
+
     });
 });
 

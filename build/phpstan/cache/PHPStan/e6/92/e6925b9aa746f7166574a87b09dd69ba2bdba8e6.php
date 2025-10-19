@@ -689,7 +689,7 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
     ),
     '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Http/Controllers/Admin/WhatsAppController.php' => 
     array (
-      0 => '6f5d795ff539c0b2690c4b0c96621cfedff20643',
+      0 => '25bc60fff404b28f9f453bf9c351b60f86122651',
       1 => 
       array (
         0 => 'app\\http\\controllers\\admin\\whatsappcontroller',
@@ -701,7 +701,8 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
         2 => 'app\\http\\controllers\\admin\\update',
         3 => 'app\\http\\controllers\\admin\\test',
         4 => 'app\\http\\controllers\\admin\\profile',
-        5 => 'app\\http\\controllers\\admin\\updateenvfile',
+        5 => 'app\\http\\controllers\\admin\\logs',
+        6 => 'app\\http\\controllers\\admin\\updateenvfile',
       ),
       3 => 
       array (
@@ -2924,7 +2925,7 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
     ),
     '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Listeners/SendInvoiceWhatsAppMessage.php' => 
     array (
-      0 => '33ca9baaeec3bf0473863161065d81997b23428c',
+      0 => 'a80c8943e9d874049776ea8b42e63b45beac8fcd',
       1 => 
       array (
         0 => 'app\\listeners\\sendinvoicewhatsappmessage',
@@ -3341,7 +3342,7 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
     ),
     '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Http/Controllers/Api/WhatsAppWebhookController.php' => 
     array (
-      0 => 'd7d5178678479bc15b46c81a73911f1c64f4c7d3',
+      0 => '250bd0ab84a08a4c35979e73cfe488ec614bbe88',
       1 => 
       array (
         0 => 'app\\http\\controllers\\api\\whatsappwebhookcontroller',
@@ -3350,6 +3351,20 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
       array (
         0 => 'app\\http\\controllers\\api\\verify',
         1 => 'app\\http\\controllers\\api\\handle',
+      ),
+      3 => 
+      array (
+      ),
+    ),
+    '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Models/WhatsAppMessageLog.php' => 
+    array (
+      0 => '57857af6846a72dc08862f202c3e3e1c01477997',
+      1 => 
+      array (
+        0 => 'app\\models\\whatsappmessagelog',
+      ),
+      2 => 
+      array (
       ),
       3 => 
       array (

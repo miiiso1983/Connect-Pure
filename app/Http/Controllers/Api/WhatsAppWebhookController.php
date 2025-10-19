@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Models\WhatsAppMessageLog;
 use App\Modules\Accounting\Models\Invoice;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
@@ -59,6 +60,15 @@ class WhatsAppWebhookController extends Controller
 
                             if ($messageId) {
                                 $invoice = Invoice::where('whatsapp_message_id', $messageId)->first();
+
+                                // Persist log row
+                                WhatsAppMessageLog::create([
+                                    'invoice_id' => $invoice?->id,
+                                    'message_id' => $messageId,
+                                    'status' => $statusText,
+                                    'payload' => $status,
+                                ]);
+
                                 if ($invoice) {
                                     Log::info('WhatsApp status for invoice', [
                                         'invoice_id' => $invoice->id,

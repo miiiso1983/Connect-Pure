@@ -59,7 +59,7 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
     ),
     '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/routes/web.php' => 
     array (
-      0 => '297ce2382be0666d76b02015ba3ea5366ad5182e',
+      0 => '8fde5c9054b57277313c478a5993a4bec74b9e07',
       1 => 
       array (
       ),
