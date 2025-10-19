@@ -3,18 +3,20 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Services\Settings;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Artisan;
-use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
-use Illuminate\Support\Facades\Schema;
 
 class SystemSettingsController extends Controller
 {
-    public function __construct()
+    protected Settings $settings;
+
+    public function __construct(Settings $settings)
     {
         $this->middleware(['auth', 'role:master-admin|top_management']);
+        $this->settings = $settings;
     }
 
     /**
@@ -283,13 +285,7 @@ class SystemSettingsController extends Controller
      */
     private function getSystemSettings()
     {
-        if (! Schema::hasTable('system_settings')) {
-            return [];
-        }
-
-        return Cache::remember('system_settings', 3600, function () {
-            return DB::table('system_settings')->pluck('value', 'key')->toArray();
-        });
+        return $this->settings->all();
     }
 
     /**
@@ -297,14 +293,7 @@ class SystemSettingsController extends Controller
      */
     private function updateSettings(array $settings)
     {
-        foreach ($settings as $key => $value) {
-            DB::table('system_settings')->updateOrInsert(
-                ['key' => $key],
-                ['value' => $value, 'updated_at' => now()]
-            );
-        }
-
-        Cache::forget('system_settings');
+        $this->settings->setMany($settings);
     }
 
     /**
@@ -411,8 +400,6 @@ class SystemSettingsController extends Controller
      */
     private function getSetting($key, $default = null)
     {
-        $settings = $this->getSystemSettings();
-
-        return $settings[$key] ?? $default;
+        return $this->settings->get($key, $default);
     }
 }
