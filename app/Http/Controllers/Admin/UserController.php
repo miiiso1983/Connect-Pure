@@ -3,11 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\UserStoreRequest;
+use App\Http\Requests\UserUpdateRequest;
 use App\Models\Role;
 use App\Models\User;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Validation\Rules;
 
 class UserController extends Controller
 {
@@ -34,26 +34,20 @@ class UserController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(UserStoreRequest $request)
     {
-        $request->validate([
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'confirmed', Rules\Password::defaults()],
-            'roles' => ['array'],
-            'roles.*' => ['exists:roles,id'],
-        ]);
+        $validated = $request->validated();
 
         $user = User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
+            'name' => $validated['name'],
+            'email' => $validated['email'],
+            'password' => Hash::make($validated['password']),
             'email_verified_at' => now(), // Auto-verify admin created users
         ]);
 
         // Assign roles if provided
-        if ($request->has('roles')) {
-            $user->roles()->sync($request->roles);
+        if (isset($validated['roles'])) {
+            $user->roles()->sync($validated['roles']);
         }
 
         return redirect()->route('admin.users.index')
@@ -84,30 +78,24 @@ class UserController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, User $user)
+    public function update(UserUpdateRequest $request, User $user)
     {
-        $request->validate([
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email,'.$user->id],
-            'password' => ['nullable', 'confirmed', Rules\Password::defaults()],
-            'roles' => ['array'],
-            'roles.*' => ['exists:roles,id'],
-        ]);
+        $validated = $request->validated();
 
         $user->update([
-            'name' => $request->name,
-            'email' => $request->email,
+            'name' => $validated['name'],
+            'email' => $validated['email'],
         ]);
 
         // Update password if provided
-        if ($request->filled('password')) {
+        if (! empty($validated['password'] ?? null)) {
             $user->update([
-                'password' => Hash::make($request->password),
+                'password' => Hash::make($validated['password']),
             ]);
         }
 
         // Update roles
-        $user->roles()->sync($request->roles ?? []);
+        $user->roles()->sync($validated['roles'] ?? []);
 
         return redirect()->route('admin.users.index')
             ->with('success', 'User updated successfully.');
