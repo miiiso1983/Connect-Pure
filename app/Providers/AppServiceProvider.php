@@ -18,7 +18,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
+        // Bind Settings service as a singleton
+        $this->app->singleton(\App\Services\Settings::class, fn () => new \App\Services\Settings);
     }
 
     /**
