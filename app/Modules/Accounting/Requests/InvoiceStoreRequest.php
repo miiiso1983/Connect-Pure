@@ -8,8 +8,7 @@ class InvoiceStoreRequest extends FormRequest
 {
     public function authorize(): bool
     {
-        // TODO: replace with policy-based check
-        return true;
+        return (bool) ($this->user()?->can('create', \App\Modules\Accounting\Models\Invoice::class));
     }
 
     public function rules(): array

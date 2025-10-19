@@ -26,6 +26,8 @@ class UserController extends Controller
      */
     public function create()
     {
+        $this->authorize('create', User::class);
+
         $roles = Role::where('is_active', true)->orderBy('sort_order')->get();
 
         return view('admin.users.create', compact('roles'));
@@ -36,6 +38,8 @@ class UserController extends Controller
      */
     public function store(UserStoreRequest $request)
     {
+        $this->authorize('create', User::class);
+
         $validated = $request->validated();
 
         $user = User::create([
@@ -59,6 +63,8 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
+        $this->authorize('view', $user);
+
         $user->load(['roles']);
 
         return view('admin.users.show', compact('user'));
@@ -69,6 +75,8 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
+        $this->authorize('update', $user);
+
         $roles = Role::where('is_active', true)->orderBy('sort_order')->get();
         $user->load('roles');
 
@@ -80,6 +88,8 @@ class UserController extends Controller
      */
     public function update(UserUpdateRequest $request, User $user)
     {
+        $this->authorize('update', $user);
+
         $validated = $request->validated();
 
         $user->update([
@@ -106,8 +116,10 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
+        $this->authorize('delete', $user);
+
         // Prevent deletion of the current user
-        if ($user->id === auth()->id()) {
+        if ($user->getKey() === auth()->id()) {
             return redirect()->route('admin.users.index')
                 ->with('error', 'You cannot delete your own account.');
         }

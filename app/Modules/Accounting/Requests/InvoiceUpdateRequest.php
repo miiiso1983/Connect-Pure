@@ -8,8 +8,9 @@ class InvoiceUpdateRequest extends FormRequest
 {
     public function authorize(): bool
     {
-        // TODO: replace with policy-based check
-        return true;
+        $model = $this->route('invoice');
+
+        return (bool) ($this->user()?->can('update', $model));
     }
 
     public function rules(): array

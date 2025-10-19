@@ -9,8 +9,7 @@ class UserStoreRequest extends FormRequest
 {
     public function authorize(): bool
     {
-        // TODO: replace with policy-based check
-        return true;
+        return (bool) ($this->user()?->can('create', \App\Models\User::class));
     }
 
     public function rules(): array

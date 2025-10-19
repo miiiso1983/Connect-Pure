@@ -72,6 +72,8 @@ class InvoiceController extends Controller
 
     public function create()
     {
+        $this->authorize('create', Invoice::class);
+
         $customers = Customer::active()->orderBy('name')->get();
         $accounts = Account::active()->byType('revenue')->orderBy('name')->get();
         $taxRates = TaxRate::active()->byType('sales')->get();
@@ -83,6 +85,8 @@ class InvoiceController extends Controller
 
     public function store(InvoiceStoreRequest $request)
     {
+        $this->authorize('create', Invoice::class);
+
         $validated = $request->validated();
 
         DB::beginTransaction();
@@ -146,6 +150,8 @@ class InvoiceController extends Controller
 
     public function edit(Invoice $invoice)
     {
+        $this->authorize('update', $invoice);
+
         if ($invoice->status === 'paid') {
             return redirect()->route('modules.accounting.invoices.show', $invoice)
                 ->withErrors(['error' => __('accounting.cannot_edit_paid_invoice')]);
@@ -163,6 +169,8 @@ class InvoiceController extends Controller
 
     public function update(InvoiceUpdateRequest $request, Invoice $invoice)
     {
+        $this->authorize('update', $invoice);
+
         if ($invoice->status === 'paid') {
             return redirect()->route('modules.accounting.invoices.show', $invoice)
                 ->withErrors(['error' => __('accounting.cannot_edit_paid_invoice')]);
@@ -229,6 +237,8 @@ class InvoiceController extends Controller
 
     public function destroy(Invoice $invoice)
     {
+        $this->authorize('delete', $invoice);
+
         if ($invoice->status === 'paid' || $invoice->paid_amount > 0) {
             return redirect()->route('modules.accounting.invoices.index')
                 ->withErrors(['error' => __('accounting.cannot_delete_paid_invoice')]);
@@ -256,6 +266,8 @@ class InvoiceController extends Controller
 
     public function send(Invoice $invoice)
     {
+        $this->authorize('update', $invoice);
+
         if ($invoice->status === 'draft') {
             $invoice->markAsSent();
 
@@ -275,6 +287,8 @@ class InvoiceController extends Controller
 
     public function markAsPaid(Request $request, Invoice $invoice)
     {
+        $this->authorize('update', $invoice);
+
         $request->validate([
             'payment_amount' => 'required|numeric|min:0.01|max:'.$invoice->balance_due,
             'payment_date' => 'required|date',
@@ -306,6 +320,8 @@ class InvoiceController extends Controller
 
     public function duplicate(Invoice $invoice)
     {
+        $this->authorize('create', Invoice::class);
+
         $newInvoice = $invoice->replicate();
         $newInvoice->invoice_number = null; // Will be auto-generated
         $newInvoice->status = 'draft';
@@ -333,6 +349,8 @@ class InvoiceController extends Controller
 
     public function pdf(Invoice $invoice)
     {
+        $this->authorize('view', $invoice);
+
         $invoice->load(['customer', 'items']);
 
         // Here you would generate PDF using a library like DomPDF or wkhtmltopdf
