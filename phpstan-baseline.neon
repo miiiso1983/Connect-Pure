@@ -7,12 +7,6 @@ parameters:
 			path: app/Console/Commands/AuthenticationSummary.php
 
 		-
-			message: '#^Using nullsafe property access "\?\-\>name" on left side of \?\? is unnecessary\. Use \-\> instead\.$#'
-			identifier: nullsafe.neverNull
-			count: 1
-			path: app/Console/Commands/SystemSummary.php
-
-		-
 			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$name\.$#'
 			identifier: property.notFound
 			count: 1
@@ -29,12 +23,6 @@ parameters:
 			identifier: property.notFound
 			count: 1
 			path: app/Console/Commands/VerifyMasterAdmin.php
-
-		-
-			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$name\.$#'
-			identifier: property.notFound
-			count: 1
-			path: app/Console/Commands/WhatsAppStatus.php
 
 		-
 			message: '#^Parameter \#1 \$view of function view expects view\-string\|null, string given\.$#'
@@ -95,48 +83,6 @@ parameters:
 			identifier: argument.type
 			count: 1
 			path: app/Http/Controllers/Auth/VerifyEmailController.php
-
-		-
-			message: '#^Call to static method where\(\) on an unknown class App\\Models\\Modules\\CRM\\Models\\Contact\.$#'
-			identifier: class.notFound
-			count: 1
-			path: app/Imports/ContactsImport.php
-
-		-
-			message: '#^Instantiated class App\\Models\\Modules\\CRM\\Models\\Contact not found\.$#'
-			identifier: class.notFound
-			count: 1
-			path: app/Imports/ContactsImport.php
-
-		-
-			message: '#^Method App\\Imports\\ContactsImport\:\:model\(\) should return Illuminate\\Database\\Eloquent\\Model\|null but returns App\\Models\\Modules\\CRM\\Models\\Contact\.$#'
-			identifier: return.type
-			count: 1
-			path: app/Imports/ContactsImport.php
-
-		-
-			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$id\.$#'
-			identifier: property.notFound
-			count: 4
-			path: app/Listeners/SendInvoiceWhatsAppMessage.php
-
-		-
-			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$name\.$#'
-			identifier: property.notFound
-			count: 1
-			path: app/Listeners/SendInvoiceWhatsAppMessage.php
-
-		-
-			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$phone\.$#'
-			identifier: property.notFound
-			count: 1
-			path: app/Listeners/SendInvoiceWhatsAppMessage.php
-
-		-
-			message: '#^Parameter \#1 \$num of function number_format expects float, string given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Listeners/SendInvoiceWhatsAppMessage.php
 
 		-
 			message: '#^Match arm comparison between ''on_hold'' and ''on_hold'' is always true\.$#'
@@ -265,52 +211,10 @@ parameters:
 			path: app/Modules/Accounting/Controllers/DashboardController.php
 
 		-
-			message: '#^Relation ''vendor'' is not found in App\\Modules\\Accounting\\Models\\Expense model\.$#'
-			identifier: larastan.relationExistence
-			count: 1
-			path: app/Modules/Accounting/Controllers/DashboardController.php
-
-		-
 			message: '#^Parameter \#1 \$view of function view expects view\-string\|null, string given\.$#'
 			identifier: argument.type
 			count: 2
 			path: app/Modules/Accounting/Controllers/ExpenseController.php
-
-		-
-			message: '#^Relation ''account'' is not found in App\\Modules\\Accounting\\Models\\Expense model\.$#'
-			identifier: larastan.relationExistence
-			count: 1
-			path: app/Modules/Accounting/Controllers/ExpenseController.php
-
-		-
-			message: '#^Relation ''customer'' is not found in App\\Modules\\Accounting\\Models\\Expense model\.$#'
-			identifier: larastan.relationExistence
-			count: 1
-			path: app/Modules/Accounting/Controllers/ExpenseController.php
-
-		-
-			message: '#^Relation ''employee'' is not found in App\\Modules\\Accounting\\Models\\Expense model\.$#'
-			identifier: larastan.relationExistence
-			count: 1
-			path: app/Modules/Accounting/Controllers/ExpenseController.php
-
-		-
-			message: '#^Relation ''vendor'' is not found in App\\Modules\\Accounting\\Models\\Expense model\.$#'
-			identifier: larastan.relationExistence
-			count: 2
-			path: app/Modules/Accounting/Controllers/ExpenseController.php
-
-		-
-			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$invoice_id\.$#'
-			identifier: property.notFound
-			count: 1
-			path: app/Modules/Accounting/Controllers/InvoiceController.php
-
-		-
-			message: '#^Call to an undefined method Illuminate\\Database\\Eloquent\\Model\:\:updateBalance\(\)\.$#'
-			identifier: method.notFound
-			count: 4
-			path: app/Modules/Accounting/Controllers/InvoiceController.php
 
 		-
 			message: '#^Parameter \#1 \$view of function view expects view\-string\|null, string given\.$#'
@@ -457,24 +361,6 @@ parameters:
 			path: app/Modules/Accounting/Models/ChartOfAccount.php
 
 		-
-			message: '#^Parameter \#1 \$string of function str_pad expects string, int given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Modules/Accounting/Models/ChartOfAccount.php
-
-		-
-			message: '#^Parameter \#1 \$num of function number_format expects float, string given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Modules/Accounting/Models/Currency.php
-
-		-
-			message: '#^Parameter \#1 \$string of function str_pad expects string, \(float\|int\) given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Modules/Accounting/Models/Customer.php
-
-		-
 			message: '#^Match arm comparison between ''monthly'' and ''monthly'' is always true\.$#'
 			identifier: match.alwaysTrue
 			count: 1
@@ -499,86 +385,8 @@ parameters:
 			path: app/Modules/Accounting/Models/Expense.php
 
 		-
-			message: '#^Method App\\Modules\\Accounting\\Models\\Expense\:\:account\(\) has invalid return type App\\Modules\\Accounting\\Models\\BelongsTo\.$#'
-			identifier: class.notFound
-			count: 1
-			path: app/Modules/Accounting/Models/Expense.php
-
-		-
-			message: '#^Method App\\Modules\\Accounting\\Models\\Expense\:\:account\(\) should return App\\Modules\\Accounting\\Models\\BelongsTo but returns Illuminate\\Database\\Eloquent\\Relations\\BelongsTo\<App\\Modules\\Accounting\\Models\\Account, \$this\(App\\Modules\\Accounting\\Models\\Expense\)\>\.$#'
-			identifier: return.type
-			count: 1
-			path: app/Modules/Accounting/Models/Expense.php
-
-		-
-			message: '#^Method App\\Modules\\Accounting\\Models\\Expense\:\:customer\(\) has invalid return type App\\Modules\\Accounting\\Models\\BelongsTo\.$#'
-			identifier: class.notFound
-			count: 1
-			path: app/Modules/Accounting/Models/Expense.php
-
-		-
-			message: '#^Method App\\Modules\\Accounting\\Models\\Expense\:\:customer\(\) should return App\\Modules\\Accounting\\Models\\BelongsTo but returns Illuminate\\Database\\Eloquent\\Relations\\BelongsTo\<App\\Modules\\Accounting\\Models\\Customer, \$this\(App\\Modules\\Accounting\\Models\\Expense\)\>\.$#'
-			identifier: return.type
-			count: 1
-			path: app/Modules/Accounting/Models/Expense.php
-
-		-
-			message: '#^Method App\\Modules\\Accounting\\Models\\Expense\:\:employee\(\) has invalid return type App\\Modules\\Accounting\\Models\\BelongsTo\.$#'
-			identifier: class.notFound
-			count: 1
-			path: app/Modules/Accounting/Models/Expense.php
-
-		-
-			message: '#^Method App\\Modules\\Accounting\\Models\\Expense\:\:employee\(\) should return App\\Modules\\Accounting\\Models\\BelongsTo but returns Illuminate\\Database\\Eloquent\\Relations\\BelongsTo\<App\\Modules\\Accounting\\Models\\Employee, \$this\(App\\Modules\\Accounting\\Models\\Expense\)\>\.$#'
-			identifier: return.type
-			count: 1
-			path: app/Modules/Accounting/Models/Expense.php
-
-		-
-			message: '#^Method App\\Modules\\Accounting\\Models\\Expense\:\:vendor\(\) has invalid return type App\\Modules\\Accounting\\Models\\BelongsTo\.$#'
-			identifier: class.notFound
-			count: 1
-			path: app/Modules/Accounting/Models/Expense.php
-
-		-
-			message: '#^Method App\\Modules\\Accounting\\Models\\Expense\:\:vendor\(\) should return App\\Modules\\Accounting\\Models\\BelongsTo but returns Illuminate\\Database\\Eloquent\\Relations\\BelongsTo\<App\\Modules\\Accounting\\Models\\Vendor, \$this\(App\\Modules\\Accounting\\Models\\Expense\)\>\.$#'
-			identifier: return.type
-			count: 1
-			path: app/Modules/Accounting/Models/Expense.php
-
-		-
-			message: '#^Parameter \#1 \$string of function str_pad expects string, \(float\|int\) given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Modules/Accounting/Models/Expense.php
-
-		-
-			message: '#^Parameter \#1 \$string of function str_pad expects string, int\<1, max\> given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Modules/Accounting/Models/Expense.php
-
-		-
-			message: '#^Call to an undefined method Illuminate\\Database\\Eloquent\\Model\:\:updateBalance\(\)\.$#'
-			identifier: method.notFound
-			count: 1
-			path: app/Modules/Accounting/Models/Invoice.php
-
-		-
 			message: '#^Match arm comparison between ''cancelled'' and ''cancelled'' is always true\.$#'
 			identifier: match.alwaysTrue
-			count: 1
-			path: app/Modules/Accounting/Models/Invoice.php
-
-		-
-			message: '#^Parameter \#1 \$string of function str_pad expects string, \(float\|int\) given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Modules/Accounting/Models/Invoice.php
-
-		-
-			message: '#^Parameter \#1 \$string of function str_pad expects string, int\<1, max\> given\.$#'
-			identifier: argument.type
 			count: 1
 			path: app/Modules/Accounting/Models/Invoice.php
 
@@ -625,12 +433,6 @@ parameters:
 			path: app/Modules/Accounting/Models/JournalEntry.php
 
 		-
-			message: '#^Parameter \#1 \$string of function str_pad expects string, int\<1, max\> given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Modules/Accounting/Models/JournalEntry.php
-
-		-
 			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$display_name\.$#'
 			identifier: property.notFound
 			count: 2
@@ -651,12 +453,6 @@ parameters:
 		-
 			message: '#^Match arm comparison between ''other'' and ''other'' is always true\.$#'
 			identifier: match.alwaysTrue
-			count: 1
-			path: app/Modules/Accounting/Models/Payment.php
-
-		-
-			message: '#^Parameter \#1 \$string of function str_pad expects string, int\<1, max\> given\.$#'
-			identifier: argument.type
 			count: 1
 			path: app/Modules/Accounting/Models/Payment.php
 
@@ -691,18 +487,6 @@ parameters:
 			path: app/Modules/Accounting/Models/Payroll.php
 
 		-
-			message: '#^Parameter \#1 \$string of function str_pad expects string, \(float\|int\) given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Modules/Accounting/Models/Payroll.php
-
-		-
-			message: '#^Parameter \#1 \$string of function str_pad expects string, int\<1, max\> given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Modules/Accounting/Models/Payroll.php
-
-		-
 			message: '#^Expression on left side of \?\? is not nullable\.$#'
 			identifier: nullCoalesce.expr
 			count: 1
@@ -711,12 +495,6 @@ parameters:
 		-
 			message: '#^Match arm comparison between ''service'' and ''service'' is always true\.$#'
 			identifier: match.alwaysTrue
-			count: 1
-			path: app/Modules/Accounting/Models/Product.php
-
-		-
-			message: '#^Parameter \#1 \$string of function str_pad expects string, int given\.$#'
-			identifier: argument.type
 			count: 1
 			path: app/Modules/Accounting/Models/Product.php
 
@@ -751,19 +529,7 @@ parameters:
 			path: app/Modules/Accounting/Models/Tax.php
 
 		-
-			message: '#^Parameter \#1 \$string of function str_pad expects string, \(float\|int\) given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Modules/Accounting/Models/Vendor.php
-
-		-
 			message: '#^Relation ''expenseAccount'' is not found in App\\Modules\\Accounting\\Models\\Expense model\.$#'
-			identifier: larastan.relationExistence
-			count: 1
-			path: app/Modules/Accounting/Services/DashboardService.php
-
-		-
-			message: '#^Relation ''vendor'' is not found in App\\Modules\\Accounting\\Models\\Expense model\.$#'
 			identifier: larastan.relationExistence
 			count: 1
 			path: app/Modules/Accounting/Services/DashboardService.php
@@ -1039,12 +805,6 @@ parameters:
 			path: app/Modules/HR/Models/Attendance.php
 
 		-
-			message: '#^Parameter \#1 \$num of function number_format expects float, string given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Modules/HR/Models/Department.php
-
-		-
 			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$level\.$#'
 			identifier: property.notFound
 			count: 1
@@ -1077,18 +837,6 @@ parameters:
 		-
 			message: '#^Method App\\Modules\\HR\\Models\\Employee\:\:getMonthsOfServiceAttribute\(\) should return int but returns float\.$#'
 			identifier: return.type
-			count: 1
-			path: app/Modules/HR/Models/Employee.php
-
-		-
-			message: '#^Parameter \#1 \$num of function number_format expects float, string given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Modules/HR/Models/Employee.php
-
-		-
-			message: '#^Parameter \#1 \$string of function str_pad expects string, int given\.$#'
-			identifier: argument.type
 			count: 1
 			path: app/Modules/HR/Models/Employee.php
 
@@ -1147,21 +895,9 @@ parameters:
 			path: app/Modules/HR/Models/PerformanceReview.php
 
 		-
-			message: '#^Parameter \#1 \$num of function number_format expects float, string given\.$#'
-			identifier: argument.type
-			count: 6
-			path: app/Modules/HR/Models/Role.php
-
-		-
 			message: '#^Match arm comparison between ''cancelled'' and ''cancelled'' is always true\.$#'
 			identifier: match.alwaysTrue
 			count: 2
-			path: app/Modules/HR/Models/SalaryRecord.php
-
-		-
-			message: '#^Parameter \#1 \$num of function number_format expects float, string given\.$#'
-			identifier: argument.type
-			count: 3
 			path: app/Modules/HR/Models/SalaryRecord.php
 
 		-

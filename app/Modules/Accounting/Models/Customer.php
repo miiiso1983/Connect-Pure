@@ -168,7 +168,7 @@ class Customer extends Model
         static::creating(function ($customer) {
             if (! $customer->customer_number) {
                 $customer->customer_number = 'CUST-'.str_pad(
-                    static::max('id') + 1, 6, '0', STR_PAD_LEFT
+                    (string) (static::max('id') + 1), 6, '0', STR_PAD_LEFT
                 );
             }
         });

@@ -8,7 +8,7 @@
 
 declare(strict_types=1);
 
-class Container_f580fd3bd2 extends _PHPStan_6597ef616\Nette\DI\Container
+class Container_3818f29dfc extends _PHPStan_6597ef616\Nette\DI\Container
 {
 	protected $tags = [
 		'phpstan.broker.dynamicMethodReturnTypeExtension' => [
@@ -2669,12 +2669,6 @@ class Container_f580fd3bd2 extends _PHPStan_6597ef616\Nette\DI\Container
 					'path' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Console/Commands/AuthenticationSummary.php',
 				],
 				[
-					'message' => '#^Using nullsafe property access "\?\-\>name" on left side of \?\? is unnecessary\. Use \-\> instead\.$#',
-					'identifier' => 'nullsafe.neverNull',
-					'count' => 1,
-					'path' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Console/Commands/SystemSummary.php',
-				],
-				[
 					'message' => '#^Access to an undefined property Illuminate\\\Database\\\Eloquent\\\Model\:\:\$name\.$#',
 					'identifier' => 'property.notFound',
 					'count' => 1,
@@ -2691,12 +2685,6 @@ class Container_f580fd3bd2 extends _PHPStan_6597ef616\Nette\DI\Container
 					'identifier' => 'property.notFound',
 					'count' => 1,
 					'path' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Console/Commands/VerifyMasterAdmin.php',
-				],
-				[
-					'message' => '#^Access to an undefined property Illuminate\\\Database\\\Eloquent\\\Model\:\:\$name\.$#',
-					'identifier' => 'property.notFound',
-					'count' => 1,
-					'path' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Console/Commands/WhatsAppStatus.php',
 				],
 				[
 					'message' => '#^Parameter \#1 \$view of function view expects view\-string\|null, string given\.$#',
@@ -2757,48 +2745,6 @@ class Container_f580fd3bd2 extends _PHPStan_6597ef616\Nette\DI\Container
 					'identifier' => 'argument.type',
 					'count' => 1,
 					'path' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Http/Controllers/Auth/VerifyEmailController.php',
-				],
-				[
-					'message' => '#^Call to static method where\(\) on an unknown class App\\\Models\\\Modules\\\CRM\\\Models\\\Contact\.$#',
-					'identifier' => 'class.notFound',
-					'count' => 1,
-					'path' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Imports/ContactsImport.php',
-				],
-				[
-					'message' => '#^Instantiated class App\\\Models\\\Modules\\\CRM\\\Models\\\Contact not found\.$#',
-					'identifier' => 'class.notFound',
-					'count' => 1,
-					'path' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Imports/ContactsImport.php',
-				],
-				[
-					'message' => '#^Method App\\\Imports\\\ContactsImport\:\:model\(\) should return Illuminate\\\Database\\\Eloquent\\\Model\|null but returns App\\\Models\\\Modules\\\CRM\\\Models\\\Contact\.$#',
-					'identifier' => 'return.type',
-					'count' => 1,
-					'path' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Imports/ContactsImport.php',
-				],
-				[
-					'message' => '#^Access to an undefined property Illuminate\\\Database\\\Eloquent\\\Model\:\:\$id\.$#',
-					'identifier' => 'property.notFound',
-					'count' => 4,
-					'path' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Listeners/SendInvoiceWhatsAppMessage.php',
-				],
-				[
-					'message' => '#^Access to an undefined property Illuminate\\\Database\\\Eloquent\\\Model\:\:\$name\.$#',
-					'identifier' => 'property.notFound',
-					'count' => 1,
-					'path' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Listeners/SendInvoiceWhatsAppMessage.php',
-				],
-				[
-					'message' => '#^Access to an undefined property Illuminate\\\Database\\\Eloquent\\\Model\:\:\$phone\.$#',
-					'identifier' => 'property.notFound',
-					'count' => 1,
-					'path' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Listeners/SendInvoiceWhatsAppMessage.php',
-				],
-				[
-					'message' => '#^Parameter \#1 \$num of function number_format expects float, string given\.$#',
-					'identifier' => 'argument.type',
-					'count' => 1,
-					'path' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Listeners/SendInvoiceWhatsAppMessage.php',
 				],
 				[
 					'message' => '#^Match arm comparison between \'on_hold\' and \'on_hold\' is always true\.$#',
@@ -2927,52 +2873,10 @@ class Container_f580fd3bd2 extends _PHPStan_6597ef616\Nette\DI\Container
 					'path' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/DashboardController.php',
 				],
 				[
-					'message' => '#^Relation \'vendor\' is not found in App\\\Modules\\\Accounting\\\Models\\\Expense model\.$#',
-					'identifier' => 'larastan.relationExistence',
-					'count' => 1,
-					'path' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/DashboardController.php',
-				],
-				[
 					'message' => '#^Parameter \#1 \$view of function view expects view\-string\|null, string given\.$#',
 					'identifier' => 'argument.type',
 					'count' => 2,
 					'path' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/ExpenseController.php',
-				],
-				[
-					'message' => '#^Relation \'account\' is not found in App\\\Modules\\\Accounting\\\Models\\\Expense model\.$#',
-					'identifier' => 'larastan.relationExistence',
-					'count' => 1,
-					'path' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/ExpenseController.php',
-				],
-				[
-					'message' => '#^Relation \'customer\' is not found in App\\\Modules\\\Accounting\\\Models\\\Expense model\.$#',
-					'identifier' => 'larastan.relationExistence',
-					'count' => 1,
-					'path' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/ExpenseController.php',
-				],
-				[
-					'message' => '#^Relation \'employee\' is not found in App\\\Modules\\\Accounting\\\Models\\\Expense model\.$#',
-					'identifier' => 'larastan.relationExistence',
-					'count' => 1,
-					'path' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/ExpenseController.php',
-				],
-				[
-					'message' => '#^Relation \'vendor\' is not found in App\\\Modules\\\Accounting\\\Models\\\Expense model\.$#',
-					'identifier' => 'larastan.relationExistence',
-					'count' => 2,
-					'path' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/ExpenseController.php',
-				],
-				[
-					'message' => '#^Access to an undefined property Illuminate\\\Database\\\Eloquent\\\Model\:\:\$invoice_id\.$#',
-					'identifier' => 'property.notFound',
-					'count' => 1,
-					'path' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/InvoiceController.php',
-				],
-				[
-					'message' => '#^Call to an undefined method Illuminate\\\Database\\\Eloquent\\\Model\:\:updateBalance\(\)\.$#',
-					'identifier' => 'method.notFound',
-					'count' => 4,
-					'path' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/InvoiceController.php',
 				],
 				[
 					'message' => '#^Parameter \#1 \$view of function view expects view\-string\|null, string given\.$#',
@@ -3119,24 +3023,6 @@ class Container_f580fd3bd2 extends _PHPStan_6597ef616\Nette\DI\Container
 					'path' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/ChartOfAccount.php',
 				],
 				[
-					'message' => '#^Parameter \#1 \$string of function str_pad expects string, int given\.$#',
-					'identifier' => 'argument.type',
-					'count' => 1,
-					'path' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/ChartOfAccount.php',
-				],
-				[
-					'message' => '#^Parameter \#1 \$num of function number_format expects float, string given\.$#',
-					'identifier' => 'argument.type',
-					'count' => 1,
-					'path' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Currency.php',
-				],
-				[
-					'message' => '#^Parameter \#1 \$string of function str_pad expects string, \(float\|int\) given\.$#',
-					'identifier' => 'argument.type',
-					'count' => 1,
-					'path' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Customer.php',
-				],
-				[
 					'message' => '#^Match arm comparison between \'monthly\' and \'monthly\' is always true\.$#',
 					'identifier' => 'match.alwaysTrue',
 					'count' => 1,
@@ -3161,86 +3047,8 @@ class Container_f580fd3bd2 extends _PHPStan_6597ef616\Nette\DI\Container
 					'path' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Expense.php',
 				],
 				[
-					'message' => '#^Method App\\\Modules\\\Accounting\\\Models\\\Expense\:\:account\(\) has invalid return type App\\\Modules\\\Accounting\\\Models\\\BelongsTo\.$#',
-					'identifier' => 'class.notFound',
-					'count' => 1,
-					'path' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Expense.php',
-				],
-				[
-					'message' => '#^Method App\\\Modules\\\Accounting\\\Models\\\Expense\:\:account\(\) should return App\\\Modules\\\Accounting\\\Models\\\BelongsTo but returns Illuminate\\\Database\\\Eloquent\\\Relations\\\BelongsTo\<App\\\Modules\\\Accounting\\\Models\\\Account, \$this\(App\\\Modules\\\Accounting\\\Models\\\Expense\)\>\.$#',
-					'identifier' => 'return.type',
-					'count' => 1,
-					'path' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Expense.php',
-				],
-				[
-					'message' => '#^Method App\\\Modules\\\Accounting\\\Models\\\Expense\:\:customer\(\) has invalid return type App\\\Modules\\\Accounting\\\Models\\\BelongsTo\.$#',
-					'identifier' => 'class.notFound',
-					'count' => 1,
-					'path' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Expense.php',
-				],
-				[
-					'message' => '#^Method App\\\Modules\\\Accounting\\\Models\\\Expense\:\:customer\(\) should return App\\\Modules\\\Accounting\\\Models\\\BelongsTo but returns Illuminate\\\Database\\\Eloquent\\\Relations\\\BelongsTo\<App\\\Modules\\\Accounting\\\Models\\\Customer, \$this\(App\\\Modules\\\Accounting\\\Models\\\Expense\)\>\.$#',
-					'identifier' => 'return.type',
-					'count' => 1,
-					'path' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Expense.php',
-				],
-				[
-					'message' => '#^Method App\\\Modules\\\Accounting\\\Models\\\Expense\:\:employee\(\) has invalid return type App\\\Modules\\\Accounting\\\Models\\\BelongsTo\.$#',
-					'identifier' => 'class.notFound',
-					'count' => 1,
-					'path' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Expense.php',
-				],
-				[
-					'message' => '#^Method App\\\Modules\\\Accounting\\\Models\\\Expense\:\:employee\(\) should return App\\\Modules\\\Accounting\\\Models\\\BelongsTo but returns Illuminate\\\Database\\\Eloquent\\\Relations\\\BelongsTo\<App\\\Modules\\\Accounting\\\Models\\\Employee, \$this\(App\\\Modules\\\Accounting\\\Models\\\Expense\)\>\.$#',
-					'identifier' => 'return.type',
-					'count' => 1,
-					'path' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Expense.php',
-				],
-				[
-					'message' => '#^Method App\\\Modules\\\Accounting\\\Models\\\Expense\:\:vendor\(\) has invalid return type App\\\Modules\\\Accounting\\\Models\\\BelongsTo\.$#',
-					'identifier' => 'class.notFound',
-					'count' => 1,
-					'path' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Expense.php',
-				],
-				[
-					'message' => '#^Method App\\\Modules\\\Accounting\\\Models\\\Expense\:\:vendor\(\) should return App\\\Modules\\\Accounting\\\Models\\\BelongsTo but returns Illuminate\\\Database\\\Eloquent\\\Relations\\\BelongsTo\<App\\\Modules\\\Accounting\\\Models\\\Vendor, \$this\(App\\\Modules\\\Accounting\\\Models\\\Expense\)\>\.$#',
-					'identifier' => 'return.type',
-					'count' => 1,
-					'path' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Expense.php',
-				],
-				[
-					'message' => '#^Parameter \#1 \$string of function str_pad expects string, \(float\|int\) given\.$#',
-					'identifier' => 'argument.type',
-					'count' => 1,
-					'path' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Expense.php',
-				],
-				[
-					'message' => '#^Parameter \#1 \$string of function str_pad expects string, int\<1, max\> given\.$#',
-					'identifier' => 'argument.type',
-					'count' => 1,
-					'path' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Expense.php',
-				],
-				[
-					'message' => '#^Call to an undefined method Illuminate\\\Database\\\Eloquent\\\Model\:\:updateBalance\(\)\.$#',
-					'identifier' => 'method.notFound',
-					'count' => 1,
-					'path' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Invoice.php',
-				],
-				[
 					'message' => '#^Match arm comparison between \'cancelled\' and \'cancelled\' is always true\.$#',
 					'identifier' => 'match.alwaysTrue',
-					'count' => 1,
-					'path' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Invoice.php',
-				],
-				[
-					'message' => '#^Parameter \#1 \$string of function str_pad expects string, \(float\|int\) given\.$#',
-					'identifier' => 'argument.type',
-					'count' => 1,
-					'path' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Invoice.php',
-				],
-				[
-					'message' => '#^Parameter \#1 \$string of function str_pad expects string, int\<1, max\> given\.$#',
-					'identifier' => 'argument.type',
 					'count' => 1,
 					'path' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Invoice.php',
 				],
@@ -3287,12 +3095,6 @@ class Container_f580fd3bd2 extends _PHPStan_6597ef616\Nette\DI\Container
 					'path' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/JournalEntry.php',
 				],
 				[
-					'message' => '#^Parameter \#1 \$string of function str_pad expects string, int\<1, max\> given\.$#',
-					'identifier' => 'argument.type',
-					'count' => 1,
-					'path' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/JournalEntry.php',
-				],
-				[
 					'message' => '#^Access to an undefined property Illuminate\\\Database\\\Eloquent\\\Model\:\:\$display_name\.$#',
 					'identifier' => 'property.notFound',
 					'count' => 2,
@@ -3313,12 +3115,6 @@ class Container_f580fd3bd2 extends _PHPStan_6597ef616\Nette\DI\Container
 				[
 					'message' => '#^Match arm comparison between \'other\' and \'other\' is always true\.$#',
 					'identifier' => 'match.alwaysTrue',
-					'count' => 1,
-					'path' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Payment.php',
-				],
-				[
-					'message' => '#^Parameter \#1 \$string of function str_pad expects string, int\<1, max\> given\.$#',
-					'identifier' => 'argument.type',
 					'count' => 1,
 					'path' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Payment.php',
 				],
@@ -3353,18 +3149,6 @@ class Container_f580fd3bd2 extends _PHPStan_6597ef616\Nette\DI\Container
 					'path' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Payroll.php',
 				],
 				[
-					'message' => '#^Parameter \#1 \$string of function str_pad expects string, \(float\|int\) given\.$#',
-					'identifier' => 'argument.type',
-					'count' => 1,
-					'path' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Payroll.php',
-				],
-				[
-					'message' => '#^Parameter \#1 \$string of function str_pad expects string, int\<1, max\> given\.$#',
-					'identifier' => 'argument.type',
-					'count' => 1,
-					'path' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Payroll.php',
-				],
-				[
 					'message' => '#^Expression on left side of \?\? is not nullable\.$#',
 					'identifier' => 'nullCoalesce.expr',
 					'count' => 1,
@@ -3373,12 +3157,6 @@ class Container_f580fd3bd2 extends _PHPStan_6597ef616\Nette\DI\Container
 				[
 					'message' => '#^Match arm comparison between \'service\' and \'service\' is always true\.$#',
 					'identifier' => 'match.alwaysTrue',
-					'count' => 1,
-					'path' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Product.php',
-				],
-				[
-					'message' => '#^Parameter \#1 \$string of function str_pad expects string, int given\.$#',
-					'identifier' => 'argument.type',
 					'count' => 1,
 					'path' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Product.php',
 				],
@@ -3413,19 +3191,7 @@ class Container_f580fd3bd2 extends _PHPStan_6597ef616\Nette\DI\Container
 					'path' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Tax.php',
 				],
 				[
-					'message' => '#^Parameter \#1 \$string of function str_pad expects string, \(float\|int\) given\.$#',
-					'identifier' => 'argument.type',
-					'count' => 1,
-					'path' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Vendor.php',
-				],
-				[
 					'message' => '#^Relation \'expenseAccount\' is not found in App\\\Modules\\\Accounting\\\Models\\\Expense model\.$#',
-					'identifier' => 'larastan.relationExistence',
-					'count' => 1,
-					'path' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Services/DashboardService.php',
-				],
-				[
-					'message' => '#^Relation \'vendor\' is not found in App\\\Modules\\\Accounting\\\Models\\\Expense model\.$#',
 					'identifier' => 'larastan.relationExistence',
 					'count' => 1,
 					'path' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Services/DashboardService.php',
@@ -3701,12 +3467,6 @@ class Container_f580fd3bd2 extends _PHPStan_6597ef616\Nette\DI\Container
 					'path' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/HR/Models/Attendance.php',
 				],
 				[
-					'message' => '#^Parameter \#1 \$num of function number_format expects float, string given\.$#',
-					'identifier' => 'argument.type',
-					'count' => 1,
-					'path' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/HR/Models/Department.php',
-				],
-				[
 					'message' => '#^Access to an undefined property Illuminate\\\Database\\\Eloquent\\\Model\:\:\$level\.$#',
 					'identifier' => 'property.notFound',
 					'count' => 1,
@@ -3739,18 +3499,6 @@ class Container_f580fd3bd2 extends _PHPStan_6597ef616\Nette\DI\Container
 				[
 					'message' => '#^Method App\\\Modules\\\HR\\\Models\\\Employee\:\:getMonthsOfServiceAttribute\(\) should return int but returns float\.$#',
 					'identifier' => 'return.type',
-					'count' => 1,
-					'path' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/HR/Models/Employee.php',
-				],
-				[
-					'message' => '#^Parameter \#1 \$num of function number_format expects float, string given\.$#',
-					'identifier' => 'argument.type',
-					'count' => 1,
-					'path' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/HR/Models/Employee.php',
-				],
-				[
-					'message' => '#^Parameter \#1 \$string of function str_pad expects string, int given\.$#',
-					'identifier' => 'argument.type',
 					'count' => 1,
 					'path' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/HR/Models/Employee.php',
 				],
@@ -3809,21 +3557,9 @@ class Container_f580fd3bd2 extends _PHPStan_6597ef616\Nette\DI\Container
 					'path' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/HR/Models/PerformanceReview.php',
 				],
 				[
-					'message' => '#^Parameter \#1 \$num of function number_format expects float, string given\.$#',
-					'identifier' => 'argument.type',
-					'count' => 6,
-					'path' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/HR/Models/Role.php',
-				],
-				[
 					'message' => '#^Match arm comparison between \'cancelled\' and \'cancelled\' is always true\.$#',
 					'identifier' => 'match.alwaysTrue',
 					'count' => 2,
-					'path' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/HR/Models/SalaryRecord.php',
-				],
-				[
-					'message' => '#^Parameter \#1 \$num of function number_format expects float, string given\.$#',
-					'identifier' => 'argument.type',
-					'count' => 3,
 					'path' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/HR/Models/SalaryRecord.php',
 				],
 				[
@@ -6248,7 +5984,7 @@ class Container_f580fd3bd2 extends _PHPStan_6597ef616\Nette\DI\Container
 			private $container;
 
 
-			public function __construct(Container_f580fd3bd2 $container)
+			public function __construct(Container_3818f29dfc $container)
 			{
 				$this->container = $container;
 			}
@@ -6268,7 +6004,7 @@ class Container_f580fd3bd2 extends _PHPStan_6597ef616\Nette\DI\Container
 			private $container;
 
 
-			public function __construct(Container_f580fd3bd2 $container)
+			public function __construct(Container_3818f29dfc $container)
 			{
 				$this->container = $container;
 			}
@@ -6291,7 +6027,7 @@ class Container_f580fd3bd2 extends _PHPStan_6597ef616\Nette\DI\Container
 			private $container;
 
 
-			public function __construct(Container_f580fd3bd2 $container)
+			public function __construct(Container_3818f29dfc $container)
 			{
 				$this->container = $container;
 			}
@@ -6311,7 +6047,7 @@ class Container_f580fd3bd2 extends _PHPStan_6597ef616\Nette\DI\Container
 			private $container;
 
 
-			public function __construct(Container_f580fd3bd2 $container)
+			public function __construct(Container_3818f29dfc $container)
 			{
 				$this->container = $container;
 			}
@@ -6376,7 +6112,7 @@ class Container_f580fd3bd2 extends _PHPStan_6597ef616\Nette\DI\Container
 			private $container;
 
 
-			public function __construct(Container_f580fd3bd2 $container)
+			public function __construct(Container_3818f29dfc $container)
 			{
 				$this->container = $container;
 			}
@@ -6434,7 +6170,7 @@ class Container_f580fd3bd2 extends _PHPStan_6597ef616\Nette\DI\Container
 			private $container;
 
 
-			public function __construct(Container_f580fd3bd2 $container)
+			public function __construct(Container_3818f29dfc $container)
 			{
 				$this->container = $container;
 			}
@@ -9606,7 +9342,7 @@ class Container_f580fd3bd2 extends _PHPStan_6597ef616\Nette\DI\Container
 	}
 
 
-	public function createServiceContainer(): Container_f580fd3bd2
+	public function createServiceContainer(): Container_3818f29dfc
 	{
 		return $this;
 	}
@@ -10069,12 +9805,6 @@ class Container_f580fd3bd2 extends _PHPStan_6597ef616\Nette\DI\Container
 					'path' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Console/Commands/AuthenticationSummary.php',
 				],
 				[
-					'message' => '#^Using nullsafe property access "\?\-\>name" on left side of \?\? is unnecessary\. Use \-\> instead\.$#',
-					'identifier' => 'nullsafe.neverNull',
-					'count' => 1,
-					'path' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Console/Commands/SystemSummary.php',
-				],
-				[
 					'message' => '#^Access to an undefined property Illuminate\\\Database\\\Eloquent\\\Model\:\:\$name\.$#',
 					'identifier' => 'property.notFound',
 					'count' => 1,
@@ -10091,12 +9821,6 @@ class Container_f580fd3bd2 extends _PHPStan_6597ef616\Nette\DI\Container
 					'identifier' => 'property.notFound',
 					'count' => 1,
 					'path' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Console/Commands/VerifyMasterAdmin.php',
-				],
-				[
-					'message' => '#^Access to an undefined property Illuminate\\\Database\\\Eloquent\\\Model\:\:\$name\.$#',
-					'identifier' => 'property.notFound',
-					'count' => 1,
-					'path' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Console/Commands/WhatsAppStatus.php',
 				],
 				[
 					'message' => '#^Parameter \#1 \$view of function view expects view\-string\|null, string given\.$#',
@@ -10157,48 +9881,6 @@ class Container_f580fd3bd2 extends _PHPStan_6597ef616\Nette\DI\Container
 					'identifier' => 'argument.type',
 					'count' => 1,
 					'path' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Http/Controllers/Auth/VerifyEmailController.php',
-				],
-				[
-					'message' => '#^Call to static method where\(\) on an unknown class App\\\Models\\\Modules\\\CRM\\\Models\\\Contact\.$#',
-					'identifier' => 'class.notFound',
-					'count' => 1,
-					'path' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Imports/ContactsImport.php',
-				],
-				[
-					'message' => '#^Instantiated class App\\\Models\\\Modules\\\CRM\\\Models\\\Contact not found\.$#',
-					'identifier' => 'class.notFound',
-					'count' => 1,
-					'path' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Imports/ContactsImport.php',
-				],
-				[
-					'message' => '#^Method App\\\Imports\\\ContactsImport\:\:model\(\) should return Illuminate\\\Database\\\Eloquent\\\Model\|null but returns App\\\Models\\\Modules\\\CRM\\\Models\\\Contact\.$#',
-					'identifier' => 'return.type',
-					'count' => 1,
-					'path' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Imports/ContactsImport.php',
-				],
-				[
-					'message' => '#^Access to an undefined property Illuminate\\\Database\\\Eloquent\\\Model\:\:\$id\.$#',
-					'identifier' => 'property.notFound',
-					'count' => 4,
-					'path' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Listeners/SendInvoiceWhatsAppMessage.php',
-				],
-				[
-					'message' => '#^Access to an undefined property Illuminate\\\Database\\\Eloquent\\\Model\:\:\$name\.$#',
-					'identifier' => 'property.notFound',
-					'count' => 1,
-					'path' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Listeners/SendInvoiceWhatsAppMessage.php',
-				],
-				[
-					'message' => '#^Access to an undefined property Illuminate\\\Database\\\Eloquent\\\Model\:\:\$phone\.$#',
-					'identifier' => 'property.notFound',
-					'count' => 1,
-					'path' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Listeners/SendInvoiceWhatsAppMessage.php',
-				],
-				[
-					'message' => '#^Parameter \#1 \$num of function number_format expects float, string given\.$#',
-					'identifier' => 'argument.type',
-					'count' => 1,
-					'path' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Listeners/SendInvoiceWhatsAppMessage.php',
 				],
 				[
 					'message' => '#^Match arm comparison between \'on_hold\' and \'on_hold\' is always true\.$#',
@@ -10327,52 +10009,10 @@ class Container_f580fd3bd2 extends _PHPStan_6597ef616\Nette\DI\Container
 					'path' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/DashboardController.php',
 				],
 				[
-					'message' => '#^Relation \'vendor\' is not found in App\\\Modules\\\Accounting\\\Models\\\Expense model\.$#',
-					'identifier' => 'larastan.relationExistence',
-					'count' => 1,
-					'path' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/DashboardController.php',
-				],
-				[
 					'message' => '#^Parameter \#1 \$view of function view expects view\-string\|null, string given\.$#',
 					'identifier' => 'argument.type',
 					'count' => 2,
 					'path' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/ExpenseController.php',
-				],
-				[
-					'message' => '#^Relation \'account\' is not found in App\\\Modules\\\Accounting\\\Models\\\Expense model\.$#',
-					'identifier' => 'larastan.relationExistence',
-					'count' => 1,
-					'path' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/ExpenseController.php',
-				],
-				[
-					'message' => '#^Relation \'customer\' is not found in App\\\Modules\\\Accounting\\\Models\\\Expense model\.$#',
-					'identifier' => 'larastan.relationExistence',
-					'count' => 1,
-					'path' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/ExpenseController.php',
-				],
-				[
-					'message' => '#^Relation \'employee\' is not found in App\\\Modules\\\Accounting\\\Models\\\Expense model\.$#',
-					'identifier' => 'larastan.relationExistence',
-					'count' => 1,
-					'path' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/ExpenseController.php',
-				],
-				[
-					'message' => '#^Relation \'vendor\' is not found in App\\\Modules\\\Accounting\\\Models\\\Expense model\.$#',
-					'identifier' => 'larastan.relationExistence',
-					'count' => 2,
-					'path' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/ExpenseController.php',
-				],
-				[
-					'message' => '#^Access to an undefined property Illuminate\\\Database\\\Eloquent\\\Model\:\:\$invoice_id\.$#',
-					'identifier' => 'property.notFound',
-					'count' => 1,
-					'path' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/InvoiceController.php',
-				],
-				[
-					'message' => '#^Call to an undefined method Illuminate\\\Database\\\Eloquent\\\Model\:\:updateBalance\(\)\.$#',
-					'identifier' => 'method.notFound',
-					'count' => 4,
-					'path' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/InvoiceController.php',
 				],
 				[
 					'message' => '#^Parameter \#1 \$view of function view expects view\-string\|null, string given\.$#',
@@ -10519,24 +10159,6 @@ class Container_f580fd3bd2 extends _PHPStan_6597ef616\Nette\DI\Container
 					'path' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/ChartOfAccount.php',
 				],
 				[
-					'message' => '#^Parameter \#1 \$string of function str_pad expects string, int given\.$#',
-					'identifier' => 'argument.type',
-					'count' => 1,
-					'path' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/ChartOfAccount.php',
-				],
-				[
-					'message' => '#^Parameter \#1 \$num of function number_format expects float, string given\.$#',
-					'identifier' => 'argument.type',
-					'count' => 1,
-					'path' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Currency.php',
-				],
-				[
-					'message' => '#^Parameter \#1 \$string of function str_pad expects string, \(float\|int\) given\.$#',
-					'identifier' => 'argument.type',
-					'count' => 1,
-					'path' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Customer.php',
-				],
-				[
 					'message' => '#^Match arm comparison between \'monthly\' and \'monthly\' is always true\.$#',
 					'identifier' => 'match.alwaysTrue',
 					'count' => 1,
@@ -10561,86 +10183,8 @@ class Container_f580fd3bd2 extends _PHPStan_6597ef616\Nette\DI\Container
 					'path' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Expense.php',
 				],
 				[
-					'message' => '#^Method App\\\Modules\\\Accounting\\\Models\\\Expense\:\:account\(\) has invalid return type App\\\Modules\\\Accounting\\\Models\\\BelongsTo\.$#',
-					'identifier' => 'class.notFound',
-					'count' => 1,
-					'path' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Expense.php',
-				],
-				[
-					'message' => '#^Method App\\\Modules\\\Accounting\\\Models\\\Expense\:\:account\(\) should return App\\\Modules\\\Accounting\\\Models\\\BelongsTo but returns Illuminate\\\Database\\\Eloquent\\\Relations\\\BelongsTo\<App\\\Modules\\\Accounting\\\Models\\\Account, \$this\(App\\\Modules\\\Accounting\\\Models\\\Expense\)\>\.$#',
-					'identifier' => 'return.type',
-					'count' => 1,
-					'path' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Expense.php',
-				],
-				[
-					'message' => '#^Method App\\\Modules\\\Accounting\\\Models\\\Expense\:\:customer\(\) has invalid return type App\\\Modules\\\Accounting\\\Models\\\BelongsTo\.$#',
-					'identifier' => 'class.notFound',
-					'count' => 1,
-					'path' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Expense.php',
-				],
-				[
-					'message' => '#^Method App\\\Modules\\\Accounting\\\Models\\\Expense\:\:customer\(\) should return App\\\Modules\\\Accounting\\\Models\\\BelongsTo but returns Illuminate\\\Database\\\Eloquent\\\Relations\\\BelongsTo\<App\\\Modules\\\Accounting\\\Models\\\Customer, \$this\(App\\\Modules\\\Accounting\\\Models\\\Expense\)\>\.$#',
-					'identifier' => 'return.type',
-					'count' => 1,
-					'path' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Expense.php',
-				],
-				[
-					'message' => '#^Method App\\\Modules\\\Accounting\\\Models\\\Expense\:\:employee\(\) has invalid return type App\\\Modules\\\Accounting\\\Models\\\BelongsTo\.$#',
-					'identifier' => 'class.notFound',
-					'count' => 1,
-					'path' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Expense.php',
-				],
-				[
-					'message' => '#^Method App\\\Modules\\\Accounting\\\Models\\\Expense\:\:employee\(\) should return App\\\Modules\\\Accounting\\\Models\\\BelongsTo but returns Illuminate\\\Database\\\Eloquent\\\Relations\\\BelongsTo\<App\\\Modules\\\Accounting\\\Models\\\Employee, \$this\(App\\\Modules\\\Accounting\\\Models\\\Expense\)\>\.$#',
-					'identifier' => 'return.type',
-					'count' => 1,
-					'path' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Expense.php',
-				],
-				[
-					'message' => '#^Method App\\\Modules\\\Accounting\\\Models\\\Expense\:\:vendor\(\) has invalid return type App\\\Modules\\\Accounting\\\Models\\\BelongsTo\.$#',
-					'identifier' => 'class.notFound',
-					'count' => 1,
-					'path' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Expense.php',
-				],
-				[
-					'message' => '#^Method App\\\Modules\\\Accounting\\\Models\\\Expense\:\:vendor\(\) should return App\\\Modules\\\Accounting\\\Models\\\BelongsTo but returns Illuminate\\\Database\\\Eloquent\\\Relations\\\BelongsTo\<App\\\Modules\\\Accounting\\\Models\\\Vendor, \$this\(App\\\Modules\\\Accounting\\\Models\\\Expense\)\>\.$#',
-					'identifier' => 'return.type',
-					'count' => 1,
-					'path' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Expense.php',
-				],
-				[
-					'message' => '#^Parameter \#1 \$string of function str_pad expects string, \(float\|int\) given\.$#',
-					'identifier' => 'argument.type',
-					'count' => 1,
-					'path' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Expense.php',
-				],
-				[
-					'message' => '#^Parameter \#1 \$string of function str_pad expects string, int\<1, max\> given\.$#',
-					'identifier' => 'argument.type',
-					'count' => 1,
-					'path' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Expense.php',
-				],
-				[
-					'message' => '#^Call to an undefined method Illuminate\\\Database\\\Eloquent\\\Model\:\:updateBalance\(\)\.$#',
-					'identifier' => 'method.notFound',
-					'count' => 1,
-					'path' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Invoice.php',
-				],
-				[
 					'message' => '#^Match arm comparison between \'cancelled\' and \'cancelled\' is always true\.$#',
 					'identifier' => 'match.alwaysTrue',
-					'count' => 1,
-					'path' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Invoice.php',
-				],
-				[
-					'message' => '#^Parameter \#1 \$string of function str_pad expects string, \(float\|int\) given\.$#',
-					'identifier' => 'argument.type',
-					'count' => 1,
-					'path' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Invoice.php',
-				],
-				[
-					'message' => '#^Parameter \#1 \$string of function str_pad expects string, int\<1, max\> given\.$#',
-					'identifier' => 'argument.type',
 					'count' => 1,
 					'path' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Invoice.php',
 				],
@@ -10687,12 +10231,6 @@ class Container_f580fd3bd2 extends _PHPStan_6597ef616\Nette\DI\Container
 					'path' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/JournalEntry.php',
 				],
 				[
-					'message' => '#^Parameter \#1 \$string of function str_pad expects string, int\<1, max\> given\.$#',
-					'identifier' => 'argument.type',
-					'count' => 1,
-					'path' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/JournalEntry.php',
-				],
-				[
 					'message' => '#^Access to an undefined property Illuminate\\\Database\\\Eloquent\\\Model\:\:\$display_name\.$#',
 					'identifier' => 'property.notFound',
 					'count' => 2,
@@ -10713,12 +10251,6 @@ class Container_f580fd3bd2 extends _PHPStan_6597ef616\Nette\DI\Container
 				[
 					'message' => '#^Match arm comparison between \'other\' and \'other\' is always true\.$#',
 					'identifier' => 'match.alwaysTrue',
-					'count' => 1,
-					'path' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Payment.php',
-				],
-				[
-					'message' => '#^Parameter \#1 \$string of function str_pad expects string, int\<1, max\> given\.$#',
-					'identifier' => 'argument.type',
 					'count' => 1,
 					'path' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Payment.php',
 				],
@@ -10753,18 +10285,6 @@ class Container_f580fd3bd2 extends _PHPStan_6597ef616\Nette\DI\Container
 					'path' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Payroll.php',
 				],
 				[
-					'message' => '#^Parameter \#1 \$string of function str_pad expects string, \(float\|int\) given\.$#',
-					'identifier' => 'argument.type',
-					'count' => 1,
-					'path' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Payroll.php',
-				],
-				[
-					'message' => '#^Parameter \#1 \$string of function str_pad expects string, int\<1, max\> given\.$#',
-					'identifier' => 'argument.type',
-					'count' => 1,
-					'path' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Payroll.php',
-				],
-				[
 					'message' => '#^Expression on left side of \?\? is not nullable\.$#',
 					'identifier' => 'nullCoalesce.expr',
 					'count' => 1,
@@ -10773,12 +10293,6 @@ class Container_f580fd3bd2 extends _PHPStan_6597ef616\Nette\DI\Container
 				[
 					'message' => '#^Match arm comparison between \'service\' and \'service\' is always true\.$#',
 					'identifier' => 'match.alwaysTrue',
-					'count' => 1,
-					'path' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Product.php',
-				],
-				[
-					'message' => '#^Parameter \#1 \$string of function str_pad expects string, int given\.$#',
-					'identifier' => 'argument.type',
 					'count' => 1,
 					'path' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Product.php',
 				],
@@ -10813,19 +10327,7 @@ class Container_f580fd3bd2 extends _PHPStan_6597ef616\Nette\DI\Container
 					'path' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Tax.php',
 				],
 				[
-					'message' => '#^Parameter \#1 \$string of function str_pad expects string, \(float\|int\) given\.$#',
-					'identifier' => 'argument.type',
-					'count' => 1,
-					'path' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Vendor.php',
-				],
-				[
 					'message' => '#^Relation \'expenseAccount\' is not found in App\\\Modules\\\Accounting\\\Models\\\Expense model\.$#',
-					'identifier' => 'larastan.relationExistence',
-					'count' => 1,
-					'path' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Services/DashboardService.php',
-				],
-				[
-					'message' => '#^Relation \'vendor\' is not found in App\\\Modules\\\Accounting\\\Models\\\Expense model\.$#',
 					'identifier' => 'larastan.relationExistence',
 					'count' => 1,
 					'path' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Services/DashboardService.php',
@@ -11101,12 +10603,6 @@ class Container_f580fd3bd2 extends _PHPStan_6597ef616\Nette\DI\Container
 					'path' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/HR/Models/Attendance.php',
 				],
 				[
-					'message' => '#^Parameter \#1 \$num of function number_format expects float, string given\.$#',
-					'identifier' => 'argument.type',
-					'count' => 1,
-					'path' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/HR/Models/Department.php',
-				],
-				[
 					'message' => '#^Access to an undefined property Illuminate\\\Database\\\Eloquent\\\Model\:\:\$level\.$#',
 					'identifier' => 'property.notFound',
 					'count' => 1,
@@ -11139,18 +10635,6 @@ class Container_f580fd3bd2 extends _PHPStan_6597ef616\Nette\DI\Container
 				[
 					'message' => '#^Method App\\\Modules\\\HR\\\Models\\\Employee\:\:getMonthsOfServiceAttribute\(\) should return int but returns float\.$#',
 					'identifier' => 'return.type',
-					'count' => 1,
-					'path' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/HR/Models/Employee.php',
-				],
-				[
-					'message' => '#^Parameter \#1 \$num of function number_format expects float, string given\.$#',
-					'identifier' => 'argument.type',
-					'count' => 1,
-					'path' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/HR/Models/Employee.php',
-				],
-				[
-					'message' => '#^Parameter \#1 \$string of function str_pad expects string, int given\.$#',
-					'identifier' => 'argument.type',
 					'count' => 1,
 					'path' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/HR/Models/Employee.php',
 				],
@@ -11209,21 +10693,9 @@ class Container_f580fd3bd2 extends _PHPStan_6597ef616\Nette\DI\Container
 					'path' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/HR/Models/PerformanceReview.php',
 				],
 				[
-					'message' => '#^Parameter \#1 \$num of function number_format expects float, string given\.$#',
-					'identifier' => 'argument.type',
-					'count' => 6,
-					'path' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/HR/Models/Role.php',
-				],
-				[
 					'message' => '#^Match arm comparison between \'cancelled\' and \'cancelled\' is always true\.$#',
 					'identifier' => 'match.alwaysTrue',
 					'count' => 2,
-					'path' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/HR/Models/SalaryRecord.php',
-				],
-				[
-					'message' => '#^Parameter \#1 \$num of function number_format expects float, string given\.$#',
-					'identifier' => 'argument.type',
-					'count' => 3,
 					'path' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/HR/Models/SalaryRecord.php',
 				],
 				[
@@ -11603,93 +11075,49 @@ class Container_f580fd3bd2 extends _PHPStan_6597ef616\Nette\DI\Container
 			'usedLevel' => '5',
 			'cliAutoloadFile' => null,
 			'env' => [
-				'APP_FAKER_LOCALE' => 'en_US',
-				'MAIL_FROM_ADDRESS' => 'hello@example.com',
-				'MAIL_PORT' => '2525',
-				'AWS_USE_PATH_STYLE_ENDPOINT' => 'false',
-				'LOG_STACK' => 'single',
 				'TERM_PROGRAM' => 'vscode',
-				'TERM' => 'xterm-256color',
 				'SHELL' => '/bin/bash',
-				'SESSION_DOMAIN' => 'null',
-				'CACHE_STORE' => 'database',
-				'HOMEBREW_REPOSITORY' => '/opt/homebrew',
+				'TERM' => 'xterm-256color',
 				'TMPDIR' => '/var/folders/z4/3r9gm175239_0rwj3kf0z5kw0000gn/T/',
-				'SESSION_DRIVER' => 'database',
-				'VSCODE_PYTHON_AUTOACTIVATE_GUARD' => '1',
+				'HOMEBREW_REPOSITORY' => '/opt/homebrew',
 				'TERM_PROGRAM_VERSION' => '1.105.1',
-				'APP_FALLBACK_LOCALE' => 'en',
-				'LOG_DEPRECATIONS_CHANNEL' => 'null',
-				'ORIGINAL_XDG_CURRENT_DESKTOP' => 'undefined',
+				'VSCODE_PYTHON_AUTOACTIVATE_GUARD' => '1',
 				'MallocNanoZone' => '0',
-				'APP_NAME' => 'Laravel',
-				'AWS_BUCKET' => '',
-				'MAIL_USERNAME' => 'null',
-				'USER' => 'mustafaaljaf',
+				'ORIGINAL_XDG_CURRENT_DESKTOP' => 'undefined',
 				'SCRIPT' => '/var/folders/z4/3r9gm175239_0rwj3kf0z5kw0000gn/T/augment-script-bb5036b257bc951c.log',
+				'USER' => 'mustafaaljaf',
 				'COMMAND_MODE' => 'unix2003',
-				'MEMCACHED_HOST' => '127.0.0.1',
 				'SSH_AUTH_SOCK' => '/private/tmp/com.apple.launchd.gUUXcQbtvK/Listeners',
-				'FILESYSTEM_DISK' => 'local',
-				'APP_URL' => 'http://localhost',
 				'__CF_USER_TEXT_ENCODING' => '0x1F5:0x0:0x0',
-				'REDIS_CLIENT' => 'phpredis',
-				'COLUMNS' => '144',
 				'PAGER' => 'cat',
-				'REDIS_HOST' => '127.0.0.1',
-				'MAIL_PASSWORD' => 'null',
-				'MAIL_MAILER' => 'log',
-				'DB_CONNECTION' => 'sqlite',
 				'PATH' => '/Users/mustafaaljaf/Documents/augment-projects/POS/flutter/bin/cache/dart-sdk/bin/:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/opt/pmk/env/global/bin:/Library/Apple/usr/bin:/Applications/VMware Fusion.app/Contents/Public:/Users/mustafaaljaf/Documents/augment-projects/POS/flutter/bin/cache/dart-sdk/bin/:/Users/mustafaaljaf/.gem/ruby/2.6.0/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/Library/Frameworks/Python.framework/Versions/3.13/bin:/Users/mustafaaljaf/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand',
-				'REDIS_PASSWORD' => 'null',
-				'_' => '/opt/homebrew/Cellar/php/8.4.6/bin/php',
 				'LaunchInstanceID' => '0B7C07B6-D8B6-4FDB-A539-0801E38CA314',
-				'AWS_DEFAULT_REGION' => 'us-east-1',
 				'__CFBundleIdentifier' => 'com.microsoft.VSCode',
 				'PWD' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure',
-				'MAIL_FROM_NAME' => 'Laravel',
-				'SESSION_ENCRYPT' => 'false',
-				'APP_LOCALE' => 'en',
-				'AWS_SECRET_ACCESS_KEY' => '',
-				'PHP_CLI_SERVER_WORKERS' => '4',
-				'BROADCAST_CONNECTION' => 'log',
 				'LANG' => 'C.UTF-8',
-				'SESSION_PATH' => '/',
-				'VSCODE_GIT_ASKPASS_EXTRA_ARGS' => '',
 				'XPC_FLAGS' => '0x0',
-				'APP_DEBUG' => 'true',
-				'APP_KEY' => 'base64:T6K1XFWU8I5jBzZj/7d0HSjj99MxQK06A5Kc9NRJuA0=',
-				'LINES' => '29',
+				'VSCODE_GIT_ASKPASS_EXTRA_ARGS' => '',
 				'XPC_SERVICE_NAME' => '0',
-				'AWS_ACCESS_KEY_ID' => '',
-				'SHELL_VERBOSITY' => '0',
-				'REDIS_PORT' => '6379',
-				'LOG_LEVEL' => 'debug',
-				'SHLVL' => '3',
 				'HOME' => '/Users/mustafaaljaf',
+				'SHLVL' => '2',
 				'VSCODE_GIT_ASKPASS_MAIN' => '/Applications/Visual Studio Code 2.app/Contents/Resources/app/extensions/git/dist/askpass-main.js',
-				'VITE_APP_NAME' => 'Laravel',
 				'HOMEBREW_PREFIX' => '/opt/homebrew',
-				'LOG_CHANNEL' => 'stack',
-				'LESS' => '-FX',
 				'LOGNAME' => 'mustafaaljaf',
-				'MAIL_SCHEME' => 'null',
+				'LESS' => '-FX',
 				'VSCODE_GIT_IPC_HANDLE' => '/var/folders/z4/3r9gm175239_0rwj3kf0z5kw0000gn/T/vscode-git-141ed7594c.sock',
-				'SESSION_LIFETIME' => '120',
-				'QUEUE_CONNECTION' => 'database',
 				'PROMPT_COMMAND' => "__augment_output_end_marker\necho \"\$(pwd)\" > '/var/folders/z4/3r9gm175239_0rwj3kf0z5kw0000gn/T/augment-cwd-bb5036b257bc951c.txt'",
-				'APP_ENV' => 'local',
-				'VSCODE_GIT_ASKPASS_NODE' => '/Applications/Visual Studio Code 2.app/Contents/Frameworks/Code Helper (Plugin).app/Contents/MacOS/Code Helper (Plugin)',
-				'GIT_ASKPASS' => '/Applications/Visual Studio Code 2.app/Contents/Resources/app/extensions/git/dist/askpass.sh',
-				'INFOPATH' => '/opt/homebrew/share/info:',
 				'HOMEBREW_CELLAR' => '/opt/homebrew/Cellar',
-				'BCRYPT_ROUNDS' => '12',
+				'INFOPATH' => '/opt/homebrew/share/info:',
+				'GIT_ASKPASS' => '/Applications/Visual Studio Code 2.app/Contents/Resources/app/extensions/git/dist/askpass.sh',
+				'VSCODE_GIT_ASKPASS_NODE' => '/Applications/Visual Studio Code 2.app/Contents/Frameworks/Code Helper (Plugin).app/Contents/MacOS/Code Helper (Plugin)',
 				'OSLogRateLimit' => '64',
 				'GIT_PAGER' => 'cat',
 				'SECURITYSESSIONID' => '186af',
-				'MAIL_HOST' => '127.0.0.1',
-				'APP_MAINTENANCE_DRIVER' => 'file',
 				'COLORTERM' => 'truecolor',
+				'_' => 'vendor/bin/phpstan',
+				'LINES' => '29',
+				'COLUMNS' => '144',
+				'SHELL_VERBOSITY' => '0',
 			],
 		];
 	}

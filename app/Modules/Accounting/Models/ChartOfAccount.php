@@ -290,6 +290,6 @@ class ChartOfAccount extends Model
                         ($prefix === '4' ? 4000 : 5000)));
         }
 
-        return $prefix.str_pad($newNumber, 3, '0', STR_PAD_LEFT);
+        return $prefix.str_pad((string) $newNumber, 3, '0', STR_PAD_LEFT);
     }
 }

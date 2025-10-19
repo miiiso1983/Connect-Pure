@@ -66,7 +66,7 @@ class SendInvoiceWhatsAppMessage implements ShouldQueue
                 'invoice_number' => $invoice->invoice_number,
                 'invoice_date' => $invoice->invoice_date->format('d/m/Y'),
                 'due_date' => $invoice->due_date->format('d/m/Y'),
-                'total_amount' => number_format($invoice->total_amount, 2),
+                'total_amount' => number_format((float) $invoice->total_amount, 2),
                 'currency' => $invoice->currency ?? 'SAR',
                 'customer_name' => $invoice->customer->name,
             ];

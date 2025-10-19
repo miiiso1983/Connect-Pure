@@ -262,7 +262,7 @@ class Product extends Model
             $nextNumber = 1001;
         }
 
-        return 'SKU'.str_pad($nextNumber, 4, '0', STR_PAD_LEFT);
+        return 'SKU'.str_pad((string) $nextNumber, 4, '0', STR_PAD_LEFT);
     }
 
     public static function getTypeOptions(): array

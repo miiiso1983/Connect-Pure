@@ -237,7 +237,7 @@ class Employee extends Model
 
     public function getFormattedSalaryAttribute(): string
     {
-        return number_format($this->basic_salary, 2);
+        return number_format((float) $this->basic_salary, 2);
     }
 
     public function getIsOnProbationAttribute(): bool
@@ -339,7 +339,7 @@ class Employee extends Model
             $nextNumber = 1001;
         }
 
-        return 'EMP'.str_pad($nextNumber, 4, '0', STR_PAD_LEFT);
+        return 'EMP'.str_pad((string) $nextNumber, 4, '0', STR_PAD_LEFT);
     }
 
     public static function getEmploymentTypeOptions(): array

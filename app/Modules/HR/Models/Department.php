@@ -95,7 +95,7 @@ class Department extends Model
 
     public function getFormattedBudgetAttribute(): string
     {
-        return $this->budget ? number_format($this->budget, 2) : '0.00';
+        return $this->budget ? number_format((float) $this->budget, 2) : '0.00';
     }
 
     public function getEmployeeCountAttribute(): int

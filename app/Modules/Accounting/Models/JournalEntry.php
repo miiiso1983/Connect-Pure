@@ -191,7 +191,7 @@ class JournalEntry extends Model
         static::creating(function ($entry) {
             if (! $entry->entry_number) {
                 $entry->entry_number = 'JE-'.date('Y').'-'.str_pad(
-                    static::whereYear('created_at', date('Y'))->count() + 1, 4, '0', STR_PAD_LEFT
+                    (string) (static::whereYear('created_at', date('Y'))->count() + 1), 4, '0', STR_PAD_LEFT
                 );
             }
         });

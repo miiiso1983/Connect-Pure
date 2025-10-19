@@ -105,11 +105,11 @@ class Role extends Model
     public function getFormattedSalaryRangeAttribute(): string
     {
         if ($this->min_salary && $this->max_salary) {
-            return number_format($this->min_salary, 0).' - '.number_format($this->max_salary, 0);
+            return number_format((float) $this->min_salary, 0).' - '.number_format((float) $this->max_salary, 0);
         } elseif ($this->min_salary) {
-            return 'من '.number_format($this->min_salary, 0);
+            return 'من '.number_format((float) $this->min_salary, 0);
         } elseif ($this->max_salary) {
-            return 'حتى '.number_format($this->max_salary, 0);
+            return 'حتى '.number_format((float) $this->max_salary, 0);
         }
 
         return 'غير محدد';
@@ -185,14 +185,14 @@ class Role extends Model
         if ($this->min_salary && $salary < $this->min_salary) {
             $result['valid'] = false;
             $result['message'] = __('hr.salary_below_minimum', [
-                'min' => number_format($this->min_salary, 0),
+                'min' => number_format((float) $this->min_salary, 0),
             ]);
         }
 
         if ($this->max_salary && $salary > $this->max_salary) {
             $result['valid'] = false;
             $result['message'] = __('hr.salary_above_maximum', [
-                'max' => number_format($this->max_salary, 0),
+                'max' => number_format((float) $this->max_salary, 0),
             ]);
         }
 

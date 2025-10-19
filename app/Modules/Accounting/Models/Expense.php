@@ -187,7 +187,7 @@ class Expense extends Model
     public function markAsPaid($paymentData = [])
     {
         $payment = $this->payments()->create(array_merge([
-            'payment_number' => 'PAY-'.str_pad(Payment::max('id') + 1, 6, '0', STR_PAD_LEFT),
+            'payment_number' => 'PAY-'.str_pad((string) (Payment::max('id') + 1), 6, '0', STR_PAD_LEFT),
             'type' => 'vendor_payment',
             'vendor_id' => $this->vendor_id,
             'amount' => $this->total_amount,
@@ -252,7 +252,7 @@ class Expense extends Model
                 $endOfYear = now()->endOfYear();
 
                 $expense->expense_number = 'EXP-'.$currentYear.'-'.str_pad(
-                    static::whereBetween('created_at', [$startOfYear, $endOfYear])->count() + 1, 4, '0', STR_PAD_LEFT
+                    (string) (static::whereBetween('created_at', [$startOfYear, $endOfYear])->count() + 1), 4, '0', STR_PAD_LEFT
                 );
             }
 

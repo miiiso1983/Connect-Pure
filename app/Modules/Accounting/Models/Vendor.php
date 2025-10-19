@@ -140,7 +140,7 @@ class Vendor extends Model
         static::creating(function ($vendor) {
             if (! $vendor->vendor_number) {
                 $vendor->vendor_number = 'VEND-'.str_pad(
-                    static::max('id') + 1, 6, '0', STR_PAD_LEFT
+                    (string) (static::max('id') + 1), 6, '0', STR_PAD_LEFT
                 );
             }
         });

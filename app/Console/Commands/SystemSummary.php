@@ -130,7 +130,7 @@ class SystemSummary extends Command
             $this->info("   • Name: {$masterAdmin->name}");
             $this->info("   • Email: {$masterAdmin->email}");
             $this->info('   • Password: admin123');
-            $this->info('   • Role: '.($masterAdmin->roles->first()?->name ?? 'No Role'));
+            $this->info('   • Role: '.($masterAdmin->roles->first()->name ?? 'No Role'));
             $this->info('   • Access Level: UNLIMITED SYSTEM ACCESS');
             $this->info('');
         }

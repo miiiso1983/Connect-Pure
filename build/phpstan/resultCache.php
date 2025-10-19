@@ -2073,26 +2073,6 @@ return [
        'fixedErrorDiff' => NULL,
     )),
   ),
-  '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Console/Commands/SystemSummary.php' => 
-  array (
-    0 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Using nullsafe property access "?->name" on left side of ?? is unnecessary. Use -> instead.',
-       'file' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Console/Commands/SystemSummary.php',
-       'line' => 133,
-       'canBeIgnored' => true,
-       'filePath' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Console/Commands/SystemSummary.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 133,
-       'nodeType' => 'PhpParser\\Node\\Expr\\BinaryOp\\Coalesce',
-       'identifier' => 'nullsafe.neverNull',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-  ),
   '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Console/Commands/TestAuthentication.php' => 
   array (
     0 => 
@@ -2142,26 +2122,6 @@ return [
        'traitFilePath' => NULL,
        'tip' => 'Learn more: <fg=cyan>https://phpstan.org/blog/solving-phpstan-access-to-undefined-property</>',
        'nodeLine' => 34,
-       'nodeType' => 'PhpParser\\Node\\Expr\\PropertyFetch',
-       'identifier' => 'property.notFound',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-  ),
-  '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Console/Commands/WhatsAppStatus.php' => 
-  array (
-    0 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Access to an undefined property Illuminate\\Database\\Eloquent\\Model::$name.',
-       'file' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Console/Commands/WhatsAppStatus.php',
-       'line' => 80,
-       'canBeIgnored' => true,
-       'filePath' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Console/Commands/WhatsAppStatus.php',
-       'traitFilePath' => NULL,
-       'tip' => 'Learn more: <fg=cyan>https://phpstan.org/blog/solving-phpstan-access-to-undefined-property</>',
-       'nodeLine' => 80,
        'nodeType' => 'PhpParser\\Node\\Expr\\PropertyFetch',
        'identifier' => 'property.notFound',
        'metadata' => 
@@ -2420,128 +2380,6 @@ return [
        'nodeLine' => 22,
        'nodeType' => 'PhpParser\\Node\\Expr\\New_',
        'identifier' => 'argument.type',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-  ),
-  '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Listeners/SendInvoiceWhatsAppMessage.php' => 
-  array (
-    0 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Access to an undefined property Illuminate\\Database\\Eloquent\\Model::$phone.',
-       'file' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Listeners/SendInvoiceWhatsAppMessage.php',
-       'line' => 40,
-       'canBeIgnored' => true,
-       'filePath' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Listeners/SendInvoiceWhatsAppMessage.php',
-       'traitFilePath' => NULL,
-       'tip' => 'Learn more: <fg=cyan>https://phpstan.org/blog/solving-phpstan-access-to-undefined-property</>',
-       'nodeLine' => 40,
-       'nodeType' => 'PhpParser\\Node\\Expr\\PropertyFetch',
-       'identifier' => 'property.notFound',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    1 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Access to an undefined property Illuminate\\Database\\Eloquent\\Model::$id.',
-       'file' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Listeners/SendInvoiceWhatsAppMessage.php',
-       'line' => 45,
-       'canBeIgnored' => true,
-       'filePath' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Listeners/SendInvoiceWhatsAppMessage.php',
-       'traitFilePath' => NULL,
-       'tip' => 'Learn more: <fg=cyan>https://phpstan.org/blog/solving-phpstan-access-to-undefined-property</>',
-       'nodeLine' => 45,
-       'nodeType' => 'PhpParser\\Node\\Expr\\PropertyFetch',
-       'identifier' => 'property.notFound',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    2 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Parameter #1 $num of function number_format expects float, string given.',
-       'file' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Listeners/SendInvoiceWhatsAppMessage.php',
-       'line' => 69,
-       'canBeIgnored' => true,
-       'filePath' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Listeners/SendInvoiceWhatsAppMessage.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 69,
-       'nodeType' => 'PhpParser\\Node\\Expr\\FuncCall',
-       'identifier' => 'argument.type',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    3 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Access to an undefined property Illuminate\\Database\\Eloquent\\Model::$name.',
-       'file' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Listeners/SendInvoiceWhatsAppMessage.php',
-       'line' => 71,
-       'canBeIgnored' => true,
-       'filePath' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Listeners/SendInvoiceWhatsAppMessage.php',
-       'traitFilePath' => NULL,
-       'tip' => 'Learn more: <fg=cyan>https://phpstan.org/blog/solving-phpstan-access-to-undefined-property</>',
-       'nodeLine' => 71,
-       'nodeType' => 'PhpParser\\Node\\Expr\\PropertyFetch',
-       'identifier' => 'property.notFound',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    4 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Access to an undefined property Illuminate\\Database\\Eloquent\\Model::$id.',
-       'file' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Listeners/SendInvoiceWhatsAppMessage.php',
-       'line' => 84,
-       'canBeIgnored' => true,
-       'filePath' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Listeners/SendInvoiceWhatsAppMessage.php',
-       'traitFilePath' => NULL,
-       'tip' => 'Learn more: <fg=cyan>https://phpstan.org/blog/solving-phpstan-access-to-undefined-property</>',
-       'nodeLine' => 84,
-       'nodeType' => 'PhpParser\\Node\\Expr\\PropertyFetch',
-       'identifier' => 'property.notFound',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    5 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Access to an undefined property Illuminate\\Database\\Eloquent\\Model::$id.',
-       'file' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Listeners/SendInvoiceWhatsAppMessage.php',
-       'line' => 97,
-       'canBeIgnored' => true,
-       'filePath' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Listeners/SendInvoiceWhatsAppMessage.php',
-       'traitFilePath' => NULL,
-       'tip' => 'Learn more: <fg=cyan>https://phpstan.org/blog/solving-phpstan-access-to-undefined-property</>',
-       'nodeLine' => 97,
-       'nodeType' => 'PhpParser\\Node\\Expr\\PropertyFetch',
-       'identifier' => 'property.notFound',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    6 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Access to an undefined property Illuminate\\Database\\Eloquent\\Model::$id.',
-       'file' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Listeners/SendInvoiceWhatsAppMessage.php',
-       'line' => 111,
-       'canBeIgnored' => true,
-       'filePath' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Listeners/SendInvoiceWhatsAppMessage.php',
-       'traitFilePath' => NULL,
-       'tip' => 'Learn more: <fg=cyan>https://phpstan.org/blog/solving-phpstan-access-to-undefined-property</>',
-       'nodeLine' => 111,
-       'nodeType' => 'PhpParser\\Node\\Expr\\PropertyFetch',
-       'identifier' => 'property.notFound',
        'metadata' => 
       array (
       ),
@@ -3129,23 +2967,6 @@ return [
   array (
     0 => 
     \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Call to an undefined method Illuminate\\Database\\Eloquent\\Model::updateBalance().',
-       'file' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/InvoiceController.php',
-       'line' => 129,
-       'canBeIgnored' => true,
-       'filePath' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/InvoiceController.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 129,
-       'nodeType' => 'PhpParser\\Node\\Expr\\MethodCall',
-       'identifier' => 'method.notFound',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    1 => 
-    \PHPStan\Analyser\Error::__set_state(array(
        'message' => 'Parameter #1 $view of function view expects view-string|null, string given.',
        'file' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/InvoiceController.php',
        'line' => 148,
@@ -3161,7 +2982,7 @@ return [
       ),
        'fixedErrorDiff' => NULL,
     )),
-    2 => 
+    1 => 
     \PHPStan\Analyser\Error::__set_state(array(
        'message' => 'Parameter #1 $view of function view expects view-string|null, string given.',
        'file' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/InvoiceController.php',
@@ -3178,58 +2999,7 @@ return [
       ),
        'fixedErrorDiff' => NULL,
     )),
-    3 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Call to an undefined method Illuminate\\Database\\Eloquent\\Model::updateBalance().',
-       'file' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/InvoiceController.php',
-       'line' => 184,
-       'canBeIgnored' => true,
-       'filePath' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/InvoiceController.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 184,
-       'nodeType' => 'PhpParser\\Node\\Expr\\MethodCall',
-       'identifier' => 'method.notFound',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    4 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Call to an undefined method Illuminate\\Database\\Eloquent\\Model::updateBalance().',
-       'file' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/InvoiceController.php',
-       'line' => 223,
-       'canBeIgnored' => true,
-       'filePath' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/InvoiceController.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 223,
-       'nodeType' => 'PhpParser\\Node\\Expr\\MethodCall',
-       'identifier' => 'method.notFound',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    5 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Call to an undefined method Illuminate\\Database\\Eloquent\\Model::updateBalance().',
-       'file' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/InvoiceController.php',
-       'line' => 250,
-       'canBeIgnored' => true,
-       'filePath' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/InvoiceController.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 250,
-       'nodeType' => 'PhpParser\\Node\\Expr\\MethodCall',
-       'identifier' => 'method.notFound',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    6 => 
+    2 => 
     \PHPStan\Analyser\Error::__set_state(array(
        'message' => 'Property App\\Modules\\Accounting\\Models\\Invoice::$invoice_number (string) does not accept null.',
        'file' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/InvoiceController.php',
@@ -3246,24 +3016,7 @@ return [
       ),
        'fixedErrorDiff' => NULL,
     )),
-    7 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Access to an undefined property Illuminate\\Database\\Eloquent\\Model::$invoice_id.',
-       'file' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/InvoiceController.php',
-       'line' => 340,
-       'canBeIgnored' => true,
-       'filePath' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/InvoiceController.php',
-       'traitFilePath' => NULL,
-       'tip' => 'Learn more: <fg=cyan>https://phpstan.org/blog/solving-phpstan-access-to-undefined-property</>',
-       'nodeLine' => 340,
-       'nodeType' => 'PHPStan\\Node\\PropertyAssignNode',
-       'identifier' => 'property.notFound',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    8 => 
+    3 => 
     \PHPStan\Analyser\Error::__set_state(array(
        'message' => 'Parameter #1 $view of function view expects view-string|null, string given.',
        'file' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/InvoiceController.php',
@@ -4841,63 +4594,6 @@ return [
       ),
        'fixedErrorDiff' => NULL,
     )),
-    2 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Parameter #1 $string of function str_pad expects string, int given.',
-       'file' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/ChartOfAccount.php',
-       'line' => 293,
-       'canBeIgnored' => true,
-       'filePath' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/ChartOfAccount.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 293,
-       'nodeType' => 'PhpParser\\Node\\Expr\\FuncCall',
-       'identifier' => 'argument.type',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-  ),
-  '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Currency.php' => 
-  array (
-    0 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Parameter #1 $num of function number_format expects float, string given.',
-       'file' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Currency.php',
-       'line' => 70,
-       'canBeIgnored' => true,
-       'filePath' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Currency.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 70,
-       'nodeType' => 'PhpParser\\Node\\Expr\\FuncCall',
-       'identifier' => 'argument.type',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-  ),
-  '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Customer.php' => 
-  array (
-    0 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Parameter #1 $string of function str_pad expects string, (float|int) given.',
-       'file' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Customer.php',
-       'line' => 171,
-       'canBeIgnored' => true,
-       'filePath' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Customer.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 170,
-       'nodeType' => 'PhpParser\\Node\\Expr\\FuncCall',
-       'identifier' => 'argument.type',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
   ),
   '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Employee.php' => 
   array (
@@ -4972,40 +4668,6 @@ return [
       ),
        'fixedErrorDiff' => NULL,
     )),
-    1 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Parameter #1 $string of function str_pad expects string, (float|int) given.',
-       'file' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Expense.php',
-       'line' => 190,
-       'canBeIgnored' => true,
-       'filePath' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Expense.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 190,
-       'nodeType' => 'PhpParser\\Node\\Expr\\FuncCall',
-       'identifier' => 'argument.type',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    2 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Parameter #1 $string of function str_pad expects string, int<1, max> given.',
-       'file' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Expense.php',
-       'line' => 255,
-       'canBeIgnored' => true,
-       'filePath' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Expense.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 254,
-       'nodeType' => 'PhpParser\\Node\\Expr\\FuncCall',
-       'identifier' => 'argument.type',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
   ),
   '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Invoice.php' => 
   array (
@@ -5013,65 +4675,14 @@ return [
     \PHPStan\Analyser\Error::__set_state(array(
        'message' => 'Match arm comparison between \'cancelled\' and \'cancelled\' is always true.',
        'file' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Invoice.php',
-       'line' => 126,
+       'line' => 130,
        'canBeIgnored' => true,
        'filePath' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Invoice.php',
        'traitFilePath' => NULL,
        'tip' => 'Remove remaining cases below this one and this error will disappear too.',
-       'nodeLine' => 119,
+       'nodeLine' => 123,
        'nodeType' => 'PHPStan\\Node\\MatchExpressionNode',
        'identifier' => 'match.alwaysTrue',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    1 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Parameter #1 $string of function str_pad expects string, (float|int) given.',
-       'file' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Invoice.php',
-       'line' => 184,
-       'canBeIgnored' => true,
-       'filePath' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Invoice.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 184,
-       'nodeType' => 'PhpParser\\Node\\Expr\\FuncCall',
-       'identifier' => 'argument.type',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    2 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Call to an undefined method Illuminate\\Database\\Eloquent\\Model::updateBalance().',
-       'file' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Invoice.php',
-       'line' => 204,
-       'canBeIgnored' => true,
-       'filePath' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Invoice.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 204,
-       'nodeType' => 'PhpParser\\Node\\Expr\\MethodCall',
-       'identifier' => 'method.notFound',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    3 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Parameter #1 $string of function str_pad expects string, int<1, max> given.',
-       'file' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Invoice.php',
-       'line' => 233,
-       'canBeIgnored' => true,
-       'filePath' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Invoice.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 232,
-       'nodeType' => 'PhpParser\\Node\\Expr\\FuncCall',
-       'identifier' => 'argument.type',
        'metadata' => 
       array (
       ),
@@ -5250,23 +4861,6 @@ return [
       ),
        'fixedErrorDiff' => NULL,
     )),
-    10 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Parameter #1 $string of function str_pad expects string, int<1, max> given.',
-       'file' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/JournalEntry.php',
-       'line' => 194,
-       'canBeIgnored' => true,
-       'filePath' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/JournalEntry.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 193,
-       'nodeType' => 'PhpParser\\Node\\Expr\\FuncCall',
-       'identifier' => 'argument.type',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
   ),
   '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Payment.php' => 
   array (
@@ -5350,23 +4944,6 @@ return [
        'nodeLine' => 137,
        'nodeType' => 'PHPStan\\Node\\MatchExpressionNode',
        'identifier' => 'match.alwaysTrue',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    5 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Parameter #1 $string of function str_pad expects string, int<1, max> given.',
-       'file' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Payment.php',
-       'line' => 208,
-       'canBeIgnored' => true,
-       'filePath' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Payment.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 207,
-       'nodeType' => 'PhpParser\\Node\\Expr\\FuncCall',
-       'identifier' => 'argument.type',
        'metadata' => 
       array (
       ),
@@ -5548,40 +5125,6 @@ return [
       ),
        'fixedErrorDiff' => NULL,
     )),
-    9 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Parameter #1 $string of function str_pad expects string, (float|int) given.',
-       'file' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Payroll.php',
-       'line' => 232,
-       'canBeIgnored' => true,
-       'filePath' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Payroll.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 232,
-       'nodeType' => 'PhpParser\\Node\\Expr\\FuncCall',
-       'identifier' => 'argument.type',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    10 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Parameter #1 $string of function str_pad expects string, int<1, max> given.',
-       'file' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Payroll.php',
-       'line' => 264,
-       'canBeIgnored' => true,
-       'filePath' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Payroll.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 263,
-       'nodeType' => 'PhpParser\\Node\\Expr\\FuncCall',
-       'identifier' => 'argument.type',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
   ),
   '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Product.php' => 
   array (
@@ -5614,23 +5157,6 @@ return [
        'nodeLine' => 105,
        'nodeType' => 'PHPStan\\Node\\MatchExpressionNode',
        'identifier' => 'match.alwaysTrue',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    2 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Parameter #1 $string of function str_pad expects string, int given.',
-       'file' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Product.php',
-       'line' => 265,
-       'canBeIgnored' => true,
-       'filePath' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Product.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 265,
-       'nodeType' => 'PhpParser\\Node\\Expr\\FuncCall',
-       'identifier' => 'argument.type',
        'metadata' => 
       array (
       ),
@@ -5739,26 +5265,6 @@ return [
        'nodeLine' => 123,
        'nodeType' => 'PhpParser\\Node\\Expr\\BinaryOp\\Coalesce',
        'identifier' => 'nullCoalesce.offset',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-  ),
-  '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Vendor.php' => 
-  array (
-    0 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Parameter #1 $string of function str_pad expects string, (float|int) given.',
-       'file' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Vendor.php',
-       'line' => 143,
-       'canBeIgnored' => true,
-       'filePath' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Vendor.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 142,
-       'nodeType' => 'PhpParser\\Node\\Expr\\FuncCall',
-       'identifier' => 'argument.type',
        'metadata' => 
       array (
       ),
@@ -7340,26 +6846,6 @@ return [
        'fixedErrorDiff' => NULL,
     )),
   ),
-  '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/HR/Models/Department.php' => 
-  array (
-    0 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Parameter #1 $num of function number_format expects float, string given.',
-       'file' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/HR/Models/Department.php',
-       'line' => 98,
-       'canBeIgnored' => true,
-       'filePath' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/HR/Models/Department.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 98,
-       'nodeType' => 'PhpParser\\Node\\Expr\\FuncCall',
-       'identifier' => 'argument.type',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-  ),
   '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/HR/Models/Employee.php' => 
   array (
     0 => 
@@ -7415,23 +6901,6 @@ return [
     )),
     3 => 
     \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Parameter #1 $num of function number_format expects float, string given.',
-       'file' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/HR/Models/Employee.php',
-       'line' => 240,
-       'canBeIgnored' => true,
-       'filePath' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/HR/Models/Employee.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 240,
-       'nodeType' => 'PhpParser\\Node\\Expr\\FuncCall',
-       'identifier' => 'argument.type',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    4 => 
-    \PHPStan\Analyser\Error::__set_state(array(
        'message' => 'Access to an undefined property Illuminate\\Database\\Eloquent\\Model::$level.',
        'file' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/HR/Models/Employee.php',
        'line' => 278,
@@ -7447,7 +6916,7 @@ return [
       ),
        'fixedErrorDiff' => NULL,
     )),
-    5 => 
+    4 => 
     \PHPStan\Analyser\Error::__set_state(array(
        'message' => 'Match expression does not handle remaining value: string',
        'file' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/HR/Models/Employee.php',
@@ -7464,7 +6933,7 @@ return [
       ),
        'fixedErrorDiff' => NULL,
     )),
-    6 => 
+    5 => 
     \PHPStan\Analyser\Error::__set_state(array(
        'message' => 'Match expression does not handle remaining value: string',
        'file' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/HR/Models/Employee.php',
@@ -7481,7 +6950,7 @@ return [
       ),
        'fixedErrorDiff' => NULL,
     )),
-    7 => 
+    6 => 
     \PHPStan\Analyser\Error::__set_state(array(
        'message' => 'Method App\\Modules\\HR\\Models\\Employee::getLatestSalaryRecord() should return App\\Modules\\HR\\Models\\SalaryRecord|null but returns Illuminate\\Database\\Eloquent\\Model|null.',
        'file' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/HR/Models/Employee.php',
@@ -7493,23 +6962,6 @@ return [
        'nodeLine' => 320,
        'nodeType' => 'PhpParser\\Node\\Stmt\\Return_',
        'identifier' => 'return.type',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    8 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Parameter #1 $string of function str_pad expects string, int given.',
-       'file' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/HR/Models/Employee.php',
-       'line' => 342,
-       'canBeIgnored' => true,
-       'filePath' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/HR/Models/Employee.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 342,
-       'nodeType' => 'PhpParser\\Node\\Expr\\FuncCall',
-       'identifier' => 'argument.type',
        'metadata' => 
       array (
       ),
@@ -7709,111 +7161,6 @@ return [
        'fixedErrorDiff' => NULL,
     )),
   ),
-  '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/HR/Models/Role.php' => 
-  array (
-    0 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Parameter #1 $num of function number_format expects float, string given.',
-       'file' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/HR/Models/Role.php',
-       'line' => 108,
-       'canBeIgnored' => true,
-       'filePath' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/HR/Models/Role.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 108,
-       'nodeType' => 'PhpParser\\Node\\Expr\\FuncCall',
-       'identifier' => 'argument.type',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    1 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Parameter #1 $num of function number_format expects float, string given.',
-       'file' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/HR/Models/Role.php',
-       'line' => 108,
-       'canBeIgnored' => true,
-       'filePath' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/HR/Models/Role.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 108,
-       'nodeType' => 'PhpParser\\Node\\Expr\\FuncCall',
-       'identifier' => 'argument.type',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    2 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Parameter #1 $num of function number_format expects float, string given.',
-       'file' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/HR/Models/Role.php',
-       'line' => 110,
-       'canBeIgnored' => true,
-       'filePath' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/HR/Models/Role.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 110,
-       'nodeType' => 'PhpParser\\Node\\Expr\\FuncCall',
-       'identifier' => 'argument.type',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    3 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Parameter #1 $num of function number_format expects float, string given.',
-       'file' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/HR/Models/Role.php',
-       'line' => 112,
-       'canBeIgnored' => true,
-       'filePath' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/HR/Models/Role.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 112,
-       'nodeType' => 'PhpParser\\Node\\Expr\\FuncCall',
-       'identifier' => 'argument.type',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    4 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Parameter #1 $num of function number_format expects float, string given.',
-       'file' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/HR/Models/Role.php',
-       'line' => 188,
-       'canBeIgnored' => true,
-       'filePath' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/HR/Models/Role.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 188,
-       'nodeType' => 'PhpParser\\Node\\Expr\\FuncCall',
-       'identifier' => 'argument.type',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    5 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Parameter #1 $num of function number_format expects float, string given.',
-       'file' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/HR/Models/Role.php',
-       'line' => 195,
-       'canBeIgnored' => true,
-       'filePath' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/HR/Models/Role.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 195,
-       'nodeType' => 'PhpParser\\Node\\Expr\\FuncCall',
-       'identifier' => 'argument.type',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-  ),
   '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/HR/Models/SalaryRecord.php' => 
   array (
     0 => 
@@ -7851,57 +7198,6 @@ return [
        'fixedErrorDiff' => NULL,
     )),
     2 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Parameter #1 $num of function number_format expects float, string given.',
-       'file' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/HR/Models/SalaryRecord.php',
-       'line' => 203,
-       'canBeIgnored' => true,
-       'filePath' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/HR/Models/SalaryRecord.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 203,
-       'nodeType' => 'PhpParser\\Node\\Expr\\FuncCall',
-       'identifier' => 'argument.type',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    3 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Parameter #1 $num of function number_format expects float, string given.',
-       'file' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/HR/Models/SalaryRecord.php',
-       'line' => 208,
-       'canBeIgnored' => true,
-       'filePath' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/HR/Models/SalaryRecord.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 208,
-       'nodeType' => 'PhpParser\\Node\\Expr\\FuncCall',
-       'identifier' => 'argument.type',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    4 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Parameter #1 $num of function number_format expects float, string given.',
-       'file' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/HR/Models/SalaryRecord.php',
-       'line' => 213,
-       'canBeIgnored' => true,
-       'filePath' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/HR/Models/SalaryRecord.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 213,
-       'nodeType' => 'PhpParser\\Node\\Expr\\FuncCall',
-       'identifier' => 'argument.type',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    5 => 
     \PHPStan\Analyser\Error::__set_state(array(
        'message' => 'Parameter #1 $string of function str_pad expects string, int given.',
        'file' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/HR/Models/SalaryRecord.php',
@@ -11051,37 +10347,37 @@ return [
       0 => 
       array (
         0 => 'accounting.draft',
-        1 => 212,
+        1 => 216,
       ),
       1 => 
       array (
         0 => 'accounting.sent',
-        1 => 213,
+        1 => 217,
       ),
       2 => 
       array (
         0 => 'accounting.viewed',
-        1 => 214,
+        1 => 218,
       ),
       3 => 
       array (
         0 => 'accounting.partial',
-        1 => 215,
+        1 => 219,
       ),
       4 => 
       array (
         0 => 'accounting.paid',
-        1 => 216,
+        1 => 220,
       ),
       5 => 
       array (
         0 => 'accounting.overdue',
-        1 => 217,
+        1 => 221,
       ),
       6 => 
       array (
         0 => 'accounting.cancelled',
-        1 => 218,
+        1 => 222,
       ),
     ),
     'PHPStan\\Rules\\DeadCode\\MethodWithoutImpurePointsCollector' => 
@@ -14259,7 +13555,7 @@ return [
   ),
   '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Console/Commands/SystemSummary.php' => 
   array (
-    'fileHash' => 'd4256a7aa2737874862dc90f66b904ea75076730',
+    'fileHash' => '54fc4028f3c03043b8bdfd49f57485b50cc136cf',
     'dependentFiles' => 
     array (
     ),
@@ -14547,7 +13843,7 @@ return [
   ),
   '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Listeners/SendInvoiceWhatsAppMessage.php' => 
   array (
-    'fileHash' => '2b690c5e01e3936ce5e15f0fb909708088de408b',
+    'fileHash' => '33ca9baaeec3bf0473863161065d81997b23428c',
     'dependentFiles' => 
     array (
       0 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Providers/WhatsAppServiceProvider.php',
@@ -14858,7 +14154,7 @@ return [
   ),
   '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/ChartOfAccount.php' => 
   array (
-    'fileHash' => '2e19cefb6134b179b630d8845e2e6b3aa871938d',
+    'fileHash' => '1e336f9a3fbd2eeac9774b89b54fd881d1fcf0da',
     'dependentFiles' => 
     array (
       0 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/ChartOfAccountController.php',
@@ -14873,7 +14169,7 @@ return [
   ),
   '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Currency.php' => 
   array (
-    'fileHash' => '0271a42bf7d5cf71825c543354d905c4243a51a3',
+    'fileHash' => '58c5bd7d86e6740756fbc482493bb6f1120e1224',
     'dependentFiles' => 
     array (
       0 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/CurrencyController.php',
@@ -14881,25 +14177,34 @@ return [
   ),
   '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Customer.php' => 
   array (
-    'fileHash' => '21486f9dc64aea04869e747421251b105d30d7ea',
+    'fileHash' => '464e7f68f2637903e1fc09394db310125b6e96c4',
     'dependentFiles' => 
     array (
       0 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Console/Commands/WhatsAppStatus.php',
-      1 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/CustomerController.php',
-      2 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/DashboardController.php',
-      3 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/ExpenseController.php',
-      4 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/InvoiceController.php',
-      5 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/PaymentController.php',
-      6 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/RecurringController.php',
-      7 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/ReportController.php',
-      8 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/ReportsController.php',
-      9 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Currency.php',
-      10 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Expense.php',
-      11 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Invoice.php',
-      12 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Payment.php',
-      13 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/RecurringProfile.php',
-      14 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Services/DashboardService.php',
-      15 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Services/ReportService.php',
+      1 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Events/InvoiceSubmitted.php',
+      2 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Listeners/SendInvoiceWhatsAppMessage.php',
+      3 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/CustomerController.php',
+      4 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/DashboardController.php',
+      5 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/ExpenseController.php',
+      6 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/InvoiceController.php',
+      7 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/PaymentController.php',
+      8 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/RecurringController.php',
+      9 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/ReportController.php',
+      10 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/ReportsController.php',
+      11 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Currency.php',
+      12 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Expense.php',
+      13 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Invoice.php',
+      14 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/InvoiceItem.php',
+      15 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Payment.php',
+      16 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/PaymentApplication.php',
+      17 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/RecurringProfile.php',
+      18 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Tax.php',
+      19 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Requests/InvoiceStoreRequest.php',
+      20 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Services/DashboardService.php',
+      21 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Services/ReportService.php',
+      22 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Policies/InvoicePolicy.php',
+      23 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Providers/AppServiceProvider.php',
+      24 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Services/InvoicePdfService.php',
     ),
   ),
   '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Employee.php' => 
@@ -14930,7 +14235,7 @@ return [
   ),
   '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Expense.php' => 
   array (
-    'fileHash' => 'd81b472fbdd857850944869b3156dd725645ad09',
+    'fileHash' => '3ce14569c72c3ea30043fb47cb8dfcab64963776',
     'dependentFiles' => 
     array (
       0 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/DashboardController.php',
@@ -14954,7 +14259,7 @@ return [
   ),
   '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Invoice.php' => 
   array (
-    'fileHash' => 'd4b8a38e9528b629c5a2b30d44878a95dd21c89d',
+    'fileHash' => '8f8b84c9f6709ee5a73942cae1a8e5c791eb54f2',
     'dependentFiles' => 
     array (
       0 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Console/Commands/WhatsAppStatus.php',
@@ -14985,15 +14290,35 @@ return [
     'fileHash' => '22bf95074980e08011f4a259548aec34f3c5a2ac',
     'dependentFiles' => 
     array (
-      0 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Account.php',
-      1 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/ChartOfAccount.php',
-      2 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Invoice.php',
-      3 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Product.php',
+      0 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Console/Commands/WhatsAppStatus.php',
+      1 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Events/InvoiceSubmitted.php',
+      2 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Listeners/SendInvoiceWhatsAppMessage.php',
+      3 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/DashboardController.php',
+      4 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/InvoiceController.php',
+      5 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/PaymentController.php',
+      6 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/ReportController.php',
+      7 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/ReportsController.php',
+      8 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Account.php',
+      9 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/ChartOfAccount.php',
+      10 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Currency.php',
+      11 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Customer.php',
+      12 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Invoice.php',
+      13 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Payment.php',
+      14 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/PaymentApplication.php',
+      15 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Product.php',
+      16 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/RecurringProfile.php',
+      17 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Tax.php',
+      18 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Requests/InvoiceStoreRequest.php',
+      19 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Services/DashboardService.php',
+      20 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Services/ReportService.php',
+      21 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Policies/InvoicePolicy.php',
+      22 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Providers/AppServiceProvider.php',
+      23 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Services/InvoicePdfService.php',
     ),
   ),
   '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/JournalEntry.php' => 
   array (
-    'fileHash' => 'd0298987837492d93ed4fff97629e836790429f2',
+    'fileHash' => 'ab196a47b131f8fcf4702b4a6d6c9f83ba1686fc',
     'dependentFiles' => 
     array (
       0 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/JournalEntryController.php',
@@ -15014,7 +14339,7 @@ return [
   ),
   '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Payment.php' => 
   array (
-    'fileHash' => '04a098b7a08e821cac1ae163d9d8f29285de029b',
+    'fileHash' => 'fcf19f4d16baa490676810497f918b881ce9aa3e',
     'dependentFiles' => 
     array (
       0 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/PaymentController.php',
@@ -15039,7 +14364,7 @@ return [
   ),
   '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Payroll.php' => 
   array (
-    'fileHash' => '7c659afbca76c83baf7510fb3aafcdb649cfc207',
+    'fileHash' => '668e9e8efe61fc112c3326f34d9c2fccb49d76ef',
     'dependentFiles' => 
     array (
       0 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/PayrollController.php',
@@ -15049,7 +14374,7 @@ return [
   ),
   '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Product.php' => 
   array (
-    'fileHash' => '6518ff90ee6b678f34d8ae724918757751ebbda7',
+    'fileHash' => '0cf142464f4b8eea8959b323f94ad8a209b68272',
     'dependentFiles' => 
     array (
       0 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/DashboardController.php',
@@ -15091,7 +14416,7 @@ return [
   ),
   '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Vendor.php' => 
   array (
-    'fileHash' => '85bffe67e7c6c1b2a7f34a714d02f2a317203ecd',
+    'fileHash' => 'e1707403725e4915f0e97594c508a6ed09b283de',
     'dependentFiles' => 
     array (
       0 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/DashboardController.php',
@@ -15292,7 +14617,7 @@ return [
   ),
   '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/HR/Models/Department.php' => 
   array (
-    'fileHash' => '859dab3a07785b83beab1a7a2124333d3d26fba6',
+    'fileHash' => '1c32ab3b23de396e05763cde2bf4d2335f6d93ac',
     'dependentFiles' => 
     array (
       0 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/HR/Controllers/DashboardController.php',
@@ -15310,7 +14635,7 @@ return [
   ),
   '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/HR/Models/Employee.php' => 
   array (
-    'fileHash' => '6dec22519c2fde575924b77819c8be2ec1576869',
+    'fileHash' => 'a8071bbe385e3add8f5174bf048783da738e69d5',
     'dependentFiles' => 
     array (
       0 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/HR/Controllers/AttendanceController.php',
@@ -15356,7 +14681,7 @@ return [
   ),
   '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/HR/Models/Role.php' => 
   array (
-    'fileHash' => '15965490a514626960e249b279fb770a85b2fe47',
+    'fileHash' => '87393c11fa5aae913e5c7da2fabb9b079ea0612e',
     'dependentFiles' => 
     array (
       0 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/HR/Controllers/EmployeeController.php',
@@ -15369,7 +14694,7 @@ return [
   ),
   '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/HR/Models/SalaryRecord.php' => 
   array (
-    'fileHash' => '9d854efc17f473f4b325c5f49bed024f7bd6eb75',
+    'fileHash' => '7f2f479e9c7ea3ff8dda33dff5a1c9d9724304aa',
     'dependentFiles' => 
     array (
       0 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/HR/Controllers/DashboardController.php',
@@ -36449,7 +35774,24 @@ return [
     0 => 
     \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state(array(
        'name' => 'App\\Modules\\Accounting\\Models\\Invoice',
-       'phpDoc' => NULL,
+       'phpDoc' => 
+      \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+         'phpDocString' => '/**
+ * @property-read Customer|null $customer
+ * @property-read \\Illuminate\\Database\\Eloquent\\Collection<int, InvoiceItem> $items
+ */',
+         'namespace' => 'App\\Modules\\Accounting\\Models',
+         'uses' => 
+        array (
+          'hasfactory' => 'Illuminate\\Database\\Eloquent\\Factories\\HasFactory',
+          'model' => 'Illuminate\\Database\\Eloquent\\Model',
+          'belongsto' => 'Illuminate\\Database\\Eloquent\\Relations\\BelongsTo',
+          'hasmany' => 'Illuminate\\Database\\Eloquent\\Relations\\HasMany',
+        ),
+         'constUses' => 
+        array (
+        ),
+      )),
        'abstract' => false,
        'final' => false,
        'extends' => 'Illuminate\\Database\\Eloquent\\Model',

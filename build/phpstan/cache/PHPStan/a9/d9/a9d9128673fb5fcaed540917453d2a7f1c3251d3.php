@@ -65,7 +65,7 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
     ),
     '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Product.php' => 
     array (
-      0 => '6518ff90ee6b678f34d8ae724918757751ebbda7',
+      0 => '0cf142464f4b8eea8959b323f94ad8a209b68272',
       1 => 
       array (
         0 => 'app\\modules\\accounting\\models\\product',
@@ -143,7 +143,7 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
     ),
     '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Payroll.php' => 
     array (
-      0 => '7c659afbca76c83baf7510fb3aafcdb649cfc207',
+      0 => '668e9e8efe61fc112c3326f34d9c2fccb49d76ef',
       1 => 
       array (
         0 => 'app\\modules\\accounting\\models\\payroll',
@@ -176,7 +176,7 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
     ),
     '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Vendor.php' => 
     array (
-      0 => '85bffe67e7c6c1b2a7f34a714d02f2a317203ecd',
+      0 => 'e1707403725e4915f0e97594c508a6ed09b283de',
       1 => 
       array (
         0 => 'app\\modules\\accounting\\models\\vendor',
@@ -203,7 +203,7 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
     ),
     '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/JournalEntry.php' => 
     array (
-      0 => 'd0298987837492d93ed4fff97629e836790429f2',
+      0 => 'ab196a47b131f8fcf4702b4a6d6c9f83ba1686fc',
       1 => 
       array (
         0 => 'app\\modules\\accounting\\models\\journalentry',
@@ -303,7 +303,7 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
     ),
     '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Payment.php' => 
     array (
-      0 => '04a098b7a08e821cac1ae163d9d8f29285de029b',
+      0 => 'fcf19f4d16baa490676810497f918b881ce9aa3e',
       1 => 
       array (
         0 => 'app\\modules\\accounting\\models\\payment',
@@ -340,7 +340,7 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
     ),
     '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Expense.php' => 
     array (
-      0 => 'd81b472fbdd857850944869b3156dd725645ad09',
+      0 => '3ce14569c72c3ea30043fb47cb8dfcab64963776',
       1 => 
       array (
         0 => 'app\\modules\\accounting\\models\\expense',
@@ -380,7 +380,7 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
     ),
     '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Customer.php' => 
     array (
-      0 => '21486f9dc64aea04869e747421251b105d30d7ea',
+      0 => '464e7f68f2637903e1fc09394db310125b6e96c4',
       1 => 
       array (
         0 => 'app\\modules\\accounting\\models\\customer',
@@ -410,7 +410,7 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
     ),
     '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Invoice.php' => 
     array (
-      0 => 'd4b8a38e9528b629c5a2b30d44878a95dd21c89d',
+      0 => '8f8b84c9f6709ee5a73942cae1a8e5c791eb54f2',
       1 => 
       array (
         0 => 'app\\modules\\accounting\\models\\invoice',
@@ -515,7 +515,7 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
     ),
     '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Currency.php' => 
     array (
-      0 => '0271a42bf7d5cf71825c543354d905c4243a51a3',
+      0 => '58c5bd7d86e6740756fbc482493bb6f1120e1224',
       1 => 
       array (
         0 => 'app\\modules\\accounting\\models\\currency',
@@ -622,7 +622,7 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
     ),
     '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/ChartOfAccount.php' => 
     array (
-      0 => '2e19cefb6134b179b630d8845e2e6b3aa871938d',
+      0 => '1e336f9a3fbd2eeac9774b89b54fd881d1fcf0da',
       1 => 
       array (
         0 => 'app\\modules\\accounting\\models\\chartofaccount',
@@ -1636,7 +1636,7 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
     ),
     '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/HR/Models/Role.php' => 
     array (
-      0 => '15965490a514626960e249b279fb770a85b2fe47',
+      0 => '87393c11fa5aae913e5c7da2fabb9b079ea0612e',
       1 => 
       array (
         0 => 'app\\modules\\hr\\models\\role',
@@ -1675,7 +1675,7 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
     ),
     '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/HR/Models/SalaryRecord.php' => 
     array (
-      0 => '9d854efc17f473f4b325c5f49bed024f7bd6eb75',
+      0 => '7f2f479e9c7ea3ff8dda33dff5a1c9d9724304aa',
       1 => 
       array (
         0 => 'app\\modules\\hr\\models\\salaryrecord',
@@ -1723,7 +1723,7 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
     ),
     '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/HR/Models/Employee.php' => 
     array (
-      0 => '6dec22519c2fde575924b77819c8be2ec1576869',
+      0 => 'a8071bbe385e3add8f5174bf048783da738e69d5',
       1 => 
       array (
         0 => 'app\\modules\\hr\\models\\employee',
@@ -1780,7 +1780,7 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
     ),
     '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/HR/Models/Department.php' => 
     array (
-      0 => '859dab3a07785b83beab1a7a2124333d3d26fba6',
+      0 => '1c32ab3b23de396e05763cde2bf4d2335f6d93ac',
       1 => 
       array (
         0 => 'app\\modules\\hr\\models\\department',

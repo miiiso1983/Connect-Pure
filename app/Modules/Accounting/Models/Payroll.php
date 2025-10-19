@@ -229,7 +229,7 @@ class Payroll extends Model
     public function markAsPaid($paymentData = [])
     {
         $payment = $this->payments()->create(array_merge([
-            'payment_number' => 'PAY-'.str_pad(Payment::max('id') + 1, 6, '0', STR_PAD_LEFT),
+            'payment_number' => 'PAY-'.str_pad((string) (Payment::max('id') + 1), 6, '0', STR_PAD_LEFT),
             'type' => 'employee_payment',
             'employee_id' => $this->employee_id,
             'amount' => $this->net_pay,
@@ -261,7 +261,7 @@ class Payroll extends Model
         static::creating(function ($payroll) {
             if (! $payroll->payroll_number) {
                 $payroll->payroll_number = 'PAY-'.date('Y').'-'.str_pad(
-                    static::whereYear('created_at', date('Y'))->count() + 1, 4, '0', STR_PAD_LEFT
+                    (string) (static::whereYear('created_at', date('Y'))->count() + 1), 4, '0', STR_PAD_LEFT
                 );
             }
         });

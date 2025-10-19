@@ -7,6 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
+/**
+ * @property-read Customer|null $customer
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, InvoiceItem> $items
+ */
 class Invoice extends Model
 {
     use HasFactory;
@@ -181,7 +185,7 @@ class Invoice extends Model
     public function addPayment($amount, $paymentData = [])
     {
         $payment = $this->payments()->create(array_merge([
-            'payment_number' => 'PAY-'.str_pad(Payment::max('id') + 1, 6, '0', STR_PAD_LEFT),
+            'payment_number' => 'PAY-'.str_pad((string) (Payment::max('id') + 1), 6, '0', STR_PAD_LEFT),
             'type' => 'customer_payment',
             'customer_id' => $this->customer_id,
             'amount' => $amount,
@@ -230,7 +234,7 @@ class Invoice extends Model
                 $endOfYear = now()->endOfYear();
 
                 $invoice->invoice_number = 'INV-'.$currentYear.'-'.str_pad(
-                    static::whereBetween('created_at', [$startOfYear, $endOfYear])->count() + 1, 4, '0', STR_PAD_LEFT
+                    (string) (static::whereBetween('created_at', [$startOfYear, $endOfYear])->count() + 1), 4, '0', STR_PAD_LEFT
                 );
             }
         });

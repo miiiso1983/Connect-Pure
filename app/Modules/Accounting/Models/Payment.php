@@ -205,7 +205,7 @@ class Payment extends Model
         static::creating(function ($payment) {
             if (! $payment->payment_number) {
                 $payment->payment_number = 'PAY-'.date('Y').'-'.str_pad(
-                    static::whereYear('created_at', date('Y'))->count() + 1, 4, '0', STR_PAD_LEFT
+                    (string) (static::whereYear('created_at', date('Y'))->count() + 1), 4, '0', STR_PAD_LEFT
                 );
             }
         });

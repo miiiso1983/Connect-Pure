@@ -200,17 +200,17 @@ class SalaryRecord extends Model
 
     public function getFormattedGrossSalaryAttribute(): string
     {
-        return number_format($this->gross_salary, 2);
+        return number_format((float) $this->gross_salary, 2);
     }
 
     public function getFormattedNetSalaryAttribute(): string
     {
-        return number_format($this->net_salary, 2);
+        return number_format((float) $this->net_salary, 2);
     }
 
     public function getFormattedTotalDeductionsAttribute(): string
     {
-        return number_format($this->total_deductions, 2);
+        return number_format((float) $this->total_deductions, 2);
     }
 
     public function getTotalAllowancesAttribute(): float

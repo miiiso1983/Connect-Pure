@@ -67,7 +67,7 @@ class Currency extends Model
     // Accessors
     public function getFormattedExchangeRateAttribute()
     {
-        return number_format($this->exchange_rate, 6);
+        return number_format((float) $this->exchange_rate, 6);
     }
 
     public function getSymbolPositionTextAttribute()
