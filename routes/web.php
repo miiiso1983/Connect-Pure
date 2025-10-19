@@ -379,3 +379,9 @@ Route::middleware('auth')->prefix('admin')->name('admin.')->group(function () {
         });
     });
 });
+
+// WhatsApp Webhook (verification + status updates)
+Route::get('/webhooks/whatsapp', [\App\Http\Controllers\Api\WhatsAppWebhookController::class, 'verify'])->name('webhooks.whatsapp.verify');
+Route::post('/webhooks/whatsapp', [\App\Http\Controllers\Api\WhatsAppWebhookController::class, 'handle'])
+    ->name('webhooks.whatsapp.handle')
+    ->withoutMiddleware([\Illuminate\Foundation\Http\Middleware\VerifyCsrfToken::class]);
