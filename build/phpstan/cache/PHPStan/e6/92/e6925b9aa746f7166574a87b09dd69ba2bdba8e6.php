@@ -3339,5 +3339,21 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
       array (
       ),
     ),
+    '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Http/Controllers/Api/WhatsAppWebhookController.php' => 
+    array (
+      0 => 'd7d5178678479bc15b46c81a73911f1c64f4c7d3',
+      1 => 
+      array (
+        0 => 'app\\http\\controllers\\api\\whatsappwebhookcontroller',
+      ),
+      2 => 
+      array (
+        0 => 'app\\http\\controllers\\api\\verify',
+        1 => 'app\\http\\controllers\\api\\handle',
+      ),
+      3 => 
+      array (
+      ),
+    ),
   ),
 ));

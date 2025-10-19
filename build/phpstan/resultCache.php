@@ -2969,23 +2969,6 @@ return [
     \PHPStan\Analyser\Error::__set_state(array(
        'message' => 'Parameter #1 $view of function view expects view-string|null, string given.',
        'file' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/InvoiceController.php',
-       'line' => 148,
-       'canBeIgnored' => true,
-       'filePath' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/InvoiceController.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 148,
-       'nodeType' => 'PhpParser\\Node\\Expr\\FuncCall',
-       'identifier' => 'argument.type',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    1 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Parameter #1 $view of function view expects view-string|null, string given.',
-       'file' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/InvoiceController.php',
        'line' => 165,
        'canBeIgnored' => true,
        'filePath' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/InvoiceController.php',
@@ -2999,7 +2982,7 @@ return [
       ),
        'fixedErrorDiff' => NULL,
     )),
-    2 => 
+    1 => 
     \PHPStan\Analyser\Error::__set_state(array(
        'message' => 'Property App\\Modules\\Accounting\\Models\\Invoice::$invoice_number (string) does not accept null.',
        'file' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/InvoiceController.php',
@@ -3016,7 +2999,7 @@ return [
       ),
        'fixedErrorDiff' => NULL,
     )),
-    3 => 
+    2 => 
     \PHPStan\Analyser\Error::__set_state(array(
        'message' => 'Parameter #1 $view of function view expects view-string|null, string given.',
        'file' => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/InvoiceController.php',
@@ -13668,6 +13651,14 @@ return [
       0 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/routes/web.php',
     ),
   ),
+  '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Http/Controllers/Api/WhatsAppWebhookController.php' => 
+  array (
+    'fileHash' => 'd7d5178678479bc15b46c81a73911f1c64f4c7d3',
+    'dependentFiles' => 
+    array (
+      0 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/routes/web.php',
+    ),
+  ),
   '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Http/Controllers/Auth/AuthenticatedSessionController.php' => 
   array (
     'fileHash' => 'dc0a45d48b5dcbc3b2d1e71e91e204328a2f6db5',
@@ -13736,49 +13727,50 @@ return [
       4 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Http/Controllers/Admin/UserController.php',
       5 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Http/Controllers/Admin/UserRoleController.php',
       6 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Http/Controllers/Admin/WhatsAppController.php',
-      7 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Http/Controllers/Auth/AuthenticatedSessionController.php',
-      8 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Http/Controllers/Auth/EmailVerificationNotificationController.php',
-      9 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Http/Controllers/Auth/EmailVerificationPromptController.php',
-      10 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Http/Controllers/Auth/NewPasswordController.php',
-      11 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Http/Controllers/Auth/PasswordResetLinkController.php',
-      12 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Http/Controllers/Auth/RegisteredUserController.php',
-      13 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Http/Controllers/Auth/VerifyEmailController.php',
-      14 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Http/Controllers/DashboardController.php',
-      15 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/ChartOfAccountController.php',
-      16 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/CurrencyController.php',
-      17 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/CustomerController.php',
-      18 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/DashboardController.php',
-      19 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/ExpenseController.php',
-      20 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/InvoiceController.php',
-      21 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/JournalEntryController.php',
-      22 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/PaymentController.php',
-      23 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/PayrollController.php',
-      24 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/ProductController.php',
-      25 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/RecurringController.php',
-      26 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/ReportController.php',
-      27 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/ReportsController.php',
-      28 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/TaxController.php',
-      29 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/TaxRateController.php',
-      30 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/VendorController.php',
-      31 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/CRM/Controllers/CRMController.php',
-      32 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/HR/Controllers/AttendanceController.php',
-      33 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/HR/Controllers/DashboardController.php',
-      34 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/HR/Controllers/DepartmentController.php',
-      35 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/HR/Controllers/EmployeeController.php',
-      36 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/HR/Controllers/HRController.php',
-      37 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/HR/Controllers/LeaveRequestController.php',
-      38 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/HR/Controllers/PayrollController.php',
-      39 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/HR/Controllers/PerformanceReviewController.php',
-      40 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/HR/Controllers/RoleController.php',
-      41 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/HR/Controllers/SalaryRecordController.php',
-      42 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Performance/Controllers/PerformanceController.php',
-      43 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Roles/Controllers/RolesController.php',
-      44 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Support/Controllers/SupportController.php',
-      45 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/routes/accounting.php',
-      46 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/routes/auth.php',
-      47 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/routes/hr.php',
-      48 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/routes/performance.php',
-      49 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/routes/web.php',
+      7 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Http/Controllers/Api/WhatsAppWebhookController.php',
+      8 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Http/Controllers/Auth/AuthenticatedSessionController.php',
+      9 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Http/Controllers/Auth/EmailVerificationNotificationController.php',
+      10 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Http/Controllers/Auth/EmailVerificationPromptController.php',
+      11 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Http/Controllers/Auth/NewPasswordController.php',
+      12 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Http/Controllers/Auth/PasswordResetLinkController.php',
+      13 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Http/Controllers/Auth/RegisteredUserController.php',
+      14 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Http/Controllers/Auth/VerifyEmailController.php',
+      15 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Http/Controllers/DashboardController.php',
+      16 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/ChartOfAccountController.php',
+      17 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/CurrencyController.php',
+      18 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/CustomerController.php',
+      19 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/DashboardController.php',
+      20 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/ExpenseController.php',
+      21 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/InvoiceController.php',
+      22 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/JournalEntryController.php',
+      23 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/PaymentController.php',
+      24 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/PayrollController.php',
+      25 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/ProductController.php',
+      26 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/RecurringController.php',
+      27 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/ReportController.php',
+      28 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/ReportsController.php',
+      29 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/TaxController.php',
+      30 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/TaxRateController.php',
+      31 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/VendorController.php',
+      32 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/CRM/Controllers/CRMController.php',
+      33 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/HR/Controllers/AttendanceController.php',
+      34 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/HR/Controllers/DashboardController.php',
+      35 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/HR/Controllers/DepartmentController.php',
+      36 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/HR/Controllers/EmployeeController.php',
+      37 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/HR/Controllers/HRController.php',
+      38 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/HR/Controllers/LeaveRequestController.php',
+      39 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/HR/Controllers/PayrollController.php',
+      40 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/HR/Controllers/PerformanceReviewController.php',
+      41 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/HR/Controllers/RoleController.php',
+      42 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/HR/Controllers/SalaryRecordController.php',
+      43 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Performance/Controllers/PerformanceController.php',
+      44 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Roles/Controllers/RolesController.php',
+      45 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Support/Controllers/SupportController.php',
+      46 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/routes/accounting.php',
+      47 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/routes/auth.php',
+      48 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/routes/hr.php',
+      49 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/routes/performance.php',
+      50 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/routes/web.php',
     ),
   ),
   '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Http/Controllers/DashboardController.php' => 
@@ -14182,29 +14174,30 @@ return [
     array (
       0 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Console/Commands/WhatsAppStatus.php',
       1 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Events/InvoiceSubmitted.php',
-      2 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Listeners/SendInvoiceWhatsAppMessage.php',
-      3 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/CustomerController.php',
-      4 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/DashboardController.php',
-      5 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/ExpenseController.php',
-      6 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/InvoiceController.php',
-      7 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/PaymentController.php',
-      8 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/RecurringController.php',
-      9 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/ReportController.php',
-      10 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/ReportsController.php',
-      11 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Currency.php',
-      12 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Expense.php',
-      13 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Invoice.php',
-      14 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/InvoiceItem.php',
-      15 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Payment.php',
-      16 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/PaymentApplication.php',
-      17 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/RecurringProfile.php',
-      18 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Tax.php',
-      19 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Requests/InvoiceStoreRequest.php',
-      20 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Services/DashboardService.php',
-      21 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Services/ReportService.php',
-      22 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Policies/InvoicePolicy.php',
-      23 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Providers/AppServiceProvider.php',
-      24 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Services/InvoicePdfService.php',
+      2 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Http/Controllers/Api/WhatsAppWebhookController.php',
+      3 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Listeners/SendInvoiceWhatsAppMessage.php',
+      4 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/CustomerController.php',
+      5 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/DashboardController.php',
+      6 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/ExpenseController.php',
+      7 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/InvoiceController.php',
+      8 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/PaymentController.php',
+      9 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/RecurringController.php',
+      10 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/ReportController.php',
+      11 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/ReportsController.php',
+      12 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Currency.php',
+      13 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Expense.php',
+      14 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Invoice.php',
+      15 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/InvoiceItem.php',
+      16 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Payment.php',
+      17 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/PaymentApplication.php',
+      18 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/RecurringProfile.php',
+      19 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Tax.php',
+      20 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Requests/InvoiceStoreRequest.php',
+      21 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Services/DashboardService.php',
+      22 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Services/ReportService.php',
+      23 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Policies/InvoicePolicy.php',
+      24 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Providers/AppServiceProvider.php',
+      25 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Services/InvoicePdfService.php',
     ),
   ),
   '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Employee.php' => 
@@ -14264,25 +14257,26 @@ return [
     array (
       0 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Console/Commands/WhatsAppStatus.php',
       1 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Events/InvoiceSubmitted.php',
-      2 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Listeners/SendInvoiceWhatsAppMessage.php',
-      3 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/DashboardController.php',
-      4 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/InvoiceController.php',
-      5 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/PaymentController.php',
-      6 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/ReportController.php',
-      7 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/ReportsController.php',
-      8 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Currency.php',
-      9 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Customer.php',
-      10 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/InvoiceItem.php',
-      11 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Payment.php',
-      12 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/PaymentApplication.php',
-      13 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/RecurringProfile.php',
-      14 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Tax.php',
-      15 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Requests/InvoiceStoreRequest.php',
-      16 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Services/DashboardService.php',
-      17 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Services/ReportService.php',
-      18 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Policies/InvoicePolicy.php',
-      19 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Providers/AppServiceProvider.php',
-      20 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Services/InvoicePdfService.php',
+      2 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Http/Controllers/Api/WhatsAppWebhookController.php',
+      3 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Listeners/SendInvoiceWhatsAppMessage.php',
+      4 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/DashboardController.php',
+      5 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/InvoiceController.php',
+      6 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/PaymentController.php',
+      7 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/ReportController.php',
+      8 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/ReportsController.php',
+      9 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Currency.php',
+      10 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Customer.php',
+      11 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/InvoiceItem.php',
+      12 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Payment.php',
+      13 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/PaymentApplication.php',
+      14 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/RecurringProfile.php',
+      15 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Tax.php',
+      16 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Requests/InvoiceStoreRequest.php',
+      17 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Services/DashboardService.php',
+      18 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Services/ReportService.php',
+      19 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Policies/InvoicePolicy.php',
+      20 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Providers/AppServiceProvider.php',
+      21 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Services/InvoicePdfService.php',
     ),
   ),
   '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/InvoiceItem.php' => 
@@ -14292,28 +14286,29 @@ return [
     array (
       0 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Console/Commands/WhatsAppStatus.php',
       1 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Events/InvoiceSubmitted.php',
-      2 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Listeners/SendInvoiceWhatsAppMessage.php',
-      3 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/DashboardController.php',
-      4 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/InvoiceController.php',
-      5 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/PaymentController.php',
-      6 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/ReportController.php',
-      7 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/ReportsController.php',
-      8 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Account.php',
-      9 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/ChartOfAccount.php',
-      10 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Currency.php',
-      11 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Customer.php',
-      12 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Invoice.php',
-      13 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Payment.php',
-      14 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/PaymentApplication.php',
-      15 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Product.php',
-      16 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/RecurringProfile.php',
-      17 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Tax.php',
-      18 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Requests/InvoiceStoreRequest.php',
-      19 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Services/DashboardService.php',
-      20 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Services/ReportService.php',
-      21 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Policies/InvoicePolicy.php',
-      22 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Providers/AppServiceProvider.php',
-      23 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Services/InvoicePdfService.php',
+      2 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Http/Controllers/Api/WhatsAppWebhookController.php',
+      3 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Listeners/SendInvoiceWhatsAppMessage.php',
+      4 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/DashboardController.php',
+      5 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/InvoiceController.php',
+      6 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/PaymentController.php',
+      7 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/ReportController.php',
+      8 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Controllers/ReportsController.php',
+      9 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Account.php',
+      10 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/ChartOfAccount.php',
+      11 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Currency.php',
+      12 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Customer.php',
+      13 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Invoice.php',
+      14 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Payment.php',
+      15 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/PaymentApplication.php',
+      16 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Product.php',
+      17 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/RecurringProfile.php',
+      18 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/Tax.php',
+      19 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Requests/InvoiceStoreRequest.php',
+      20 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Services/DashboardService.php',
+      21 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Services/ReportService.php',
+      22 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Policies/InvoicePolicy.php',
+      23 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Providers/AppServiceProvider.php',
+      24 => '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Services/InvoicePdfService.php',
     ),
   ),
   '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Modules/Accounting/Models/JournalEntry.php' => 
@@ -14894,7 +14889,7 @@ return [
   ),
   '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/routes/web.php' => 
   array (
-    'fileHash' => 'bf1a8dcacab10400d84af6ada00f25a964fb90ce',
+    'fileHash' => '297ce2382be0666d76b02015ba3ea5366ad5182e',
     'dependentFiles' => 
     array (
     ),
@@ -19030,6 +19025,124 @@ return [
             \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
                'name' => 'data',
                'type' => 'array',
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+      ),
+       'attributes' => 
+      array (
+      ),
+    )),
+  ),
+  '/Users/mustafaaljaf/Documents/augment-projects/Connect Pure/app/Http/Controllers/Api/WhatsAppWebhookController.php' => 
+  array (
+    0 => 
+    \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state(array(
+       'name' => 'App\\Http\\Controllers\\Api\\WhatsAppWebhookController',
+       'phpDoc' => NULL,
+       'abstract' => false,
+       'final' => false,
+       'extends' => 'App\\Http\\Controllers\\Controller',
+       'implements' => 
+      array (
+      ),
+       'usedTraits' => 
+      array (
+      ),
+       'traitUseAdaptations' => 
+      array (
+      ),
+       'statements' => 
+      array (
+        0 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'verify',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * GET /webhooks/whatsapp — verification handshake for Meta
+     */',
+             'namespace' => 'App\\Http\\Controllers\\Api',
+             'uses' => 
+            array (
+              'controller' => 'App\\Http\\Controllers\\Controller',
+              'invoice' => 'App\\Modules\\Accounting\\Models\\Invoice',
+              'request' => 'Illuminate\\Http\\Request',
+              'log' => 'Illuminate\\Support\\Facades\\Log',
+              'response' => 'Symfony\\Component\\HttpFoundation\\Response',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => 'Symfony\\Component\\HttpFoundation\\Response',
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'request',
+               'type' => 'Illuminate\\Http\\Request',
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
+        1 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'handle',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * POST /webhooks/whatsapp — handle status updates
+     */',
+             'namespace' => 'App\\Http\\Controllers\\Api',
+             'uses' => 
+            array (
+              'controller' => 'App\\Http\\Controllers\\Controller',
+              'invoice' => 'App\\Modules\\Accounting\\Models\\Invoice',
+              'request' => 'Illuminate\\Http\\Request',
+              'log' => 'Illuminate\\Support\\Facades\\Log',
+              'response' => 'Symfony\\Component\\HttpFoundation\\Response',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => false,
+           'returnType' => 'Symfony\\Component\\HttpFoundation\\Response',
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'request',
+               'type' => 'Illuminate\\Http\\Request',
                'byRef' => false,
                'variadic' => false,
                'hasDefault' => false,
