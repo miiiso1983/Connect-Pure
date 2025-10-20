@@ -11,6 +11,7 @@ use App\Modules\HR\Models\SalaryRecord;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
+use Illuminate\Support\Facades\DB;
 
 class DashboardController extends Controller
 {
@@ -94,14 +95,26 @@ class DashboardController extends Controller
             ->limit(5)
             ->get();
 
-        $upcomingBirthdays = Employee::active()
-            ->whereRaw('DATE_FORMAT(date_of_birth, "%m-%d") BETWEEN ? AND ?', [
-                $today->format('m-d'),
-                $today->copy()->addDays(30)->format('m-d'),
-            ])
-            ->orderByRaw('DATE_FORMAT(date_of_birth, "%m-%d")')
-            ->limit(5)
-            ->get();
+        // Upcoming birthdays (SQLite vs MySQL compatible)
+        if (DB::connection()->getDriverName() === 'sqlite') {
+            $upcomingBirthdays = Employee::active()
+                ->whereRaw("strftime('%m-%d', date_of_birth) BETWEEN ? AND ?", [
+                    $today->format('m-d'),
+                    $today->copy()->addDays(30)->format('m-d'),
+                ])
+                ->orderByRaw("strftime('%m-%d', date_of_birth)")
+                ->limit(5)
+                ->get();
+        } else {
+            $upcomingBirthdays = Employee::active()
+                ->whereRaw('DATE_FORMAT(date_of_birth, "%m-%d") BETWEEN ? AND ?', [
+                    $today->format('m-d'),
+                    $today->copy()->addDays(30)->format('m-d'),
+                ])
+                ->orderByRaw('DATE_FORMAT(date_of_birth, "%m-%d")')
+                ->limit(5)
+                ->get();
+        }
 
         $recentLeaveRequests = LeaveRequest::with(['employee', 'approver'])
             ->orderBy('created_at', 'desc')
@@ -172,8 +185,8 @@ class DashboardController extends Controller
      */
     private function getDepartmentDistribution(): array
     {
-        return Department::withCount(['activeEmployees'])
-            ->having('active_employees_count', '>', 0)
+        return Department::whereHas('activeEmployees')
+            ->withCount(['activeEmployees'])
             ->get()
             ->map(function ($department) {
                 return [

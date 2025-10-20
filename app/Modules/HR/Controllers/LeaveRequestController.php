@@ -129,8 +129,10 @@ class LeaveRequestController extends Controller
         // Generate request number
         $validated['request_number'] = LeaveRequest::generateRequestNumber();
 
-        // Calculate total days
-        $leaveRequest = new LeaveRequest($validated);
+        // Calculate total days (avoid passing attachments to model)
+        $temp = $validated;
+        unset($temp['attachments']);
+        $leaveRequest = new LeaveRequest($temp);
         $validated['total_days'] = $leaveRequest->calculateTotalDays();
 
         // Check leave balance
@@ -173,6 +175,9 @@ class LeaveRequestController extends Controller
                 ];
             }
             $validated['attachments'] = $attachments;
+        } else {
+            // Ensure we don't try to JSON-encode UploadedFile instances or empty arrays
+            unset($validated['attachments']);
         }
 
         $leaveRequest = LeaveRequest::create($validated);
@@ -228,8 +233,10 @@ class LeaveRequestController extends Controller
             'attachments.*' => 'nullable|file|max:5120',
         ]);
 
-        // Calculate total days
-        $tempRequest = new LeaveRequest($validated);
+        // Calculate total days (avoid passing attachments to model)
+        $temp = $validated;
+        unset($temp['attachments']);
+        $tempRequest = new LeaveRequest($temp);
         $validated['total_days'] = $tempRequest->calculateTotalDays();
 
         // Check leave balance
@@ -260,6 +267,8 @@ class LeaveRequestController extends Controller
                 ];
             }
             $validated['attachments'] = $attachments;
+        } else {
+            unset($validated['attachments']);
         }
 
         $leaveRequest->update($validated);
@@ -343,7 +352,7 @@ class LeaveRequestController extends Controller
             abort(404);
         }
 
-        return response()->download(storage_path('app/public/'.$attachment['path']), $attachment['name']);
+        return response()->download(Storage::disk('public')->path($attachment['path']), $attachment['name']);
     }
 
     /**

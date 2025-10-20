@@ -213,6 +213,7 @@ class BasicSystemTest extends TestCase
 
         // Test validation by submitting invalid data
         $response = $this->actingAs($user)->post('/modules/hr/employees', [
+            '_token' => csrf_token(),
             'email' => 'invalid-email',
         ]);
 

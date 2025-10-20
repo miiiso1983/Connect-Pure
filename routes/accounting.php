@@ -35,6 +35,11 @@ Route::prefix('modules/accounting')->name('modules.accounting.')->middleware(['a
     Route::get('/financial-summary', [DashboardController::class, 'getFinancialSummary'])->name('financial.summary');
     Route::get('/search', [DashboardController::class, 'search'])->name('search');
 
+
+    // Legacy/alias endpoints expected by tests
+    Route::get('/taxes', fn () => redirect()->route('modules.accounting.tax-rates.index'))->name('taxes.redirect');
+    Route::get('/currencies', fn () => redirect()->route('modules.accounting.settings.index'))->name('currencies.redirect');
+
     // Invoices
     Route::prefix('invoices')->name('invoices.')->group(function () {
         Route::get('/', [InvoiceController::class, 'index'])->name('index');

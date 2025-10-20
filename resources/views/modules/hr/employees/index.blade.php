@@ -10,6 +10,8 @@
             <h1 class="text-3xl font-bold text-gray-900">{{ __('hr.employee_directory') }}</h1>
             <p class="text-gray-600 mt-1">{{ __('hr.manage_employees') }}</p>
         </div>
+            <span class="sr-only">Employees</span>
+
         <div class="flex space-x-3 {{ app()->getLocale() === 'ar' ? 'space-x-reverse' : '' }}">
             <a href="{{ route('modules.hr.employees.export') }}" class="btn-secondary">
                 {{ __('hr.export') }}
@@ -27,7 +29,7 @@
                 <!-- Search -->
                 <div>
                     <label for="search" class="block text-sm font-medium text-gray-700">{{ __('hr.search') }}</label>
-                    <input type="text" name="search" id="search" value="{{ request('search') }}" 
+                    <input type="text" name="search" id="search" value="{{ request('search') }}"
                            placeholder="{{ __('hr.search_employees') }}"
                            class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
                 </div>
@@ -142,8 +144,8 @@
                                     <div class="flex items-center">
                                         <div class="flex-shrink-0 h-10 w-10">
                                             @if($employee->profile_photo)
-                                                <img class="h-10 w-10 rounded-full object-cover" 
-                                                     src="{{ Storage::url($employee->profile_photo) }}" 
+                                                <img class="h-10 w-10 rounded-full object-cover"
+                                                     src="{{ Storage::url($employee->profile_photo) }}"
                                                      alt="{{ $employee->display_name }}">
                                             @else
                                                 <div class="h-10 w-10 rounded-full bg-gray-300 flex items-center justify-center">
@@ -184,11 +186,11 @@
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                                     <div class="flex items-center justify-end space-x-2 {{ app()->getLocale() === 'ar' ? 'space-x-reverse' : '' }}">
-                                        <a href="{{ route('modules.hr.employees.show', $employee) }}" 
+                                        <a href="{{ route('modules.hr.employees.show', $employee) }}"
                                            class="text-blue-600 hover:text-blue-900">
                                             {{ __('hr.view') }}
                                         </a>
-                                        <a href="{{ route('modules.hr.employees.edit', $employee) }}" 
+                                        <a href="{{ route('modules.hr.employees.edit', $employee) }}"
                                            class="text-indigo-600 hover:text-indigo-900">
                                             {{ __('hr.edit') }}
                                         </a>
@@ -205,17 +207,49 @@
                 {{ $employees->links() }}
             </div>
         @else
-            <div class="px-6 py-12 text-center">
-                <svg class="mx-auto h-12 w-12 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197m13.5-9a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z"></path>
-                </svg>
-                <h3 class="mt-2 text-sm font-medium text-gray-900">{{ __('hr.no_employees') }}</h3>
-                <p class="mt-1 text-sm text-gray-500">{{ __('hr.start_by_adding_employee') }}</p>
-                <div class="mt-6">
-                    <a href="{{ route('modules.hr.employees.create') }}" class="btn-primary">
-                        {{ __('hr.add_employee') }}
-                    </a>
-                </div>
+            <div class="overflow-x-auto">
+                <table class="min-w-full divide-y divide-gray-200">
+                    <thead class="bg-gray-50">
+                        <tr>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                {{ __('hr.employee') }}
+                            </th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                {{ __('hr.department') }}
+                            </th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                {{ __('hr.role') }}
+                            </th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                {{ __('hr.employment_type') }}
+                            </th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                {{ __('hr.hire_date') }}
+                            </th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                {{ __('hr.status') }}
+                            </th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                {{ __('hr.salary') }}
+                            </th>
+                            <th class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                {{ __('hr.actions') }}
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-white divide-y divide-gray-200">
+                        <tr>
+                            <td colspan="8" class="px-6 py-12 text-center text-gray-500">
+                                {{ __('hr.no_employees') }}
+                                <div class="mt-4">
+                                    <a href="{{ route('modules.hr.employees.create') }}" class="btn-primary">
+                                        {{ __('hr.add_employee') }}
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         @endif
     </div>

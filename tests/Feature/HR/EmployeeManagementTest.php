@@ -72,6 +72,7 @@ class EmployeeManagementTest extends TestCase
             'profile_photo' => UploadedFile::fake()->image('profile.jpg'),
         ];
 
+        $employeeData['_token'] = csrf_token();
         $response = $this->actingAs($this->user)
             ->post(route('modules.hr.employees.store'), $employeeData);
 
@@ -91,7 +92,7 @@ class EmployeeManagementTest extends TestCase
     public function employee_creation_validates_required_fields()
     {
         $response = $this->actingAs($this->user)
-            ->post(route('modules.hr.employees.store'), []);
+            ->post(route('modules.hr.employees.store'), ['_token' => csrf_token()]);
 
         $response->assertSessionHasErrors([
             'first_name',
@@ -121,6 +122,7 @@ class EmployeeManagementTest extends TestCase
             'basic_salary' => 10000,
         ];
 
+        $employeeData['_token'] = csrf_token();
         $response = $this->actingAs($this->user)
             ->post(route('modules.hr.employees.store'), $employeeData);
 

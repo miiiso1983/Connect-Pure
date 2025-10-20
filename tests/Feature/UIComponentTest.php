@@ -29,8 +29,8 @@ class UIComponentTest extends TestCase
 
         // Check for modern UI elements
         $response->assertSee('Dashboard');
-        $response->assertSee('class="grid');
-        $response->assertSee('class="bg-white rounded-lg shadow');
+        $response->assertSee('class="grid', false);
+        $response->assertSee('class="bg-white rounded-lg shadow', false);
     }
 
     /** @test */
@@ -68,7 +68,7 @@ class UIComponentTest extends TestCase
 
         // Check for card layouts
         $response->assertSee('Human Resources');
-        $response->assertSee('class="bg-white');
+        $response->assertSee('class="bg-white', false);
     }
 
     /** @test */
@@ -109,7 +109,7 @@ class UIComponentTest extends TestCase
     {
         // Test form validation by submitting empty data
         $response = $this->actingAs($this->user)
-            ->post('/modules/hr/employees', []);
+            ->post('/modules/hr/employees', ['_token' => csrf_token()]);
 
         // Should return validation errors or redirect
         $this->assertTrue(

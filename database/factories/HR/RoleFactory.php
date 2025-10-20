@@ -25,7 +25,6 @@ class RoleFactory extends Factory
         ];
 
         $index = $this->faker->numberBetween(0, count($jobTitles) - 1);
-        $minSalary = $this->faker->numberBetween(5000, 15000);
 
         return [
             'name' => $jobTitles[$index],
@@ -34,8 +33,8 @@ class RoleFactory extends Factory
             'description_ar' => $this->faker->paragraph,
             'code' => strtoupper($this->faker->unique()->lexify('??')),
             'department_id' => Department::factory(),
-            'min_salary' => $minSalary,
-            'max_salary' => $minSalary + $this->faker->numberBetween(5000, 10000),
+            'min_salary' => null,
+            'max_salary' => null,
             'level' => $this->faker->randomElement(['junior', 'mid', 'senior', 'lead', 'manager']),
             'responsibilities' => [
                 $this->faker->sentence,

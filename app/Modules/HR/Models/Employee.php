@@ -119,6 +119,13 @@ class Employee extends Model
         return $this->hasMany(Attendance::class);
     }
 
+    public function attendanceRecords(): HasMany
+    {
+        // Alias to maintain compatibility with views/tests expecting attendanceRecords()
+        return $this->hasMany(Attendance::class);
+    }
+
+
     public function salaryRecords(): HasMany
     {
         return $this->hasMany(SalaryRecord::class);

@@ -23,7 +23,7 @@ class EmployeeFactory extends Factory
         $lastNameIndex = $this->faker->numberBetween(0, count($lastNames) - 1);
 
         return [
-            'employee_number' => Employee::generateEmployeeNumber(),
+            'employee_number' => 'EMP'.str_pad((string) $this->faker->unique()->numberBetween(1001, 9999), 4, '0', STR_PAD_LEFT),
             'first_name' => $firstNames[$firstNameIndex],
             'last_name' => $lastNames[$lastNameIndex],
             'first_name_ar' => $firstNamesAr[$firstNameIndex],

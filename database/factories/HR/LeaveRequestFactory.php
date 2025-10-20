@@ -46,7 +46,7 @@ class LeaveRequestFactory extends Factory
         $reasonAr = $this->faker->randomElement($reasonsAr[$leaveType]);
 
         return [
-            'request_number' => LeaveRequest::generateRequestNumber(),
+            'request_number' => 'LR'.str_pad((string) $this->faker->unique()->numberBetween(1001, 999999), 4, '0', STR_PAD_LEFT),
             'employee_id' => Employee::factory(),
             'leave_type' => $leaveType,
             'start_date' => $startDate,
@@ -63,7 +63,7 @@ class LeaveRequestFactory extends Factory
             'approved_at' => null,
             'approval_notes' => null,
             'rejection_reason' => null,
-            'processor_id' => null,
+            'processed_by' => null,
             'processed_at' => null,
         ];
     }

@@ -57,10 +57,31 @@ class AttendanceController extends Controller
             $request->date_to ? Carbon::parse($request->date_to) : null
         );
 
+        // Map to summary keys expected by the view and normalize units
+        $summary = [
+            'present_today' => $stats['present_count'] ?? 0,
+            'absent_today' => $stats['absent_count'] ?? 0,
+            'late_today' => $stats['late_count'] ?? 0,
+            // average_working_hours is stored in minutes; convert to hours with single decimal
+            'avg_hours_today' => round(($stats['average_working_hours'] ?? 0) / 60, 1),
+        ];
+
+        // Employees who checked in today and have not checked out yet (for quick check-out list)
+        $today = Carbon::today();
+        $checkedInEmployees = Employee::active()
+            ->whereHas('attendance', function ($q) use ($today) {
+                $q->whereDate('date', $today)
+                    ->whereNotNull('actual_in')
+                    ->whereNull('actual_out');
+            })
+            ->orderBy('first_name')
+            ->get();
+
         return view('modules.hr.attendance.index', compact(
             'attendanceRecords',
             'employees',
-            'stats'
+            'summary',
+            'checkedInEmployees'
         ));
     }
 

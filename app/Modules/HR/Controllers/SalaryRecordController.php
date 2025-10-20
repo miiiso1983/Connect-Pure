@@ -19,27 +19,29 @@ class SalaryRecordController extends Controller
     {
         $query = SalaryRecord::with(['employee.department', 'preparedBy', 'approvedBy']);
 
-        // Apply filters
+        // Filters
         if ($request->filled('search')) {
             $query->whereHas('employee', function ($q) use ($request) {
                 $q->search($request->search);
             });
         }
-
         if ($request->filled('employee_id')) {
             $query->byEmployee($request->employee_id);
         }
-
         if ($request->filled('status')) {
             $query->byStatus($request->status);
         }
-
         if ($request->filled('year')) {
             $query->byPeriod($request->year);
         }
-
         if ($request->filled('month')) {
             $query->byPeriod($request->year ?? now()->year, $request->month);
+        }
+        if ($request->filled('department_id')) {
+            $departmentId = (int) $request->get('department_id');
+            $query->whereHas('employee', function ($q) use ($departmentId) {
+                $q->where('department_id', $departmentId);
+            });
         }
 
         // Sort
@@ -47,21 +49,39 @@ class SalaryRecordController extends Controller
         $sortDirection = $request->get('sort_direction', 'desc');
         $query->orderBy($sortBy, $sortDirection);
 
-        $salaryRecords = $query->paginate(15)->withQueryString();
+        $payrollRecords = $query->paginate(15)->withQueryString();
 
-        // Get filter options
+        // Options and context
         $employees = Employee::active()->orderBy('first_name')->get();
+        $departments = \App\Modules\HR\Models\Department::active()->orderBy('name')->get();
 
-        // Get payroll statistics
-        $stats = SalaryRecord::getPayrollStats(
-            $request->year ?? now()->year,
-            $request->month
-        );
+        $currentYear = (int) ($request->get('year') ?: now()->year);
+        $currentMonth = (int) ($request->get('month') ?: now()->month);
+        $years = collect(range(now()->year - 4, now()->year + 1));
+        $months = collect(range(1, 12))->map(fn ($m) => [
+            'value' => $m,
+            'label' => Carbon::create(null, $m, 1)->format('F'),
+        ]);
+
+        // Stats -> summary expected by the view
+        $stats = SalaryRecord::getPayrollStats($currentYear, $currentMonth);
+        $recordsByStatus = $stats['records_by_status'] ?? [];
+        $summary = [
+            'total_employees' => Employee::active()->count(),
+            'processed_payroll' => ($recordsByStatus['approved'] ?? 0) + ($recordsByStatus['paid'] ?? 0),
+            'pending_approval' => ($recordsByStatus['draft'] ?? 0),
+            'total_amount' => (float) ($stats['total_net_salary'] ?? 0),
+        ];
 
         return view('modules.hr.payroll.index', compact(
-            'salaryRecords',
+            'payrollRecords',
             'employees',
-            'stats'
+            'departments',
+            'months',
+            'years',
+            'currentMonth',
+            'currentYear',
+            'summary'
         ));
     }
 

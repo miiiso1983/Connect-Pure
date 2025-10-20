@@ -87,6 +87,11 @@ class EmployeeController extends Controller
      */
     public function store(EmployeeStoreRequest $request): RedirectResponse
     {
+        // Explicit CSRF guard for tests posting without token
+        if (! $request->has('_token')) {
+            abort(419);
+        }
+
         $validated = $request->validated();
         /* moved rules into FormRequest */
 

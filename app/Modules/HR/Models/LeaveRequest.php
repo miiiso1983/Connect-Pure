@@ -224,19 +224,12 @@ class LeaveRequest extends Model
         $startDate = Carbon::parse($this->start_date);
         $endDate = Carbon::parse($this->end_date);
 
-        // Calculate business days (excluding weekends)
-        $totalDays = 0;
-        $currentDate = $startDate->copy();
-
-        while ($currentDate->lte($endDate)) {
-            // Skip weekends (Friday and Saturday in Saudi Arabia)
-            if (! in_array($currentDate->dayOfWeek, [5, 6])) { // 5 = Friday, 6 = Saturday
-                $totalDays++;
-            }
-            $currentDate->addDay();
+        // Count inclusive calendar days (including weekends)
+        if ($endDate->lt($startDate)) {
+            return 0;
         }
 
-        return $totalDays;
+        return $startDate->diffInDays($endDate) + 1;
     }
 
     public function approve(int $approverId, ?string $notes = null): void

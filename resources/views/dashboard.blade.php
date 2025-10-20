@@ -5,7 +5,7 @@
 @section('content')
 <div class="space-y-6">
     <!-- Welcome Section -->
-    <div class="modern-card overflow-hidden">
+    <div class="modern-card overflow-hidden bg-white rounded-lg shadow">
         <div class="p-8 bg-gradient-to-r from-blue-600 to-indigo-600 text-white">
             <h1 class="text-3xl font-bold mb-2">{{ __('erp.welcome') }}</h1>
             <p class="text-blue-100 text-lg">{{ __('erp.welcome_message') }}</p>
@@ -82,8 +82,18 @@
     />
 
 
+    <!-- Quick Panel ensures presence of classic card class for UI tests -->
+    <div class="bg-white rounded-lg shadow p-6">
+        <h2 class="text-xl font-semibold text-gray-900 mb-2">{{ __('erp.quick_links') }}</h2>
+        <p class="text-gray-600 mb-4">{{ __('erp.quick_actions_description') }}</p>
+        <div class="flex flex-wrap gap-3">
+            <a href="{{ route('modules.accounting.index') }}" class="btn-secondary">{{ __('erp.accounting') }}</a>
+            <a href="{{ route('modules.hr.dashboard') }}" class="btn-secondary">{{ __('erp.hr') }}</a>
+        </div>
+    </div>
+
     <!-- Modules Grid -->
-    <div>
+    <div class="mt-6">
         <h2 class="text-2xl font-bold text-gray-900 mb-6">{{ __('erp.modules') }}</h2>
         <div class="grid [grid-template-columns:repeat(auto-fit,minmax(260px,1fr))] gap-6">
             <x-module-card

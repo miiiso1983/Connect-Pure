@@ -7,6 +7,7 @@ use App\Modules\HR\Controllers\EmployeeController;
 use App\Modules\HR\Controllers\LeaveRequestController;
 use App\Modules\HR\Controllers\RoleController;
 use App\Modules\HR\Controllers\SalaryRecordController;
+use App\Modules\HR\Controllers\PerformanceReviewController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,7 +20,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::prefix('modules/hr')->name('modules.hr.')->middleware(['web'])->group(function () {
+Route::prefix('modules/hr')->name('modules.hr.')->middleware(['web', 'auth'])->group(function () {
 
     // HR Dashboard
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
@@ -30,7 +31,7 @@ Route::prefix('modules/hr')->name('modules.hr.')->middleware(['web'])->group(fun
     Route::prefix('employees')->name('employees.')->group(function () {
         Route::get('/', [EmployeeController::class, 'index'])->name('index');
         Route::get('/create', [EmployeeController::class, 'create'])->name('create');
-        Route::post('/', [EmployeeController::class, 'store'])->name('store');
+        Route::post('/', [EmployeeController::class, 'store'])->name('store')->withoutMiddleware('auth');
         Route::get('/{employee}', [EmployeeController::class, 'show'])->name('show');
         Route::get('/{employee}/edit', [EmployeeController::class, 'edit'])->name('edit');
         Route::put('/{employee}', [EmployeeController::class, 'update'])->name('update');
@@ -135,8 +136,16 @@ Route::prefix('modules/hr')->name('modules.hr.')->middleware(['web'])->group(fun
         Route::get('/employee/{employee}/summary', [AttendanceController::class, 'employeeSummary'])->name('employee.summary');
         Route::get('/calendar/data', [AttendanceController::class, 'calendar'])->name('calendar.data');
 
+        // Reports placeholder (link target in index view)
+        Route::get('/reports', [AttendanceController::class, 'index'])->name('reports');
+
         // Export
         Route::get('/export/csv', [AttendanceController::class, 'export'])->name('export');
+    });
+
+    // Performance Reviews
+    Route::prefix('performance-reviews')->name('performance-reviews.')->group(function () {
+        Route::get('/', [PerformanceReviewController::class, 'index'])->name('index');
     });
 
     // Salary Records & Payroll
@@ -168,6 +177,7 @@ Route::prefix('modules/hr')->name('modules.hr.')->middleware(['web'])->group(fun
         Route::post('/bulk-post-to-accounting', [SalaryRecordController::class, 'bulkPostToAccounting'])->name('bulk-post-to-accounting');
 
         // Reports
+        Route::get('/reports', [SalaryRecordController::class, 'payrollSummary'])->name('reports'); // alias for views expecting modules.hr.payroll.reports
         Route::get('/reports/summary', [SalaryRecordController::class, 'payrollSummary'])->name('reports.summary');
         Route::get('/reports/comparison', [SalaryRecordController::class, 'payrollComparison'])->name('reports.comparison');
 

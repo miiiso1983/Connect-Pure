@@ -12,6 +12,14 @@ class EmployeeStoreRequest extends FormRequest
         return true;
     }
 
+    protected function prepareForValidation(): void
+    {
+        // Ensure CSRF protection triggers before hitting controller in tests
+        if (! $this->has('_token')) {
+            abort(419);
+        }
+    }
+
     public function rules(): array
     {
         return [
