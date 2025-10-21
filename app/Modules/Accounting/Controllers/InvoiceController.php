@@ -143,7 +143,7 @@ class InvoiceController extends Controller
 
     public function show(Invoice $invoice)
     {
-        $invoice->load(['customer', 'items.account', 'payments']);
+        $invoice->load(['customer', 'items.account', 'payments', 'paymentLinks']);
 
         return view('modules.accounting.invoices.show', compact('invoice'));
     }

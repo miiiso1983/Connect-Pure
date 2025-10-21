@@ -31,13 +31,18 @@
                     <form action="{{ route('modules.accounting.invoices.send', $invoice) }}" method="POST" class="inline">
                         @csrf
                         <button type="submit" class="btn btn-primary bg-green-600 hover:bg-green-700"
-                            onclick="return confirm('Send this invoice to the customer via WhatsApp?');">
-                            Send via WhatsApp
+                            onclick="return confirm('{{ __('accounting.confirm_send_invoice') }}');">
+                            {{ __('accounting.send_invoice') }} (WhatsApp)
                         </button>
                     </form>
                 @endif
 
-                <a href="{{ route('modules.accounting.invoices.pdf', $invoice) }}" class="btn btn-outline">View PDF</a>
+                <a href="{{ route('modules.accounting.invoices.pdf', $invoice) }}" class="btn btn-outline">{{ __('accounting.download_pdf') }}</a>
+
+                <form action="{{ route('modules.accounting.invoices.payment-link', $invoice) }}" method="POST" class="inline">
+                    @csrf
+                    <button type="submit" class="btn btn-outline">{{ __('accounting.create_payment_link') }}</button>
+                </form>
             </div>
         </div>
     </div>
@@ -125,6 +130,50 @@
                         <tr>
                             <td colspan="5" class="px-6 py-6 text-center text-gray-500">No items</td>
                         </tr>
+    <!-- Payment Links -->
+    <x-card title="{{ __('accounting.payment_links') }}">
+        @if (session('payment_link_url'))
+            <div class="mb-4 p-3 rounded bg-green-50 text-green-800 flex items-center justify-between">
+                <span>{{ __('accounting.payment_link_created') }}: <a class="underline" href="{{ session('payment_link_url') }}" target="_blank">{{ session('payment_link_url') }}</a></span>
+                <button type="button" class="btn btn-outline" onclick="navigator.clipboard.writeText('{{ session('payment_link_url') }}'); this.innerText='{{ __('accounting.copied') }}';">{{ __('accounting.copy_link') }}</button>
+            </div>
+        @endif
+
+        <div class="overflow-x-auto">
+            <table class="min-w-full divide-y divide-gray-200">
+                <thead class="bg-gray-50">
+                    <tr>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">{{ __('accounting.link') }}</th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">{{ __('accounting.amount') }}</th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">{{ __('accounting.status') }}</th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">{{ __('accounting.expires_at') }}</th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">{{ __('accounting.actions') }}</th>
+                    </tr>
+                </thead>
+                <tbody class="bg-white divide-y divide-gray-200">
+                    @forelse($invoice->paymentLinks as $plink)
+                        @php $plinkUrl = url('/pay/'.$plink->token); @endphp
+                        <tr>
+                            <td class="px-6 py-4 text-sm">
+                                <a class="text-blue-600 underline" href="{{ $plinkUrl }}" target="_blank">{{ $plinkUrl }}</a>
+                            </td>
+                            <td class="px-6 py-4 text-sm">{{ number_format((float)($plink->amount ?? $invoice->balance_due), 2) }} {{ $invoice->currency }}</td>
+                            <td class="px-6 py-4 text-sm">{{ ucfirst($plink->status) }}</td>
+                            <td class="px-6 py-4 text-sm">{{ $plink->expires_at ? $plink->expires_at->format('Y-m-d H:i') : '—' }}</td>
+                            <td class="px-6 py-4 text-sm">
+                                <button type="button" class="text-gray-700 hover:text-gray-900" onclick="navigator.clipboard.writeText('{{ $plinkUrl }}'); this.innerText='{{ __('accounting.copied') }}';">{{ __('accounting.copy_link') }}</button>
+                            </td>
+                        </tr>
+                    @empty
+                        <tr>
+                            <td colspan="5" class="px-6 py-6 text-center text-gray-500">{{ __('accounting.no_payment_links') }}</td>
+                        </tr>
+                    @endforelse
+                </tbody>
+            </table>
+        </div>
+    </x-card>
+
                     @endforelse
                 </tbody>
             </table>

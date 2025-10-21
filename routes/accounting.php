@@ -54,6 +54,8 @@ Route::prefix('modules/accounting')->name('modules.accounting.')->middleware(['a
         Route::get('/{invoice}/pdf', [InvoiceController::class, 'downloadPDF'])->name('pdf');
         Route::post('/{invoice}/mark-paid', [InvoiceController::class, 'markAsPaid'])->name('mark-paid');
         Route::post('/{invoice}/mark-viewed', [InvoiceController::class, 'markAsViewed'])->name('mark-viewed');
+        Route::post('/{invoice}/payment-link', [InvoiceController::class, 'createPaymentLink'])->name('payment-link');
+
 
         // Invoice Items
         Route::post('/{invoice}/items', [InvoiceController::class, 'addItem'])->name('items.store');

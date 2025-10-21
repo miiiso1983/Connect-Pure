@@ -724,4 +724,27 @@ return [
     'to_currency' => 'إلى العملة',
     'converted_amount' => 'المبلغ المحول',
     'conversion_rate' => 'معدل التحويل',
+    // روابط الدفع
+    'create_payment_link' => 'إنشاء رابط دفع',
+    'payment_links' => 'روابط الدفع',
+    'link' => 'الرابط',
+    'expires_at' => 'تنتهي في',
+    'copy_link' => 'نسخ الرابط',
+    'copied' => 'تم النسخ',
+    'no_payment_links' => 'لا توجد روابط دفع حتى الآن',
+    'payment_link_created' => 'تم إنشاء رابط الدفع',
+    'payment_link_not_valid' => 'رابط الدفع هذا لم يعد صالحاً',
+
+    // صفحات الدفع العامة
+    'pay_invoice' => 'دفع الفاتورة',
+    'amount_due' => 'المبلغ المستحق',
+    'secure_payment_message' => 'يمكنك الدفع بأمان عبر الإنترنت باستخدام الزر أدناه.',
+    'pay_now' => 'ادفع الآن',
+    'payment_successful' => 'تم الدفع بنجاح',
+    'thank_you_for_payment' => 'شكراً لك على الدفع!',
+    'payment_link_expired' => 'انتهت صلاحية رابط الدفع',
+    'payment_link_no_longer_valid' => 'هذا الرابط لم يعد صالحاً.',
+
+    'confirm_send_invoice' => 'هل أنت متأكد أنك تريد إرسال هذه الفاتورة؟',
+
 ];

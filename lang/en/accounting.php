@@ -855,4 +855,26 @@ return [
     'to_currency' => 'To Currency',
     'converted_amount' => 'Converted Amount',
     'conversion_rate' => 'Conversion Rate',
+
+    // Payment Links
+    'create_payment_link' => 'Create Payment Link',
+    'payment_links' => 'Payment Links',
+    'link' => 'Link',
+    'expires_at' => 'Expires At',
+    'copy_link' => 'Copy Link',
+    'copied' => 'Copied',
+    'no_payment_links' => 'No payment links created yet',
+    'payment_link_created' => 'Payment link created',
+    'payment_link_not_valid' => 'This payment link is no longer valid',
+
+    // Public payment pages
+    'pay_invoice' => 'Pay Invoice',
+    'amount_due' => 'Amount Due',
+    'secure_payment_message' => 'You can pay this invoice securely online using the button below.',
+    'pay_now' => 'Pay Now',
+    'payment_successful' => 'Payment Successful',
+    'thank_you_for_payment' => 'Thank you for your payment!',
+    'payment_link_expired' => 'Payment Link Expired',
+    'payment_link_no_longer_valid' => 'This payment link is no longer valid.',
 ];
+
