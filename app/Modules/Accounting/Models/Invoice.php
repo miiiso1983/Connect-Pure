@@ -80,6 +80,12 @@ class Invoice extends Model
         return $this->hasMany(Payment::class);
     }
 
+    public function paymentLinks(): HasMany
+    {
+        return $this->hasMany(\App\Modules\Accounting\Models\PaymentLink::class);
+    }
+
+
     public function recurringProfile(): BelongsTo
     {
         return $this->belongsTo(RecurringProfile::class);

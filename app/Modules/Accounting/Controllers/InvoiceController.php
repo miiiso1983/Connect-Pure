@@ -357,4 +357,17 @@ class InvoiceController extends Controller
         // For now, return a view that can be printed
         return view('modules.accounting.invoices.pdf', compact('invoice'));
     }
+
+    public function createPaymentLink(Invoice $invoice)
+    {
+        $this->authorize('update', $invoice);
+
+        $service = app(\App\Modules\Accounting\Services\PaymentLinkService::class);
+        $link = $service->createForInvoice($invoice);
+        $url = $service->buildUrl($link);
+
+        return redirect()->route('modules.accounting.invoices.show', $invoice)
+            ->with('success', __('accounting.payment_link_created'))
+            ->with('payment_link_url', $url);
+    }
 }

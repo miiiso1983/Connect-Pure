@@ -194,20 +194,27 @@ class WhatsAppService
     {
         $companyName = config('app.name', 'Connect Pure ERP');
 
-        return "🧾 *Invoice from {$companyName}*\n\n".
+        $message = "🧾 *Invoice from {$companyName}*\n\n".
                "📄 Invoice #: {$invoiceData['invoice_number']}\n".
                "📅 Date: {$invoiceData['invoice_date']}\n".
                "⏰ Due Date: {$invoiceData['due_date']}\n".
                "💰 Amount: {$invoiceData['total_amount']} {$invoiceData['currency']}\n\n".
                "Dear {$invoiceData['customer_name']},\n\n".
                "We have generated a new invoice for you. Please find the details above.\n\n".
-               "📎 The PDF invoice is attached to this message.\n\n".
-               "💳 Payment can be made through:\n".
+               "📎 The PDF invoice is attached to this message.\n\n";
+
+        if (!empty($invoiceData['payment_link_url'])) {
+            $message .= "🔗 Pay securely online: {$invoiceData['payment_link_url']}\n\n";
+        }
+
+        $message .= "💳 Payment can be made through:\n".
                "• Bank Transfer\n".
                "• Online Payment Portal\n".
                "• Cash/Cheque\n\n".
                "📞 For any questions, please contact us.\n\n".
                'Thank you for your business! 🙏';
+
+        return $message;
     }
 
     /**

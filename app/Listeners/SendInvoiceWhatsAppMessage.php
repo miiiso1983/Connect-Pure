@@ -9,6 +9,7 @@ use App\Services\WhatsAppService;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Support\Facades\Log;
+use App\Modules\Accounting\Services\PaymentLinkService;
 
 class SendInvoiceWhatsAppMessage implements ShouldQueue
 {
@@ -71,6 +72,20 @@ class SendInvoiceWhatsAppMessage implements ShouldQueue
                 'currency' => $invoice->currency ?? 'SAR',
                 'customer_name' => $invoice->customer->name,
             ];
+
+            // Generate or reuse active payment link and include URL in message
+            try {
+                /** @var PaymentLinkService $pls */
+                $pls = app(PaymentLinkService::class);
+                $plink = $pls->createForInvoice($invoice);
+                $invoiceData['payment_link_url'] = $pls->buildUrl($plink);
+            } catch (\Throwable $t) {
+                // Non-fatal: proceed without link
+                Log::warning('Payment link generation failed; proceeding without link', [
+                    'invoice_id' => $invoice->id,
+                    'error' => $t->getMessage(),
+                ]);
+            }
 
             // Send WhatsApp message with PDF attachment
             $result = $this->whatsAppService->sendInvoiceMessage(

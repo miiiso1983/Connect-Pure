@@ -34,6 +34,13 @@ Route::get('/theme-test', function () {
     return view('theme-test');
 })->name('theme.test');
 
+
+// Public payment link routes (no auth)
+use App\Modules\Accounting\Controllers\PaymentLinkController;
+Route::get('/pay/{token}', [PaymentLinkController::class, 'show'])->name('pay.show');
+Route::post('/pay/{token}/simulate-success', [PaymentLinkController::class, 'simulateSuccess'])->name('pay.simulate');
+Route::get('/pay/{token}/cancel', [PaymentLinkController::class, 'cancel'])->name('pay.cancel');
+
 // Include authentication routes
 require __DIR__.'/auth.php';
 
@@ -178,6 +185,7 @@ Route::middleware('auth')->prefix('modules')->name('modules.')->group(function (
 
             // Actions
             Route::post('/{invoice}/send', [\App\Modules\Accounting\Controllers\InvoiceController::class, 'send'])->name('send');
+            Route::post('/{invoice}/payment-link', [\App\Modules\Accounting\Controllers\InvoiceController::class, 'createPaymentLink'])->name('payment-link');
             Route::get('/{invoice}/pdf', [\App\Modules\Accounting\Controllers\InvoiceController::class, 'pdf'])->name('pdf');
         });
 
