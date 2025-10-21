@@ -13,7 +13,59 @@ class ReportController extends Controller
 {
     public function index()
     {
-        return view('modules.accounting.reports.index');
+        // Basic stats for current month
+        $startOfMonth = now()->startOfMonth();
+        $endOfMonth = now()->endOfMonth();
+
+        $totalRevenue = Invoice::whereBetween('invoice_date', [$startOfMonth, $endOfMonth])
+            ->where('status', 'paid')
+            ->sum('total_amount');
+
+        $totalExpenses = Expense::whereBetween('expense_date', [$startOfMonth, $endOfMonth])
+            ->where('status', 'paid')
+            ->sum('amount');
+
+        $outstandingInvoices = Invoice::where('status', '!=', 'paid')->sum('balance_due');
+
+        $stats = [
+            'total_revenue' => (float) $totalRevenue,
+            'total_expenses' => (float) $totalExpenses,
+            'monthly_profit' => (float) ($totalRevenue - $totalExpenses),
+            'outstanding_invoices' => (float) $outstandingInvoices,
+        ];
+
+        // Top customers this year
+        $yearStart = now()->startOfYear();
+        $yearEnd = now()->endOfYear();
+        $topCustomers = Customer::withSum(['invoices' => function ($q) use ($yearStart, $yearEnd) {
+                $q->whereBetween('invoice_date', [$yearStart, $yearEnd])
+                  ->where('status', 'paid');
+            }], 'total_amount')
+            ->orderByDesc('invoices_sum_total_amount')
+            ->take(10)
+            ->get();
+
+        // Monthly revenue trend (last 12 months)
+        $monthlyRevenue = Invoice::selectRaw('YEAR(invoice_date) as year, MONTH(invoice_date) as month, SUM(total_amount) as revenue')
+            ->where('status', 'paid')
+            ->where('invoice_date', '>=', now()->subMonths(11)->startOfMonth())
+            ->groupBy('year', 'month')
+            ->orderBy('year')
+            ->orderBy('month')
+            ->get()
+            ->map(function ($row) {
+                return [
+                    'year' => (int) $row->year,
+                    'month' => (int) $row->month,
+                    'revenue' => (float) $row->revenue,
+                ];
+            });
+
+        return view('modules.accounting.reports.index', [
+            'stats' => $stats,
+            'topCustomers' => $topCustomers,
+            'monthlyRevenue' => $monthlyRevenue,
+        ]);
     }
 
     public function profitLoss(Request $request)
@@ -161,6 +213,40 @@ class ReportController extends Controller
         $inventory = [];
 
         return view('modules.accounting.reports.inventory-valuation', compact('inventory', 'asOfDate'));
+    }
+
+    public function customers(Request $request)
+    {
+        $startDate = $request->get('start_date', now()->startOfMonth()->toDateString());
+        $endDate = $request->get('end_date', now()->endOfMonth()->toDateString());
+
+        $customers = Customer::withCount(['invoices' => function ($q) use ($startDate, $endDate) {
+                $q->whereBetween('invoice_date', [$startDate, $endDate]);
+            }])
+            ->withSum(['invoices' => function ($q) use ($startDate, $endDate) {
+                $q->whereBetween('invoice_date', [$startDate, $endDate]);
+            }], 'total_amount')
+            ->orderByDesc('invoices_sum_total_amount')
+            ->paginate(20);
+
+        return view('modules.accounting.reports.customers', compact('customers', 'startDate', 'endDate'));
+    }
+
+    public function vendors(Request $request)
+    {
+        $startDate = $request->get('start_date', now()->startOfMonth()->toDateString());
+        $endDate = $request->get('end_date', now()->endOfMonth()->toDateString());
+
+        $vendors = Vendor::withCount(['expenses' => function ($q) use ($startDate, $endDate) {
+                $q->whereBetween('expense_date', [$startDate, $endDate]);
+            }])
+            ->withSum(['expenses' => function ($q) use ($startDate, $endDate) {
+                $q->whereBetween('expense_date', [$startDate, $endDate]);
+            }], 'amount')
+            ->orderByDesc('expenses_sum_amount')
+            ->paginate(20);
+
+        return view('modules.accounting.reports.vendors', compact('vendors', 'startDate', 'endDate'));
     }
 
     public function salesByProduct(Request $request)

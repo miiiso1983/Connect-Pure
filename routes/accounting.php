@@ -223,6 +223,9 @@ Route::prefix('modules/accounting')->name('modules.accounting.')->middleware(['a
         Route::get('/customer-statements', [ReportController::class, 'customerStatements'])->name('customer-statements');
         Route::get('/sales-by-customer', [ReportController::class, 'salesByCustomer'])->name('sales-by-customer');
 
+            Route::get('/customers', [ReportController::class, 'customers'])->name('customers');
+            Route::get('/vendors', [ReportController::class, 'vendors'])->name('vendors');
+
         // Vendor Reports
         Route::get('/vendor-aging', [ReportController::class, 'vendorAging'])->name('vendor-aging');
         Route::get('/expenses-by-vendor', [ReportController::class, 'expensesByVendor'])->name('expenses-by-vendor');
