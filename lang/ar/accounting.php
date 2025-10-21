@@ -747,4 +747,8 @@ return [
 
     'confirm_send_invoice' => 'هل أنت متأكد أنك تريد إرسال هذه الفاتورة؟',
 
+    // عناصر قادمة قريباً
+    'export_functionality_coming_soon' => 'ميزة التصدير قادمة قريباً',
+    'schedule_functionality_coming_soon' => 'ميزة الجدولة قادمة قريباً',
+
 ];

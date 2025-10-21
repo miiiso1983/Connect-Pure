@@ -89,38 +89,32 @@ class ReportsController extends Controller
         $netProfit = ($revenue->total ?? 0) - $totalExpenses;
         $profitMargin = $revenue->total > 0 ? ($netProfit / $revenue->total) * 100 : 0;
 
-        // Monthly breakdown - using separate queries for SQLite compatibility
-        $monthlyRevenue = Invoice::where('status', 'paid')
-            ->whereBetween('invoice_date', [$startDate, $endDate])
-            ->selectRaw("strftime('%Y', invoice_date) as year, strftime('%m', invoice_date) as month, SUM(total_amount) as revenue")
-            ->groupByRaw("strftime('%Y', invoice_date), strftime('%m', invoice_date)")
-            ->get()
-            ->keyBy(function ($item) {
-                return $item->year.'-'.str_pad($item->month, 2, '0', STR_PAD_LEFT);
-            });
-
-        $monthlyExpenses = Expense::whereBetween('expense_date', [$startDate, $endDate])
-            ->selectRaw("strftime('%Y', expense_date) as year, strftime('%m', expense_date) as month, SUM(amount) as expenses")
-            ->groupByRaw("strftime('%Y', expense_date), strftime('%m', expense_date)")
-            ->get()
-            ->keyBy(function ($item) {
-                return $item->year.'-'.str_pad($item->month, 2, '0', STR_PAD_LEFT);
-            });
-
-        // Combine revenue and expenses data
+        // Monthly breakdown — DB-agnostic (no strftime)
         $monthlyBreakdown = collect();
-        $allMonths = $monthlyRevenue->keys()->merge($monthlyExpenses->keys())->unique()->sort();
+        $start = \Carbon\Carbon::parse($startDate)->startOfMonth();
+        $end = \Carbon\Carbon::parse($endDate)->endOfMonth();
+        $cursor = $start->copy();
+        while ($cursor <= $end) {
+            $year = (int) $cursor->year;
+            $month = (int) $cursor->month;
 
-        foreach ($allMonths as $monthKey) {
-            $revenue = $monthlyRevenue->get($monthKey);
-            $expense = $monthlyExpenses->get($monthKey);
+            $revenueSum = Invoice::where('status', 'paid')
+                ->whereYear('invoice_date', $year)
+                ->whereMonth('invoice_date', $month)
+                ->sum('total_amount');
+
+            $expenseSum = Expense::whereYear('expense_date', $year)
+                ->whereMonth('expense_date', $month)
+                ->sum('amount');
 
             $monthlyBreakdown->push((object) [
-                'year' => substr($monthKey, 0, 4),
-                'month' => substr($monthKey, 5, 2),
-                'revenue' => $revenue ? $revenue->revenue : 0,
-                'expenses' => $expense ? $expense->expenses : 0,
+                'year' => (string) $year,
+                'month' => str_pad((string) $month, 2, '0', STR_PAD_LEFT),
+                'revenue' => (float) $revenueSum,
+                'expenses' => (float) $expenseSum,
             ]);
+
+            $cursor->addMonth();
         }
 
         return view('modules.accounting.reports.profit-loss', compact(

@@ -876,5 +876,9 @@ return [
     'thank_you_for_payment' => 'Thank you for your payment!',
     'payment_link_expired' => 'Payment Link Expired',
     'payment_link_no_longer_valid' => 'This payment link is no longer valid.',
+    // Coming soon placeholders
+    'export_functionality_coming_soon' => 'Export functionality coming soon',
+    'schedule_functionality_coming_soon' => 'Scheduling functionality coming soon',
+
 ];
 
