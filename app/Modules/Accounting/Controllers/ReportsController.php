@@ -35,13 +35,20 @@ class ReportsController extends Controller
 
         $stats['monthly_profit'] = $stats['total_revenue'] - $stats['total_expenses'];
 
-        // Monthly revenue trend (last 12 months)
-        $monthlyRevenue = Invoice::where('status', 'paid')
-            ->where('invoice_date', '>=', now()->subMonths(11)->startOfMonth())
-            ->selectRaw("strftime('%Y', invoice_date) as year, strftime('%m', invoice_date) as month, SUM(total_amount) as revenue")
-            ->groupByRaw("strftime('%Y', invoice_date), strftime('%m', invoice_date)")
-            ->orderByRaw("strftime('%Y', invoice_date), strftime('%m', invoice_date)")
-            ->get();
+        // Monthly revenue trend (last 12 months)  DB-agnostic (no strftime)
+        $monthlyRevenue = collect();
+        for ($i = 11; $i >= 0; $i--) {
+            $d = now()->subMonths($i);
+            $sum = Invoice::where('status', 'paid')
+                ->whereYear('invoice_date', $d->year)
+                ->whereMonth('invoice_date', $d->month)
+                ->sum('total_amount');
+            $monthlyRevenue->push((object) [
+                'year' => (string) $d->year,
+                'month' => str_pad((string) $d->month, 2, '0', STR_PAD_LEFT),
+                'revenue' => (float) $sum,
+            ]);
+        }
 
         // Top customers by revenue
         $startOfYear = now()->startOfYear();
