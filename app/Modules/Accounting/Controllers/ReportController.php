@@ -13,53 +13,74 @@ class ReportController extends Controller
 {
     public function index()
     {
-        // Basic stats for current month
-        $startOfMonth = now()->startOfMonth();
-        $endOfMonth = now()->endOfMonth();
+        try {
+            // Basic stats for current month
+            $startOfMonth = now()->startOfMonth();
+            $endOfMonth = now()->endOfMonth();
 
-        $totalRevenue = Invoice::whereBetween('invoice_date', [$startOfMonth, $endOfMonth])
-            ->where('status', 'paid')
-            ->sum('total_amount');
+            $totalRevenue = Invoice::whereBetween('invoice_date', [$startOfMonth, $endOfMonth])
+                ->where('status', 'paid')
+                ->sum('total_amount');
 
-        $totalExpenses = Expense::whereBetween('expense_date', [$startOfMonth, $endOfMonth])
-            ->where('status', 'paid')
-            ->sum('amount');
+            $totalExpenses = Expense::whereBetween('expense_date', [$startOfMonth, $endOfMonth])
+                ->where('status', 'paid')
+                ->sum('amount');
 
-        $outstandingInvoices = Invoice::where('status', '!=', 'paid')->sum('balance_due');
+            $outstandingInvoices = Invoice::where('status', '!=', 'paid')->sum('balance_due');
 
-        $stats = [
-            'total_revenue' => (float) $totalRevenue,
-            'total_expenses' => (float) $totalExpenses,
-            'monthly_profit' => (float) ($totalRevenue - $totalExpenses),
-            'outstanding_invoices' => (float) $outstandingInvoices,
-        ];
+            $stats = [
+                'total_revenue' => (float) $totalRevenue,
+                'total_expenses' => (float) $totalExpenses,
+                'monthly_profit' => (float) ($totalRevenue - $totalExpenses),
+                'outstanding_invoices' => (float) $outstandingInvoices,
+            ];
+        } catch (\Throwable $e) {
+            \Log::error('Reports stats failed', ['error' => $e->getMessage()]);
+            $stats = [
+                'total_revenue' => 0.0,
+                'total_expenses' => 0.0,
+                'monthly_profit' => 0.0,
+                'outstanding_invoices' => 0.0,
+            ];
+        }
 
-        // Top customers this year
-        $yearStart = now()->startOfYear();
-        $yearEnd = now()->endOfYear();
-        $topCustomers = Customer::withSum(['invoices' => function ($q) use ($yearStart, $yearEnd) {
-                $q->whereBetween('invoice_date', [$yearStart, $yearEnd])
-                  ->where('status', 'paid');
-            }], 'total_amount')
-            ->orderByDesc('invoices_sum_total_amount')
-            ->take(10)
-            ->get();
+        try {
+            // Top customers this year (fallback-safe)
+            $yearStart = now()->startOfYear();
+            $yearEnd = now()->endOfYear();
+            $topCustomers = Customer::withSum(['invoices' => function ($q) use ($yearStart, $yearEnd) {
+                    $q->whereBetween('invoice_date', [$yearStart, $yearEnd])
+                      ->where('status', 'paid');
+                }], 'total_amount')
+                ->orderBy('invoices_sum_total_amount', 'desc')
+                ->take(10)
+                ->get();
+        } catch (\Throwable $e) {
+            \Log::error('Reports topCustomers failed', ['error' => $e->getMessage()]);
+            $topCustomers = collect();
+        }
 
-        // Monthly revenue trend (last 12 months)
-        $monthlyRevenue = Invoice::selectRaw('YEAR(invoice_date) as year, MONTH(invoice_date) as month, SUM(total_amount) as revenue')
-            ->where('status', 'paid')
-            ->where('invoice_date', '>=', now()->subMonths(11)->startOfMonth())
-            ->groupBy('year', 'month')
-            ->orderBy('year')
-            ->orderBy('month')
-            ->get()
-            ->map(function ($row) {
-                return [
-                    'year' => (int) $row->year,
-                    'month' => (int) $row->month,
-                    'revenue' => (float) $row->revenue,
+        try {
+            // Monthly revenue trend (last 12 months) — DB-agnostic approach
+            $monthlyRevenue = [];
+            for ($i = 11; $i >= 0; $i--) {
+                $monthDate = now()->subMonths($i);
+                $year = (int) $monthDate->year;
+                $month = (int) $monthDate->month;
+                $sum = Invoice::whereYear('invoice_date', $year)
+                    ->whereMonth('invoice_date', $month)
+                    ->where('status', 'paid')
+                    ->sum('total_amount');
+                $monthlyRevenue[] = [
+                    'year' => $year,
+                    'month' => $month,
+                    'revenue' => (float) $sum,
                 ];
-            });
+            }
+        } catch (\Throwable $e) {
+            \Log::error('Reports monthlyRevenue failed', ['error' => $e->getMessage()]);
+            $monthlyRevenue = [];
+        }
 
         return view('modules.accounting.reports.index', [
             'stats' => $stats,
