@@ -5,9 +5,11 @@ use App\Modules\CRM\Controllers\CRMController;
 use App\Modules\Support\Controllers\SupportController;
 use Illuminate\Support\Facades\Route;
 
-// Public home route for health check and tests
+// Public home route: redirect based on authentication status
 Route::get('/', function () {
-    return response('OK', 200);
+    return auth()->check()
+        ? redirect()->route('dashboard')
+        : redirect()->route('login');
 })->name('home');
 
 // Dashboard Routes (authenticated)

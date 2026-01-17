@@ -11,10 +11,16 @@ class BasicSystemTest extends TestCase
     use RefreshDatabase;
 
     /** @test */
-    public function application_returns_successful_response()
+    public function home_redirects_based_on_authentication()
     {
+        // Guest should be redirected to login
         $response = $this->get('/');
-        $response->assertStatus(200);
+        $response->assertRedirect('/login');
+
+        // Authenticated user should be redirected to dashboard
+        $user = User::factory()->create();
+        $response = $this->actingAs($user)->get('/');
+        $response->assertRedirect('/dashboard');
     }
 
     /** @test */
